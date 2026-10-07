@@ -18,7 +18,7 @@ then transplant the pattern into your own projects.
 | Guardrail | `.claude/settings.json` + `hooks/scan-hardcoded.sh` | Rules that are *enforced*, not just written down |
 | Design system | `product/design-system/` | Three token layers an AI can safely build with |
 | Practice product | `product/` | **Brewlog** — a small coffee-tasting journal to build on |
-| Exercises | `exercises/` | One ticket per session, written with real acceptance criteria |
+| Exercises | `exercises/` | One ticket per session plus a demo brief, written with real acceptance criteria |
 
 ## Quickstart
 
@@ -50,8 +50,8 @@ the acceptance criteria (not your memory) define "done."
 | `BRW-101` | S1 | First task — prove your environment works |
 | `BRW-102` | S2 | Teach the project a decision, then try to break it |
 | `BRW-103` | S3 | Build a feature spec-first |
-| `BRW-104` | S4 | Critique the output against the rubric |
-| `BRW-105` | S5 | Demo day |
+| `BRW-104` | At home, after S3 | Critique the output against the rubric; discussed in S4 |
+| `BRW-105` | S4 | Demo day, the second half of the last session |
 
 ## The one rule that is enforced
 

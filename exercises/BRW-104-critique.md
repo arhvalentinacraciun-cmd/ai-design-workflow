@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Type** | Review practice |
-| **Session** | S4 — Judgment, risk & the law |
+| **Session** | At home between S3 and S4; discussed in S4 — Judgment and demo day |
 | **Goal** | Turn "looks fine to me" into a scored, evidence-backed review |
 
 ## Story
@@ -22,8 +22,8 @@ approval means something.
       AI's self-review is the exact failure mode this session is about.)
 - [ ] Apply the top fix. Re-run the critique and confirm the score moved.
 - [ ] Propose **one change to the rubric itself** — a trait it's missing, or
-      a wording that let something slide. Bring it to the session; the
-      cohort's rubric evolves from these.
+      a wording that let something slide. Bring it to S4; the cohort's
+      rubric evolves from these.
 
 ## Constraints
 

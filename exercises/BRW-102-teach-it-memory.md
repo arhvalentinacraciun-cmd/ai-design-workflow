@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Type** | Workflow practice |
-| **Session** | S2 — Context engineering |
+| **Session** | S2 — Memory and skills |
 | **Goal** | Experience project memory as a constraint the AI actually respects |
 
 ## Story

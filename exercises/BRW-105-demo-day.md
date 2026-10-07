@@ -3,12 +3,12 @@
 | | |
 |---|---|
 | **Type** | Show your work |
-| **Session** | S5 — Demo day |
+| **Session** | S4 — Judgment and demo day, second half |
 | **Goal** | Present what you built and how the system shaped it |
 
 ## Format
 
-Five minutes, three beats:
+Three minutes, three beats, hard timer:
 
 1. **The thing** — show Brewlog running with your BRW-101 + BRW-103 work
    (or your own project, if you transplanted the pattern — even better).

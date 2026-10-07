@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Type** | Feature (small) |
-| **Session** | S1 — The reset |
+| **Session** | S1 — Setup day |
 | **Goal** | Prove your environment works end to end: session open → change → guardrail → session close |
 
 ## Story

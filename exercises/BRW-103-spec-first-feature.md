@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Type** | Feature |
-| **Session** | S3 — Spec-first building |
+| **Session** | S3 — Design system, spec-first |
 | **Goal** | Go ticket → spec → build, and feel why the spec step earns its keep |
 
 ## Story
