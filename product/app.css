@@ -1,0 +1,85 @@
+/* =============================================================================
+   BREWLOG — page layout
+   Layout may use spacing/typography primitives directly; anything that is a
+   COMPONENT style must come from components.css. No literal style values.
+   ============================================================================= */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-neutral-50);
+  color: var(--color-neutral-900);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+}
+
+.page {
+  max-width: var(--size-content-max);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4) var(--space-16);
+}
+
+.page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.page-header h1 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+.page-header .subtitle {
+  margin: var(--space-1) 0 0;
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-sm);
+}
+
+/* Add-entry form */
+.entry-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: var(--space-3);
+  align-items: end;
+  margin-bottom: var(--space-8);
+}
+@media (max-width: 560px) {
+  .entry-form { grid-template-columns: 1fr; }
+}
+
+/* Entry list */
+.entry-list {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.entry__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.entry__name {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+}
+.entry__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-xs);
+}

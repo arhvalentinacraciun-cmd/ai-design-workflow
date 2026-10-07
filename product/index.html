@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brewlog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="design-system/tokens.css">
+  <link rel="stylesheet" href="design-system/component-tokens.css">
+  <link rel="stylesheet" href="design-system/components.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <div>
+        <h1>Brewlog</h1>
+        <p class="subtitle">A small journal of every coffee worth remembering.</p>
+      </div>
+      <span class="badge badge-primary" id="brew-count">3 brews</span>
+    </header>
+
+    <form class="entry-form" id="entry-form">
+      <div>
+        <label class="field-label" for="f-name">Coffee</label>
+        <input class="input" id="f-name" type="text" placeholder="e.g. Origo — Ethiopia Guji" required>
+      </div>
+      <div>
+        <label class="field-label" for="f-roast">Roast</label>
+        <select class="select" id="f-roast">
+          <option value="light">Light</option>
+          <option value="medium" selected>Medium</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label" for="f-rating">Rating</label>
+        <select class="select" id="f-rating">
+          <option value="5">5 / 5</option>
+          <option value="4" selected>4 / 5</option>
+          <option value="3">3 / 5</option>
+          <option value="2">2 / 5</option>
+          <option value="1">1 / 5</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit">Add entry</button>
+    </form>
+
+    <ul class="entry-list" id="entry-list"></ul>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

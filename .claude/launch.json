@@ -1,0 +1,9 @@
+{
+  "servers": [
+    {
+      "name": "Brewlog",
+      "command": "python3 -m http.server 4600 --directory product",
+      "url": "http://localhost:4600"
+    }
+  ]
+}

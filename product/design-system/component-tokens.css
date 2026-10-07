@@ -1,0 +1,99 @@
+/* =============================================================================
+   LAYER 2 — COMPONENT TOKENS
+   Each component gets its own namespace. All values point to primitives.
+   Rule: components.css takes every colour and radius from these tokens,
+   never from primitives. Shared scales (space, font, line, border-width,
+   shadow, transition, focus-ring) it may use directly. A future theme
+   overrides THIS layer at :root, nothing else.
+   ============================================================================= */
+
+:root {
+
+  /* ── Button ────────────────────────────────────────────────────────────── */
+
+  --button-radius:       var(--radius-md);
+  --button-font-weight:  var(--font-weight-medium);
+  --button-padding-x:    var(--space-4);
+  --button-padding-y:    var(--space-2);
+  --button-focus-ring-color: var(--color-primary-500);
+
+  --button-primary-bg:           var(--color-primary-600);
+  --button-primary-text:         var(--color-white);
+  --button-primary-border-color: var(--color-primary-600);
+
+  --button-secondary-bg:           var(--color-neutral-100);
+  --button-secondary-text:         var(--color-neutral-800);
+  --button-secondary-border-color: var(--color-neutral-200);
+
+  --button-ghost-bg:           transparent;
+  --button-ghost-text:         var(--color-primary-600);
+  --button-ghost-border-color: transparent;
+
+  --button-danger-bg:           var(--color-danger-500);
+  --button-danger-text:         var(--color-white);
+  --button-danger-border-color: var(--color-danger-500);
+
+  /* ── Input ─────────────────────────────────────────────────────────────── */
+
+  --input-bg:                  var(--color-white);
+  --input-text:                var(--color-neutral-900);
+  --input-border-color:        var(--color-neutral-300);
+  --input-border-color-focus:  var(--color-primary-500);
+  --input-radius:              var(--radius-md);
+
+  /* ── Select ────────────────────────────────────────────────────────────── */
+
+  --select-bg:                 var(--color-white);
+  --select-text:               var(--color-neutral-900);
+  --select-border-color:       var(--color-neutral-300);
+  --select-border-color-focus: var(--color-primary-500);
+  --select-radius:             var(--radius-md);
+
+  /* ── Badge ─────────────────────────────────────────────────────────────── */
+
+  --badge-radius:          var(--radius-full);
+
+  --badge-neutral-bg:      var(--color-neutral-100);
+  --badge-neutral-text:    var(--color-neutral-700);
+  --badge-primary-bg:      var(--color-primary-100);
+  --badge-primary-text:    var(--color-primary-700);
+  --badge-success-bg:      var(--color-success-100);
+  --badge-success-text:    var(--color-success-700);
+  --badge-warning-bg:      var(--color-warning-100);
+  --badge-warning-text:    var(--color-warning-700);
+  --badge-danger-bg:       var(--color-danger-100);
+  --badge-danger-text:     var(--color-danger-700);
+
+  /* ── Tag / Chip ────────────────────────────────────────────────────────── */
+
+  --tag-bg:           var(--color-neutral-100);
+  --tag-text:         var(--color-neutral-700);
+  --tag-border-color: var(--color-neutral-200);
+  --tag-radius:       var(--radius-full);
+
+  /* ── Card ──────────────────────────────────────────────────────────────── */
+
+  --card-bg:           var(--color-white);
+  --card-border-color: var(--color-neutral-200);
+  --card-radius:       var(--radius-lg);
+
+  /* ── Alert ─────────────────────────────────────────────────────────────── */
+
+  --alert-radius: var(--radius-md);
+
+  --alert-info-bg:      var(--color-primary-50);
+  --alert-info-text:    var(--color-primary-800);
+  --alert-success-bg:   var(--color-success-100);
+  --alert-success-text: var(--color-success-700);
+  --alert-warning-bg:   var(--color-warning-100);
+  --alert-warning-text: var(--color-warning-700);
+  --alert-danger-bg:    var(--color-danger-100);
+  --alert-danger-text:  var(--color-danger-700);
+
+  /* ── Rating (dots — see CLAUDE.md decision) ────────────────────────────── */
+
+  --rating-dot-filled: var(--color-primary-600);
+  --rating-dot-empty:  var(--color-neutral-300);
+  --rating-dot-radius: var(--radius-full);
+
+}

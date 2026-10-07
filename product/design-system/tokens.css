@@ -1,0 +1,94 @@
+/* =============================================================================
+   LAYER 1 — PRIMITIVE TOKENS
+   Naming: --category-variant-property
+   Components take every colour and radius through component-tokens.css
+   (Layer 2). The shared scales (space, font, line, border-width, shadow,
+   transition, focus-ring) may be referenced directly.
+   ============================================================================= */
+
+:root {
+
+  /* COLOR — PRIMARY (Blue/Indigo) */
+  --color-primary-50:  #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+
+  /* COLOR — NEUTRAL (Slate) */
+  --color-white:       #ffffff;
+  --color-neutral-50:  #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* COLOR — SEMANTIC */
+  --color-success-100: #dcfce7;
+  --color-success-700: #15803d;
+  --color-warning-100: #fef3c7;
+  --color-warning-700: #b45309;
+  --color-danger-100:  #fee2e2;
+  --color-danger-500:  #ef4444;
+  --color-danger-700:  #b91c1c;
+
+  /* SPACING (4px base unit) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* TYPOGRAPHY */
+  --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --font-size-xs:  12px;
+  --font-size-sm:  14px;
+  --font-size-md:  16px;
+  --font-size-lg:  18px;
+  --font-size-xl:  20px;
+  --font-size-2xl: 24px;
+
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  --line-height-tight:   1.25;
+  --line-height-base:    1.5;
+
+  /* SHAPE */
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   12px;
+  --radius-full: 9999px;
+
+  /* DEPTH */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.07);
+
+  /* MOTION */
+  --duration-fast: 100ms;
+  --duration-base: 200ms;
+  --transition-base: all var(--duration-base) ease;
+
+  /* BORDERS */
+  --border-width-hairline: 1px;
+  --border-width-sm: 2px;
+  --border-width-md: 3px;
+
+  /* LAYOUT */
+  --size-content-max: 720px;
+  --focus-ring-width: 3px;
+
+}
