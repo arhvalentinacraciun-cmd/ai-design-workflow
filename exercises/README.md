@@ -11,6 +11,9 @@ wanted.**
 
 1. Open the ticket. Read it fully before opening a session.
 2. Kick off: *"Today we're doing BRW-1XX. The goal is [the story's goal]."*
+   From Session 2 on, typing `/session-2`, `/session-3` or `/session-4`
+   in Claude Code does steps 1 and 2 for you and shows the evening's
+   hands-on agenda, so the whole room starts in the same state.
 3. Work with Claude until every acceptance criterion is checked.
 4. Say **"Session done."** and let the close protocol run.
 5. Commit.
