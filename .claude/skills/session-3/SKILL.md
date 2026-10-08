@@ -30,9 +30,10 @@ Tonight you write nothing in `product/` until the mentee says
    new entry is added while a filter is active. The ticket leaves that
    last one open on purpose; the spec has to close it.
 2. **Inventory check.** The inventory has no filter or segmented control.
-   Say so. Propose the control as a component story: what it is, its
-   variants, the component tokens it needs, when to use it and when not
-   to, and its focus and empty states. Wait for approval.
+   Say so, then read `product/design-system/stories/segmented-control.md`:
+   that is the component's story, already reviewed. Summarise it in four
+   lines (what it is, its tokens, its states, how it stays accessible) and
+   wait for approval before building it.
 3. **Review.** Expect pushback on at least one line. Change the spec, not
    the mentee's mind.
 
@@ -40,8 +41,8 @@ Tonight you write nothing in `product/` until the mentee says
 
 | Block | About | What happens |
 |---|---|---|
-| Spec | 10 min | Draft the spec and the component story; the mentee reviews |
-| The component | 15 min | Build the new control into the design system first: tokens in `component-tokens.css`, styles in `components.css`, inventory entry in the design-system skill |
+| Spec | 10 min | Draft the feature spec, read the component story; the mentee reviews both |
+| The component | 15 min | Build the segmented control from its story: tokens in `component-tokens.css`, styles in `components.css`, inventory row in the design-system skill, the story's acceptance criteria checked |
 | The feature | 20 min | "Implement exactly this spec." Then every criterion checked by hand |
 | Critique round | 10 min | The mentor reviews one build with the room. Log the feedback, change nothing until asked |
 

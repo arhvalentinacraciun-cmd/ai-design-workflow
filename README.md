@@ -16,7 +16,7 @@ then transplant the pattern into your own projects.
 | Project memory | `CLAUDE.md` | What the AI should never forget: decisions, rules, state |
 | Skills | `.claude/skills/` | Encoding your standards so they load when relevant; `/session-2…4` open each session |
 | Guardrail | `.claude/settings.json` + `hooks/scan-hardcoded.sh` | Rules that are *enforced*, not just written down |
-| Design system | `product/design-system/` | Three token layers an AI can safely build with |
+| Design system | `product/design-system/` | Three token layers an AI can safely build with; `stories/` hold the spec for a component before it exists |
 | Practice product | `product/` | **Brewlog** — a small coffee-tasting journal to build on |
 | Exercises | `exercises/` | One ticket per session plus a demo brief, written with real acceptance criteria |
 

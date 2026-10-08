@@ -28,7 +28,10 @@ level** so I can find the light roasts I keep coming back to.
 1. **Do not let Claude write code first.** Ask it to write a short spec:
    chosen component for the filter (from the inventory — and if none fits,
    what it proposes), the filtered-count wording, and the answer to the
-   active-filter-plus-new-entry question.
+   active-filter-plus-new-entry question. The inventory has no filter
+   control; the story for the missing one is at
+   `product/design-system/stories/segmented-control.md`. Build the
+   component from the story first, then the feature on it.
 2. Review the spec. Push back on at least one point — even a small one.
 3. Only after you approve the spec: *"Implement exactly this spec."*
 4. Check every criterion yourself before "Session done."
