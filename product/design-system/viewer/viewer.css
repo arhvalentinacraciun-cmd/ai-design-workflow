@@ -249,32 +249,38 @@ p code {
 /* ── Component block: header, tabs, panels ───────────────────────────────── */
 
 .v-tabs {
-  display: flex;
+  display: inline-flex;
   gap: var(--space-1);
   margin: 0 0 var(--space-6);
-  padding: 0;
-  border-bottom: var(--border-width-hairline) solid var(--color-neutral-200);
+  padding: var(--space-1);
+  max-width: 100%;
+  background: var(--color-neutral-100);
+  border: var(--border-width-hairline) solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
   overflow-x: auto;
 }
 .v-tab {
-  position: relative;
-  padding: var(--space-2) var(--space-3) var(--space-3);
+  padding: var(--space-2) var(--space-4);
   border: 0;
-  border-bottom: var(--border-width-sm) solid transparent;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--color-neutral-700);
   font-family: var(--font-family-base);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
   white-space: nowrap;
   cursor: pointer;
+  transition: var(--transition-base);
 }
-.v-tab:hover { color: var(--color-neutral-900); }
+.v-tab:hover { background: var(--color-neutral-200); color: var(--color-neutral-900); }
 .v-tab[aria-selected="true"] {
-  color: var(--color-primary-800);
-  border-bottom-color: var(--color-primary-600);
+  background: var(--color-white);
+  color: var(--color-primary-700);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-sm);
 }
-.v-tab:focus-visible { outline-offset: calc(var(--space-1) * -1); border-radius: var(--radius-sm); }
+.v-tab:focus-visible { outline-offset: 0; }
 .v-panel[hidden] { display: none; }
 
 /* ── Specimen: a labelled stage ──────────────────────────────────────────── */
