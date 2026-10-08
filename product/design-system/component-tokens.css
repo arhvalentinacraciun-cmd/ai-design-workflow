@@ -58,6 +58,7 @@
   --input-border-color-hover:  var(--color-neutral-500);
   --input-border-color-focus:  var(--color-primary-500);
   --input-border-color-error:  var(--color-danger-500);
+  --input-focus-ring-color:    var(--color-primary-500);
   --input-radius:              var(--radius-md);
 
   /* Field: the label, hint and error text around an input or select */
@@ -77,6 +78,7 @@
   --select-border-color-focus: var(--color-primary-500);
   --select-border-color-error: var(--color-danger-500);
   --select-chevron-color:      var(--color-neutral-600);
+  --select-focus-ring-color:   var(--color-primary-500);
   --select-radius:             var(--radius-md);
 
   /* ── Badge ─────────────────────────────────────────────────────────────── */

@@ -54,6 +54,19 @@ p code {
   border-right: var(--border-width-hairline) solid var(--color-neutral-200);
   background: var(--color-white);
 }
+.v-logo {
+  width: var(--space-6);
+  height: var(--space-6);
+  margin-right: var(--space-2);
+  vertical-align: text-bottom;
+  color: var(--color-primary-600);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--border-width-sm);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.v-head h1 .v-logo { width: var(--space-12); height: var(--space-12); vertical-align: middle; margin-right: var(--space-3); }
 .v-nav__brand {
   margin: 0 0 var(--space-1);
   font-size: var(--font-size-lg);

@@ -175,7 +175,8 @@
 .input::placeholder { color: var(--input-placeholder); }
 .input:hover { border-color: var(--input-border-color-hover); }
 .input:focus-visible {
-  outline: none;
+  outline: var(--focus-ring-width) solid var(--input-focus-ring-color);
+  outline-offset: var(--space-1);
   border-color: var(--input-border-color-focus);
 }
 .input[aria-invalid="true"] { border-color: var(--input-border-color-error); }
@@ -186,7 +187,8 @@
 }
 
 /* Select renders like Input. The wrapper draws the chevron, so the native
-   control is hidden with appearance:none and the box matches .input. */
+   control is hidden with appearance:none and the box matches .input. Both
+   take the same focus ring as Button, so focus looks the same everywhere. */
 .select-wrap {
   position: relative;
   display: block;
@@ -203,7 +205,8 @@
 }
 .select:hover { border-color: var(--select-border-color-hover); }
 .select:focus-visible {
-  outline: none;
+  outline: var(--focus-ring-width) solid var(--select-focus-ring-color);
+  outline-offset: var(--space-1);
   border-color: var(--select-border-color-focus);
 }
 .select[aria-invalid="true"] { border-color: var(--select-border-color-error); }

@@ -2,11 +2,12 @@
 // (Persistence is an open question in CLAUDE.md — don't add it unprompted.)
 
 const ROAST_BADGE = { light: 'badge-warning', medium: 'badge-primary', dark: 'badge-neutral' };
+const ROAST_LABEL = { light: 'Light', medium: 'Medium', dark: 'Dark' };
 
 let entries = [
-  { name: 'Origo — Ethiopia Guji', roast: 'light', rating: 5, date: 'Aug 28' },
-  { name: 'Boiler — Colombia Huila', roast: 'medium', rating: 4, date: 'Aug 29' },
-  { name: 'M60 — House Blend', roast: 'dark', rating: 3, date: 'Aug 30' },
+  { name: 'Origo — Ethiopia Guji', roast: 'light', rating: 5, date: '28 Aug' },
+  { name: 'Boiler — Colombia Huila', roast: 'medium', rating: 4, date: '29 Aug' },
+  { name: 'M60 — House Blend', roast: 'dark', rating: 3, date: '30 Aug' },
 ];
 
 const list = document.getElementById('entry-list');
@@ -29,7 +30,7 @@ function render() {
         <div class="entry__main">
           <span class="entry__name">${e.name}</span>
           <span class="entry__meta">
-            <span class="badge ${ROAST_BADGE[e.roast]}">${e.roast}</span>
+            <span class="badge ${ROAST_BADGE[e.roast]}">${ROAST_LABEL[e.roast]}</span>
             <span>${e.date}</span>
           </span>
         </div>

@@ -8,65 +8,65 @@
 
 :root {
 
-  /* COLOR — PRIMARY (blue). Ten steps; 600 is the brand step. */
-  --color-primary-50:  #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  /* COLOR — PRIMARY (espresso brown). Ten steps; 600 is the brand step. */
+  --color-primary-50:  #faf6f1;
+  --color-primary-100: #f3e9df;
+  --color-primary-200: #e6d2bf;
+  --color-primary-300: #d2b193;
+  --color-primary-400: #b98a62;
+  --color-primary-500: #a06e44;
+  --color-primary-600: #85573a;
+  --color-primary-700: #6b4530;
+  --color-primary-800: #553826;
+  --color-primary-900: #3d2a1e;
 
-  /* COLOR — NEUTRAL (slate). White plus nine greys: ten steps in all. */
+  /* COLOR — NEUTRAL (warm stone). White plus nine greys: ten steps in all. */
   --color-white:       #ffffff;
-  --color-neutral-50:  #f8fafc;
-  --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
-  --color-neutral-300: #cbd5e1;
-  --color-neutral-500: #64748b;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
+  --color-neutral-50:  #fbf9f6;
+  --color-neutral-100: #f4f0ea;
+  --color-neutral-200: #e7e0d6;
+  --color-neutral-300: #d3c9bb;
+  --color-neutral-500: #7d7266;
+  --color-neutral-600: #6b6156;
+  --color-neutral-700: #524a41;
+  --color-neutral-800: #3a342e;
+  --color-neutral-900: #241f1b;
 
-  /* COLOR — SUCCESS (green) */
-  --color-success-50:  #f0fdf4;
-  --color-success-100: #dcfce7;
-  --color-success-200: #bbf7d0;
-  --color-success-300: #86efac;
-  --color-success-400: #4ade80;
-  --color-success-500: #22c55e;
-  --color-success-600: #16a34a;
-  --color-success-700: #15803d;
-  --color-success-800: #166534;
-  --color-success-900: #14532d;
+  /* COLOR — SUCCESS (forest green) */
+  --color-success-50:  #f1f6f0;
+  --color-success-100: #dfeadb;
+  --color-success-200: #c2d8ba;
+  --color-success-300: #9bbd91;
+  --color-success-400: #6f9c66;
+  --color-success-500: #4f7f48;
+  --color-success-600: #3f6839;
+  --color-success-700: #34552f;
+  --color-success-800: #2a4327;
+  --color-success-900: #1f321e;
 
-  /* COLOR — WARNING (amber) */
-  --color-warning-50:  #fffbeb;
-  --color-warning-100: #fef3c7;
-  --color-warning-200: #fde68a;
-  --color-warning-300: #fcd34d;
-  --color-warning-400: #fbbf24;
-  --color-warning-500: #f59e0b;
-  --color-warning-600: #d97706;
-  --color-warning-700: #b45309;
-  --color-warning-800: #92400e;
-  --color-warning-900: #78350f;
+  /* COLOR — WARNING (caramel) */
+  --color-warning-50:  #fdf7ec;
+  --color-warning-100: #f9eacc;
+  --color-warning-200: #f1d596;
+  --color-warning-300: #e6b95c;
+  --color-warning-400: #d69c2f;
+  --color-warning-500: #bd7f16;
+  --color-warning-600: #9c6611;
+  --color-warning-700: #7d5010;
+  --color-warning-800: #633f10;
+  --color-warning-900: #4b300d;
 
-  /* COLOR — DANGER (red) */
-  --color-danger-50:  #fef2f2;
-  --color-danger-100: #fee2e2;
-  --color-danger-200: #fecaca;
-  --color-danger-300: #fca5a5;
-  --color-danger-400: #f87171;
-  --color-danger-500: #ef4444;
-  --color-danger-600: #dc2626;
-  --color-danger-700: #b91c1c;
-  --color-danger-800: #991b1b;
-  --color-danger-900: #7f1d1d;
+  /* COLOR — DANGER (brick red) */
+  --color-danger-50:  #fbf2f0;
+  --color-danger-100: #f6dfda;
+  --color-danger-200: #ecbcb3;
+  --color-danger-300: #dd8f82;
+  --color-danger-400: #c9644f;
+  --color-danger-500: #b04a35;
+  --color-danger-600: #933b2a;
+  --color-danger-700: #772f22;
+  --color-danger-800: #5e261c;
+  --color-danger-900: #461c15;
 
   /* SPACING (4px base unit) */
   --space-1:  4px;
