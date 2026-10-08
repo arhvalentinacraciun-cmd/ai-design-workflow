@@ -112,7 +112,7 @@ apps this isn't.
 - Form validation uses the Field error, not the browser bubble: the form is
   `novalidate` and `app.js` shows the message (2026-10-08).
 - 2026-10-08, system 1.2: coffee palette (espresso primary, warm stone
-  neutrals, forest green, caramel, brick red), fields share Button's focus
+  neutrals, forest green, caramel, warm red), fields share Button's focus
   ring, entry rows keep the rating in place, dates day-first, roast labels
   capitalised, page greys one step darker, coffee mark in the header.
 - Exercises BRW-101 → BRW-105 are unstarted.

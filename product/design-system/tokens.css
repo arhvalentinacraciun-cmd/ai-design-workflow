@@ -56,17 +56,17 @@
   --color-warning-800: #633f10;
   --color-warning-900: #4b300d;
 
-  /* COLOR — DANGER (brick red) */
-  --color-danger-50:  #fbf2f0;
-  --color-danger-100: #f6dfda;
-  --color-danger-200: #ecbcb3;
-  --color-danger-300: #dd8f82;
-  --color-danger-400: #c9644f;
-  --color-danger-500: #b04a35;
-  --color-danger-600: #933b2a;
-  --color-danger-700: #772f22;
-  --color-danger-800: #5e261c;
-  --color-danger-900: #461c15;
+  /* COLOR — DANGER (red). Warm, but clearly red next to the espresso primary. */
+  --color-danger-50:  #fdf2f0;
+  --color-danger-100: #fadcd7;
+  --color-danger-200: #f5b8ae;
+  --color-danger-300: #ec8a7c;
+  --color-danger-400: #de5c4a;
+  --color-danger-500: #c9402e;
+  --color-danger-600: #ad3022;
+  --color-danger-700: #8c261b;
+  --color-danger-800: #6e1f17;
+  --color-danger-900: #521812;
 
   /* SPACING (4px base unit) */
   --space-1:  4px;
