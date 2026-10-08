@@ -40,16 +40,34 @@ body {
   font-size: var(--font-size-sm);
 }
 
-/* Add-entry form */
+/* Add-entry form. Three rows, so a hint or an error under one field adds
+   height below the controls and never moves the others: labels on row 1,
+   controls on row 2, messages on row 3. The fields contribute their
+   children directly to the grid (display: contents). */
 .entry-form {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr auto;
-  gap: var(--space-3);
-  align-items: end;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+  align-items: start;
   margin-bottom: var(--space-8);
 }
+.entry-form .field { display: contents; }
+.entry-form .field-label { grid-row: 1; }
+.entry-form .input,
+.entry-form .select-wrap { grid-row: 2; }
+.entry-form .field__hint,
+.entry-form .field__error { grid-row: 3; }
+.entry-form .btn { grid-row: 2; grid-column: 4; }
 @media (max-width: 560px) {
-  .entry-form { grid-template-columns: 1fr; }
+  .entry-form { grid-template-columns: 1fr; row-gap: var(--space-3); }
+  .entry-form .field { display: flex; flex-direction: column; gap: var(--space-1); }
+  .entry-form .field-label,
+  .entry-form .input,
+  .entry-form .select-wrap,
+  .entry-form .field__hint,
+  .entry-form .field__error,
+  .entry-form .btn { grid-row: auto; grid-column: auto; }
 }
 
 /* Entry list */
