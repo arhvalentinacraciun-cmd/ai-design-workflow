@@ -20,6 +20,19 @@
   --color-primary-800: #553826;
   --color-primary-900: #3d2a1e;
 
+  /* COLOR — ACCENT (steel teal, the complement of espresso). Information and
+     links, so "brand" and "info" never share a colour. */
+  --color-accent-50:  #eff6f7;
+  --color-accent-100: #d8e9ec;
+  --color-accent-200: #b5d4da;
+  --color-accent-300: #86b6c0;
+  --color-accent-400: #5a95a3;
+  --color-accent-500: #3e7786;
+  --color-accent-600: #33616e;
+  --color-accent-700: #2b4f5a;
+  --color-accent-800: #244049;
+  --color-accent-900: #1b3038;
+
   /* COLOR — NEUTRAL (warm stone). White plus nine greys: ten steps in all. */
   --color-white:       #ffffff;
   --color-neutral-50:  #fbf9f6;

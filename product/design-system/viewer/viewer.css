@@ -19,7 +19,7 @@ body {
   line-height: var(--line-height-base);
 }
 
-a { color: var(--color-primary-700); }
+a { color: var(--color-accent-700); }
 a:focus-visible, button:focus-visible {
   outline: var(--focus-ring-width) solid var(--color-primary-500);
   outline-offset: var(--space-1);

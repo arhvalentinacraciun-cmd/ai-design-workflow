@@ -122,8 +122,8 @@
   --alert-radius: var(--radius-md);
   --alert-close-bg-hover: var(--color-neutral-900);
 
-  --alert-info-bg:      var(--color-primary-50);
-  --alert-info-text:    var(--color-primary-800);
+  --alert-info-bg:      var(--color-accent-50);
+  --alert-info-text:    var(--color-accent-800);
   --alert-success-bg:   var(--color-success-100);
   --alert-success-text: var(--color-success-700);
   --alert-warning-bg:   var(--color-warning-100);
