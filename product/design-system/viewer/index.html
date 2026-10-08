@@ -611,10 +611,10 @@
   <div class="v-section__head"><h2>Patterns</h2></div>
   <p class="v-lede">Compositions Brewlog uses, built only from the components above and the page layout styles. A pattern is the proof that the pieces fit together; copy the whole thing, not a part.</p>
 
-    <div class="v-specimen" data-label="Add-entry form" data-note="Field, Input, Select and Button in the page's form grid; one primary action">
+    <div class="v-specimen" data-label="Add-entry form" data-note="Field, Input, Select and Button in the page's form grid; one primary action. Submit it empty: the form is novalidate and the page script shows the Field error instead of the browser's bubble">
       <div class="v-stage v-stage--column"></div>
       <template>
-<form class="entry-form" onsubmit="return false">
+<form class="entry-form" novalidate>
   <div class="field">
     <label class="field-label" for="pf-name">Coffee</label>
     <input class="input" id="pf-name" type="text" placeholder="Roaster, origin" required>

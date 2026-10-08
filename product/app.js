@@ -40,10 +40,39 @@ function render() {
   count.textContent = `${entries.length} brew${entries.length === 1 ? '' : 's'}`;
 }
 
+// Validation uses the design system's Field error, not the browser's bubble:
+// the form is novalidate, and an empty name gets aria-invalid plus a message
+// linked by aria-describedby. Typing clears it.
+const nameInput = document.getElementById('f-name');
+function showFieldError(input, message) {
+  const field = input.closest('.field');
+  let msg = field.querySelector('.field__error');
+  if (!msg) {
+    msg = document.createElement('span');
+    msg.className = 'field__error';
+    msg.id = `${input.id}-error`;
+    field.appendChild(msg);
+  }
+  msg.textContent = message;
+  input.setAttribute('aria-invalid', 'true');
+  input.setAttribute('aria-describedby', msg.id);
+  input.focus();
+}
+function clearFieldError(input) {
+  const msg = input.closest('.field').querySelector('.field__error');
+  if (msg) msg.remove();
+  input.removeAttribute('aria-invalid');
+  input.removeAttribute('aria-describedby');
+}
+nameInput.addEventListener('input', () => clearFieldError(nameInput));
+
 form.addEventListener('submit', (ev) => {
   ev.preventDefault();
-  const name = document.getElementById('f-name').value.trim();
-  if (!name) return;
+  const name = nameInput.value.trim();
+  if (!name) {
+    showFieldError(nameInput, "Enter the coffee's name to add it.");
+    return;
+  }
   entries.unshift({
     name,
     roast: document.getElementById('f-roast').value,

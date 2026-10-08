@@ -109,6 +109,8 @@ apps this isn't.
   and error; Select in a wrapper with its own chevron; Badge dot; Tag
   remove; Card sections, muted and interactive; Alert title, actions and
   close; Rating large and label. Viewer at `product/design-system/viewer/`.
+- Form validation uses the Field error, not the browser bubble: the form is
+  `novalidate` and `app.js` shows the message (2026-10-08).
 - Exercises BRW-101 → BRW-105 are unstarted.
 
 ---

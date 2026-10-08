@@ -165,6 +165,31 @@
     codePanel.appendChild(fig);
   });
 
+  /* ── Live pattern: the add-entry form validates with the Field error ─── */
+  document.querySelectorAll('.v-stage form.entry-form').forEach(function (form) {
+    var input = form.querySelector('.input');
+    if (!input) return;
+    function clear() {
+      var msg = input.closest('.field').querySelector('.field__error');
+      if (msg) msg.remove();
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedby');
+    }
+    input.addEventListener('input', clear);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.value.trim()) { clear(); return; }
+      var field = input.closest('.field');
+      var msg = field.querySelector('.field__error') || el('span', 'field__error');
+      msg.id = input.id + '-error';
+      msg.textContent = "Enter the coffee's name to add it.";
+      field.appendChild(msg);
+      input.setAttribute('aria-invalid', 'true');
+      input.setAttribute('aria-describedby', msg.id);
+      input.focus();
+    });
+  });
+
   /* ── 3. Tabs per component ───────────────────────────────────────────── */
   document.querySelectorAll('.v-component').forEach(function (section) {
     var panels = Array.prototype.slice.call(section.querySelectorAll('.v-panel[data-tab]'));
