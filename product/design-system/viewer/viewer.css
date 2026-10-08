@@ -350,7 +350,7 @@ p code {
 .v-tokens td:first-child, .v-tokens .v-from, .v-tokens .v-value {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
-.v-tokens .v-arrow { color: var(--color-neutral-400); }
+.v-tokens .v-arrow { color: var(--color-neutral-500); }
 .v-tokens .v-from { color: var(--color-neutral-700); }
 .v-tokens .v-value { white-space: nowrap; }
 .v-tokens .v-drift {

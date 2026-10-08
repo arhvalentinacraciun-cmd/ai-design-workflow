@@ -55,7 +55,7 @@
   --input-text-disabled:       var(--color-neutral-500);
   --input-placeholder:         var(--color-neutral-500);
   --input-border-color:        var(--color-neutral-300);
-  --input-border-color-hover:  var(--color-neutral-400);
+  --input-border-color-hover:  var(--color-neutral-500);
   --input-border-color-focus:  var(--color-primary-500);
   --input-border-color-error:  var(--color-danger-500);
   --input-radius:              var(--radius-md);
@@ -73,7 +73,7 @@
   --select-text:               var(--color-neutral-900);
   --select-text-disabled:      var(--color-neutral-500);
   --select-border-color:       var(--color-neutral-300);
-  --select-border-color-hover: var(--color-neutral-400);
+  --select-border-color-hover: var(--color-neutral-500);
   --select-border-color-focus: var(--color-primary-500);
   --select-border-color-error: var(--color-danger-500);
   --select-chevron-color:      var(--color-neutral-600);
