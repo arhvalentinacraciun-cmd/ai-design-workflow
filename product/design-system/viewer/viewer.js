@@ -90,6 +90,28 @@
     return lines.map(function (l) { return l.slice(indent); }).join('\n');
   }
 
+  // Under each item on a component stage, a small label with the item's
+  // class names, read from the element itself. Specimens that carry their
+  // own state labels (.v-state) are left alone, and so are patterns.
+  function labelItems(spec, stage) {
+    if (!spec.closest('.v-component') || stage.querySelector('.v-state')) return;
+    Array.prototype.slice.call(stage.children).forEach(function (item) {
+      var target = item.classList.contains('field') ? item.querySelector('.input, .select') : item;
+      if (!target) return;
+      var classes = Array.prototype.filter.call(target.classList, function (c) { return c.indexOf('v-') !== 0; });
+      var attrs = [];
+      if (target.disabled) attrs.push('disabled');
+      if (target.getAttribute('aria-invalid') === 'true') attrs.push('aria-invalid');
+      if (target.getAttribute('aria-busy') === 'true') attrs.push('aria-busy');
+      var text = classes.concat(attrs).join(' ');
+      if (!text) return;
+      var wrap = el('div', 'v-item');
+      item.parentNode.insertBefore(wrap, item);
+      wrap.appendChild(item);
+      wrap.appendChild(el('code', 'v-label', text));
+    });
+  }
+
   function systemMarkup(tpl) {
     var box = document.createElement('div');
     box.appendChild(tpl.content.cloneNode(true));
@@ -145,6 +167,7 @@
     }
     if (spec.getAttribute('data-render') !== 'false') {
       stage.appendChild(tpl.content.cloneNode(true));
+      labelItems(spec, stage);
     }
 
     // The code for this specimen goes in the section's Code panel. Viewer-only

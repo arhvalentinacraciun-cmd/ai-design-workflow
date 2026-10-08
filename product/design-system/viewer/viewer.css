@@ -320,6 +320,7 @@ p code {
   align-items: start;
 }
 .v-stage .field { width: 100%; max-width: calc(var(--space-16) * 5); }
+.v-stage--grid .v-item .field { max-width: 100%; }
 .v-stage .card { width: 100%; max-width: calc(var(--space-16) * 6); }
 .v-stage .alert { width: 100%; }
 .v-stage--pending {
@@ -328,6 +329,22 @@ p code {
   border-color: var(--color-neutral-300);
   background: var(--color-neutral-50);
   color: var(--color-neutral-700);
+}
+
+/* An item on the stage with its class names underneath */
+.v-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.v-stage--column .v-item, .v-stage--grid .v-item { align-items: stretch; }
+.v-stage--column .v-item > :first-child { max-width: var(--size-content-max); }
+.v-label {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-600);
 }
 
 /* A state label under an item on the stage */
