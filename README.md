@@ -16,7 +16,7 @@ then transplant the pattern into your own projects.
 | Project memory | `CLAUDE.md` | What the AI should never forget: decisions, rules, state |
 | Skills | `.claude/skills/` | Encoding your standards so they load when relevant; `/session-2…4` open each session |
 | Guardrail | `.claude/settings.json` + `hooks/scan-hardcoded.sh` | Rules that are *enforced*, not just written down |
-| Design system | `product/design-system/` | Three token layers an AI can safely build with; `stories/` hold the spec for a component before it exists |
+| Design system | `product/design-system/` | Three token layers an AI can safely build with; `stories/` hold the spec for a component before it exists; `viewer/` renders every component with its live tokens |
 | Practice product | `product/` | **Brewlog** — a small coffee-tasting journal to build on |
 | Exercises | `exercises/` | One ticket per session plus a demo brief, written with real acceptance criteria |
 
@@ -34,6 +34,8 @@ missing. Then:
 1. Open the folder in VS Code (or your editor) and start **Claude Code**.
 2. Say: *"Read CLAUDE.md, then give me the state of the project in three sentences."*
 3. Open `product/index.html` in your browser — this is Brewlog, your practice product.
+   Next to it, `product/design-system/viewer/index.html` is the design system:
+   every component, its tokens and the rules, rendered from the same files.
 4. Start `exercises/BRW-101-first-task.md`.
 
 No Claude Code yet? See `docs/no-code-onramp.md` — you can run the first two

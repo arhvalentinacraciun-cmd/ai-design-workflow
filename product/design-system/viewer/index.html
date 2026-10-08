@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brewlog design system</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../component-tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+<div class="v-shell">
+
+  <nav class="v-nav" aria-label="Design system sections">
+    <p class="v-nav__brand">Brewlog design system</p>
+    <p class="v-nav__sub">Every component, its tokens, and the rules the AI builds by.</p>
+    <p class="v-nav__group">Foundations</p>
+    <ul>
+      <li><a href="#tokens">Tokens</a></li>
+    </ul>
+    <p class="v-nav__group">Components</p>
+    <ul>
+      <li><a href="#button">Button</a></li>
+      <li><a href="#input">Input</a></li>
+      <li><a href="#select">Select</a></li>
+      <li><a href="#badge">Badge</a></li>
+      <li><a href="#tag">Tag</a></li>
+      <li><a href="#card">Card</a></li>
+      <li><a href="#alert">Alert</a></li>
+      <li><a href="#rating">Rating</a></li>
+      <li><a href="#segmented" class="is-pending">Segmented control</a></li>
+    </ul>
+    <p class="v-nav__group">Working on it</p>
+    <ul>
+      <li><a href="#adding">Adding a component</a></li>
+    </ul>
+  </nav>
+
+  <main class="v-main">
+
+    <header class="v-head">
+      <h1>Brewlog design system</h1>
+      <p>This page renders the real components from the same three files Brewlog loads. Every value you see is read live from those files. Change a token, reload, and both the product and this page move together.</p>
+      <p class="v-run">design-system/tokens.css → component-tokens.css → components.css</p>
+    </header>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="tokens">
+      <h2>Tokens</h2>
+      <p class="v-lede">Layer 1, the primitives. Components never touch these for colour or radius; they go through their own Layer 2 tokens, listed on each component page below. The shared scales (spacing, type, borders, shadow, motion) may be used directly.</p>
+
+      <h3>Colour, primary</h3>
+      <div class="v-grid">
+        <div class="v-color" data-token="--color-primary-50"></div>
+        <div class="v-color" data-token="--color-primary-100"></div>
+        <div class="v-color" data-token="--color-primary-200"></div>
+        <div class="v-color" data-token="--color-primary-500"></div>
+        <div class="v-color" data-token="--color-primary-600"></div>
+        <div class="v-color" data-token="--color-primary-700"></div>
+        <div class="v-color" data-token="--color-primary-800"></div>
+      </div>
+
+      <h3>Colour, neutral</h3>
+      <div class="v-grid">
+        <div class="v-color" data-token="--color-white"></div>
+        <div class="v-color" data-token="--color-neutral-50"></div>
+        <div class="v-color" data-token="--color-neutral-100"></div>
+        <div class="v-color" data-token="--color-neutral-200"></div>
+        <div class="v-color" data-token="--color-neutral-300"></div>
+        <div class="v-color" data-token="--color-neutral-400"></div>
+        <div class="v-color" data-token="--color-neutral-500"></div>
+        <div class="v-color" data-token="--color-neutral-600"></div>
+        <div class="v-color" data-token="--color-neutral-700"></div>
+        <div class="v-color" data-token="--color-neutral-800"></div>
+        <div class="v-color" data-token="--color-neutral-900"></div>
+      </div>
+
+      <h3>Colour, semantic</h3>
+      <div class="v-grid">
+        <div class="v-color" data-token="--color-success-100"></div>
+        <div class="v-color" data-token="--color-success-700"></div>
+        <div class="v-color" data-token="--color-warning-100"></div>
+        <div class="v-color" data-token="--color-warning-700"></div>
+        <div class="v-color" data-token="--color-danger-100"></div>
+        <div class="v-color" data-token="--color-danger-500"></div>
+        <div class="v-color" data-token="--color-danger-700"></div>
+      </div>
+
+      <h3>Spacing</h3>
+      <p>A four-pixel base unit. Every gap, padding and margin in the product sits on this scale.</p>
+      <div class="v-scale">
+        <div class="v-scale__row" data-token="--space-1"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-1)"></span><span class="v-scale__value"></span></div>
+        <div class="v-scale__row" data-token="--space-2"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-2)"></span><span class="v-scale__value"></span></div>
+        <div class="v-scale__row" data-token="--space-3"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-3)"></span><span class="v-scale__value"></span></div>
+        <div class="v-scale__row" data-token="--space-4"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-4)"></span><span class="v-scale__value"></span></div>
+        <div class="v-scale__row" data-token="--space-6"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-6)"></span><span class="v-scale__value"></span></div>
+        <div class="v-scale__row" data-token="--space-8"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-8)"></span><span class="v-scale__value"></span></div>
+        <div class="v-scale__row" data-token="--space-12"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-12)"></span><span class="v-scale__value"></span></div>
+        <div class="v-scale__row" data-token="--space-16"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-16)"></span><span class="v-scale__value"></span></div>
+      </div>
+
+      <h3>Type</h3>
+      <p>One family, Inter, six sizes, four weights, two line heights. Emphasis comes from weight, never from a size outside the scale.</p>
+      <div class="v-type">
+        <div class="v-type__row" data-token="--font-size-xs"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-xs)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-size-sm"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-sm)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-size-md"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-md)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-size-lg"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-lg)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-size-xl"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-xl)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-size-2xl"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-2xl)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-weight-normal"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-weight: var(--font-weight-normal)">Normal, for body text</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-weight-medium"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-weight: var(--font-weight-medium)">Medium, for buttons</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-weight-semibold"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-weight: var(--font-weight-semibold)">Semibold, for labels and names</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--font-weight-bold"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-weight: var(--font-weight-bold)">Bold, for the page title</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--line-height-tight"><span class="v-scale__name"></span><span class="v-type__specimen" style="line-height: var(--line-height-tight)">Tight, for headings and badges</span><span class="v-scale__value"></span></div>
+        <div class="v-type__row" data-token="--line-height-base"><span class="v-scale__name"></span><span class="v-type__specimen" style="line-height: var(--line-height-base)">Base, for everything that is read</span><span class="v-scale__value"></span></div>
+      </div>
+
+      <h3>Shape, depth, borders, motion</h3>
+      <div class="v-shapes">
+        <div class="v-shape" data-token="--radius-sm"><div class="v-shape__box" style="border-radius: var(--radius-sm)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
+        <div class="v-shape" data-token="--radius-md"><div class="v-shape__box" style="border-radius: var(--radius-md)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
+        <div class="v-shape" data-token="--radius-lg"><div class="v-shape__box" style="border-radius: var(--radius-lg)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
+        <div class="v-shape" data-token="--radius-full"><div class="v-shape__box" style="border-radius: var(--radius-full)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
+        <div class="v-shape" data-token="--shadow-sm"><div class="v-shape__box v-shape__box--shadow" style="box-shadow: var(--shadow-sm)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
+        <div class="v-shape" data-token="--shadow-md"><div class="v-shape__box v-shape__box--shadow" style="box-shadow: var(--shadow-md)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
+      </div>
+      <table class="v-tokens" aria-label="Border, motion and layout primitives">
+        <thead><tr><th>Token</th><th></th><th>Value</th></tr></thead>
+        <tbody>
+          <tr data-token="--border-width-hairline"></tr>
+          <tr data-token="--border-width-sm"></tr>
+          <tr data-token="--border-width-md"></tr>
+          <tr data-token="--focus-ring-width"></tr>
+          <tr data-token="--duration-fast"></tr>
+          <tr data-token="--duration-base"></tr>
+          <tr data-token="--transition-base"></tr>
+          <tr data-token="--size-content-max"></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="button">
+      <h2>Button</h2>
+      <p class="v-lede">The action in a view. One primary per screen; everything else steps down.</p>
+
+      <h3>Variants</h3>
+      <div class="v-specimen">
+        <div class="v-stage"></div>
+        <template>
+<button class="btn btn-primary" type="button">Add entry</button>
+<button class="btn btn-secondary" type="button">Clear all</button>
+<button class="btn btn-ghost" type="button">Cancel</button>
+<button class="btn btn-danger" type="button">Delete entry</button>
+        </template>
+        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
+      </div>
+
+      <h3>States</h3>
+      <p>Tab through the stage above: every button shows the shared focus ring, offset by one spacing step. Hover and active states are not styled on purpose; the transition token is in place for when a state is added, and that is a design decision, not a CSS afterthought.</p>
+
+      <h3>Tokens</h3>
+      <table class="v-tokens">
+        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
+        <tbody>
+          <tr data-token="--button-radius" data-from="--radius-md"></tr>
+          <tr data-token="--button-font-weight" data-from="--font-weight-medium"></tr>
+          <tr data-token="--button-padding-x" data-from="--space-4"></tr>
+          <tr data-token="--button-padding-y" data-from="--space-2"></tr>
+          <tr data-token="--button-focus-ring-color" data-from="--color-primary-500"></tr>
+          <tr data-token="--button-primary-bg" data-from="--color-primary-600"></tr>
+          <tr data-token="--button-primary-text" data-from="--color-white"></tr>
+          <tr data-token="--button-primary-border-color" data-from="--color-primary-600"></tr>
+          <tr data-token="--button-secondary-bg" data-from="--color-neutral-100"></tr>
+          <tr data-token="--button-secondary-text" data-from="--color-neutral-800"></tr>
+          <tr data-token="--button-secondary-border-color" data-from="--color-neutral-200"></tr>
+          <tr data-token="--button-ghost-bg" data-from="transparent"></tr>
+          <tr data-token="--button-ghost-text" data-from="--color-primary-600"></tr>
+          <tr data-token="--button-ghost-border-color" data-from="transparent"></tr>
+          <tr data-token="--button-danger-bg" data-from="--color-danger-500"></tr>
+          <tr data-token="--button-danger-text" data-from="--color-white"></tr>
+          <tr data-token="--button-danger-border-color" data-from="--color-danger-500"></tr>
+        </tbody>
+      </table>
+
+      <h3>Usage</h3>
+      <div class="v-notes">
+        <div>
+          <h4>Use</h4>
+          <ul>
+            <li>Primary for the one main action of the view, such as "Add entry".</li>
+            <li>Secondary for actions that matter but are not the point of the view, such as "Clear all".</li>
+            <li>Ghost for a quiet action next to a stronger one, such as "Cancel".</li>
+            <li>Danger only when the action destroys something and cannot be undone.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Do not</h4>
+          <ul class="v-dont">
+            <li>Put two primary buttons in one view. If two actions compete, one of them is secondary.</li>
+            <li>Use danger for destructive-but-recoverable actions. Those take secondary plus a confirmation.</li>
+            <li>Write "Submit" or "OK". The label says what happens: "Add entry", "Delete entry".</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>Always a real <code>&lt;button&gt;</code>, with <code>type="button"</code> unless it submits a form.</li>
+        <li>The focus ring ships with the component. Never remove it.</li>
+        <li>Primary and danger text is white on a 600 or 500 colour: both pass contrast at this size. Check again if a primitive changes.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="input">
+      <h2>Input</h2>
+      <p class="v-lede">A single line of text with its label. The label is part of the component, not an optional extra.</p>
+
+      <h3>Default and filled</h3>
+      <div class="v-specimen">
+        <div class="v-stage"></div>
+        <template>
+<div class="v-field">
+  <label class="field-label" for="demo-coffee">Coffee</label>
+  <input class="input" id="demo-coffee" type="text" placeholder="e.g. Origo, Ethiopia Guji">
+</div>
+<div class="v-field">
+  <label class="field-label" for="demo-roaster">Roaster</label>
+  <input class="input" id="demo-roaster" type="text" value="Origo">
+</div>
+        </template>
+        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
+      </div>
+
+      <h3>States</h3>
+      <p>Focus swaps the border colour for the focus token instead of drawing an outline, so the field reads as "active" without a ring around a ring. Error and disabled states do not exist yet; the first feature that needs one adds the tokens and the story.</p>
+
+      <h3>Tokens</h3>
+      <table class="v-tokens">
+        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
+        <tbody>
+          <tr data-token="--input-bg" data-from="--color-white"></tr>
+          <tr data-token="--input-text" data-from="--color-neutral-900"></tr>
+          <tr data-token="--input-border-color" data-from="--color-neutral-300"></tr>
+          <tr data-token="--input-border-color-focus" data-from="--color-primary-500"></tr>
+          <tr data-token="--input-radius" data-from="--radius-md"></tr>
+        </tbody>
+      </table>
+
+      <h3>Usage</h3>
+      <div class="v-notes">
+        <div>
+          <h4>Use</h4>
+          <ul>
+            <li>Free text that fits on one line: a name, a roaster, an origin.</li>
+            <li>A placeholder as an example of the format, never as the label.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Do not</h4>
+          <ul class="v-dont">
+            <li>Drop the label to save space. A placeholder disappears the moment someone types.</li>
+            <li>Use it for a fixed set of choices. That is a Select, or the segmented control once it exists.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>The label's <code>for</code> matches the input's <code>id</code>, so clicking the label focuses the field and screen readers announce it.</li>
+        <li>Placeholder text is a hint, not a requirement. The label carries the meaning.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="select">
+      <h2>Select</h2>
+      <p class="v-lede">One choice from a fixed list, when the list is too long for the options to sit side by side.</p>
+
+      <h3>Default</h3>
+      <div class="v-specimen">
+        <div class="v-stage"></div>
+        <template>
+<div class="v-field">
+  <label class="field-label" for="demo-roast">Roast</label>
+  <select class="select" id="demo-roast">
+    <option value="light">Light</option>
+    <option value="medium" selected>Medium</option>
+    <option value="dark">Dark</option>
+  </select>
+</div>
+        </template>
+        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
+      </div>
+
+      <h3>Tokens</h3>
+      <table class="v-tokens">
+        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
+        <tbody>
+          <tr data-token="--select-bg" data-from="--color-white"></tr>
+          <tr data-token="--select-text" data-from="--color-neutral-900"></tr>
+          <tr data-token="--select-border-color" data-from="--color-neutral-300"></tr>
+          <tr data-token="--select-border-color-focus" data-from="--color-primary-500"></tr>
+          <tr data-token="--select-radius" data-from="--radius-md"></tr>
+        </tbody>
+      </table>
+
+      <h3>Usage</h3>
+      <div class="v-notes">
+        <div>
+          <h4>Use</h4>
+          <ul>
+            <li>Six or more options, or options with longer labels.</li>
+            <li>A choice that is set once, inside a form, and submitted with it.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Do not</h4>
+          <ul class="v-dont">
+            <li>Use it for two to five short options that switch a view instantly. That is the segmented control's job.</li>
+            <li>Leave it without a selected option when a default makes sense.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>Native <code>&lt;select&gt;</code>: keyboard, screen reader and mobile pickers all come for free. Do not replace it with a custom dropdown.</li>
+        <li>Label wired by <code>for</code> and <code>id</code>, same as Input.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="badge">
+      <h2>Badge</h2>
+      <p class="v-lede">A status, read at a glance. Pill-shaped, coloured by meaning.</p>
+
+      <h3>Variants</h3>
+      <div class="v-specimen">
+        <div class="v-stage"></div>
+        <template>
+<span class="badge badge-neutral">Draft</span>
+<span class="badge badge-primary">3 brews</span>
+<span class="badge badge-success">Saved</span>
+<span class="badge badge-warning">Unrated</span>
+<span class="badge badge-danger">Removed</span>
+        </template>
+        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
+      </div>
+
+      <h3>Tokens</h3>
+      <table class="v-tokens">
+        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
+        <tbody>
+          <tr data-token="--badge-radius" data-from="--radius-full"></tr>
+          <tr data-token="--badge-neutral-bg" data-from="--color-neutral-100"></tr>
+          <tr data-token="--badge-neutral-text" data-from="--color-neutral-700"></tr>
+          <tr data-token="--badge-primary-bg" data-from="--color-primary-100"></tr>
+          <tr data-token="--badge-primary-text" data-from="--color-primary-700"></tr>
+          <tr data-token="--badge-success-bg" data-from="--color-success-100"></tr>
+          <tr data-token="--badge-success-text" data-from="--color-success-700"></tr>
+          <tr data-token="--badge-warning-bg" data-from="--color-warning-100"></tr>
+          <tr data-token="--badge-warning-text" data-from="--color-warning-700"></tr>
+          <tr data-token="--badge-danger-bg" data-from="--color-danger-100"></tr>
+          <tr data-token="--badge-danger-text" data-from="--color-danger-700"></tr>
+        </tbody>
+      </table>
+
+      <h3>Usage</h3>
+      <div class="v-notes">
+        <div>
+          <h4>Use</h4>
+          <ul>
+            <li>Status and counts: "3 brews", "Saved", "Unrated".</li>
+            <li>The colour means something. Success is green because it is good news, not because green looked nice.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Do not</h4>
+          <ul class="v-dont">
+            <li>Use a badge for metadata such as a roast level or an origin. That is a Tag.</li>
+            <li>Make a badge clickable. It reports; it does not act.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>Each variant pairs a 100 background with a 700 text colour from the same hue, which holds contrast at the small size.</li>
+        <li>The word carries the meaning, the colour reinforces it. Never a colour-only badge.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="tag">
+      <h2>Tag</h2>
+      <p class="v-lede">A piece of metadata attached to an entry: roast, origin, process. Quiet by design.</p>
+
+      <h3>Default</h3>
+      <div class="v-specimen">
+        <div class="v-stage"></div>
+        <template>
+<span class="tag">Light roast</span>
+<span class="tag">Ethiopia</span>
+<span class="tag">Washed</span>
+        </template>
+        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
+      </div>
+
+      <h3>Tokens</h3>
+      <table class="v-tokens">
+        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
+        <tbody>
+          <tr data-token="--tag-bg" data-from="--color-neutral-100"></tr>
+          <tr data-token="--tag-text" data-from="--color-neutral-700"></tr>
+          <tr data-token="--tag-border-color" data-from="--color-neutral-200"></tr>
+          <tr data-token="--tag-radius" data-from="--radius-full"></tr>
+        </tbody>
+      </table>
+
+      <h3>Usage</h3>
+      <div class="v-notes">
+        <div>
+          <h4>Use</h4>
+          <ul>
+            <li>Facts about an entry that help you find it again.</li>
+            <li>Several in a row is fine; they are meant to sit together.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Do not</h4>
+          <ul class="v-dont">
+            <li>Colour a tag to show status. Status is a Badge.</li>
+            <li>Invent a "selected" look for filtering. Filtering is the segmented control's job.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>Plain text in a span. If tags ever become interactive, they become buttons, and that is a new story.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="card">
+      <h2>Card</h2>
+      <p class="v-lede">A bordered surface that groups related content. Brewlog uses it for each entry.</p>
+
+      <h3>Default</h3>
+      <div class="v-specimen">
+        <div class="v-stage v-stage--column"></div>
+        <template>
+<div class="card">
+  <div class="entry">
+    <div class="entry__main">
+      <span class="entry__name">Origo, Ethiopia Guji</span>
+      <div class="entry__meta">
+        <span class="tag">Light roast</span>
+        <span>Logged today</span>
+      </div>
+    </div>
+    <span class="rating" aria-label="Rated 4 out of 5">
+      <span class="rating__dot rating__dot--filled"></span>
+      <span class="rating__dot rating__dot--filled"></span>
+      <span class="rating__dot rating__dot--filled"></span>
+      <span class="rating__dot rating__dot--filled"></span>
+      <span class="rating__dot"></span>
+    </span>
+  </div>
+</div>
+        </template>
+        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
+      </div>
+      <p>The entry layout inside the card (<code>.entry</code>, <code>.entry__main</code>, <code>.entry__meta</code>) belongs to Brewlog's page styles, not the design system. The card itself is just the surface.</p>
+
+      <h3>Tokens</h3>
+      <table class="v-tokens">
+        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
+        <tbody>
+          <tr data-token="--card-bg" data-from="--color-white"></tr>
+          <tr data-token="--card-border-color" data-from="--color-neutral-200"></tr>
+          <tr data-token="--card-radius" data-from="--radius-lg"></tr>
+        </tbody>
+      </table>
+
+      <h3>Usage</h3>
+      <div class="v-notes">
+        <div>
+          <h4>Use</h4>
+          <ul>
+            <li>One card per thing in a list: one entry, one brew.</li>
+            <li>Padding comes from the component; content starts at the edge of that padding.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Do not</h4>
+          <ul class="v-dont">
+            <li>Nest cards. A card inside a card means the inner one should be a plain group.</li>
+            <li>Use a card to decorate a single paragraph. Surfaces group; they do not emphasise.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>A card is a <code>div</code>. The list it sits in gives the structure (<code>ul</code> and <code>li</code> in Brewlog).</li>
+        <li>The rating inside carries an <code>aria-label</code> because dots alone say nothing to a screen reader.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="alert">
+      <h2>Alert</h2>
+      <p class="v-lede">A message about the current state of the page: empty, saved, a warning, a problem.</p>
+
+      <h3>Variants</h3>
+      <div class="v-specimen">
+        <div class="v-stage v-stage--column"></div>
+        <template>
+<div class="alert alert-info">No brews yet. Your next great coffee goes here.</div>
+<div class="alert alert-success">Entry added. 4 brews in the log.</div>
+<div class="alert alert-warning">This entry has no rating yet.</div>
+<div class="alert alert-danger">Could not add the entry: the coffee name is empty.</div>
+        </template>
+        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
+      </div>
+
+      <h3>Tokens</h3>
+      <table class="v-tokens">
+        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
+        <tbody>
+          <tr data-token="--alert-radius" data-from="--radius-md"></tr>
+          <tr data-token="--alert-info-bg" data-from="--color-primary-50"></tr>
+          <tr data-token="--alert-info-text" data-from="--color-primary-800"></tr>
+          <tr data-token="--alert-success-bg" data-from="--color-success-100"></tr>
+          <tr data-token="--alert-success-text" data-from="--color-success-700"></tr>
+          <tr data-token="--alert-warning-bg" data-from="--color-warning-100"></tr>
+          <tr data-token="--alert-warning-text" data-from="--color-warning-700"></tr>
+          <tr data-token="--alert-danger-bg" data-from="--color-danger-100"></tr>
+          <tr data-token="--alert-danger-text" data-from="--color-danger-700"></tr>
+        </tbody>
+      </table>
+
+      <h3>Usage</h3>
+      <div class="v-notes">
+        <div>
+          <h4>Use</h4>
+          <ul>
+            <li>Info for an empty state, with an invitation to act.</li>
+            <li>Danger for an error, saying what went wrong and how to fix it. No apology, no mystery.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Do not</h4>
+          <ul class="v-dont">
+            <li>Stack alerts. One at a time, the one that matters now.</li>
+            <li>Use an alert as a heading or a callout for ordinary text.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>Each variant pairs a light background with a 700 or 800 text colour and holds contrast at body size.</li>
+        <li>An alert that appears after an action should get <code>role="status"</code> so it is announced. Brewlog's empty state is static, so it does not need it.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="rating">
+      <h2>Rating</h2>
+      <p class="v-lede">Five dots, filled to the score. Dots, never stars: a recorded decision, with its reason in <code>CLAUDE.md</code>.</p>
+
+      <h3>Scores</h3>
+      <div class="v-specimen">
+        <div class="v-stage"></div>
+        <template>
+<span class="rating" aria-label="Rated 5 out of 5">
+  <span class="rating__dot rating__dot--filled"></span>
+  <span class="rating__dot rating__dot--filled"></span>
+  <span class="rating__dot rating__dot--filled"></span>
+  <span class="rating__dot rating__dot--filled"></span>
+  <span class="rating__dot rating__dot--filled"></span>
+</span>
+<span class="rating" aria-label="Rated 3 out of 5">
+  <span class="rating__dot rating__dot--filled"></span>
+  <span class="rating__dot rating__dot--filled"></span>
+  <span class="rating__dot rating__dot--filled"></span>
+  <span class="rating__dot"></span>
+  <span class="rating__dot"></span>
+</span>
+<span class="rating" aria-label="Not rated">
+  <span class="rating__dot"></span>
+  <span class="rating__dot"></span>
+  <span class="rating__dot"></span>
+  <span class="rating__dot"></span>
+  <span class="rating__dot"></span>
+</span>
+        </template>
+        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
+      </div>
+
+      <h3>Tokens</h3>
+      <table class="v-tokens">
+        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
+        <tbody>
+          <tr data-token="--rating-dot-filled" data-from="--color-primary-600"></tr>
+          <tr data-token="--rating-dot-empty" data-from="--color-neutral-300"></tr>
+          <tr data-token="--rating-dot-radius" data-from="--radius-full"></tr>
+        </tbody>
+      </table>
+
+      <h3>Usage</h3>
+      <div class="v-notes">
+        <div>
+          <h4>Use</h4>
+          <ul>
+            <li>How much you liked a brew, on your own scale, in your own journal.</li>
+            <li>Always five dots, so an unrated entry still reads as a rating.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Do not</h4>
+          <ul class="v-dont">
+            <li>Swap the dots for stars. Stars read as a public review score, and Brewlog is private. Ask for stars and the agent will stop you, with the date of the decision.</li>
+            <li>Make the dots interactive here. Rating is entered through the Select in the form.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Accessibility</h3>
+      <ul>
+        <li>The <code>aria-label</code> on the group says the score in words. Without it, a screen reader hears five empty spans.</li>
+        <li>Filled and empty differ in lightness, not only in hue, so the score reads without colour.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="segmented">
+      <h2>Segmented control</h2>
+      <p class="v-lede">Two to five short options side by side, one always selected. Not built yet.</p>
+
+      <div class="v-stage v-stage--pending">
+        <p>This component has a story but no code. It is the one Session 3 adds, so that the roast filter in BRW-103 has a control to use. When it ships, this section gets its variants, tokens, usage and snippet like every other one above.</p>
+        <p><a href="../stories/segmented-control.md">Read the story: stories/segmented-control.md</a></p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section class="v-section" id="adding">
+      <h2>Adding a component</h2>
+      <p class="v-lede">The same five steps every time, in this order. Each step is checkable; the hook checks the first three for you.</p>
+      <ol class="v-recipe">
+        <li><b>Story first.</b> A Markdown file in <code>stories/</code>: what it is, when to use it and when not, anatomy, states, the tokens it needs, accessibility, acceptance criteria. The segmented control story is the template.</li>
+        <li><b>Tokens.</b> Add the component's Layer 2 tokens to <code>component-tokens.css</code>, each pointing at a primitive. Every colour and radius goes through them. A literal value anywhere comes straight back from the hook.</li>
+        <li><b>CSS.</b> Add the classes to <code>components.css</code>, using only the new tokens and the shared scales.</li>
+        <li><b>Inventory.</b> Add a row to the design-system skill at <code>.claude/skills/design-system/SKILL.md</code>. Until the row exists, the agent treats the component as not existing, which is correct.</li>
+        <li><b>This page.</b> Add a section here that looks like the others: stage, snippet, token table, usage, accessibility. Copy the Button section and replace its content. Then move the component's link in the nav out of the pending style.</li>
+      </ol>
+      <p>Then open Brewlog next to this page, change one primitive in <code>tokens.css</code>, and reload both. If the new component moved with everything else, it is part of the system.</p>
+    </section>
+
+  </main>
+</div>
+<script src="viewer.js"></script>
+</body>
+</html>

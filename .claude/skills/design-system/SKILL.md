@@ -33,6 +33,9 @@ Component token naming:
 
 ## Component inventory
 
+Rendered with live token values at `product/design-system/viewer/index.html`
+(open it next to Brewlog). A component not in this table does not exist.
+
 | Component | Classes | Variants |
 |---|---|---|
 | Button | `.btn` + variant | `.btn-primary` `.btn-secondary` `.btn-ghost` `.btn-danger` |
