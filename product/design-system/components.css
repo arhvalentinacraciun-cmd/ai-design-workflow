@@ -115,7 +115,7 @@
   border-color: currentColor;
   border-right-color: transparent;
   border-radius: var(--radius-full);
-  animation: btn-spin var(--duration-base) linear infinite;
+  animation: btn-spin var(--duration-slow) linear infinite;
 }
 .btn-primary.is-loading::after,
 .btn-danger.is-loading::after { border-color: var(--button-primary-text); border-right-color: transparent; }
@@ -123,7 +123,7 @@
 .btn-ghost.is-loading::after { border-color: var(--button-ghost-text); border-right-color: transparent; }
 @keyframes btn-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .btn.is-loading::after { animation-duration: calc(var(--duration-base) * 4); }
+  .btn.is-loading::after { animation-duration: calc(var(--duration-slow) * 2); }
 }
 
 /* ── Field: label, control, hint, error ──────────────────────────────────── */

@@ -109,6 +109,7 @@
   /* MOTION */
   --duration-fast: 100ms;
   --duration-base: 200ms;
+  --duration-slow: 900ms;   /* one turn of a spinner */
   --transition-base: all var(--duration-base) ease;
 
   /* BORDERS */
