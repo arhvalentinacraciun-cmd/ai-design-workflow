@@ -180,7 +180,8 @@ p code {
 
 .v-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(calc(var(--space-16) + var(--space-12)), 1fr));
+  /* Five per row, so a ten-step scale is always two rows. */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: var(--space-3);
 }
 .v-tk {
@@ -491,5 +492,5 @@ p code {
   .v-files__row { grid-template-columns: 1fr; gap: var(--space-1); }
   .v-tokens, .v-table { display: block; max-width: 100%; overflow-x: auto; }
   .v-tokens .v-arrow { display: none; }
-  .v-grid { grid-template-columns: repeat(auto-fill, minmax(calc(var(--space-16) + var(--space-8)), 1fr)); }
+  .v-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
