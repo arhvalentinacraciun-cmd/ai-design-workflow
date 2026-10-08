@@ -104,6 +104,11 @@ apps this isn't.
 
 - Brewlog renders with seeded entries; add-entry form works (in-memory only,
   refreshes reset it — this is intentional for now).
+- Design system extended on 2026-10-08: full 50–900 colour scales; Button
+  sizes, hover/active/disabled/loading states, icon slot; Field with hint
+  and error; Select in a wrapper with its own chevron; Badge dot; Tag
+  remove; Card sections, muted and interactive; Alert title, actions and
+  close; Rating large and label. Viewer at `product/design-system/viewer/`.
 - Exercises BRW-101 → BRW-105 are unstarted.
 
 ---

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../tokens.css">
   <link rel="stylesheet" href="../component-tokens.css">
   <link rel="stylesheet" href="../components.css">
+  <link rel="stylesheet" href="../../app.css">
   <link rel="stylesheet" href="viewer.css">
 </head>
 <body>
@@ -16,10 +17,16 @@
 
   <nav class="v-nav" aria-label="Design system sections">
     <p class="v-nav__brand">Brewlog design system</p>
-    <p class="v-nav__sub">Every component, its tokens, and the rules the AI builds by.</p>
+    <p class="v-nav__sub">Every component, its tokens, and the rules it is built by.</p>
+    <p class="v-nav__group">Getting started</p>
+    <ul><li><a href="#overview">Overview</a></li></ul>
     <p class="v-nav__group">Foundations</p>
     <ul>
-      <li><a href="#tokens">Tokens</a></li>
+      <li><a href="#colour">Colour</a></li>
+      <li><a href="#spacing">Spacing</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#shape">Shape and depth</a></li>
+      <li><a href="#motion">Motion, layout, focus</a></li>
     </ul>
     <p class="v-nav__group">Components</p>
     <ul>
@@ -33,639 +40,672 @@
       <li><a href="#rating">Rating</a></li>
       <li><a href="#segmented" class="is-pending">Segmented control</a></li>
     </ul>
-    <p class="v-nav__group">Working on it</p>
+    <p class="v-nav__group">Guidance</p>
     <ul>
+      <li><a href="#patterns">Patterns</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
+      <li><a href="#changelog">Changelog</a></li>
       <li><a href="#adding">Adding a component</a></li>
     </ul>
   </nav>
-
   <main class="v-main">
 
     <header class="v-head">
       <h1>Brewlog design system</h1>
-      <p>This page renders the real components from the same three files Brewlog loads. Every value you see is read live from those files. Change a token, reload, and both the product and this page move together.</p>
-      <p class="v-run">design-system/tokens.css → component-tokens.css → components.css</p>
+      <p>The components Brewlog is built from, rendered live from its own stylesheets, with the tokens behind each one, the rules for using it, and the code to copy.</p>
+      <div class="v-head__meta"><span class="badge badge-primary">Version 1.1</span><span class="badge badge-neutral">9 components</span><span class="badge badge-neutral">Inter</span></div>
     </header>
 
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="tokens">
-      <h2>Tokens</h2>
-      <p class="v-lede">Layer 1, the primitives. Components never touch these for colour or radius; they go through their own Layer 2 tokens, listed on each component page below. The shared scales (spacing, type, borders, shadow, motion) may be used directly.</p>
+<section class="v-section" id="overview">
+  <div class="v-section__head"><h2>Overview</h2></div>
+  <p class="v-lede">A small, complete system: three files, nine components, one rule. Everything on this page is rendered from the same stylesheets the product loads, and every value shown is read live from them.</p>
+  <h3>How it is built</h3>
+  <div class="v-files">
+    <div class="v-files__row"><code>tokens.css</code><span>Layer 1, the primitives. Colour scales, spacing, type, shape, depth, motion. The only file that holds literal values.</span></div>
+    <div class="v-files__row"><code>component-tokens.css</code><span>Layer 2, one namespace per component. Every token points at a primitive. A theme would override this layer and nothing else.</span></div>
+    <div class="v-files__row"><code>components.css</code><span>The components. Colour and radius only through Layer 2; spacing, type and the other shared scales directly from Layer 1.</span></div>
+  </div>
+  <h3>The one rule</h3>
+  <p>No literal style values outside the primitives file. Every colour, size, radius, shadow and font value is a token reference, and an automated check on every change sends any literal back to be fixed. The rule is what lets a single primitive change move the whole product at once.</p>
+  <h3>Principles</h3>
+  <ul>
+    <li><b>Few things, finished.</b> Nine components, each with its states, tokens, usage and accessibility done. A new component earns its place by being needed twice.</li>
+    <li><b>Tokens are the interface.</b> Change a primitive and the product changes; change a component token and one component changes. Nothing else is a styling surface.</li>
+    <li><b>Native before custom.</b> Buttons, selects, labels and radios do their own work. The system restyles and never replaces what the browser already does well.</li>
+    <li><b>Words carry meaning, colour reinforces it.</b> A status has a word, a rating has a label, an error has a message.</li>
+  </ul>
+  <h3>Use it in a page</h3>
+  <p>Load the three files in this order, then the page's own layout stylesheet. The font is Inter from Google Fonts, with a system fallback.</p>
+  <div class="v-specimen" data-label="Stylesheet order" data-render="false"><div class="v-stage v-stage--column"><p class="v-tk__note">Copy from the Code block below; the links are relative to the page.</p></div>
+    <template>
+<link rel="stylesheet" href="design-system/tokens.css">
+<link rel="stylesheet" href="design-system/component-tokens.css">
+<link rel="stylesheet" href="design-system/components.css">
+<link rel="stylesheet" href="app.css">
+    </template>
+  </div>
+  <div class="v-panel v-panel--open" data-tab="Code"></div>
+  <h3>How to use it</h3>
+  <ul>
+    <li>Build only from the component inventory. A component that is not on this page does not exist; the Adding a component section says how to add one.</li>
+    <li>Need a value that has no token? Propose the token, never the literal.</li>
+    <li>Icons are inline SVG, stroked in the current text colour, sized by the icon token. There is no icon set; a component that needs an icon brings its own path.</li>
+    <li>Read a component's Usage tab before its Code tab. The code is the easy part.</li>
+  </ul>
+</section>
 
-      <h3>Colour, primary</h3>
-      <div class="v-grid">
-        <div class="v-color" data-token="--color-primary-50"></div>
-        <div class="v-color" data-token="--color-primary-100"></div>
-        <div class="v-color" data-token="--color-primary-200"></div>
-        <div class="v-color" data-token="--color-primary-500"></div>
-        <div class="v-color" data-token="--color-primary-600"></div>
-        <div class="v-color" data-token="--color-primary-700"></div>
-        <div class="v-color" data-token="--color-primary-800"></div>
-      </div>
+<section class="v-section" id="colour">
+  <div class="v-section__head"><h2>Colour</h2></div>
+  <p class="v-lede">Five hues, ten steps each, from 50 (lightest) to 900 (darkest). Components never name these directly for colour; they name a component token that points here. The step numbers carry meaning: 50 to 100 are backgrounds, 500 to 600 are fills, 700 to 900 are text on light backgrounds.</p>
+  <div class="v-group"><h3>Primary</h3><div class="v-grid"><div class="v-tk v-tk--color" data-token="--color-primary-50"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-50"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-100"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-100"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-200"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-200"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-300"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-300"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-400"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-400"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-500"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-500"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-600"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-600"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-700"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-700"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-800"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-800"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-primary-900"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-primary-900"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div></div></div>
+  <div class="v-group"><h3>Neutral</h3><div class="v-grid"><div class="v-tk v-tk--color" data-token="--color-white"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-white"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-50"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-50"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-100"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-100"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-200"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-200"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-300"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-300"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-400"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-400"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-500"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-500"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-600"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-600"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-700"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-700"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-800"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-800"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-neutral-900"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-neutral-900"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div></div></div>
+  <div class="v-group"><h3>Success</h3><div class="v-grid"><div class="v-tk v-tk--color" data-token="--color-success-50"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-50"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-100"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-100"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-200"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-200"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-300"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-300"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-400"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-400"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-500"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-500"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-600"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-600"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-700"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-700"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-800"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-800"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-success-900"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-success-900"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div></div></div>
+  <div class="v-group"><h3>Warning</h3><div class="v-grid"><div class="v-tk v-tk--color" data-token="--color-warning-50"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-50"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-100"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-100"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-200"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-200"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-300"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-300"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-400"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-400"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-500"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-500"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-600"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-600"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-700"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-700"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-800"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-800"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-warning-900"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-warning-900"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div></div></div>
+  <div class="v-group"><h3>Danger</h3><div class="v-grid"><div class="v-tk v-tk--color" data-token="--color-danger-50"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-50"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-100"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-100"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-200"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-200"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-300"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-300"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-400"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-400"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-500"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-500"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-600"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-600"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-700"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-700"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-800"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-800"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk v-tk--color" data-token="--color-danger-900"><div class="v-tk__preview v-tk__preview--chip" data-fill="--color-danger-900"></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div></div></div>
+</section>
 
-      <h3>Colour, neutral</h3>
-      <div class="v-grid">
-        <div class="v-color" data-token="--color-white"></div>
-        <div class="v-color" data-token="--color-neutral-50"></div>
-        <div class="v-color" data-token="--color-neutral-100"></div>
-        <div class="v-color" data-token="--color-neutral-200"></div>
-        <div class="v-color" data-token="--color-neutral-300"></div>
-        <div class="v-color" data-token="--color-neutral-400"></div>
-        <div class="v-color" data-token="--color-neutral-500"></div>
-        <div class="v-color" data-token="--color-neutral-600"></div>
-        <div class="v-color" data-token="--color-neutral-700"></div>
-        <div class="v-color" data-token="--color-neutral-800"></div>
-        <div class="v-color" data-token="--color-neutral-900"></div>
-      </div>
+<section class="v-section" id="spacing">
+  <div class="v-section__head"><h2>Spacing</h2></div>
+  <p class="v-lede">A four-pixel base unit. Every gap, padding and margin sits on this scale, so two components placed together always share a rhythm. The number in the name is the multiple of the base unit.</p>
+  <div class="v-grid"><div class="v-tk" data-token="--space-1"><div class="v-tk__preview"><div class="v-pv-bar" style="width: var(--space-1)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk" data-token="--space-2"><div class="v-tk__preview"><div class="v-pv-bar" style="width: var(--space-2)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk" data-token="--space-3"><div class="v-tk__preview"><div class="v-pv-bar" style="width: var(--space-3)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk" data-token="--space-4"><div class="v-tk__preview"><div class="v-pv-bar" style="width: var(--space-4)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk" data-token="--space-6"><div class="v-tk__preview"><div class="v-pv-bar" style="width: var(--space-6)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk" data-token="--space-8"><div class="v-tk__preview"><div class="v-pv-bar" style="width: var(--space-8)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk" data-token="--space-12"><div class="v-tk__preview"><div class="v-pv-bar" style="width: var(--space-12)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div><div class="v-tk" data-token="--space-16"><div class="v-tk__preview"><div class="v-pv-bar" style="width: var(--space-16)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div></div></div>
+</section>
 
-      <h3>Colour, semantic</h3>
-      <div class="v-grid">
-        <div class="v-color" data-token="--color-success-100"></div>
-        <div class="v-color" data-token="--color-success-700"></div>
-        <div class="v-color" data-token="--color-warning-100"></div>
-        <div class="v-color" data-token="--color-warning-700"></div>
-        <div class="v-color" data-token="--color-danger-100"></div>
-        <div class="v-color" data-token="--color-danger-500"></div>
-        <div class="v-color" data-token="--color-danger-700"></div>
-      </div>
+<section class="v-section" id="typography">
+  <div class="v-section__head"><h2>Typography</h2></div>
+  <p class="v-lede">One family, Inter, with system sans-serif fallbacks. Six sizes, four weights, two line heights. Emphasis comes from weight, never from a size outside the scale.</p>
+  <div class="v-group"><h3>Family</h3><div class="v-grid"><div class="v-tk" data-token="--font-family-base"><div class="v-tk__preview"><span class="v-pv-text" style="font-size: var(--font-size-xl)">Inter</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Loaded from Google Fonts, falls back to the system sans-serif</div></div></div></div>
+  <div class="v-group"><h3>Size</h3><div class="v-grid"><div class="v-tk" data-token="--font-size-xs"><div class="v-tk__preview"><span class="v-pv-text" style="font-size: var(--font-size-xs)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Captions, labels</div></div><div class="v-tk" data-token="--font-size-sm"><div class="v-tk__preview"><span class="v-pv-text" style="font-size: var(--font-size-sm)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Controls, tables</div></div><div class="v-tk" data-token="--font-size-md"><div class="v-tk__preview"><span class="v-pv-text" style="font-size: var(--font-size-md)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Body</div></div><div class="v-tk" data-token="--font-size-lg"><div class="v-tk__preview"><span class="v-pv-text" style="font-size: var(--font-size-lg)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Section titles</div></div><div class="v-tk" data-token="--font-size-xl"><div class="v-tk__preview"><span class="v-pv-text" style="font-size: var(--font-size-xl)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Page sections</div></div><div class="v-tk" data-token="--font-size-2xl"><div class="v-tk__preview"><span class="v-pv-text" style="font-size: var(--font-size-2xl)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Page title</div></div></div></div>
+  <div class="v-group"><h3>Weight</h3><div class="v-grid"><div class="v-tk" data-token="--font-weight-normal"><div class="v-tk__preview"><span class="v-pv-text" style="font-weight: var(--font-weight-normal); font-size: var(--font-size-xl)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Body</div></div><div class="v-tk" data-token="--font-weight-medium"><div class="v-tk__preview"><span class="v-pv-text" style="font-weight: var(--font-weight-medium); font-size: var(--font-size-xl)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Buttons</div></div><div class="v-tk" data-token="--font-weight-semibold"><div class="v-tk__preview"><span class="v-pv-text" style="font-weight: var(--font-weight-semibold); font-size: var(--font-size-xl)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Labels, names</div></div><div class="v-tk" data-token="--font-weight-bold"><div class="v-tk__preview"><span class="v-pv-text" style="font-weight: var(--font-weight-bold); font-size: var(--font-size-xl)">Ag</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Titles</div></div></div></div>
+  <div class="v-group"><h3>Line height</h3><div class="v-grid"><div class="v-tk" data-token="--line-height-tight"><div class="v-tk__preview"><span class="v-pv-text" style="line-height: var(--line-height-tight); font-size: var(--font-size-sm); text-align:center">Two lines<br>of text</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Headings, badges</div></div><div class="v-tk" data-token="--line-height-base"><div class="v-tk__preview"><span class="v-pv-text" style="line-height: var(--line-height-base); font-size: var(--font-size-sm); text-align:center">Two lines<br>of text</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Anything read</div></div></div></div>
+</section>
 
-      <h3>Spacing</h3>
-      <p>A four-pixel base unit. Every gap, padding and margin in the product sits on this scale.</p>
-      <div class="v-scale">
-        <div class="v-scale__row" data-token="--space-1"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-1)"></span><span class="v-scale__value"></span></div>
-        <div class="v-scale__row" data-token="--space-2"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-2)"></span><span class="v-scale__value"></span></div>
-        <div class="v-scale__row" data-token="--space-3"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-3)"></span><span class="v-scale__value"></span></div>
-        <div class="v-scale__row" data-token="--space-4"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-4)"></span><span class="v-scale__value"></span></div>
-        <div class="v-scale__row" data-token="--space-6"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-6)"></span><span class="v-scale__value"></span></div>
-        <div class="v-scale__row" data-token="--space-8"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-8)"></span><span class="v-scale__value"></span></div>
-        <div class="v-scale__row" data-token="--space-12"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-12)"></span><span class="v-scale__value"></span></div>
-        <div class="v-scale__row" data-token="--space-16"><span class="v-scale__name"></span><span class="v-scale__bar" style="width: var(--space-16)"></span><span class="v-scale__value"></span></div>
-      </div>
+<section class="v-section" id="shape">
+  <div class="v-section__head"><h2>Shape and depth</h2></div>
+  <p class="v-lede">Corner radii, shadows and border widths. Radius grows with the size of the thing it rounds; shadow is reserved for surfaces that sit on the page, and only two levels exist.</p>
+  <div class="v-group"><h3>Radius</h3><div class="v-grid"><div class="v-tk" data-token="--radius-sm"><div class="v-tk__preview"><div class="v-pv-box" style="border-radius: var(--radius-sm)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Swatches, small chips</div></div><div class="v-tk" data-token="--radius-md"><div class="v-tk__preview"><div class="v-pv-box" style="border-radius: var(--radius-md)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Buttons, inputs, alerts</div></div><div class="v-tk" data-token="--radius-lg"><div class="v-tk__preview"><div class="v-pv-box" style="border-radius: var(--radius-lg)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Cards</div></div><div class="v-tk" data-token="--radius-full"><div class="v-tk__preview"><div class="v-pv-box" style="border-radius: var(--radius-full)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Badges, tags, dots</div></div></div></div>
+  <div class="v-group"><h3>Shadow</h3><div class="v-grid"><div class="v-tk" data-token="--shadow-sm"><div class="v-tk__preview"><div class="v-pv-box v-pv-box--shadow" style="box-shadow: var(--shadow-sm)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Cards at rest</div></div><div class="v-tk" data-token="--shadow-md"><div class="v-tk__preview"><div class="v-pv-box v-pv-box--shadow" style="box-shadow: var(--shadow-md)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Cards on hover</div></div></div></div>
+  <div class="v-group"><h3>Border width</h3><div class="v-grid"><div class="v-tk" data-token="--border-width-hairline"><div class="v-tk__preview"><div class="v-pv-line" style="height: var(--border-width-hairline)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Borders</div></div><div class="v-tk" data-token="--border-width-sm"><div class="v-tk__preview"><div class="v-pv-line" style="height: var(--border-width-sm)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Chevrons, spinners, tab marker</div></div><div class="v-tk" data-token="--border-width-md"><div class="v-tk__preview"><div class="v-pv-line" style="height: var(--border-width-md)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Emphasis rules</div></div></div></div>
+</section>
 
-      <h3>Type</h3>
-      <p>One family, Inter, six sizes, four weights, two line heights. Emphasis comes from weight, never from a size outside the scale.</p>
-      <div class="v-type">
-        <div class="v-type__row" data-token="--font-size-xs"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-xs)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-size-sm"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-sm)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-size-md"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-md)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-size-lg"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-lg)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-size-xl"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-xl)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-size-2xl"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-size: var(--font-size-2xl)">The quick brown fox jumps over the lazy dog</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-weight-normal"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-weight: var(--font-weight-normal)">Normal, for body text</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-weight-medium"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-weight: var(--font-weight-medium)">Medium, for buttons</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-weight-semibold"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-weight: var(--font-weight-semibold)">Semibold, for labels and names</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--font-weight-bold"><span class="v-scale__name"></span><span class="v-type__specimen" style="font-weight: var(--font-weight-bold)">Bold, for the page title</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--line-height-tight"><span class="v-scale__name"></span><span class="v-type__specimen" style="line-height: var(--line-height-tight)">Tight, for headings and badges</span><span class="v-scale__value"></span></div>
-        <div class="v-type__row" data-token="--line-height-base"><span class="v-scale__name"></span><span class="v-type__specimen" style="line-height: var(--line-height-base)">Base, for everything that is read</span><span class="v-scale__value"></span></div>
-      </div>
+<section class="v-section" id="motion">
+  <div class="v-section__head"><h2>Motion, layout, focus</h2></div>
+  <p class="v-lede">Two durations and one transition cover every component; nothing in the system animates for decoration. The remaining primitives size the reading column, the inline icons, the focus ring and the disabled state. Reduced-motion preferences are respected everywhere.</p>
+  <div class="v-group"><h3>Motion</h3><div class="v-grid"><div class="v-tk" data-token="--duration-fast"><div class="v-tk__preview"><div class="v-pv-dot" style="--pv-duration: var(--duration-fast)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Hover the card</div></div><div class="v-tk" data-token="--duration-base"><div class="v-tk__preview"><div class="v-pv-dot" style="--pv-duration: var(--duration-base)"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Hover the card</div></div><div class="v-tk" data-token="--transition-base"><div class="v-tk__preview"><div class="v-pv-dot"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">The default transition on every component</div></div></div></div>
+  <div class="v-group"><h3>Layout and focus</h3><div class="v-grid"><div class="v-tk" data-token="--size-content-max"><div class="v-tk__preview"><span class="v-pv-text">720</span></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Width of a reading column</div></div><div class="v-tk" data-token="--size-icon"><div class="v-tk__preview"><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Inline icons</div></div><div class="v-tk" data-token="--focus-ring-width"><div class="v-tk__preview"><div class="v-pv-ring"></div></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Every focusable element</div></div><div class="v-tk" data-token="--opacity-disabled"><div class="v-tk__preview"><button class="btn btn-primary btn-sm" disabled type="button">Disabled</button></div><div class="v-tk__name"></div><div class="v-tk__value"></div><div class="v-tk__note">Disabled controls</div></div></div></div>
+</section>
 
-      <h3>Shape, depth, borders, motion</h3>
-      <div class="v-shapes">
-        <div class="v-shape" data-token="--radius-sm"><div class="v-shape__box" style="border-radius: var(--radius-sm)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
-        <div class="v-shape" data-token="--radius-md"><div class="v-shape__box" style="border-radius: var(--radius-md)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
-        <div class="v-shape" data-token="--radius-lg"><div class="v-shape__box" style="border-radius: var(--radius-lg)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
-        <div class="v-shape" data-token="--radius-full"><div class="v-shape__box" style="border-radius: var(--radius-full)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
-        <div class="v-shape" data-token="--shadow-sm"><div class="v-shape__box v-shape__box--shadow" style="box-shadow: var(--shadow-sm)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
-        <div class="v-shape" data-token="--shadow-md"><div class="v-shape__box v-shape__box--shadow" style="box-shadow: var(--shadow-md)"></div><div class="v-shape__name"></div><div class="v-scale__value"></div></div>
-      </div>
-      <table class="v-tokens" aria-label="Border, motion and layout primitives">
-        <thead><tr><th>Token</th><th></th><th>Value</th></tr></thead>
-        <tbody>
-          <tr data-token="--border-width-hairline"></tr>
-          <tr data-token="--border-width-sm"></tr>
-          <tr data-token="--border-width-md"></tr>
-          <tr data-token="--focus-ring-width"></tr>
-          <tr data-token="--duration-fast"></tr>
-          <tr data-token="--duration-base"></tr>
-          <tr data-token="--transition-base"></tr>
-          <tr data-token="--size-content-max"></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="button">
-      <h2>Button</h2>
-      <p class="v-lede">The action in a view. One primary per screen; everything else steps down.</p>
-
-      <h3>Variants</h3>
-      <div class="v-specimen">
-        <div class="v-stage"></div>
-        <template>
+<section class="v-section v-component" id="button">
+  <div class="v-section__head"><h2>Button</h2><span class="badge badge-success badge--dot">Stable</span></div>
+  <p class="v-lede">The action in a view. One primary per screen; everything else steps down.</p>
+  <div class="v-panel" data-tab="Preview">
+    <div class="v-specimen" data-label="Variants">
+      <div class="v-stage "></div>
+      <template>
 <button class="btn btn-primary" type="button">Add entry</button>
 <button class="btn btn-secondary" type="button">Clear all</button>
 <button class="btn btn-ghost" type="button">Cancel</button>
 <button class="btn btn-danger" type="button">Delete entry</button>
-        </template>
-        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
-      </div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="Sizes" data-note="Medium is the default; small for dense rows, large for a single page-level action">
+      <div class="v-stage "></div>
+      <template>
+<button class="btn btn-primary btn-sm" type="button">Small</button>
+<button class="btn btn-primary" type="button">Medium</button>
+<button class="btn btn-primary btn-lg" type="button">Large</button>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="With an icon" data-note="Icons are inline SVG with no fill and the current text colour; icon-only buttons carry an aria-label">
+      <div class="v-stage "></div>
+      <template>
+<button class="btn btn-primary" type="button"><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add entry</button>
+<button class="btn btn-secondary" type="button"><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>Delete</button>
+<button class="btn btn-ghost btn-icon" type="button" aria-label="Add entry"><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="States" data-note="Hover and focus are live: move the pointer, press Tab">
+      <div class="v-stage "></div>
+      <template>
+<div class="v-state"><small>Default</small><button class="btn btn-primary" type="button">Add entry</button></div>
+<div class="v-state"><small>Hover, active</small><button class="btn btn-primary" type="button">Hover me</button></div>
+<div class="v-state"><small>Focus</small><button class="btn btn-primary" type="button">Tab to me</button></div>
+<div class="v-state"><small>Disabled</small><button class="btn btn-primary" type="button" disabled>Add entry</button></div>
+<div class="v-state"><small>Loading</small><button class="btn btn-primary is-loading" type="button" aria-busy="true">Add entry</button></div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="Full width" data-note="For a form's one action on narrow screens">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<button class="btn btn-primary btn-block" type="button">Save and close</button>
+      </template>
+    </div></div>
+  <div class="v-panel" data-tab="Tokens" hidden><table class="v-tokens"><thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead><tbody>
+<tr class="v-group-row"><td colspan="4">Shape and type</td></tr>
+<tr data-token="--button-radius" data-from="--radius-md"></tr>
+<tr data-token="--button-font-weight" data-from="--font-weight-medium"></tr>
+<tr data-token="--button-focus-ring-color" data-from="--color-primary-500"></tr>
+<tr class="v-group-row"><td colspan="4">Padding by size</td></tr>
+<tr data-token="--button-padding-x" data-from="--space-4"></tr>
+<tr data-token="--button-padding-y" data-from="--space-2"></tr>
+<tr data-token="--button-sm-padding-x" data-from="--space-3"></tr>
+<tr data-token="--button-sm-padding-y" data-from="--space-1"></tr>
+<tr data-token="--button-lg-padding-x" data-from="--space-6"></tr>
+<tr data-token="--button-lg-padding-y" data-from="--space-3"></tr>
+<tr class="v-group-row"><td colspan="4">Primary</td></tr>
+<tr data-token="--button-primary-bg" data-from="--color-primary-600"></tr>
+<tr data-token="--button-primary-bg-hover" data-from="--color-primary-700"></tr>
+<tr data-token="--button-primary-bg-active" data-from="--color-primary-800"></tr>
+<tr data-token="--button-primary-text" data-from="--color-white"></tr>
+<tr data-token="--button-primary-border-color" data-from="--color-primary-600"></tr>
+<tr class="v-group-row"><td colspan="4">Secondary</td></tr>
+<tr data-token="--button-secondary-bg" data-from="--color-neutral-100"></tr>
+<tr data-token="--button-secondary-bg-hover" data-from="--color-neutral-200"></tr>
+<tr data-token="--button-secondary-bg-active" data-from="--color-neutral-300"></tr>
+<tr data-token="--button-secondary-text" data-from="--color-neutral-800"></tr>
+<tr data-token="--button-secondary-border-color" data-from="--color-neutral-200"></tr>
+<tr class="v-group-row"><td colspan="4">Ghost</td></tr>
+<tr data-token="--button-ghost-bg" data-from="transparent"></tr>
+<tr data-token="--button-ghost-bg-hover" data-from="--color-primary-50"></tr>
+<tr data-token="--button-ghost-bg-active" data-from="--color-primary-100"></tr>
+<tr data-token="--button-ghost-text" data-from="--color-primary-600"></tr>
+<tr data-token="--button-ghost-border-color" data-from="transparent"></tr>
+<tr class="v-group-row"><td colspan="4">Danger</td></tr>
+<tr data-token="--button-danger-bg" data-from="--color-danger-600"></tr>
+<tr data-token="--button-danger-bg-hover" data-from="--color-danger-700"></tr>
+<tr data-token="--button-danger-bg-active" data-from="--color-danger-800"></tr>
+<tr data-token="--button-danger-text" data-from="--color-white"></tr>
+<tr data-token="--button-danger-border-color" data-from="--color-danger-600"></tr>
+</tbody></table></div>
+  <div class="v-panel" data-tab="Usage" hidden><div class="v-notes"><div class="v-do"><h4>Do</h4><ul><li>Primary for the one main action of the view, such as Add entry.</li><li>Secondary for actions that matter but are not the point of the view, such as Clear all.</li><li>Ghost for a quiet action next to a stronger one, such as Cancel.</li><li>Danger only when the action destroys something and cannot be undone.</li><li>Labels say what happens: Add entry, Delete entry, Save and close.</li></ul></div><div class="v-dont"><h4>Do not</h4><ul><li>Two primary buttons in one view. If two actions compete, one of them is secondary.</li><li>Danger for destructive-but-recoverable actions. Those take secondary plus a confirmation.</li><li>Submit, OK or Click here as a label.</li><li>A disabled button with no explanation. If it cannot be used yet, say why next to it.</li><li>A link styled as a button for navigation, or a button for navigation. Links go places; buttons do things.</li></ul></div></div></div>
+  <div class="v-panel" data-tab="Accessibility" hidden><ul><li>Always a real button element, with type set, so it works with keyboard and assistive technology by default.</li><li>The focus ring is part of the component and is never removed. It sits outside the button on an offset, so it reads on any background.</li><li>Icon-only buttons carry an aria-label with the action in words. Decorative icons are aria-hidden.</li><li>A loading button sets aria-busy and keeps its width, so the layout does not jump and the state is announced.</li><li>Disabled buttons use the native disabled attribute, which also removes them from the tab order.</li></ul><h4>Contrast, measured live</h4><table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody><tr data-fg="--button-primary-text" data-bg="--button-primary-bg"><td>Primary text on primary</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--button-secondary-text" data-bg="--button-secondary-bg"><td>Secondary text on secondary</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--button-ghost-text" data-bg="--color-white"><td>Ghost text on white</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--button-danger-text" data-bg="--button-danger-bg"><td>Danger text on danger</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr></tbody></table></div>
+  <div class="v-panel" data-tab="Code" hidden></div>
+</section>
 
-      <h3>States</h3>
-      <p>Tab through the stage above: every button shows the shared focus ring, offset by one spacing step. Hover and active states are not styled on purpose; the transition token is in place for when a state is added, and that is a design decision, not a CSS afterthought.</p>
-
-      <h3>Tokens</h3>
-      <table class="v-tokens">
-        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
-        <tbody>
-          <tr data-token="--button-radius" data-from="--radius-md"></tr>
-          <tr data-token="--button-font-weight" data-from="--font-weight-medium"></tr>
-          <tr data-token="--button-padding-x" data-from="--space-4"></tr>
-          <tr data-token="--button-padding-y" data-from="--space-2"></tr>
-          <tr data-token="--button-focus-ring-color" data-from="--color-primary-500"></tr>
-          <tr data-token="--button-primary-bg" data-from="--color-primary-600"></tr>
-          <tr data-token="--button-primary-text" data-from="--color-white"></tr>
-          <tr data-token="--button-primary-border-color" data-from="--color-primary-600"></tr>
-          <tr data-token="--button-secondary-bg" data-from="--color-neutral-100"></tr>
-          <tr data-token="--button-secondary-text" data-from="--color-neutral-800"></tr>
-          <tr data-token="--button-secondary-border-color" data-from="--color-neutral-200"></tr>
-          <tr data-token="--button-ghost-bg" data-from="transparent"></tr>
-          <tr data-token="--button-ghost-text" data-from="--color-primary-600"></tr>
-          <tr data-token="--button-ghost-border-color" data-from="transparent"></tr>
-          <tr data-token="--button-danger-bg" data-from="--color-danger-500"></tr>
-          <tr data-token="--button-danger-text" data-from="--color-white"></tr>
-          <tr data-token="--button-danger-border-color" data-from="--color-danger-500"></tr>
-        </tbody>
-      </table>
-
-      <h3>Usage</h3>
-      <div class="v-notes">
-        <div>
-          <h4>Use</h4>
-          <ul>
-            <li>Primary for the one main action of the view, such as "Add entry".</li>
-            <li>Secondary for actions that matter but are not the point of the view, such as "Clear all".</li>
-            <li>Ghost for a quiet action next to a stronger one, such as "Cancel".</li>
-            <li>Danger only when the action destroys something and cannot be undone.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Do not</h4>
-          <ul class="v-dont">
-            <li>Put two primary buttons in one view. If two actions compete, one of them is secondary.</li>
-            <li>Use danger for destructive-but-recoverable actions. Those take secondary plus a confirmation.</li>
-            <li>Write "Submit" or "OK". The label says what happens: "Add entry", "Delete entry".</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>Accessibility</h3>
-      <ul>
-        <li>Always a real <code>&lt;button&gt;</code>, with <code>type="button"</code> unless it submits a form.</li>
-        <li>The focus ring ships with the component. Never remove it.</li>
-        <li>Primary and danger text is white on a 600 or 500 colour: both pass contrast at this size. Check again if a primitive changes.</li>
-      </ul>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="input">
-      <h2>Input</h2>
-      <p class="v-lede">A single line of text with its label. The label is part of the component, not an optional extra.</p>
-
-      <h3>Default and filled</h3>
-      <div class="v-specimen">
-        <div class="v-stage"></div>
-        <template>
-<div class="v-field">
-  <label class="field-label" for="demo-coffee">Coffee</label>
-  <input class="input" id="demo-coffee" type="text" placeholder="e.g. Origo, Ethiopia Guji">
+<section class="v-section v-component" id="input">
+  <div class="v-section__head"><h2>Input</h2><span class="badge badge-success badge--dot">Stable</span></div>
+  <p class="v-lede">A single line of text with its label, hint and error. The label is part of the component, not an optional extra.</p>
+  <div class="v-panel" data-tab="Preview">
+    <div class="v-specimen" data-label="Default and filled">
+      <div class="v-stage v-stage--grid"></div>
+      <template>
+<div class="field">
+  <label class="field-label" for="in-coffee">Coffee</label>
+  <input class="input" id="in-coffee" type="text" placeholder="Roaster, origin">
 </div>
-<div class="v-field">
-  <label class="field-label" for="demo-roaster">Roaster</label>
-  <input class="input" id="demo-roaster" type="text" value="Origo">
+<div class="field">
+  <label class="field-label" for="in-roaster">Roaster</label>
+  <input class="input" id="in-roaster" type="text" value="Origo">
 </div>
-        </template>
-        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
-      </div>
-
-      <h3>States</h3>
-      <p>Focus swaps the border colour for the focus token instead of drawing an outline, so the field reads as "active" without a ring around a ring. Error and disabled states do not exist yet; the first feature that needs one adds the tokens and the story.</p>
-
-      <h3>Tokens</h3>
-      <table class="v-tokens">
-        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
-        <tbody>
-          <tr data-token="--input-bg" data-from="--color-white"></tr>
-          <tr data-token="--input-text" data-from="--color-neutral-900"></tr>
-          <tr data-token="--input-border-color" data-from="--color-neutral-300"></tr>
-          <tr data-token="--input-border-color-focus" data-from="--color-primary-500"></tr>
-          <tr data-token="--input-radius" data-from="--radius-md"></tr>
-        </tbody>
-      </table>
-
-      <h3>Usage</h3>
-      <div class="v-notes">
-        <div>
-          <h4>Use</h4>
-          <ul>
-            <li>Free text that fits on one line: a name, a roaster, an origin.</li>
-            <li>A placeholder as an example of the format, never as the label.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Do not</h4>
-          <ul class="v-dont">
-            <li>Drop the label to save space. A placeholder disappears the moment someone types.</li>
-            <li>Use it for a fixed set of choices. That is a Select, or the segmented control once it exists.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>Accessibility</h3>
-      <ul>
-        <li>The label's <code>for</code> matches the input's <code>id</code>, so clicking the label focuses the field and screen readers announce it.</li>
-        <li>Placeholder text is a hint, not a requirement. The label carries the meaning.</li>
-      </ul>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="select">
-      <h2>Select</h2>
-      <p class="v-lede">One choice from a fixed list, when the list is too long for the options to sit side by side.</p>
-
-      <h3>Default</h3>
-      <div class="v-specimen">
-        <div class="v-stage"></div>
-        <template>
-<div class="v-field">
-  <label class="field-label" for="demo-roast">Roast</label>
-  <select class="select" id="demo-roast">
-    <option value="light">Light</option>
-    <option value="medium" selected>Medium</option>
-    <option value="dark">Dark</option>
-  </select>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="With a hint, required" data-note="The hint is linked with aria-describedby, so it is read with the field">
+      <div class="v-stage v-stage--grid"></div>
+      <template>
+<div class="field">
+  <label class="field-label" for="in-origin">Origin<span class="field-label__required" aria-hidden="true">*</span></label>
+  <input class="input" id="in-origin" type="text" required aria-describedby="in-origin-hint" placeholder="Country or region">
+  <span class="field__hint" id="in-origin-hint">Where the beans were grown, as printed on the bag.</span>
 </div>
-        </template>
-        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
-      </div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="Error" data-note="The message says what to do, in the interface's voice">
+      <div class="v-stage v-stage--grid"></div>
+      <template>
+<div class="field">
+  <label class="field-label" for="in-name-err">Coffee</label>
+  <input class="input" id="in-name-err" type="text" aria-invalid="true" aria-describedby="in-name-error" value="">
+  <span class="field__error" id="in-name-error">Enter the coffee's name to add it.</span>
+</div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="States" data-note="Focus swaps the border for the focus colour instead of adding a ring, so the field reads as active without a ring around a ring">
+      <div class="v-stage v-stage--grid"></div>
+      <template>
+<div class="field">
+  <label class="field-label" for="in-focus">Focus</label>
+  <input class="input" id="in-focus" type="text" placeholder="Tab to me">
+</div>
+<div class="field">
+  <label class="field-label" for="in-disabled">Disabled</label>
+  <input class="input" id="in-disabled" type="text" value="Not editable" disabled>
+</div>
+      </template>
+    </div></div>
+  <div class="v-panel" data-tab="Tokens" hidden><table class="v-tokens"><thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead><tbody>
+<tr class="v-group-row"><td colspan="4">Input</td></tr>
+<tr data-token="--input-bg" data-from="--color-white"></tr>
+<tr data-token="--input-bg-disabled" data-from="--color-neutral-100"></tr>
+<tr data-token="--input-text" data-from="--color-neutral-900"></tr>
+<tr data-token="--input-text-disabled" data-from="--color-neutral-500"></tr>
+<tr data-token="--input-placeholder" data-from="--color-neutral-500"></tr>
+<tr data-token="--input-border-color" data-from="--color-neutral-300"></tr>
+<tr data-token="--input-border-color-hover" data-from="--color-neutral-400"></tr>
+<tr data-token="--input-border-color-focus" data-from="--color-primary-500"></tr>
+<tr data-token="--input-border-color-error" data-from="--color-danger-500"></tr>
+<tr data-token="--input-radius" data-from="--radius-md"></tr>
+<tr class="v-group-row"><td colspan="4">Field text</td></tr>
+<tr data-token="--field-label-text" data-from="--color-neutral-900"></tr>
+<tr data-token="--field-hint-text" data-from="--color-neutral-600"></tr>
+<tr data-token="--field-error-text" data-from="--color-danger-700"></tr>
+<tr data-token="--field-required-text" data-from="--color-danger-600"></tr>
+</tbody></table></div>
+  <div class="v-panel" data-tab="Usage" hidden><div class="v-notes"><div class="v-do"><h4>Do</h4><ul><li>Free text that fits on one line: a name, a roaster, an origin.</li><li>A placeholder as an example of the format, never as the label.</li><li>A hint for anything the label cannot say in two words.</li><li>An error that says what to do, under the field it belongs to.</li></ul></div><div class="v-dont"><h4>Do not</h4><ul><li>Drop the label to save space. A placeholder disappears the moment someone types.</li><li>Use it for a fixed set of choices. That is a Select.</li><li>Colour alone for an error. The message is the error; the border only points at it.</li><li>Disable a field to mean read-only. Show the value as text instead.</li></ul></div></div></div>
+  <div class="v-panel" data-tab="Accessibility" hidden><ul><li>The label's for attribute matches the input's id, so clicking the label focuses the field and screen readers announce it.</li><li>Hints and errors are linked with aria-describedby and read after the label.</li><li>An invalid field sets aria-invalid, which screen readers announce; the red border is for sighted users.</li><li>The required marker is visual only; the required attribute carries the meaning.</li><li>Placeholder text holds contrast against white, but still never stands in for a label.</li></ul><h4>Contrast, measured live</h4><table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody><tr data-fg="--input-text" data-bg="--input-bg"><td>Text on input</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--input-placeholder" data-bg="--input-bg"><td>Placeholder on input</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--field-hint-text" data-bg="--color-neutral-50"><td>Hint on page</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--field-error-text" data-bg="--color-neutral-50"><td>Error on page</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr></tbody></table></div>
+  <div class="v-panel" data-tab="Code" hidden></div>
+</section>
 
-      <h3>Tokens</h3>
-      <table class="v-tokens">
-        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
-        <tbody>
-          <tr data-token="--select-bg" data-from="--color-white"></tr>
-          <tr data-token="--select-text" data-from="--color-neutral-900"></tr>
-          <tr data-token="--select-border-color" data-from="--color-neutral-300"></tr>
-          <tr data-token="--select-border-color-focus" data-from="--color-primary-500"></tr>
-          <tr data-token="--select-radius" data-from="--radius-md"></tr>
-        </tbody>
-      </table>
+<section class="v-section v-component" id="select">
+  <div class="v-section__head"><h2>Select</h2><span class="badge badge-success badge--dot">Stable</span></div>
+  <p class="v-lede">One choice from a fixed list. It looks and behaves exactly like Input, with a chevron drawn by the system instead of the browser.</p>
+  <div class="v-panel" data-tab="Preview">
+    <div class="v-specimen" data-label="Default" data-note="Always inside a select-wrap: the wrapper draws the chevron">
+      <div class="v-stage v-stage--grid"></div>
+      <template>
+<div class="field">
+  <label class="field-label" for="sel-roast">Roast</label>
+  <span class="select-wrap">
+    <select class="select" id="sel-roast">
+      <option value="light">Light</option>
+      <option value="medium" selected>Medium</option>
+      <option value="dark">Dark</option>
+    </select>
+  </span>
+</div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="With a hint, error, disabled">
+      <div class="v-stage v-stage--grid"></div>
+      <template>
+<div class="field">
+  <label class="field-label" for="sel-rating">Rating</label>
+  <span class="select-wrap">
+    <select class="select" id="sel-rating" aria-describedby="sel-rating-hint">
+      <option>5 / 5</option><option selected>4 / 5</option><option>3 / 5</option><option>2 / 5</option><option>1 / 5</option>
+    </select>
+  </span>
+  <span class="field__hint" id="sel-rating-hint">How much you liked it, on your own scale.</span>
+</div>
+<div class="field">
+  <label class="field-label" for="sel-err">Roast</label>
+  <span class="select-wrap">
+    <select class="select" id="sel-err" aria-invalid="true" aria-describedby="sel-err-msg">
+      <option value="" selected>Choose a roast</option><option>Light</option><option>Medium</option><option>Dark</option>
+    </select>
+  </span>
+  <span class="field__error" id="sel-err-msg">Choose a roast to add the entry.</span>
+</div>
+<div class="field">
+  <label class="field-label" for="sel-dis">Process</label>
+  <span class="select-wrap">
+    <select class="select" id="sel-dis" disabled><option>Washed</option></select>
+  </span>
+</div>
+      </template>
+    </div></div>
+  <div class="v-panel" data-tab="Tokens" hidden><table class="v-tokens"><thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead><tbody>
+<tr data-token="--select-bg" data-from="--color-white"></tr>
+<tr data-token="--select-bg-disabled" data-from="--color-neutral-100"></tr>
+<tr data-token="--select-text" data-from="--color-neutral-900"></tr>
+<tr data-token="--select-text-disabled" data-from="--color-neutral-500"></tr>
+<tr data-token="--select-border-color" data-from="--color-neutral-300"></tr>
+<tr data-token="--select-border-color-hover" data-from="--color-neutral-400"></tr>
+<tr data-token="--select-border-color-focus" data-from="--color-primary-500"></tr>
+<tr data-token="--select-border-color-error" data-from="--color-danger-500"></tr>
+<tr data-token="--select-chevron-color" data-from="--color-neutral-600"></tr>
+<tr data-token="--select-radius" data-from="--radius-md"></tr>
+</tbody></table></div>
+  <div class="v-panel" data-tab="Usage" hidden><div class="v-notes"><div class="v-do"><h4>Do</h4><ul><li>Six or more options, or options with longer labels.</li><li>A choice that is set once inside a form and submitted with it.</li><li>A sensible default selected, so the field is never blank without reason.</li></ul></div><div class="v-dont"><h4>Do not</h4><ul><li>Two to five short options that switch a view instantly. That is the segmented control's job.</li><li>A placeholder option with no error handling. If Choose a roast is left, say so on submit.</li><li>A custom dropdown built from divs. The native control handles keyboard, screen readers and phones.</li></ul></div></div></div>
+  <div class="v-panel" data-tab="Accessibility" hidden><ul><li>Native select: keyboard, screen reader and mobile pickers come for free, and the system only restyles the box.</li><li>Label wired by for and id, hint and error by aria-describedby, exactly as Input.</li><li>The chevron is drawn by the wrapper and ignored by assistive technology; the control still announces as a combo box.</li><li>An invalid select sets aria-invalid; a disabled one uses the disabled attribute.</li></ul><h4>Contrast, measured live</h4><table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody><tr data-fg="--select-text" data-bg="--select-bg"><td>Text on select</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--select-chevron-color" data-bg="--select-bg"><td>Chevron on select</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr></tbody></table></div>
+  <div class="v-panel" data-tab="Code" hidden></div>
+</section>
 
-      <h3>Usage</h3>
-      <div class="v-notes">
-        <div>
-          <h4>Use</h4>
-          <ul>
-            <li>Six or more options, or options with longer labels.</li>
-            <li>A choice that is set once, inside a form, and submitted with it.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Do not</h4>
-          <ul class="v-dont">
-            <li>Use it for two to five short options that switch a view instantly. That is the segmented control's job.</li>
-            <li>Leave it without a selected option when a default makes sense.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>Accessibility</h3>
-      <ul>
-        <li>Native <code>&lt;select&gt;</code>: keyboard, screen reader and mobile pickers all come for free. Do not replace it with a custom dropdown.</li>
-        <li>Label wired by <code>for</code> and <code>id</code>, same as Input.</li>
-      </ul>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="badge">
-      <h2>Badge</h2>
-      <p class="v-lede">A status, read at a glance. Pill-shaped, coloured by meaning.</p>
-
-      <h3>Variants</h3>
-      <div class="v-specimen">
-        <div class="v-stage"></div>
-        <template>
+<section class="v-section v-component" id="badge">
+  <div class="v-section__head"><h2>Badge</h2><span class="badge badge-success badge--dot">Stable</span></div>
+  <p class="v-lede">A status, read at a glance. Pill-shaped, coloured by meaning.</p>
+  <div class="v-panel" data-tab="Preview">
+    <div class="v-specimen" data-label="Variants">
+      <div class="v-stage "></div>
+      <template>
 <span class="badge badge-neutral">Draft</span>
 <span class="badge badge-primary">3 brews</span>
 <span class="badge badge-success">Saved</span>
 <span class="badge badge-warning">Unrated</span>
 <span class="badge badge-danger">Removed</span>
-        </template>
-        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
-      </div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="With a dot" data-note="The dot reads as a light; use it for a state that changes over time">
+      <div class="v-stage "></div>
+      <template>
+<span class="badge badge-success badge--dot">Stable</span>
+<span class="badge badge-warning badge--dot">In review</span>
+<span class="badge badge-neutral badge--dot">Planned</span>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="In context">
+      <div class="v-stage "></div>
+      <template>
+<div class="card" style="max-width: calc(var(--space-16) * 5)">
+  <div class="card__header"><h3 class="card__title">Brewlog</h3><span class="badge badge-primary">3 brews</span></div>
+  <div class="card__body">A count next to a title, the way the page header uses it.</div>
+</div>
+      </template>
+    </div></div>
+  <div class="v-panel" data-tab="Tokens" hidden><table class="v-tokens"><thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead><tbody>
+<tr class="v-group-row"><td colspan="4">Shape</td></tr>
+<tr data-token="--badge-radius" data-from="--radius-full"></tr>
+<tr class="v-group-row"><td colspan="4">Variants</td></tr>
+<tr data-token="--badge-neutral-bg" data-from="--color-neutral-100"></tr>
+<tr data-token="--badge-neutral-text" data-from="--color-neutral-700"></tr>
+<tr data-token="--badge-primary-bg" data-from="--color-primary-100"></tr>
+<tr data-token="--badge-primary-text" data-from="--color-primary-700"></tr>
+<tr data-token="--badge-success-bg" data-from="--color-success-100"></tr>
+<tr data-token="--badge-success-text" data-from="--color-success-700"></tr>
+<tr data-token="--badge-warning-bg" data-from="--color-warning-100"></tr>
+<tr data-token="--badge-warning-text" data-from="--color-warning-700"></tr>
+<tr data-token="--badge-danger-bg" data-from="--color-danger-100"></tr>
+<tr data-token="--badge-danger-text" data-from="--color-danger-700"></tr>
+</tbody></table></div>
+  <div class="v-panel" data-tab="Usage" hidden><div class="v-notes"><div class="v-do"><h4>Do</h4><ul><li>Status and counts: 3 brews, Saved, Unrated.</li><li>One or two words. A badge is read, not studied.</li><li>The colour means something. Success is green because it is good news.</li></ul></div><div class="v-dont"><h4>Do not</h4><ul><li>A badge for metadata such as a roast level or an origin. That is a Tag.</li><li>A clickable badge. It reports; it does not act.</li><li>Several badges on one item. One status at a time.</li></ul></div></div></div>
+  <div class="v-panel" data-tab="Accessibility" hidden><ul><li>Each variant pairs a 100 background with a 700 text colour from the same hue, which holds contrast at the small size.</li><li>The word carries the meaning; the colour and the dot reinforce it. Never a colour-only badge.</li><li>A badge is plain text in a span, so it needs no role.</li></ul><h4>Contrast, measured live</h4><table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody><tr data-fg="--badge-neutral-text" data-bg="--badge-neutral-bg"><td>Neutral</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--badge-primary-text" data-bg="--badge-primary-bg"><td>Primary</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--badge-success-text" data-bg="--badge-success-bg"><td>Success</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--badge-warning-text" data-bg="--badge-warning-bg"><td>Warning</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--badge-danger-text" data-bg="--badge-danger-bg"><td>Danger</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr></tbody></table></div>
+  <div class="v-panel" data-tab="Code" hidden></div>
+</section>
 
-      <h3>Tokens</h3>
-      <table class="v-tokens">
-        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
-        <tbody>
-          <tr data-token="--badge-radius" data-from="--radius-full"></tr>
-          <tr data-token="--badge-neutral-bg" data-from="--color-neutral-100"></tr>
-          <tr data-token="--badge-neutral-text" data-from="--color-neutral-700"></tr>
-          <tr data-token="--badge-primary-bg" data-from="--color-primary-100"></tr>
-          <tr data-token="--badge-primary-text" data-from="--color-primary-700"></tr>
-          <tr data-token="--badge-success-bg" data-from="--color-success-100"></tr>
-          <tr data-token="--badge-success-text" data-from="--color-success-700"></tr>
-          <tr data-token="--badge-warning-bg" data-from="--color-warning-100"></tr>
-          <tr data-token="--badge-warning-text" data-from="--color-warning-700"></tr>
-          <tr data-token="--badge-danger-bg" data-from="--color-danger-100"></tr>
-          <tr data-token="--badge-danger-text" data-from="--color-danger-700"></tr>
-        </tbody>
-      </table>
-
-      <h3>Usage</h3>
-      <div class="v-notes">
-        <div>
-          <h4>Use</h4>
-          <ul>
-            <li>Status and counts: "3 brews", "Saved", "Unrated".</li>
-            <li>The colour means something. Success is green because it is good news, not because green looked nice.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Do not</h4>
-          <ul class="v-dont">
-            <li>Use a badge for metadata such as a roast level or an origin. That is a Tag.</li>
-            <li>Make a badge clickable. It reports; it does not act.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>Accessibility</h3>
-      <ul>
-        <li>Each variant pairs a 100 background with a 700 text colour from the same hue, which holds contrast at the small size.</li>
-        <li>The word carries the meaning, the colour reinforces it. Never a colour-only badge.</li>
-      </ul>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="tag">
-      <h2>Tag</h2>
-      <p class="v-lede">A piece of metadata attached to an entry: roast, origin, process. Quiet by design.</p>
-
-      <h3>Default</h3>
-      <div class="v-specimen">
-        <div class="v-stage"></div>
-        <template>
+<section class="v-section v-component" id="tag">
+  <div class="v-section__head"><h2>Tag</h2><span class="badge badge-success badge--dot">Stable</span></div>
+  <p class="v-lede">A piece of metadata attached to an entry: roast, origin, process. Quiet by design.</p>
+  <div class="v-panel" data-tab="Preview">
+    <div class="v-specimen" data-label="Default">
+      <div class="v-stage "></div>
+      <template>
 <span class="tag">Light roast</span>
 <span class="tag">Ethiopia</span>
 <span class="tag">Washed</span>
-        </template>
-        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
-      </div>
-
-      <h3>Tokens</h3>
-      <table class="v-tokens">
-        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
-        <tbody>
-          <tr data-token="--tag-bg" data-from="--color-neutral-100"></tr>
-          <tr data-token="--tag-text" data-from="--color-neutral-700"></tr>
-          <tr data-token="--tag-border-color" data-from="--color-neutral-200"></tr>
-          <tr data-token="--tag-radius" data-from="--radius-full"></tr>
-        </tbody>
-      </table>
-
-      <h3>Usage</h3>
-      <div class="v-notes">
-        <div>
-          <h4>Use</h4>
-          <ul>
-            <li>Facts about an entry that help you find it again.</li>
-            <li>Several in a row is fine; they are meant to sit together.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Do not</h4>
-          <ul class="v-dont">
-            <li>Colour a tag to show status. Status is a Badge.</li>
-            <li>Invent a "selected" look for filtering. Filtering is the segmented control's job.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>Accessibility</h3>
-      <ul>
-        <li>Plain text in a span. If tags ever become interactive, they become buttons, and that is a new story.</li>
-      </ul>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="card">
-      <h2>Card</h2>
-      <p class="v-lede">A bordered surface that groups related content. Brewlog uses it for each entry.</p>
-
-      <h3>Default</h3>
-      <div class="v-specimen">
-        <div class="v-stage v-stage--column"></div>
-        <template>
-<div class="card">
-  <div class="entry">
-    <div class="entry__main">
-      <span class="entry__name">Origo, Ethiopia Guji</span>
-      <div class="entry__meta">
-        <span class="tag">Light roast</span>
-        <span>Logged today</span>
-      </div>
+      </template>
     </div>
-    <span class="rating" aria-label="Rated 4 out of 5">
-      <span class="rating__dot rating__dot--filled"></span>
-      <span class="rating__dot rating__dot--filled"></span>
-      <span class="rating__dot rating__dot--filled"></span>
-      <span class="rating__dot rating__dot--filled"></span>
-      <span class="rating__dot"></span>
-    </span>
+    <div class="v-specimen" data-label="Removable" data-note="The remove control is a real button inside the tag, with the tag's text in its label">
+      <div class="v-stage "></div>
+      <template>
+<span class="tag">Ethiopia<button class="tag__remove" type="button" aria-label="Remove Ethiopia">&times;</button></span>
+<span class="tag">Washed<button class="tag__remove" type="button" aria-label="Remove Washed">&times;</button></span>
+      </template>
+    </div></div>
+  <div class="v-panel" data-tab="Tokens" hidden><table class="v-tokens"><thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead><tbody>
+<tr class="v-group-row"><td colspan="4">Tag</td></tr>
+<tr data-token="--tag-bg" data-from="--color-neutral-100"></tr>
+<tr data-token="--tag-text" data-from="--color-neutral-700"></tr>
+<tr data-token="--tag-border-color" data-from="--color-neutral-200"></tr>
+<tr data-token="--tag-radius" data-from="--radius-full"></tr>
+<tr class="v-group-row"><td colspan="4">Remove</td></tr>
+<tr data-token="--tag-remove-text" data-from="--color-neutral-500"></tr>
+<tr data-token="--tag-remove-text-hover" data-from="--color-neutral-900"></tr>
+<tr data-token="--tag-remove-bg-hover" data-from="--color-neutral-200"></tr>
+</tbody></table></div>
+  <div class="v-panel" data-tab="Usage" hidden><div class="v-notes"><div class="v-do"><h4>Do</h4><ul><li>Facts about an entry that help you find it again.</li><li>Several in a row; they are meant to sit together.</li><li>Removable when the person added it and may change their mind.</li></ul></div><div class="v-dont"><h4>Do not</h4><ul><li>Colour a tag to show status. Status is a Badge.</li><li>A selected look for filtering. Filtering is the segmented control's job.</li><li>A removable tag with no way to add one back.</li></ul></div></div></div>
+  <div class="v-panel" data-tab="Accessibility" hidden><ul><li>Plain text in a span; it needs no role.</li><li>The remove button carries the tag's text in its aria-label, so Remove alone is never announced.</li><li>The remove button keeps the shared focus ring and a hit area the size of an icon.</li></ul><h4>Contrast, measured live</h4><table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody><tr data-fg="--tag-text" data-bg="--tag-bg"><td>Text on tag</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--tag-remove-text" data-bg="--tag-bg"><td>Remove on tag</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr></tbody></table></div>
+  <div class="v-panel" data-tab="Code" hidden></div>
+</section>
+
+<section class="v-section v-component" id="card">
+  <div class="v-section__head"><h2>Card</h2><span class="badge badge-success badge--dot">Stable</span></div>
+  <p class="v-lede">A bordered surface that groups related content. Header and footer are optional rows with their own divider.</p>
+  <div class="v-panel" data-tab="Preview">
+    <div class="v-specimen" data-label="Default">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<div class="card">
+  <div class="card__body">A card with only a body. The padding and the border come from the component; the content starts inside them.</div>
+</div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="With header and footer">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<div class="card">
+  <div class="card__header">
+    <div>
+      <h3 class="card__title">Origo, Ethiopia Guji</h3>
+      <div class="card__meta">Logged 28 Aug</div>
+    </div>
+    <span class="badge badge-warning">Light</span>
+  </div>
+  <div class="card__body">Floral, tea-like, a long citrus finish. Best as a pour-over at a lower temperature.</div>
+  <div class="card__footer">
+    <span class="rating rating--lg" role="img" aria-label="5 out of 5"><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span></span>
+    <button class="btn btn-ghost btn-sm" type="button">Edit</button>
   </div>
 </div>
-        </template>
-        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
-      </div>
-      <p>The entry layout inside the card (<code>.entry</code>, <code>.entry__main</code>, <code>.entry__meta</code>) belongs to Brewlog's page styles, not the design system. The card itself is just the surface.</p>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="Variants">
+      <div class="v-stage v-stage--grid"></div>
+      <template>
+<div class="card card--interactive" tabindex="0">
+  <h3 class="card__title">Interactive</h3>
+  <div class="card__meta">Lifts on hover, shows the focus ring. Use for a card that opens something.</div>
+</div>
+<div class="card card--muted">
+  <h3 class="card__title">Muted</h3>
+  <div class="card__meta">Sits back on the page. Use for secondary groups, settings, empty areas.</div>
+</div>
+      </template>
+    </div></div>
+  <div class="v-panel" data-tab="Tokens" hidden><table class="v-tokens"><thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead><tbody>
+<tr class="v-group-row"><td colspan="4">Surface</td></tr>
+<tr data-token="--card-bg" data-from="--color-white"></tr>
+<tr data-token="--card-bg-muted" data-from="--color-neutral-50"></tr>
+<tr data-token="--card-border-color" data-from="--color-neutral-200"></tr>
+<tr data-token="--card-border-color-hover" data-from="--color-neutral-300"></tr>
+<tr data-token="--card-divider-color" data-from="--color-neutral-200"></tr>
+<tr data-token="--card-radius" data-from="--radius-lg"></tr>
+<tr class="v-group-row"><td colspan="4">Text</td></tr>
+<tr data-token="--card-title-text" data-from="--color-neutral-900"></tr>
+<tr data-token="--card-meta-text" data-from="--color-neutral-600"></tr>
+</tbody></table></div>
+  <div class="v-panel" data-tab="Usage" hidden><div class="v-notes"><div class="v-do"><h4>Do</h4><ul><li>One card per thing in a list: one entry, one brew.</li><li>Header for the name and its status, body for the content, footer for actions.</li><li>Interactive only when the whole card is one target. Then it is focusable and has one action.</li></ul></div><div class="v-dont"><h4>Do not</h4><ul><li>Nested cards. A card inside a card means the inner one should be a plain group.</li><li>A card to decorate a single paragraph. Surfaces group; they do not emphasise.</li><li>Several buttons inside an interactive card. Nested targets confuse keyboard and touch.</li></ul></div></div></div>
+  <div class="v-panel" data-tab="Accessibility" hidden><ul><li>A card is a div; the list around it gives the structure.</li><li>An interactive card is focusable (tabindex or a link), shows the focus ring, and has exactly one action.</li><li>The title is a heading at the right level for the page; the meta line is plain text.</li><li>A rating inside a card carries an aria-label with the score in words.</li></ul><h4>Contrast, measured live</h4><table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody><tr data-fg="--card-title-text" data-bg="--card-bg"><td>Title on card</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--card-meta-text" data-bg="--card-bg"><td>Meta on card</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--card-meta-text" data-bg="--card-bg-muted"><td>Meta on muted card</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr></tbody></table></div>
+  <div class="v-panel" data-tab="Code" hidden></div>
+</section>
 
-      <h3>Tokens</h3>
-      <table class="v-tokens">
-        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
-        <tbody>
-          <tr data-token="--card-bg" data-from="--color-white"></tr>
-          <tr data-token="--card-border-color" data-from="--color-neutral-200"></tr>
-          <tr data-token="--card-radius" data-from="--radius-lg"></tr>
-        </tbody>
-      </table>
+<section class="v-section v-component" id="alert">
+  <div class="v-section__head"><h2>Alert</h2><span class="badge badge-success badge--dot">Stable</span></div>
+  <p class="v-lede">A message about the current state of the page: empty, saved, a warning, a problem.</p>
+  <div class="v-panel" data-tab="Preview">
+    <div class="v-specimen" data-label="Variants">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<div class="alert alert-info" role="status"><div class="alert__content">No brews yet. Your next great coffee goes here.</div></div>
+<div class="alert alert-success" role="status"><div class="alert__content">Entry added. 4 brews in the log.</div></div>
+<div class="alert alert-warning" role="status"><div class="alert__content">This entry has no rating yet.</div></div>
+<div class="alert alert-danger" role="alert"><div class="alert__content">Could not add the entry: the coffee name is empty.</div></div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="With a title and actions">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<div class="alert alert-danger" role="alert">
+  <div class="alert__content">
+    <strong class="alert__title">Entry not saved</strong>
+    The log is full for this month. Remove an entry or start a new month.
+    <div class="alert__actions">
+      <button class="btn btn-secondary btn-sm" type="button">Start a new month</button>
+      <button class="btn btn-ghost btn-sm" type="button">Remove an entry</button>
+    </div>
+  </div>
+</div>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="Dismissible" data-note="Only for messages that confirm something already done">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<div class="alert alert-success" role="status">
+  <div class="alert__content">Entry added. 4 brews in the log.</div>
+  <button class="alert__close" type="button" aria-label="Dismiss">&times;</button>
+</div>
+      </template>
+    </div></div>
+  <div class="v-panel" data-tab="Tokens" hidden><table class="v-tokens"><thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead><tbody>
+<tr class="v-group-row"><td colspan="4">Shape</td></tr>
+<tr data-token="--alert-radius" data-from="--radius-md"></tr>
+<tr data-token="--alert-close-bg-hover" data-from="--color-neutral-900"></tr>
+<tr class="v-group-row"><td colspan="4">Variants</td></tr>
+<tr data-token="--alert-info-bg" data-from="--color-primary-50"></tr>
+<tr data-token="--alert-info-text" data-from="--color-primary-800"></tr>
+<tr data-token="--alert-success-bg" data-from="--color-success-100"></tr>
+<tr data-token="--alert-success-text" data-from="--color-success-700"></tr>
+<tr data-token="--alert-warning-bg" data-from="--color-warning-100"></tr>
+<tr data-token="--alert-warning-text" data-from="--color-warning-700"></tr>
+<tr data-token="--alert-danger-bg" data-from="--color-danger-100"></tr>
+<tr data-token="--alert-danger-text" data-from="--color-danger-700"></tr>
+</tbody></table></div>
+  <div class="v-panel" data-tab="Usage" hidden><div class="v-notes"><div class="v-do"><h4>Do</h4><ul><li>Info for an empty state, with an invitation to act.</li><li>Danger for an error, saying what went wrong and how to fix it. No apology, no mystery.</li><li>A title when the message has two parts: what happened, what to do.</li><li>Actions inside the alert when the fix is one click away.</li></ul></div><div class="v-dont"><h4>Do not</h4><ul><li>Stacked alerts. One at a time, the one that matters now.</li><li>An alert as a heading or a callout for ordinary text.</li><li>A dismiss button on an error. The error goes away when it is fixed.</li><li>Vague wording. Something went wrong is not a message.</li></ul></div></div></div>
+  <div class="v-panel" data-tab="Accessibility" hidden><ul><li>Info, success and warning use role status, announced politely when they appear; danger uses role alert, announced at once.</li><li>Each variant pairs a light background with a 700 or 800 text colour and holds contrast at body size.</li><li>The dismiss button has an aria-label and the shared focus ring.</li><li>Actions inside an alert are real buttons, in reading order after the message.</li></ul><h4>Contrast, measured live</h4><table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody><tr data-fg="--alert-info-text" data-bg="--alert-info-bg"><td>Info</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--alert-success-text" data-bg="--alert-success-bg"><td>Success</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--alert-warning-text" data-bg="--alert-warning-bg"><td>Warning</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr><tr data-fg="--alert-danger-text" data-bg="--alert-danger-bg"><td>Danger</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr></tbody></table></div>
+  <div class="v-panel" data-tab="Code" hidden></div>
+</section>
 
-      <h3>Usage</h3>
-      <div class="v-notes">
-        <div>
-          <h4>Use</h4>
-          <ul>
-            <li>One card per thing in a list: one entry, one brew.</li>
-            <li>Padding comes from the component; content starts at the edge of that padding.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Do not</h4>
-          <ul class="v-dont">
-            <li>Nest cards. A card inside a card means the inner one should be a plain group.</li>
-            <li>Use a card to decorate a single paragraph. Surfaces group; they do not emphasise.</li>
-          </ul>
-        </div>
-      </div>
+<section class="v-section v-component" id="rating">
+  <div class="v-section__head"><h2>Rating</h2><span class="badge badge-success badge--dot">Stable</span></div>
+  <p class="v-lede">Five dots, filled to the score. How much you liked a brew, on your own scale.</p>
+  <div class="v-panel" data-tab="Preview">
+    <div class="v-specimen" data-label="Scores">
+      <div class="v-stage "></div>
+      <template>
+<span class="rating" role="img" aria-label="5 out of 5"><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span></span>
+<span class="rating" role="img" aria-label="3 out of 5"><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot"></span><span class="rating__dot"></span></span>
+<span class="rating" role="img" aria-label="Not rated"><span class="rating__dot"></span><span class="rating__dot"></span><span class="rating__dot"></span><span class="rating__dot"></span><span class="rating__dot"></span></span>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="Sizes" data-note="Default in lists, large in a card footer or a detail view">
+      <div class="v-stage "></div>
+      <template>
+<span class="rating" role="img" aria-label="4 out of 5"><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot"></span></span>
+<span class="rating rating--lg" role="img" aria-label="4 out of 5"><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot"></span></span>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="With the score in words">
+      <div class="v-stage "></div>
+      <template>
+<span class="rating" role="img" aria-label="4 out of 5"><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot"></span><span class="rating__label" aria-hidden="true">4 / 5</span></span>
+      </template>
+    </div></div>
+  <div class="v-panel" data-tab="Tokens" hidden><table class="v-tokens"><thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead><tbody>
+<tr data-token="--rating-dot-filled" data-from="--color-primary-600"></tr>
+<tr data-token="--rating-dot-empty" data-from="--color-neutral-300"></tr>
+<tr data-token="--rating-dot-radius" data-from="--radius-full"></tr>
+<tr data-token="--rating-label-text" data-from="--color-neutral-600"></tr>
+</tbody></table></div>
+  <div class="v-panel" data-tab="Usage" hidden><div class="v-notes"><div class="v-do"><h4>Do</h4><ul><li>A personal score in a private journal. Dots say how much I liked it; stars would read as a public review.</li><li>Always five dots, so an unrated entry still reads as a rating.</li><li>The label when the number matters, such as a detail view.</li></ul></div><div class="v-dont"><h4>Do not</h4><ul><li>Interactive dots. The score is entered through the Select in the form.</li><li>Half dots. The scale is whole numbers.</li><li>Stars, hearts or thumbs. One shape, one meaning.</li></ul></div></div></div>
+  <div class="v-panel" data-tab="Accessibility" hidden><ul><li>The group has role img and an aria-label with the score in words. Without it, a screen reader hears five empty spans.</li><li>Filled and empty differ in lightness, not only in hue, so the score reads without colour.</li><li>The optional label is aria-hidden because the group already announces the score.</li></ul><h4>Contrast, measured live</h4><table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody><tr data-fg="--rating-label-text" data-bg="--color-white"><td>Label on white</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr></tbody></table></div>
+  <div class="v-panel" data-tab="Code" hidden></div>
+</section>
 
-      <h3>Accessibility</h3>
-      <ul>
-        <li>A card is a <code>div</code>. The list it sits in gives the structure (<code>ul</code> and <code>li</code> in Brewlog).</li>
-        <li>The rating inside carries an <code>aria-label</code> because dots alone say nothing to a screen reader.</li>
-      </ul>
-    </section>
+<section class="v-section v-component" id="segmented">
+  <div class="v-section__head"><h2>Segmented control</h2><span class="badge badge-neutral badge--dot">Planned</span></div>
+  <p class="v-lede">Two to five short options side by side, one always selected. Not built yet.</p>
+  <div class="v-stage v-stage--pending">
+    <p>This component has a story but no code. It is the one Session 3 adds, so that the roast filter in BRW-103 has a control to use. When it ships, this block gets the same tabs as every other component: preview, tokens, usage, accessibility, code.</p>
+    <p><a href="../stories/segmented-control.md">Read the story: stories/segmented-control.md</a></p>
+  </div>
+</section>
 
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="alert">
-      <h2>Alert</h2>
-      <p class="v-lede">A message about the current state of the page: empty, saved, a warning, a problem.</p>
+<section class="v-section" id="patterns">
+  <div class="v-section__head"><h2>Patterns</h2></div>
+  <p class="v-lede">Compositions Brewlog uses, built only from the components above and the page layout styles. A pattern is the proof that the pieces fit together; copy the whole thing, not a part.</p>
 
-      <h3>Variants</h3>
-      <div class="v-specimen">
-        <div class="v-stage v-stage--column"></div>
-        <template>
-<div class="alert alert-info">No brews yet. Your next great coffee goes here.</div>
-<div class="alert alert-success">Entry added. 4 brews in the log.</div>
-<div class="alert alert-warning">This entry has no rating yet.</div>
-<div class="alert alert-danger">Could not add the entry: the coffee name is empty.</div>
-        </template>
-        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
-      </div>
+    <div class="v-specimen" data-label="Add-entry form" data-note="Field, Input, Select and Button in the page's form grid; one primary action">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<form class="entry-form" onsubmit="return false">
+  <div class="field">
+    <label class="field-label" for="pf-name">Coffee</label>
+    <input class="input" id="pf-name" type="text" placeholder="Roaster, origin" required>
+  </div>
+  <div class="field">
+    <label class="field-label" for="pf-roast">Roast</label>
+    <span class="select-wrap"><select class="select" id="pf-roast"><option>Light</option><option selected>Medium</option><option>Dark</option></select></span>
+  </div>
+  <div class="field">
+    <label class="field-label" for="pf-rating">Rating</label>
+    <span class="select-wrap"><select class="select" id="pf-rating"><option>5 / 5</option><option selected>4 / 5</option><option>3 / 5</option></select></span>
+  </div>
+  <button class="btn btn-primary" type="submit">Add entry</button>
+</form>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="Entry list" data-note="Card, Badge and Rating in the page's entry layout, exactly as the product renders them">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<ul class="entry-list">
+  <li class="card entry">
+    <div class="entry__main">
+      <span class="entry__name">Origo, Ethiopia Guji</span>
+      <span class="entry__meta"><span class="badge badge-warning">light</span><span>Aug 28</span></span>
+    </div>
+    <span class="rating" role="img" aria-label="5 out of 5"><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span></span>
+  </li>
+  <li class="card entry">
+    <div class="entry__main">
+      <span class="entry__name">Boiler, Colombia Huila</span>
+      <span class="entry__meta"><span class="badge badge-primary">medium</span><span>Aug 29</span></span>
+    </div>
+    <span class="rating" role="img" aria-label="4 out of 5"><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot rating__dot--filled"></span><span class="rating__dot"></span></span>
+  </li>
+</ul>
+      </template>
+    </div>
+    <div class="v-specimen" data-label="Empty state" data-note="An Alert that invites, and the action right under it">
+      <div class="v-stage v-stage--column"></div>
+      <template>
+<div class="alert alert-info" role="status"><div class="alert__content">No brews yet. Your next great coffee goes here.</div></div>
+<button class="btn btn-secondary" type="button">Add your first entry</button>
+      </template>
+    </div>
+  <div class="v-panel v-panel--open" data-tab="Code"></div>
+</section>
 
-      <h3>Tokens</h3>
-      <table class="v-tokens">
-        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
-        <tbody>
-          <tr data-token="--alert-radius" data-from="--radius-md"></tr>
-          <tr data-token="--alert-info-bg" data-from="--color-primary-50"></tr>
-          <tr data-token="--alert-info-text" data-from="--color-primary-800"></tr>
-          <tr data-token="--alert-success-bg" data-from="--color-success-100"></tr>
-          <tr data-token="--alert-success-text" data-from="--color-success-700"></tr>
-          <tr data-token="--alert-warning-bg" data-from="--color-warning-100"></tr>
-          <tr data-token="--alert-warning-text" data-from="--color-warning-700"></tr>
-          <tr data-token="--alert-danger-bg" data-from="--color-danger-100"></tr>
-          <tr data-token="--alert-danger-text" data-from="--color-danger-700"></tr>
-        </tbody>
-      </table>
+<section class="v-section" id="accessibility">
+  <div class="v-section__head"><h2>Accessibility</h2></div>
+  <p class="v-lede">What every component promises, so that a page built only from the system starts from a sound floor. Each component's own tab lists the specifics.</p>
+  <h3>Commitments</h3>
+  <ul>
+    <li><b>Native first.</b> Buttons are buttons, selects are selects, labels are labels. The system restyles; it does not reinvent.</li>
+    <li><b>Visible focus, everywhere.</b> One focus ring, one colour, one width, on every focusable element. Nothing removes it.</li>
+    <li><b>Contrast by construction.</b> Text pairs are chosen from the scales so that body-size text holds 4.5 to 1 and large text 3 to 1. The tables on each component measure the live pairs, so a token change that breaks a pair shows up here.</li>
+    <li><b>Never colour alone.</b> Status has a word, a rating has a label, an error has a message. Colour reinforces; it does not carry.</li>
+    <li><b>Reduced motion respected.</b> The only animation, the loading spinner, slows down under a reduced-motion preference, and smooth scrolling turns off.</li>
+    <li><b>Labels linked, messages linked.</b> for and id for labels, aria-describedby for hints and errors, aria-invalid for invalid fields, aria-busy for loading.</li>
+  </ul>
+  <h3>Page-level contrast, measured live</h3>
+  <table class="v-table v-pairs"><thead><tr><th>Pair</th><th>Text</th><th>Background</th><th>Ratio</th></tr></thead><tbody>
+    <tr data-fg="--color-neutral-900" data-bg="--color-neutral-50"><td>Body text on page</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr>
+    <tr data-fg="--color-neutral-700" data-bg="--color-neutral-50"><td>Secondary text on page</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr>
+    <tr data-fg="--color-neutral-600" data-bg="--color-white"><td>Muted text on white</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr>
+    <tr data-fg="--color-primary-700" data-bg="--color-neutral-50"><td>Links on page</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr>
+    <tr data-fg="--color-primary-500" data-bg="--color-white"><td>Focus ring on white (3 to 1 applies)</td><td class="v-pair-fg"></td><td class="v-pair-bg"></td><td class="v-pair-ratio"></td></tr>
+  </tbody></table>
+</section>
 
-      <h3>Usage</h3>
-      <div class="v-notes">
-        <div>
-          <h4>Use</h4>
-          <ul>
-            <li>Info for an empty state, with an invitation to act.</li>
-            <li>Danger for an error, saying what went wrong and how to fix it. No apology, no mystery.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Do not</h4>
-          <ul class="v-dont">
-            <li>Stack alerts. One at a time, the one that matters now.</li>
-            <li>Use an alert as a heading or a callout for ordinary text.</li>
-          </ul>
-        </div>
-      </div>
+<section class="v-section" id="changelog">
+  <div class="v-section__head"><h2>Changelog</h2></div>
+  <p class="v-lede">What changed in the system and when. A token or component change is a version; the date is the one in the files.</p>
+  <table class="v-table"><thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead><tbody>
+    <tr><td>1.1</td><td>8 Oct 2026</td><td>Full ten-step colour scales for all five hues. Button sizes, hover, active, disabled and loading states, icon slot, full width. Field with hint, error and required marker. Select in a wrapper with its own chevron, matching Input. Badge dot. Tag remove. Card header, body, footer, muted and interactive. Alert title, actions and dismiss. Rating large and label. Danger button moved to the 600 step for contrast. This viewer.</td></tr>
+    <tr><td>1.0</td><td>31 Aug 2026</td><td>Three token layers. Button, Input, Select, Badge, Tag, Card, Alert, Rating. The no-literal rule and the check that enforces it.</td></tr>
+    <tr><td>Planned</td><td></td><td>Segmented control, from its story.</td></tr>
+  </tbody></table>
+</section>
 
-      <h3>Accessibility</h3>
-      <ul>
-        <li>Each variant pairs a light background with a 700 or 800 text colour and holds contrast at body size.</li>
-        <li>An alert that appears after an action should get <code>role="status"</code> so it is announced. Brewlog's empty state is static, so it does not need it.</li>
-      </ul>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="rating">
-      <h2>Rating</h2>
-      <p class="v-lede">Five dots, filled to the score. Dots, never stars: a recorded decision, with its reason in <code>CLAUDE.md</code>.</p>
-
-      <h3>Scores</h3>
-      <div class="v-specimen">
-        <div class="v-stage"></div>
-        <template>
-<span class="rating" aria-label="Rated 5 out of 5">
-  <span class="rating__dot rating__dot--filled"></span>
-  <span class="rating__dot rating__dot--filled"></span>
-  <span class="rating__dot rating__dot--filled"></span>
-  <span class="rating__dot rating__dot--filled"></span>
-  <span class="rating__dot rating__dot--filled"></span>
-</span>
-<span class="rating" aria-label="Rated 3 out of 5">
-  <span class="rating__dot rating__dot--filled"></span>
-  <span class="rating__dot rating__dot--filled"></span>
-  <span class="rating__dot rating__dot--filled"></span>
-  <span class="rating__dot"></span>
-  <span class="rating__dot"></span>
-</span>
-<span class="rating" aria-label="Not rated">
-  <span class="rating__dot"></span>
-  <span class="rating__dot"></span>
-  <span class="rating__dot"></span>
-  <span class="rating__dot"></span>
-  <span class="rating__dot"></span>
-</span>
-        </template>
-        <figure class="v-snippet"><button class="v-copy" type="button">Copy</button><pre><code></code></pre></figure>
-      </div>
-
-      <h3>Tokens</h3>
-      <table class="v-tokens">
-        <thead><tr><th>Component token</th><th></th><th>Points at</th><th>Live value</th></tr></thead>
-        <tbody>
-          <tr data-token="--rating-dot-filled" data-from="--color-primary-600"></tr>
-          <tr data-token="--rating-dot-empty" data-from="--color-neutral-300"></tr>
-          <tr data-token="--rating-dot-radius" data-from="--radius-full"></tr>
-        </tbody>
-      </table>
-
-      <h3>Usage</h3>
-      <div class="v-notes">
-        <div>
-          <h4>Use</h4>
-          <ul>
-            <li>How much you liked a brew, on your own scale, in your own journal.</li>
-            <li>Always five dots, so an unrated entry still reads as a rating.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Do not</h4>
-          <ul class="v-dont">
-            <li>Swap the dots for stars. Stars read as a public review score, and Brewlog is private. Ask for stars and the agent will stop you, with the date of the decision.</li>
-            <li>Make the dots interactive here. Rating is entered through the Select in the form.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>Accessibility</h3>
-      <ul>
-        <li>The <code>aria-label</code> on the group says the score in words. Without it, a screen reader hears five empty spans.</li>
-        <li>Filled and empty differ in lightness, not only in hue, so the score reads without colour.</li>
-      </ul>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="segmented">
-      <h2>Segmented control</h2>
-      <p class="v-lede">Two to five short options side by side, one always selected. Not built yet.</p>
-
-      <div class="v-stage v-stage--pending">
-        <p>This component has a story but no code. It is the one Session 3 adds, so that the roast filter in BRW-103 has a control to use. When it ships, this section gets its variants, tokens, usage and snippet like every other one above.</p>
-        <p><a href="../stories/segmented-control.md">Read the story: stories/segmented-control.md</a></p>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="v-section" id="adding">
-      <h2>Adding a component</h2>
-      <p class="v-lede">The same five steps every time, in this order. Each step is checkable; the hook checks the first three for you.</p>
-      <ol class="v-recipe">
-        <li><b>Story first.</b> A Markdown file in <code>stories/</code>: what it is, when to use it and when not, anatomy, states, the tokens it needs, accessibility, acceptance criteria. The segmented control story is the template.</li>
-        <li><b>Tokens.</b> Add the component's Layer 2 tokens to <code>component-tokens.css</code>, each pointing at a primitive. Every colour and radius goes through them. A literal value anywhere comes straight back from the hook.</li>
-        <li><b>CSS.</b> Add the classes to <code>components.css</code>, using only the new tokens and the shared scales.</li>
-        <li><b>Inventory.</b> Add a row to the design-system skill at <code>.claude/skills/design-system/SKILL.md</code>. Until the row exists, the agent treats the component as not existing, which is correct.</li>
-        <li><b>This page.</b> Add a section here that looks like the others: stage, snippet, token table, usage, accessibility. Copy the Button section and replace its content. Then move the component's link in the nav out of the pending style.</li>
-      </ol>
-      <p>Then open Brewlog next to this page, change one primitive in <code>tokens.css</code>, and reload both. If the new component moved with everything else, it is part of the system.</p>
-    </section>
-
+<section class="v-section" id="adding">
+  <div class="v-section__head"><h2>Adding a component</h2></div>
+  <p class="v-lede">The same five steps every time, in this order. Each step is checkable; the hook checks the first three for you.</p>
+  <ol class="v-recipe">
+    <li><b>Story first.</b> A Markdown file in <code>stories/</code>: what it is, when to use it and when not, anatomy, states, the tokens it needs, accessibility, acceptance criteria. The segmented control story is the template.</li>
+    <li><b>Tokens.</b> Add the component's Layer 2 tokens to <code>component-tokens.css</code>, each pointing at a primitive. Every colour and radius goes through them. A literal value anywhere comes straight back from the hook.</li>
+    <li><b>CSS.</b> Add the classes to <code>components.css</code>, using only the new tokens and the shared scales. Include hover, focus, disabled and any error state the story names.</li>
+    <li><b>Inventory.</b> Add a row to the design-system skill at <code>.claude/skills/design-system/SKILL.md</code>. Until the row exists, the agent treats the component as not existing, which is correct.</li>
+    <li><b>This page.</b> Add a component block here with the five tabs: preview specimens (each one a template, which also becomes its code), the token table, usage, accessibility with its contrast pairs, and a changelog line. Copy the Button block and replace its content. Then move the component's link in the nav out of the planned style.</li>
+  </ol>
+  <p>Then open Brewlog next to this page, change one primitive in <code>tokens.css</code>, and reload both. If the new component moved with everything else, it is part of the system.</p>
+</section>
   </main>
 </div>
 <script src="viewer.js"></script>

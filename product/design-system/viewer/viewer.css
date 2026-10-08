@@ -1,17 +1,14 @@
 /* =============================================================================
    DESIGN SYSTEM VIEWER — chrome
-   Built from Brewlog's own tokens, nothing else. The hook scans this file
-   like any product file, so the viewer obeys the rule it documents. Change a
-   primitive in tokens.css, reload, and the viewer changes with the product.
-   Widths are token arithmetic (calc) because the rule allows no literals.
+   Built from Brewlog's own tokens, nothing else, so the viewer obeys the rule
+   it documents and moves with the product when a primitive changes. Widths
+   are token arithmetic (calc) because the rule allows no literal values.
    ============================================================================= */
 
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
   margin: 0;
@@ -23,8 +20,7 @@ body {
 }
 
 a { color: var(--color-primary-700); }
-a:focus-visible,
-button:focus-visible {
+a:focus-visible, button:focus-visible {
   outline: var(--focus-ring-width) solid var(--color-primary-500);
   outline-offset: var(--space-1);
 }
@@ -32,6 +28,12 @@ button:focus-visible {
 code, pre, .v-mono {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: var(--font-size-sm);
+}
+p code {
+  padding: 0 var(--space-1);
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-sm);
+  color: var(--color-neutral-800);
 }
 
 /* ── Shell ───────────────────────────────────────────────────────────────── */
@@ -59,7 +61,7 @@ code, pre, .v-mono {
   line-height: var(--line-height-tight);
 }
 .v-nav__sub {
-  margin: 0 0 var(--space-8);
+  margin: 0 0 var(--space-6);
   color: var(--color-neutral-600);
   font-size: var(--font-size-sm);
 }
@@ -71,11 +73,7 @@ code, pre, .v-mono {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.v-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+.v-nav ul { margin: 0; padding: 0; list-style: none; }
 .v-nav a {
   display: block;
   padding: var(--space-2) var(--space-3);
@@ -94,7 +92,7 @@ code, pre, .v-mono {
 
 .v-main {
   padding: var(--space-12) var(--space-12) var(--space-16);
-  max-width: calc(var(--size-content-max) + var(--space-16) * 4);
+  max-width: calc(var(--size-content-max) + var(--space-16) * 5);
 }
 
 /* ── Page head ───────────────────────────────────────────────────────────── */
@@ -113,8 +111,11 @@ code, pre, .v-mono {
   color: var(--color-neutral-700);
   font-size: var(--font-size-lg);
 }
-.v-head .v-run {
-  margin-top: var(--space-6);
+.v-head__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
 }
 
 /* ── Sections ────────────────────────────────────────────────────────────── */
@@ -124,18 +125,21 @@ code, pre, .v-mono {
   margin-top: var(--space-12);
   border-top: var(--border-width-hairline) solid var(--color-neutral-200);
 }
-.v-section:first-of-type {
-  padding-top: 0;
-  margin-top: 0;
-  border-top: 0;
+.v-section:first-of-type { padding-top: 0; margin-top: 0; border-top: 0; }
+.v-section__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
 }
-.v-section > h2 {
-  margin: 0 0 var(--space-2);
+.v-section h2 {
+  margin: 0;
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
 }
-.v-section > .v-lede {
+.v-section .v-lede {
   margin: 0 0 var(--space-8);
   max-width: var(--size-content-max);
   color: var(--color-neutral-700);
@@ -146,17 +150,138 @@ code, pre, .v-mono {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
 }
-.v-section h3:first-of-type { margin-top: 0; }
-.v-section p, .v-section li {
-  max-width: var(--size-content-max);
+.v-section h3:first-child, .v-panel > h3:first-child { margin-top: 0; }
+.v-section h4 {
+  margin: var(--space-6) 0 var(--space-2);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
 }
-.v-section ul {
-  padding-left: var(--space-6);
-}
+.v-section p, .v-section li { max-width: var(--size-content-max); }
+.v-section ul, .v-section ol { padding-left: var(--space-6); }
 .v-section li { margin-bottom: var(--space-2); }
+.v-group { margin-bottom: var(--space-8); }
+.v-group:last-child { margin-bottom: 0; }
 
-/* ── Specimen stage: the component rendered live ─────────────────────────── */
+/* Plain file list (Overview), one row per file */
+.v-files { display: grid; gap: var(--space-2); max-width: var(--size-content-max); }
+.v-files__row {
+  display: grid;
+  grid-template-columns: calc(var(--space-16) * 4) 1fr;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-white);
+  border: var(--border-width-hairline) solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+}
+.v-files__row code { font-size: var(--font-size-sm); color: var(--color-neutral-800); }
 
+/* ── Token cards: the one layout every foundation uses ───────────────────── */
+
+.v-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(var(--space-16) + var(--space-12)), 1fr));
+  gap: var(--space-3);
+}
+.v-tk {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-white);
+  border: var(--border-width-hairline) solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  min-width: 0;
+}
+.v-tk__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--space-16) + var(--space-4));
+  border-radius: var(--radius-sm);
+  background: var(--color-neutral-50);
+  border: var(--border-width-hairline) solid var(--color-neutral-100);
+  overflow: hidden;
+}
+.v-tk__preview--chip { border-color: var(--color-neutral-200); }
+.v-tk__name {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color: var(--color-neutral-900);
+  overflow-wrap: anywhere;
+}
+.v-tk__value {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color: var(--color-neutral-700);
+  overflow-wrap: anywhere;
+}
+.v-tk__note { color: var(--color-neutral-600); font-size: var(--font-size-xs); }
+
+/* Previews inside the card */
+.v-pv-bar  { height: var(--space-3); background: var(--color-primary-600); border-radius: var(--radius-sm); }
+.v-pv-text { line-height: var(--line-height-tight); color: var(--color-neutral-900); }
+.v-pv-box  { width: var(--space-12); height: var(--space-12); background: var(--color-white); border: var(--border-width-sm) solid var(--color-primary-600); }
+.v-pv-box--shadow { border: 0; }
+.v-pv-line { width: calc(var(--space-16) + var(--space-8)); background: var(--color-primary-600); }
+.v-pv-dot  {
+  width: var(--space-4); height: var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--color-primary-600);
+  transition: transform var(--pv-duration, var(--duration-base)) ease;
+}
+.v-tk:hover .v-pv-dot { transform: translateX(var(--space-8)); }
+.v-pv-ring { width: var(--space-8); height: var(--space-8); border-radius: var(--radius-sm); background: var(--color-white); outline: var(--focus-ring-width) solid var(--color-primary-500); outline-offset: var(--space-1); }
+
+/* ── Component block: header, tabs, panels ───────────────────────────────── */
+
+.v-tabs {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  border-bottom: var(--border-width-hairline) solid var(--color-neutral-200);
+  overflow-x: auto;
+}
+.v-tab {
+  position: relative;
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  border: 0;
+  border-bottom: var(--border-width-sm) solid transparent;
+  background: transparent;
+  color: var(--color-neutral-700);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.v-tab:hover { color: var(--color-neutral-900); }
+.v-tab[aria-selected="true"] {
+  color: var(--color-primary-800);
+  border-bottom-color: var(--color-primary-600);
+}
+.v-tab:focus-visible { outline-offset: calc(var(--space-1) * -1); border-radius: var(--radius-sm); }
+.v-panel[hidden] { display: none; }
+
+/* ── Specimen: a labelled stage ──────────────────────────────────────────── */
+
+.v-specimen { margin-bottom: var(--space-8); }
+.v-specimen:last-child { margin-bottom: 0; }
+.v-specimen__label {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+}
+.v-specimen__label small {
+  flex: 1 1 auto;
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+}
 .v-stage {
   display: flex;
   flex-wrap: wrap;
@@ -167,15 +292,16 @@ code, pre, .v-mono {
   border: var(--border-width-hairline) solid var(--color-neutral-200);
   border-radius: var(--radius-lg);
 }
-.v-stage--column {
-  flex-direction: column;
-  align-items: stretch;
-}
+.v-stage--column { flex-direction: column; align-items: stretch; }
 .v-stage--column > * { max-width: var(--size-content-max); }
-.v-stage .v-field { min-width: calc(var(--space-16) * 4); }
-.v-stage .card { max-width: calc(var(--space-16) * 6); }
-
-/* Placeholder for a component that has a story but no build yet */
+.v-stage--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(var(--space-16) * 4), 1fr));
+  align-items: start;
+}
+.v-stage .field { width: 100%; max-width: calc(var(--space-16) * 5); }
+.v-stage .card { width: 100%; max-width: calc(var(--space-16) * 6); }
+.v-stage .alert { width: 100%; }
 .v-stage--pending {
   border-style: dashed;
   border-width: var(--border-width-sm);
@@ -184,11 +310,26 @@ code, pre, .v-mono {
   color: var(--color-neutral-700);
 }
 
-/* ── Token chain: component token → primitive → live value ───────────────── */
+/* A state label under an item on the stage */
+.v-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.v-state > small {
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Token chain table: component token → primitive → live value ─────────── */
 
 .v-tokens {
   width: 100%;
-  margin: var(--space-4) 0 0;
+  margin: 0;
   border-collapse: collapse;
   font-size: var(--font-size-sm);
 }
@@ -205,17 +346,28 @@ code, pre, .v-mono {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.v-tokens td:first-child { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.v-tokens td:first-child, .v-tokens .v-from, .v-tokens .v-value {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
 .v-tokens .v-arrow { color: var(--color-neutral-400); }
-.v-tokens .v-from { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--color-neutral-700); }
-.v-tokens .v-value { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; white-space: nowrap; }
+.v-tokens .v-from { color: var(--color-neutral-700); }
+.v-tokens .v-value { white-space: nowrap; }
 .v-tokens .v-drift {
   margin-left: var(--space-2);
   color: var(--color-warning-700);
   font-family: var(--font-family-base);
   font-size: var(--font-size-xs);
 }
-
+.v-tokens .v-group-row td {
+  padding-top: var(--space-4);
+  color: var(--color-neutral-600);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 0;
+}
 .v-swatch {
   display: inline-block;
   width: var(--space-6);
@@ -226,38 +378,65 @@ code, pre, .v-mono {
   vertical-align: middle;
 }
 
-/* ── Usage and accessibility, side by side ───────────────────────────────── */
+/* ── Usage: do and don't ─────────────────────────────────────────────────── */
 
 .v-notes {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
 }
-.v-notes h4 {
+.v-notes > div {
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-white);
+  border: var(--border-width-hairline) solid var(--color-neutral-200);
+  border-left-width: var(--border-width-md);
+  border-radius: var(--radius-md);
+}
+.v-notes .v-do   { border-left-color: var(--color-success-600); }
+.v-notes .v-dont { border-left-color: var(--color-danger-500); }
+.v-notes h4 { margin: 0 0 var(--space-2); }
+.v-notes ul { margin: 0; padding-left: var(--space-4); }
+.v-notes li { margin-bottom: var(--space-2); font-size: var(--font-size-md); }
+
+/* Plain data table (contrast pairs, changelog) */
+.v-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-md);
+  max-width: var(--size-content-max);
+}
+.v-table th, .v-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--border-width-hairline) solid var(--color-neutral-200);
+  text-align: left;
+  vertical-align: top;
+}
+.v-table th {
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Snippet ─────────────────────────────────────────────────────────────── */
+
+.v-snippet { position: relative; margin: 0 0 var(--space-6); }
+.v-snippet:last-child { margin-bottom: 0; }
+.v-snippet__label {
   margin: 0 0 var(--space-2);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
 }
-.v-notes ul { margin: 0; }
-.v-notes li { margin-bottom: var(--space-2); font-size: var(--font-size-md); }
-.v-notes .v-dont { color: var(--color-neutral-700); }
-
-/* ── Snippet ─────────────────────────────────────────────────────────────── */
-
-.v-snippet {
-  position: relative;
-  margin: 0;
-}
 .v-snippet pre {
   margin: 0;
-  padding: var(--space-4) var(--space-4) var(--space-4);
+  padding: var(--space-4);
   overflow-x: auto;
   background: var(--color-neutral-900);
   color: var(--color-neutral-100);
   border-radius: var(--radius-md);
   line-height: var(--line-height-base);
 }
-.v-snippet pre code { font-size: var(--font-size-sm); }
 .v-copy {
   position: absolute;
   top: var(--space-2);
@@ -272,107 +451,19 @@ code, pre, .v-mono {
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
 }
+.v-snippet__label + pre + .v-copy, .v-snippet .v-copy--lower { top: calc(var(--space-8) + var(--space-2)); }
 .v-copy:hover { background: var(--color-neutral-700); }
 .v-copy:focus-visible { outline-color: var(--color-primary-200); }
 
-/* ── Primitive galleries (Tokens section) ────────────────────────────────── */
+/* ── Recipe ──────────────────────────────────────────────────────────────── */
 
-.v-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(calc(var(--space-16) * 3), 1fr));
-  gap: var(--space-3);
-}
-.v-color {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-3);
-  background: var(--color-white);
-  border: var(--border-width-hairline) solid var(--color-neutral-200);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-sm);
-}
-.v-color__chip {
-  height: var(--space-12);
-  border-radius: var(--radius-sm);
-  border: var(--border-width-hairline) solid var(--color-neutral-200);
-}
-.v-color__name { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
-.v-color__value { color: var(--color-neutral-700); font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
-
-/* Scale and type lists are one grid each, so the name column is sized by
-   the longest token name and every row lines up. Rows are display:contents. */
-.v-scale {
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  column-gap: var(--space-4);
-  row-gap: var(--space-2);
-  align-items: center;
-  font-size: var(--font-size-sm);
-}
-.v-scale__row { display: contents; }
-.v-scale__name { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; white-space: nowrap; }
-.v-scale__bar {
-  height: var(--space-4);
-  background: var(--color-primary-600);
-  border-radius: var(--radius-sm);
-}
-.v-scale__value { color: var(--color-neutral-700); font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
-
-.v-type {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  column-gap: var(--space-4);
-  row-gap: var(--space-3);
-  align-items: baseline;
-}
-.v-type__row { display: contents; }
-.v-type__row > * {
-  padding-bottom: var(--space-3);
-  border-bottom: var(--border-width-hairline) solid var(--color-neutral-200);
-}
-.v-type__specimen { line-height: var(--line-height-tight); }
-
-.v-shapes { display: flex; flex-wrap: wrap; gap: var(--space-6); }
-.v-shape { text-align: center; font-size: var(--font-size-sm); }
-.v-shape__box {
-  width: calc(var(--space-16) + var(--space-8));
-  height: calc(var(--space-16) + var(--space-8));
-  margin: 0 auto var(--space-2);
-  background: var(--color-white);
-  border: var(--border-width-sm) solid var(--color-primary-600);
-}
-.v-shape__box--shadow { border: 0; }
-.v-shape__name { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
-
-/* ── Recipe (Adding a component) ─────────────────────────────────────────── */
-
-.v-recipe {
-  margin: 0;
-  padding-left: var(--space-6);
-  counter-reset: step;
-}
-.v-recipe li {
-  margin-bottom: var(--space-4);
-  max-width: var(--size-content-max);
-}
+.v-recipe { margin: 0; padding-left: var(--space-6); }
+.v-recipe li { margin-bottom: var(--space-4); max-width: var(--size-content-max); }
 .v-recipe b { font-weight: var(--font-weight-semibold); }
-
-.v-run {
-  display: inline-block;
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-neutral-900);
-  color: var(--color-neutral-100);
-  border-radius: var(--radius-md);
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: var(--font-size-sm);
-}
 
 /* ── Phone width ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 760px) {
-  /* minmax(0, 1fr), not 1fr: a bare 1fr lets a wide table push the whole
-     column past the screen. */
   .v-shell { grid-template-columns: minmax(0, 1fr); }
   .v-nav {
     position: sticky;
@@ -388,24 +479,17 @@ code, pre, .v-mono {
     border-bottom: var(--border-width-hairline) solid var(--color-neutral-200);
   }
   .v-nav__brand, .v-nav__sub, .v-nav__group { display: none; }
-  .v-nav ul {
-    display: flex;
-    flex: 0 0 auto;
-    gap: var(--space-1);
-  }
+  .v-nav ul { display: flex; flex: 0 0 auto; gap: var(--space-1); }
   .v-nav li { flex: 0 0 auto; }
   .v-nav a { white-space: nowrap; }
-  .v-tokens {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-  }
   .v-main { padding: var(--space-8) var(--space-4) var(--space-16); }
+  .v-section { scroll-margin-top: calc(var(--space-16) + var(--space-4)); }
   .v-head h1 { font-size: var(--font-size-2xl); }
   .v-notes { grid-template-columns: 1fr; }
   .v-stage { padding: var(--space-4); }
-  .v-stage .v-field { min-width: 100%; }
-  .v-scale, .v-type { grid-template-columns: auto 1fr; }
-  .v-scale__value, .v-type__row .v-scale__value { grid-column: 1 / -1; }
+  .v-stage .field, .v-stage .card { max-width: 100%; }
+  .v-files__row { grid-template-columns: 1fr; gap: var(--space-1); }
+  .v-tokens, .v-table { display: block; max-width: 100%; overflow-x: auto; }
   .v-tokens .v-arrow { display: none; }
+  .v-grid { grid-template-columns: repeat(auto-fill, minmax(calc(var(--space-16) + var(--space-8)), 1fr)); }
 }

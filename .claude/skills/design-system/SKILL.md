@@ -36,16 +36,17 @@ Component token naming:
 Rendered with live token values at `product/design-system/viewer/index.html`
 (open it next to Brewlog). A component not in this table does not exist.
 
-| Component | Classes | Variants |
+| Component | Classes | Variants, sizes, states |
 |---|---|---|
-| Button | `.btn` + variant | `.btn-primary` `.btn-secondary` `.btn-ghost` `.btn-danger` |
-| Input | `.input`, label via `.field-label` | — |
-| Select | `.select` | — |
-| Badge | `.badge` + variant | `neutral` `primary` `success` `warning` `danger` |
-| Tag | `.tag` | — |
-| Card | `.card` | — |
-| Alert | `.alert` + variant | `info` `success` `warning` `danger` |
-| Rating | `.rating` &gt; `.rating__dot(--filled)` | dots only — never stars (CLAUDE.md decision) |
+| Button | `.btn` + variant | `.btn-primary` `.btn-secondary` `.btn-ghost` `.btn-danger` · sizes `.btn-sm` `.btn-lg` · `.btn-block` `.btn-icon` (square, needs `aria-label`) · `.btn__icon` for an inline SVG · states: hover, active, focus-visible, `:disabled`, `.is-loading` (set `aria-busy`) |
+| Field | `.field` wraps a label and a control | `.field-label` (+ `.field-label__required`), `.field__hint`, `.field__error` (wire with `aria-describedby`) |
+| Input | `.input` inside `.field` | states: hover, focus, `aria-invalid="true"`, `:disabled`; placeholder is a hint, never the label |
+| Select | `.select-wrap` > `.select` | same states as Input; the wrapper draws the chevron, so always use the wrapper |
+| Badge | `.badge` + variant | `neutral` `primary` `success` `warning` `danger` · `.badge--dot` for a leading dot |
+| Tag | `.tag` | `.tag__remove` button inside for a removable tag |
+| Card | `.card` | `.card--muted` `.card--interactive` (focusable, needs `tabindex="0"` or to be a link) · sections `.card__header` `.card__body` `.card__footer` · `.card__title` `.card__meta` |
+| Alert | `.alert` + variant | `info` `success` `warning` `danger` · `.alert__content` > `.alert__title` + text · `.alert__actions` · `.alert__close` |
+| Rating | `.rating` > `.rating__dot(--filled)` | `.rating--lg` · `.rating__label` for the score in words · dots only, never stars (recorded design decision) |
 
 ## Usage guidance
 
@@ -56,3 +57,6 @@ Rendered with live token values at `product/design-system/viewer/index.html`
 - Badges communicate status; tags communicate metadata. Don't swap them.
 - Every interactive element keeps a visible `:focus-visible` state — the
   components ship with one; don't remove it.
+- Disabled is a last resort: a control that cannot be used yet should say
+  why (hint or alert) rather than sit greyed out without explanation.
+- A Select always sits in `.select-wrap`; a bare `.select` has no chevron.

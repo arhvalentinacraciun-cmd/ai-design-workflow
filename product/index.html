@@ -22,27 +22,31 @@
     </header>
 
     <form class="entry-form" id="entry-form">
-      <div>
+      <div class="field">
         <label class="field-label" for="f-name">Coffee</label>
         <input class="input" id="f-name" type="text" placeholder="e.g. Origo — Ethiopia Guji" required>
       </div>
-      <div>
+      <div class="field">
         <label class="field-label" for="f-roast">Roast</label>
-        <select class="select" id="f-roast">
-          <option value="light">Light</option>
-          <option value="medium" selected>Medium</option>
-          <option value="dark">Dark</option>
-        </select>
+        <span class="select-wrap">
+          <select class="select" id="f-roast">
+            <option value="light">Light</option>
+            <option value="medium" selected>Medium</option>
+            <option value="dark">Dark</option>
+          </select>
+        </span>
       </div>
-      <div>
+      <div class="field">
         <label class="field-label" for="f-rating">Rating</label>
-        <select class="select" id="f-rating">
-          <option value="5">5 / 5</option>
-          <option value="4" selected>4 / 5</option>
-          <option value="3">3 / 5</option>
-          <option value="2">2 / 5</option>
-          <option value="1">1 / 5</option>
-        </select>
+        <span class="select-wrap">
+          <select class="select" id="f-rating">
+            <option value="5">5 / 5</option>
+            <option value="4" selected>4 / 5</option>
+            <option value="3">3 / 5</option>
+            <option value="2">2 / 5</option>
+            <option value="1">1 / 5</option>
+          </select>
+        </span>
       </div>
       <button class="btn btn-primary" type="submit">Add entry</button>
     </form>

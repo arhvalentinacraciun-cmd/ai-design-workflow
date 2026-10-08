@@ -17,36 +17,66 @@
   --button-padding-y:    var(--space-2);
   --button-focus-ring-color: var(--color-primary-500);
 
+  --button-sm-padding-x: var(--space-3);
+  --button-sm-padding-y: var(--space-1);
+  --button-lg-padding-x: var(--space-6);
+  --button-lg-padding-y: var(--space-3);
+
   --button-primary-bg:           var(--color-primary-600);
+  --button-primary-bg-hover:     var(--color-primary-700);
+  --button-primary-bg-active:    var(--color-primary-800);
   --button-primary-text:         var(--color-white);
   --button-primary-border-color: var(--color-primary-600);
 
   --button-secondary-bg:           var(--color-neutral-100);
+  --button-secondary-bg-hover:     var(--color-neutral-200);
+  --button-secondary-bg-active:    var(--color-neutral-300);
   --button-secondary-text:         var(--color-neutral-800);
   --button-secondary-border-color: var(--color-neutral-200);
 
   --button-ghost-bg:           transparent;
+  --button-ghost-bg-hover:     var(--color-primary-50);
+  --button-ghost-bg-active:    var(--color-primary-100);
   --button-ghost-text:         var(--color-primary-600);
   --button-ghost-border-color: transparent;
 
-  --button-danger-bg:           var(--color-danger-500);
+  /* Danger sits on 600, not 500: white text on 500 misses AA contrast. */
+  --button-danger-bg:           var(--color-danger-600);
+  --button-danger-bg-hover:     var(--color-danger-700);
+  --button-danger-bg-active:    var(--color-danger-800);
   --button-danger-text:         var(--color-white);
-  --button-danger-border-color: var(--color-danger-500);
+  --button-danger-border-color: var(--color-danger-600);
 
   /* ── Input ─────────────────────────────────────────────────────────────── */
 
   --input-bg:                  var(--color-white);
+  --input-bg-disabled:         var(--color-neutral-100);
   --input-text:                var(--color-neutral-900);
+  --input-text-disabled:       var(--color-neutral-500);
+  --input-placeholder:         var(--color-neutral-500);
   --input-border-color:        var(--color-neutral-300);
+  --input-border-color-hover:  var(--color-neutral-400);
   --input-border-color-focus:  var(--color-primary-500);
+  --input-border-color-error:  var(--color-danger-500);
   --input-radius:              var(--radius-md);
+
+  /* Field: the label, hint and error text around an input or select */
+  --field-label-text:    var(--color-neutral-900);
+  --field-hint-text:     var(--color-neutral-600);
+  --field-error-text:    var(--color-danger-700);
+  --field-required-text: var(--color-danger-600);
 
   /* ── Select ────────────────────────────────────────────────────────────── */
 
   --select-bg:                 var(--color-white);
+  --select-bg-disabled:        var(--color-neutral-100);
   --select-text:               var(--color-neutral-900);
+  --select-text-disabled:      var(--color-neutral-500);
   --select-border-color:       var(--color-neutral-300);
+  --select-border-color-hover: var(--color-neutral-400);
   --select-border-color-focus: var(--color-primary-500);
+  --select-border-color-error: var(--color-danger-500);
+  --select-chevron-color:      var(--color-neutral-600);
   --select-radius:             var(--radius-md);
 
   /* ── Badge ─────────────────────────────────────────────────────────────── */
@@ -66,20 +96,29 @@
 
   /* ── Tag / Chip ────────────────────────────────────────────────────────── */
 
-  --tag-bg:           var(--color-neutral-100);
-  --tag-text:         var(--color-neutral-700);
-  --tag-border-color: var(--color-neutral-200);
-  --tag-radius:       var(--radius-full);
+  --tag-bg:                var(--color-neutral-100);
+  --tag-text:              var(--color-neutral-700);
+  --tag-border-color:      var(--color-neutral-200);
+  --tag-radius:            var(--radius-full);
+  --tag-remove-text:       var(--color-neutral-500);
+  --tag-remove-text-hover: var(--color-neutral-900);
+  --tag-remove-bg-hover:   var(--color-neutral-200);
 
   /* ── Card ──────────────────────────────────────────────────────────────── */
 
-  --card-bg:           var(--color-white);
-  --card-border-color: var(--color-neutral-200);
-  --card-radius:       var(--radius-lg);
+  --card-bg:                 var(--color-white);
+  --card-bg-muted:           var(--color-neutral-50);
+  --card-border-color:       var(--color-neutral-200);
+  --card-border-color-hover: var(--color-neutral-300);
+  --card-divider-color:      var(--color-neutral-200);
+  --card-title-text:         var(--color-neutral-900);
+  --card-meta-text:          var(--color-neutral-600);
+  --card-radius:             var(--radius-lg);
 
   /* ── Alert ─────────────────────────────────────────────────────────────── */
 
   --alert-radius: var(--radius-md);
+  --alert-close-bg-hover: var(--color-neutral-900);
 
   --alert-info-bg:      var(--color-primary-50);
   --alert-info-text:    var(--color-primary-800);
@@ -95,5 +134,6 @@
   --rating-dot-filled: var(--color-primary-600);
   --rating-dot-empty:  var(--color-neutral-300);
   --rating-dot-radius: var(--radius-full);
+  --rating-label-text: var(--color-neutral-600);
 
 }
