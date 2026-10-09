@@ -41,6 +41,9 @@ missing. Then:
 No Claude Code yet? See `docs/no-code-onramp.md` — you can run the first two
 sessions from a claude.ai Project and install later.
 
+Codex, Cursor or Copilot user? The track runs on Claude Code; `docs/codex.md`
+maps what transfers and what does not.
+
 ## How the exercises work
 
 Each exercise is written as a **ticket** — story, acceptance criteria,
