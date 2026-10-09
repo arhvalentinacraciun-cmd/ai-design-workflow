@@ -13,6 +13,10 @@ Run the session-protocol open: read `CLAUDE.md` completely, run
 Tonight the three sentences matter more than usual: they are the first
 thing the mentee will say in the demo. Make them accurate.
 
+If Track phase in `CLAUDE.md` still lists Session 3 as Next, last week's
+close did not record it: move Session 3 to Done and set Next to
+Session 4 · Judgment and demo day · Thu 26 Nov 2026 now.
+
 ## 2. Check the homework
 
 Read `exercises/BRW-104-critique.md` and `exercises/BRW-105-demo-day.md`.
@@ -56,3 +60,8 @@ the track. Then say what the mentee keeps, from BRW-105:
 
 > This repo is yours. Rewrite `CLAUDE.md` for a real project, swap the
 > design system for your own, keep the hook, keep the protocol.
+
+Write the last Track phase: Done lists all four sessions, Next is "none,
+the track is over", the twin is the line above, and Twin progress is
+"not started". Then say that the section can be deleted the day the
+file is rewritten for a real project.

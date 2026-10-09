@@ -1,5 +1,5 @@
 # CLAUDE.md — Brewlog
-**Last updated:** 2026-10-06 (rev 2)
+**Last updated:** 2026-10-09 (rev 3)
 **Maintained by:** whoever is in the session — that's the point
 
 > Read this entire file before doing anything. This is the project memory.
@@ -91,12 +91,36 @@ apps this isn't.
 ## Session Protocol
 
 - **Open:** read this file → check `git status` → summarise project state in
-  three sentences → wait for the kick-off line.
+  three sentences → say where in the track this session is, from Track
+  phase → wait for the kick-off line.
 - **Kick-off:** the designer sends one line: *"Today we're doing [ticket].
   The goal is [goal]."* The ticket's acceptance criteria are the session's
   definition of done.
 - **Close:** on "Session done." → update this file (decisions, state, open
-  questions) → `git status` → remind the designer to commit.
+  questions, Track phase) → `git status` → remind the designer to commit.
+
+---
+
+## Track phase
+
+<!--
+  TEACHING NOTE: this section exists because Brewlog is practised on in a
+  four-session mentoring track. The session skills move it forward at every
+  close, and the opener reads it back, so a session you start at home begins
+  with "you are between Session 2 and 3, this week's twin is a skill of your
+  own". Every build-along in a session has a twin: your own version at home,
+  never mandatory, shown at the next session's show and tell. Delete this
+  section when you adapt the file to your own project.
+-->
+
+- **Done:** nothing yet. A fresh clone starts here.
+- **Next:** Session 1 · Setup day · Thu 5 Nov 2026
+- **This week's twin:** install Claude Code, run the opener once, and send
+  the three sentences back in your pre-work reply.
+- **Twin progress:** not started
+
+Sessions: 1 Setup day (5 Nov) · 2 Memory and skills (12 Nov) · 3 Design
+system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
 
 ---
 
@@ -131,6 +155,8 @@ apps this isn't.
 
 If you are Claude reading this in a new session:
 1. Read this file completely.
-2. Summarise the project state in three sentences.
-3. Ask which ticket is in play. Do not start building without one.
+2. Summarise the project state in three sentences, then say where in the
+   track this session is and what this week's twin is (Track phase).
+3. Ask which ticket is in play. Do not start building without one. The
+   week's twin counts as a ticket.
 4. Do not re-open decided questions unless the designer explicitly asks.

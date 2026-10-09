@@ -10,8 +10,12 @@ description: Use at the start and end of every working session in this repo. Def
 1. Read `CLAUDE.md` completely.
 2. Run `git status` and note uncommitted work.
 3. Summarise the project state in three sentences.
-4. Wait for the kick-off line: *"Today we're doing [ticket]. The goal is
-   [goal]."* Do not start building without a ticket in play.
+4. Read the Track phase section of `CLAUDE.md` and add one line: which
+   session is done, which is next, and what this week's twin is. If the
+   designer is here for the twin, offer to start it.
+5. Wait for the kick-off line: *"Today we're doing [ticket]. The goal is
+   [goal]."* Do not start building without a ticket in play. The twin
+   counts as a ticket.
 
 ## During
 
@@ -27,8 +31,14 @@ description: Use at the start and end of every working session in this repo. Def
 
 1. Update `CLAUDE.md`: Current State, any new decisions (with date and
    rationale), any new Open Questions.
-2. Run `git status` and list what changed.
-3. Remind the designer to commit, and propose a commit message.
+2. Update Track phase: ask how this week's twin is going and write the
+   answer in one line under Twin progress. If tonight's ticket was BRW-101
+   and Next still says Session 1, Session 1 is done: move it to Done, set
+   Next to Session 2 (12 Nov), and set the twin to *"the BRW-101 stretch,
+   or one small task of your own in the repo"*. Sessions 2 to 4 have
+   skills that do this step for them.
+3. Run `git status` and list what changed.
+4. Remind the designer to commit, and propose a commit message.
 
 A session that ends without step 1 loses its memory. That is the failure
 this whole repo exists to prevent.

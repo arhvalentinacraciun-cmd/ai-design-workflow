@@ -20,6 +20,11 @@ If there is uncommitted work from BRW-101, say so and offer to commit it
 before anything else. Last week's work should be safe before tonight's
 starts.
 
+If Track phase in `CLAUDE.md` still lists Session 1 as Next, last week's
+close did not record it: move Session 1 to Done and set Next to
+Session 2 · Memory and skills · Thu 12 Nov 2026 now, so the file is
+right before tonight's work begins.
+
 ## 2. Load the ticket
 
 Read `exercises/BRW-102-teach-it-memory.md` in full. Tonight the skill
@@ -48,3 +53,8 @@ twin, so it is in the chat before anyone leaves:
 > Build a skill of your own for a process you repeat a lot. Bring it to
 > Session 3 for show and tell. Optional: ask the agent to keep a roadmap
 > file for your project.
+
+Write it into Track phase in `CLAUDE.md`: Done gains Session 2, Next
+becomes Session 3 · Design system, spec-first · Thu 19 Nov 2026, the twin
+is the text above, Twin progress is "not started". Any session opened at
+home this week will then start from there.
