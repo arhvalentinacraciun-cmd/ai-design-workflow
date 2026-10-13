@@ -7,8 +7,9 @@ description: The mentee types /session-4 at the start of Session 4 (Judgment and
 
 ## 1. Open
 
-Run the session-protocol open: read `CLAUDE.md` completely, run
-`git status`, summarise the project state in three sentences.
+Run the session-protocol open: `/vault-load`, then `git status`, then the
+project state in three sentences. Also read `memory/exercise-notes.md`:
+its three lines per ticket are the raw material for tonight's demo.
 
 Tonight the three sentences matter more than usual: they are the first
 thing the mentee will say in the demo. Make them accurate.

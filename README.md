@@ -13,8 +13,8 @@ then transplant the pattern into your own projects.
 
 | Piece | File(s) | What it teaches |
 |---|---|---|
-| Project memory | `CLAUDE.md` | What the AI should never forget: decisions, rules, state |
-| Skills | `.claude/skills/` | Encoding your standards so they load when relevant; `/session-2…4` open each session |
+| Project memory | `CLAUDE.md` + `memory/` | What the AI should never forget. Decisions and rules always load (`CLAUDE.md`); facts load on demand (`memory/`); `/vault-load` and `/vault-save` read and write it at every open and close |
+| Skills | `.claude/skills/` | Encoding your standards so they load when relevant; `/session-2…4` open each session, `/new-ticket` writes one, `/critique` judges the result |
 | Guardrail | `.claude/settings.json` + `hooks/scan-hardcoded.sh` | Rules that are *enforced*, not just written down |
 | Design system | `product/design-system/` | Three token layers an AI can safely build with; `stories/` hold the spec for a component before it exists; `viewer/` renders every component with its live tokens |
 | Practice product | `product/` | **Brewlog** — a small coffee-tasting journal to build on |
@@ -70,8 +70,8 @@ between a guideline and a guardrail.
 
 Everything here is a pattern, not a framework. To adapt it to your own
 project: copy `CLAUDE.md` and rewrite every section truthfully, copy
-`.claude/` and edit the skills to match *your* design system and standards,
-and keep the hook. If you'd like help adapting the workflow to your team,
+`memory/` and empty its files (keep the shape), copy `.claude/` and edit
+the skills to match *your* design system and standards, and keep the hook. If you'd like help adapting the workflow to your team,
 open an issue or reach out — that conversation is exactly what this repo
 exists to start.
 

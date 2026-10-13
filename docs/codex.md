@@ -10,7 +10,7 @@ tools; treat it as a map, not a guarantee.
 
 | Piece | File | On another tool |
 |---|---|---|
-| Project memory | `CLAUDE.md` | `AGENTS.md` at the root points at it. Codex, Cursor and Copilot all read `AGENTS.md`. |
+| Project memory | `CLAUDE.md` + `memory/` | `AGENTS.md` at the root points at both. Codex, Cursor and Copilot all read `AGENTS.md`; the memory files are plain Markdown and read anywhere. |
 | Exercises | `exercises/` | Tool-neutral. The kick-off line and "Session done." work anywhere the memory file is read. |
 | Design system | `product/design-system/` | Plain CSS and HTML; the viewer opens in any browser. |
 | Brewlog | `product/` | Same. |
@@ -21,7 +21,7 @@ tools; treat it as a map, not a guarantee.
 | Piece | File | Why it is tool-specific |
 |---|---|---|
 | The guardrail | `.claude/settings.json` registers `hooks/scan-hardcoded.sh` to run after every Write or Edit | The script reads Claude Code's hook payload and prints violations as plain text, which Claude Code feeds back into the session. Other tools have hooks with a different payload and a different output shape. |
-| The skills | `.claude/skills/*/SKILL.md`, typed as `/critique`, `/new-ticket`, `/session-2`… | The `SKILL.md` format is shared, but the folder and the way you invoke a skill differ per tool. |
+| The skills | `.claude/skills/*/SKILL.md`, typed as `/vault-load`, `/vault-save`, `/critique`, `/new-ticket`, `/session-2`… | The `SKILL.md` format is shared, but the folder and the way you invoke a skill differ per tool. Without `/vault-load` and `/vault-save`, open and close the session by hand: read the three always-read files at open, and at close write the session's decisions into `CLAUDE.md` and rewrite `memory/_continuity.md`. |
 | The installer | `install.sh` | Checks for Claude Code and installs nothing for other tools. |
 
 Without the hook, the no-hardcoding rule in `CLAUDE.md` is still read and

@@ -34,6 +34,11 @@ The difference between a chat and a colleague is that a colleague pushes
 back with a reason. The pushback came from a file **you** wrote — which
 means the quality of the memory is yours to own.
 
+The decision went into `CLAUDE.md`, not into `memory/`, on purpose: a
+decision has to load every session, so it lives in the always-read tier.
+The `memory/` folder is for facts that load only when needed. The split
+is what keeps the always-read tier short enough to read in full.
+
 ## Stretch (optional)
 
 Write a second decision that is deliberately ambiguous. Start a session and

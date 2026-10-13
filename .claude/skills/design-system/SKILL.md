@@ -35,6 +35,8 @@ Component token naming:
 
 Rendered with live token values at `product/design-system/viewer/index.html`
 (open it next to Brewlog). A component not in this table does not exist.
+Why each version is the way it is: `memory/design-system-history.md`
+(read it before changing tokens, the palette or component states).
 
 | Component | Classes | Variants, sizes, states |
 |---|---|---|

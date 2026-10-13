@@ -6,15 +6,18 @@ description: The mentee types /session-2 at the start of Session 2 (Memory and s
 # Session 2 · Memory and skills
 
 This file is tonight's first lesson. Last week everyone opened the session
-by hand: read `CLAUDE.md`, check git, three sentences, wait for a ticket.
-That is a process you repeat every session, so it became a skill. Typing
-`/session-2` runs it. Everything you repeat often enough can be written
-down the same way.
+by hand: read `CLAUDE.md` and the two memory files it points at, check
+git, three sentences, wait for a ticket. That is a process you repeat
+every session, so it became a skill: `/vault-load` does the reading, and
+typing `/session-2` runs it with tonight's ticket. Everything you repeat
+often enough can be written down the same way.
 
 ## 1. Open
 
-Run the session-protocol open: read `CLAUDE.md` completely, run
-`git status`, summarise the project state in three sentences.
+Run the session-protocol open: `/vault-load` (reads `CLAUDE.md`,
+`memory/MEMORY.md` and `memory/_continuity.md`), run `git status`,
+summarise the project state in three sentences. Name the on-demand files
+you did not read; tonight is the night the mentee learns why.
 
 If there is uncommitted work from BRW-101, say so and offer to commit it
 before anything else. Last week's work should be safe before tonight's

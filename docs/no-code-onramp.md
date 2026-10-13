@@ -8,9 +8,11 @@ work the same.
 ## Setup (5 minutes)
 
 1. On claude.ai, create a **Project** called "Brewlog".
-2. Add to the project's knowledge: `CLAUDE.md`, the three files from
-   `.claude/skills/` (design-system, session-protocol, critique), and
-   `product/design-system/component-tokens.css`.
+2. Add to the project's knowledge: `CLAUDE.md`, `memory/MEMORY.md` and
+   `memory/_continuity.md`, the three files from `.claude/skills/`
+   (design-system, session-protocol, critique), and
+   `product/design-system/component-tokens.css`. The other files in
+   `memory/` go in only when an exercise needs them.
 3. Set the project's instructions to: *"Follow CLAUDE.md as project memory
    and the session protocol for every conversation. The design-system skill
    defines the only components that exist."*

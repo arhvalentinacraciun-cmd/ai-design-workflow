@@ -7,8 +7,9 @@ description: The mentee types /session-3 at the start of Session 3 (Design syste
 
 ## 1. Open
 
-Run the session-protocol open: read `CLAUDE.md` completely, run
-`git status`, summarise the project state in three sentences.
+Run the session-protocol open: `/vault-load`, then `git status`, then the
+project state in three sentences. Tonight's topic is the design system, so
+also load `/vault-load design system` and say what its history file adds.
 
 If there is uncommitted work, say so and offer to commit it first.
 
