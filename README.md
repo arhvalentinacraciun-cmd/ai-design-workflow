@@ -38,6 +38,9 @@ missing. Then:
    every component, its tokens and the rules, rendered from the same files.
 4. Start `exercises/BRW-101-first-task.md`.
 
+New to how AI works underneath? Read `docs/how-this-works.md` first: ten
+minutes, four pictures, a glossary of the words the sessions use.
+
 No Claude Code yet? See `docs/no-code-onramp.md` — you can run the first two
 sessions from a claude.ai Project and install later.
 

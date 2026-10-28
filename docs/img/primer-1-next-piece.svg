@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 230" role="img" aria-label="A sentence written so far, then an empty slot for the next piece, with three candidate pieces ranked by likelihood" font-family="Inter, -apple-system, 'Segoe UI', system-ui, sans-serif">
+  <rect width="640" height="230" rx="12" fill="#F5F4EE"/>
+  <text x="16" y="34" font-size="15" fill="#545D57">Written so far (your words and its own)</text>
+  <text x="412" y="34" font-size="15" fill="#1F6F4A" font-weight="600">Next piece</text>
+
+  <g font-size="17" fill="#14201A">
+    <rect x="16" y="50" width="50" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
+    <text x="41" y="75" text-anchor="middle">The</text>
+    <rect x="74" y="50" width="68" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
+    <text x="108" y="75" text-anchor="middle">hook</text>
+    <rect x="150" y="50" width="86" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
+    <text x="193" y="75" text-anchor="middle">rejects</text>
+    <rect x="244" y="50" width="76" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
+    <text x="282" y="75" text-anchor="middle">literal</text>
+    <rect x="328" y="50" width="76" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
+    <text x="366" y="75" text-anchor="middle">values</text>
+  </g>
+
+  <rect x="412" y="50" width="88" height="38" rx="8" fill="none" stroke="#1F6F4A" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="456" y="76" text-anchor="middle" font-size="19" fill="#1F6F4A" font-weight="600">?</text>
+
+  <line x1="456" y1="88" x2="456" y2="104" stroke="#1F6F4A" stroke-width="2"/>
+  <polygon points="450,102 462,102 456,112" fill="#1F6F4A"/>
+
+  <g font-size="16" fill="#14201A">
+    <text x="412" y="135">because</text>
+    <rect x="500" y="121" width="88" height="16" rx="4" fill="#1F6F4A"/>
+    <text x="596" y="135" font-size="14" fill="#545D57">61%</text>
+
+    <text x="412" y="169">when</text>
+    <rect x="500" y="155" width="35" height="16" rx="4" fill="#9DB9AA"/>
+    <text x="596" y="169" font-size="14" fill="#545D57">24%</text>
+
+    <text x="412" y="203">and</text>
+    <rect x="500" y="189" width="12" height="16" rx="4" fill="#9DB9AA"/>
+    <text x="596" y="203" font-size="14" fill="#545D57">8%</text>
+  </g>
+  <text x="16" y="135" font-size="15" fill="#545D57">It picks one, usually the likeliest,</text>
+  <text x="16" y="157" font-size="15" fill="#545D57">adds it, and starts again.</text>
+  <text x="16" y="203" font-size="15" fill="#545D57">One piece = one token.</text>
+</svg>
