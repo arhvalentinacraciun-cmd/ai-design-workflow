@@ -1,41 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 230" role="img" aria-label="A sentence written so far, then an empty slot for the next piece, with three candidate pieces ranked by likelihood" font-family="Inter, -apple-system, 'Segoe UI', system-ui, sans-serif">
-  <rect width="640" height="230" rx="12" fill="#F5F4EE"/>
-  <text x="16" y="34" font-size="15" fill="#545D57">Written so far (your words and its own)</text>
-  <text x="412" y="34" font-size="15" fill="#1F6F4A" font-weight="600">Next piece</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" role="img" aria-label="Five tokens written so far, one of them the word guardrail split in two, then an empty slot for the next piece with three candidates ranked by likelihood" font-family="Inter, -apple-system, 'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <filter id="sh1" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#14201A" flood-opacity="0.14"/></filter>
+  </defs>
+  <rect width="640" height="250" rx="12" fill="#F5F4EE"/>
+  <text x="16" y="30" font-size="15" fill="#545D57">Written so far</text>
+  <text x="400" y="30" font-size="15" fill="#1F6F4A" font-weight="600">Next piece</text>
 
-  <g font-size="17" fill="#14201A">
-    <rect x="16" y="50" width="50" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
-    <text x="41" y="75" text-anchor="middle">The</text>
-    <rect x="74" y="50" width="68" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
-    <text x="108" y="75" text-anchor="middle">hook</text>
-    <rect x="150" y="50" width="86" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
-    <text x="193" y="75" text-anchor="middle">rejects</text>
-    <rect x="244" y="50" width="76" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
-    <text x="282" y="75" text-anchor="middle">literal</text>
-    <rect x="328" y="50" width="76" height="38" rx="8" fill="#FFFFFF" stroke="#C9C6B8"/>
-    <text x="366" y="75" text-anchor="middle">values</text>
+  <g font-size="17" fill="#14201A" filter="url(#sh1)">
+    <rect x="16" y="46" width="72" height="40" rx="8" fill="#FFFFFF" stroke="#D6D4C8"/>
+    <text x="52" y="72" text-anchor="middle">Every</text>
+    <rect x="96" y="46" width="74" height="40" rx="8" fill="#FFFFFF" stroke="#D6D4C8"/>
+    <text x="133" y="72" text-anchor="middle">guard</text>
+    <rect x="172" y="46" width="56" height="40" rx="8" fill="#FFFFFF" stroke="#D6D4C8"/>
+    <text x="200" y="72" text-anchor="middle">rail</text>
+    <rect x="240" y="46" width="78" height="40" rx="8" fill="#FFFFFF" stroke="#D6D4C8"/>
+    <text x="279" y="72" text-anchor="middle">needs</text>
+    <rect x="326" y="46" width="40" height="40" rx="8" fill="#FFFFFF" stroke="#D6D4C8"/>
+    <text x="346" y="72" text-anchor="middle">a</text>
   </g>
+  <g font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace" font-size="11" fill="#1F6F4A" text-anchor="middle" letter-spacing="0.04em">
+    <text x="52" y="104">token</text>
+    <text x="133" y="104">token</text>
+    <text x="200" y="104">token</text>
+    <text x="279" y="104">token</text>
+    <text x="346" y="104">token</text>
+  </g>
+  <path d="M96,116 L96,110 M96,116 L228,116 M228,116 L228,110" fill="none" stroke="#545D57" stroke-width="1"/>
+  <text x="162" y="134" font-size="12" fill="#545D57" text-anchor="middle">one word, two tokens</text>
 
-  <rect x="412" y="50" width="88" height="38" rx="8" fill="none" stroke="#1F6F4A" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="456" y="76" text-anchor="middle" font-size="19" fill="#1F6F4A" font-weight="600">?</text>
-
-  <line x1="456" y1="88" x2="456" y2="104" stroke="#1F6F4A" stroke-width="2"/>
-  <polygon points="450,102 462,102 456,112" fill="#1F6F4A"/>
+  <rect x="400" y="46" width="88" height="40" rx="8" fill="none" stroke="#1F6F4A" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="444" y="73" text-anchor="middle" font-size="19" fill="#1F6F4A" font-weight="600">?</text>
+  <line x1="444" y1="88" x2="444" y2="102" stroke="#1F6F4A" stroke-width="2"/>
+  <polygon points="438,100 450,100 444,110" fill="#1F6F4A"/>
 
   <g font-size="16" fill="#14201A">
-    <text x="412" y="135">because</text>
-    <rect x="500" y="121" width="88" height="16" rx="4" fill="#1F6F4A"/>
-    <text x="596" y="135" font-size="14" fill="#545D57">61%</text>
-
-    <text x="412" y="169">when</text>
-    <rect x="500" y="155" width="35" height="16" rx="4" fill="#9DB9AA"/>
-    <text x="596" y="169" font-size="14" fill="#545D57">24%</text>
-
-    <text x="412" y="203">and</text>
-    <rect x="500" y="189" width="12" height="16" rx="4" fill="#9DB9AA"/>
-    <text x="596" y="203" font-size="14" fill="#545D57">8%</text>
+    <text x="400" y="137">rule</text>
+    <rect x="480" y="123" width="96" height="14" rx="4" fill="#1F6F4A"/>
+    <text x="624" y="137" text-anchor="end" font-size="14" fill="#545D57">61%</text>
+    <text x="400" y="169">check</text>
+    <rect x="480" y="155" width="38" height="14" rx="4" fill="#9DB9AA"/>
+    <text x="624" y="169" text-anchor="end" font-size="14" fill="#545D57">24%</text>
+    <text x="400" y="201">name</text>
+    <rect x="480" y="187" width="13" height="14" rx="4" fill="#9DB9AA"/>
+    <text x="624" y="201" text-anchor="end" font-size="14" fill="#545D57">8%</text>
   </g>
-  <text x="16" y="135" font-size="15" fill="#545D57">It picks one, usually the likeliest,</text>
-  <text x="16" y="157" font-size="15" fill="#545D57">adds it, and starts again.</text>
-  <text x="16" y="203" font-size="15" fill="#545D57">One piece = one token.</text>
+  <text x="16" y="166" font-size="15" fill="#545D57">It picks one, usually the likeliest,</text>
+  <text x="16" y="188" font-size="15" fill="#545D57">adds it, and reads everything again.</text>
+  <text x="16" y="226" font-size="15" fill="#545D57">Each box is one token: a word, or part of one.</text>
 </svg>

@@ -1,39 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" role="img" aria-label="The context window as one box with a fixed size, filled from the top by start-up files, files read, your messages and its own answers; training knowledge sits outside the box" font-family="Inter, -apple-system, 'Segoe UI', system-ui, sans-serif">
-  <rect width="640" height="310" rx="12" fill="#F5F4EE"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" role="img" aria-label="The context window as one box with a fixed size of about a million tokens, filled from the top by the files loaded at the start, the files it has read, what you wrote and what it wrote and did, with room left shrinking; training sits outside the box, and a second card says what happens when the box is full" font-family="Inter, -apple-system, 'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <filter id="sh2" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#14201A" flood-opacity="0.14"/></filter>
+  </defs>
+  <rect width="640" height="350" rx="12" fill="#F5F4EE"/>
 
-  <text x="16" y="34" font-size="15" fill="#1F6F4A" font-weight="600">Context window: what it has in front of it right now</text>
-  <rect x="16" y="46" width="400" height="248" rx="10" fill="#FFFFFF" stroke="#14201A" stroke-width="2"/>
+  <text x="16" y="30" font-size="15" fill="#1F6F4A" font-weight="600">Context window: what it has in front of it right now</text>
+  <rect x="16" y="44" width="400" height="280" rx="12" fill="#FFFFFF" stroke="#14201A" stroke-width="2"/>
 
-  <g font-size="16" fill="#14201A">
-    <rect x="28" y="58" width="376" height="44" rx="6" fill="#DCEBE2" stroke="#1F6F4A"/>
-    <text x="40" y="78">Loaded at start: CLAUDE.md, memory index</text>
-    <text x="40" y="96" font-size="13" fill="#545D57">the same every session, by design</text>
+  <g filter="url(#sh2)">
+    <rect x="28" y="56" width="376" height="48" rx="8" fill="#DCEBE2" stroke="#1F6F4A"/>
+    <rect x="28" y="112" width="376" height="48" rx="8" fill="#F5F4EE" stroke="#D6D4C8"/>
+    <rect x="28" y="168" width="376" height="48" rx="8" fill="#F5F4EE" stroke="#D6D4C8"/>
+    <rect x="28" y="224" width="376" height="48" rx="8" fill="#F5F4EE" stroke="#D6D4C8"/>
+  </g>
+  <rect x="28" y="280" width="376" height="26" rx="8" fill="none" stroke="#C9C6B8" stroke-dasharray="6 4"/>
 
-    <rect x="28" y="108" width="376" height="40" rx="6" fill="#F5F4EE" stroke="#C9C6B8"/>
-    <text x="40" y="133">Files it has read this session</text>
+  <!-- icons -->
+  <g fill="none" stroke="#1F6F4A" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M44 68 h14 v20 l-7 -5 l-7 5 z"/>
+  </g>
+  <g fill="none" stroke="#545D57" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M44 124 h10 l5 5 v15 h-15 z M54 124 v5 h5 M48 139 h7 M48 144 h7"/>
+    <path d="M43 182 h18 a2 2 0 0 1 2 2 v9 a2 2 0 0 1 -2 2 h-9 l-5 4 v-4 h-4 a2 2 0 0 1 -2 -2 v-9 a2 2 0 0 1 2 -2 z"/>
+  </g>
+  <path d="M52 236 l2 7 l7 2 l-7 2 l-2 7 l-2 -7 l-7 -2 l7 -2 z" fill="#1F6F4A"/>
 
-    <rect x="28" y="154" width="376" height="40" rx="6" fill="#F5F4EE" stroke="#C9C6B8"/>
-    <text x="40" y="179">Your messages</text>
-
-    <rect x="28" y="200" width="376" height="40" rx="6" fill="#F5F4EE" stroke="#C9C6B8"/>
-    <text x="40" y="225">Its own answers and tool results</text>
-
-    <rect x="28" y="246" width="376" height="36" rx="6" fill="none" stroke="#C9C6B8" stroke-dasharray="6 4"/>
-    <text x="40" y="269" fill="#545D57">free space, shrinking as the session goes on</text>
+  <g font-size="15" fill="#14201A" font-weight="600">
+    <text x="76" y="77">Loaded at the start</text>
+    <text x="76" y="133">Files it has read</text>
+    <text x="76" y="189">What you wrote</text>
+    <text x="76" y="245">What it wrote and did</text>
+  </g>
+  <g font-size="12.5" fill="#545D57">
+    <text x="76" y="95">CLAUDE.md and the memory index, every time</text>
+    <text x="76" y="151">the ones it opened for this task</text>
+    <text x="76" y="207">your requests and your replies</text>
+    <text x="76" y="263">its answers and what each tool sent back</text>
+    <text x="40" y="298">room left, shrinking as the session goes on</text>
   </g>
 
-  <text x="436" y="34" font-size="15" fill="#545D57" font-weight="600">Outside the box</text>
-  <rect x="436" y="46" width="188" height="92" rx="10" fill="#ECEAE0" stroke="#C9C6B8"/>
-  <text x="448" y="72" font-size="16" fill="#14201A">Training</text>
-  <text x="448" y="94" font-size="14" fill="#545D57">language and general</text>
-  <text x="448" y="112" font-size="14" fill="#545D57">knowledge, fixed before</text>
-  <text x="448" y="130" font-size="14" fill="#545D57">you opened it</text>
+  <rect x="226" y="314" width="190" height="22" rx="11" fill="#14201A"/>
+  <text x="321" y="329" font-size="12" fill="#F5F4EE" text-anchor="middle" font-weight="600">fixed size, about 1M tokens</text>
 
-  <rect x="436" y="154" width="188" height="140" rx="10" fill="none" stroke="#A8261F" stroke-width="2"/>
-  <text x="448" y="180" font-size="16" fill="#A8261F" font-weight="600">When the box is full</text>
-  <text x="448" y="204" font-size="14" fill="#14201A">the oldest parts are</text>
-  <text x="448" y="222" font-size="14" fill="#14201A">summarised or dropped.</text>
-  <text x="448" y="250" font-size="14" fill="#14201A">A session has an end.</text>
-  <text x="448" y="268" font-size="14" fill="#14201A">New task, new session;</text>
-  <text x="448" y="286" font-size="14" fill="#14201A">the files come back.</text>
+  <text x="432" y="30" font-size="15" fill="#545D57" font-weight="600">Outside the box</text>
+  <rect x="432" y="44" width="192" height="100" rx="12" fill="#ECEAE0" stroke="#D6D4C8"/>
+  <text x="446" y="70" font-size="16" fill="#14201A" font-weight="600">Training</text>
+  <text x="446" y="92" font-size="13" fill="#545D57">what it learned before</text>
+  <text x="446" y="110" font-size="13" fill="#545D57">it was released; fixed,</text>
+  <text x="446" y="128" font-size="13" fill="#545D57">nothing you do changes it</text>
+
+  <rect x="432" y="160" width="192" height="164" rx="12" fill="#FFFFFF" stroke="#A8261F" stroke-width="2"/>
+  <text x="446" y="186" font-size="15" fill="#A8261F" font-weight="600">When the box is full</text>
+  <text x="446" y="208" font-size="13" fill="#14201A">the oldest parts are</text>
+  <text x="446" y="226" font-size="13" fill="#14201A">summarised or dropped,</text>
+  <text x="446" y="244" font-size="13" fill="#14201A">and answers start to drift:</text>
+  <text x="446" y="262" font-size="13" fill="#14201A">invented details, old</text>
+  <text x="446" y="280" font-size="13" fill="#14201A">values read as current.</text>
+  <text x="446" y="306" font-size="13" fill="#1F6F4A" font-weight="600">New task, new session.</text>
 </svg>
