@@ -21,7 +21,7 @@ agent treats it as not existing, which is correct.
 Rules that fell out of this history:
 
 - Every colour and radius in a component goes through a Layer 2 token;
-  the shared scales may be used directly (decision in `CLAUDE.md`).
+  the shared scales may be used directly (decision in `AGENTS.md`).
 - A contrast change is checked in the viewer's Accessibility tab, which
   computes the live pairs, not by eye.
 - A new version gets a row here *and* in the viewer's Changelog.

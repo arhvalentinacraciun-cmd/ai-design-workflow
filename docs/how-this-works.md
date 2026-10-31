@@ -4,10 +4,11 @@ A ten-minute read before Session 1, with four pictures and a glossary at the
 end. There is nothing to install on this page; the install check is in your
 pre-work email.
 
-The people in this cohort start from very different places with AI. Some use
-it every day and some have barely opened it. This page is written for the
-second group, so that on Thursday nobody has to guess what a word means. If
-you are in the first group, look at the four pictures and skim the glossary.
+Everyone in this cohort already uses AI, each in their own way and for their
+own tasks. So that we all speak the same language on Thursday, this page goes
+through a few basic AI concepts once, in plain words, and everyone starts
+level. If you use AI every day, the four pictures and the glossary are still
+worth ten minutes: they are the vocabulary the four sessions are built on.
 
 In Session 1 you will type an instruction to an AI, watch it edit files in a
 small project, and see a rule push back on it. All of that is easier to
@@ -42,10 +43,13 @@ Three things follow from this:
   you want, what it is for and what a good result looks like, and the reply
   lands closer to what you had in mind. There are no magic phrases to learn;
   it simply works from what you gave it.
-- **Ask the same thing twice and you can get two different answers.** At
-  each step there are several pieces that would fit, and the model does not
-  always take the same one. For a quick chat this does not matter. For a
-  project it does, so in this track the instructions that must be the same
+- **Ask the same thing twice and you can get two different answers.** Look
+  at the bars in the picture: when the model works out the next piece, it does
+  not find one right answer. It finds several pieces that could follow, each
+  with a likelihood, and often more than one is likely. It usually takes the
+  likeliest, but not always, and one different piece early on sends the rest
+  of the sentence a different way. For a quick chat this does not matter. For
+  a project it does, so in this track the instructions that must be the same
   every time are saved in files the AI reads at the start, instead of being
   typed again in every session.
 
@@ -80,7 +84,7 @@ So:
   and start a new one for the next task. The longer a session runs, the less
   room it has for the task in front of it.
 - **What is loaded at the start matters most.** In the starter project, the
-  file called `CLAUDE.md` and the memory index are read first, every session.
+  file called `AGENTS.md` and the memory index are read first, every session.
   This is why teaching the AI a decision means writing the decision in a file
   rather than saying it in chat: what you said in chat is gone when the
   session closes, and what is in the file is back in the box next time.
@@ -110,7 +114,7 @@ folder. Everything you install in this track sits on this loop.
   enforce. This is the difference between a rule written down in a markdown
   file and a rule enforced via hooks; you will see this in action in the first
   hour of Session 1.
-- **Memory files and `CLAUDE.md`**: read at the start, as in section 2.
+- **Memory files and `AGENTS.md`**: read at the start, as in section 2.
 - **Agent definition** (Session 2): a file that gives the loop a role,
   constraints and reference material for one specific job. A persona line on
   its own ("you are a senior designer") barely changes the output; the
@@ -172,8 +176,8 @@ the one you live in.
 - **Hook**: a small program that runs by itself when something happens, for
   example after every file edit, and can reject the result.
 - **Memory**: the files the agent reads at the start of a session and writes
-  at the end (`CLAUDE.md` and the `memory/` folder).
-- **`CLAUDE.md`**: the one file the project always loads first. It holds the
+  at the end (`AGENTS.md` and the `memory/` folder).
+- **`AGENTS.md`**: the one file the project always loads first. It holds the
   brief, the decisions, the rules and the session protocol.
 - **Hallucination**: a fluent answer that is wrong, stated with the same
   confidence as a right one.
@@ -235,7 +239,7 @@ link; the other two are there when you want the longer story.
 ## Before Thursday
 
 Do the install check from your pre-work email, run the opening line once
-("Read CLAUDE.md, then give me the state of the project in three
+("Read AGENTS.md, then give me the state of the project in three
 sentences"), and send the three sentences back. If anything on this page did
 not land, bring the question; the opening block of Session 1 is these four
 pictures, live.

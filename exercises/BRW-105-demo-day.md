@@ -21,11 +21,11 @@ Three minutes, three beats, hard timer:
 ## Acceptance criteria
 
 - [ ] The demo runs from your machine, live. No slides.
-- [ ] `CLAUDE.md` is up to date — Current State reflects everything shown.
+- [ ] `AGENTS.md` is up to date — Current State reflects everything shown.
 - [ ] Your rubric proposal from BRW-104 is ready to share.
 
 ## After the program
 
-This repo is yours. Rewrite `CLAUDE.md` for a real project, swap the design
+This repo is yours. Rewrite `AGENTS.md` for a real project, swap the design
 system for your own, keep the hook, keep the protocol. The training wheels
 were the product.

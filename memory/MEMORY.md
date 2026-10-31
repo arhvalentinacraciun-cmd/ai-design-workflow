@@ -1,6 +1,6 @@
 # Memory index — Brewlog
 
-Two tiers. **Always read** at session open, right after `CLAUDE.md`: this
+Two tiers. **Always read** at session open, right after `AGENTS.md`: this
 file and `_continuity.md`. **On demand**: every other file in this folder.
 Read one when its line below matches the task in front of you, or when the
 designer types `/vault-load <topic>`. Do not read them all at open; the

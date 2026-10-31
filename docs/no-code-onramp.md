@@ -8,12 +8,12 @@ work the same.
 ## Setup (5 minutes)
 
 1. On claude.ai, create a **Project** called "Brewlog".
-2. Add to the project's knowledge: `CLAUDE.md`, `memory/MEMORY.md` and
+2. Add to the project's knowledge: `AGENTS.md`, `memory/MEMORY.md` and
    `memory/_continuity.md`, the three files from `.claude/skills/`
    (design-system, session-protocol, critique), and
    `product/design-system/component-tokens.css`. The other files in
    `memory/` go in only when an exercise needs them.
-3. Set the project's instructions to: *"Follow CLAUDE.md as project memory
+3. Set the project's instructions to: *"Follow AGENTS.md as project memory
    and the session protocol for every conversation. The design-system skill
    defines the only components that exist."*
 
@@ -28,7 +28,7 @@ artifact) — clumsier than Claude Code, but every concept transfers.
 
 - The **hook**: nothing enforces the no-hardcoding rule — you are the hook.
   Scan for `#hex` and `px` yourself before accepting output.
-- **Session close** can't run `git status` — update `CLAUDE.md` in the
+- **Session close** can't run `git status` — update `AGENTS.md` in the
   project knowledge manually after each session.
 
 Install Claude Code before Session 3 if you can — BRW-103 onward is much

@@ -9,13 +9,16 @@ AI-assisted design project should be wired: it has **memory**, **skills**,
 You clone it in Session 1, work in it every session, and keep it forever —
 then transplant the pattern into your own projects.
 
+It runs on any of four coding agents: Claude Code, Codex, Antigravity CLI or
+Grok Build. One memory file, one guardrail, wired for each.
+
 ## What's inside
 
 | Piece | File(s) | What it teaches |
 |---|---|---|
-| Project memory | `CLAUDE.md` + `memory/` | What the AI should never forget. Decisions and rules always load (`CLAUDE.md`); facts load on demand (`memory/`); `/vault-load` and `/vault-save` read and write it at every open and close |
-| Skills | `.claude/skills/` | Encoding your standards so they load when relevant; `/session-2…4` open each session, `/new-ticket` writes one, `/critique` judges the result |
-| Guardrail | `.claude/settings.json` + `hooks/scan-hardcoded.sh` | Rules that are *enforced*, not just written down |
+| Project memory | `AGENTS.md` + `memory/` | What the AI should never forget. Decisions and rules always load (`AGENTS.md`); facts load on demand (`memory/`); `/vault-load` and `/vault-save` read and write it at every open and close. `CLAUDE.md` is three lines that import it for Claude Code |
+| Skills | `.claude/skills/` | Encoding your standards so they load when relevant; `/session-2…4` open each session, `/new-ticket` writes one, `/critique` judges the result. Claude Code today; the other agents before Session 2 |
+| Guardrail | `hooks/scan-hardcoded.py`, registered in `.claude/settings.json`, `.codex/hooks.json`, `.agents/hooks.json` | Rules that are *enforced*, not just written down |
 | Design system | `product/design-system/` | Three token layers an AI can safely build with; `stories/` hold the spec for a component before it exists; `viewer/` renders every component with its live tokens |
 | Practice product | `product/` | **Brewlog** — a small coffee-tasting journal to build on |
 | Exercises | `exercises/` | One ticket per session plus a demo brief, written with real acceptance criteria |
@@ -28,24 +31,25 @@ cd ai-design-workflow
 ./install.sh
 ```
 
-The installer checks your setup and tells you exactly what (if anything) is
-missing. Then:
+The installer checks your setup, finds which coding agent you have, and
+prints that agent's start command and its one-time trust step. Then:
 
-1. Open the folder in VS Code (or your editor) and start **Claude Code**.
-2. Say: *"Read CLAUDE.md, then give me the state of the project in three sentences."*
+1. Open the folder in VS Code (or your editor) and start your coding agent
+   in it: `claude`, `codex`, `agy` or `grok`.
+2. Say: *"Read AGENTS.md, then give me the state of the project in three sentences."*
 3. Open `product/index.html` in your browser — this is Brewlog, your practice product.
    Next to it, `product/design-system/viewer/index.html` is the design system:
    every component, its tokens and the rules, rendered from the same files.
 4. Start `exercises/BRW-101-first-task.md`.
 
+Which agent, what it costs, and what differs per tool: `docs/tools.md`. The
+track is driven on Claude Code and every exercise is tested there first.
+
 New to how AI works underneath? Read `docs/how-this-works.md` first: ten
 minutes, four pictures, a glossary of the words the sessions use.
 
-No Claude Code yet? See `docs/no-code-onramp.md` — you can run the first two
-sessions from a claude.ai Project and install later.
-
-Codex, Cursor or Copilot user? The track runs on Claude Code; `docs/codex.md`
-maps what transfers and what does not.
+No agent installed yet? See `docs/no-code-onramp.md` — you can run the first
+two sessions from a claude.ai or ChatGPT Project and install later.
 
 ## How the exercises work
 
@@ -65,18 +69,20 @@ the acceptance criteria (not your memory) define "done."
 
 **No hardcoded style values.** Every color, spacing, radius, shadow, and
 font value in `product/` must flow through `var(--token-name)`. A hook scans
-every file the AI writes and pushes violations back to it automatically.
-Read `hooks/scan-hardcoded.sh` — it's ~40 lines, and it's the difference
-between a guideline and a guardrail.
+every file the AI writes and pushes violations back to it automatically, on
+every agent the repo supports. Read `hooks/scan-hardcoded.py` — one scanner
+and one short adapter per agent, and it's the difference between a
+guideline and a guardrail.
 
 ## Using this beyond the program
 
 Everything here is a pattern, not a framework. To adapt it to your own
-project: copy `CLAUDE.md` and rewrite every section truthfully, copy
-`memory/` and empty its files (keep the shape), copy `.claude/` and edit
-the skills to match *your* design system and standards, and keep the hook. If you'd like help adapting the workflow to your team,
-open an issue or reach out — that conversation is exactly what this repo
-exists to start.
+project: copy `AGENTS.md` (and the three-line `CLAUDE.md`) and rewrite every
+section truthfully, copy `memory/` and empty its files (keep the shape), copy
+`.claude/` and edit the skills to match *your* design system and standards,
+and keep the hook with its config for your agent. If you'd like help
+adapting the workflow to your team, open an issue or reach out — that
+conversation is exactly what this repo exists to start.
 
 ## License
 

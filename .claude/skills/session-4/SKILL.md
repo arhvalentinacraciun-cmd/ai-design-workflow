@@ -14,7 +14,7 @@ its three lines per ticket are the raw material for tonight's demo.
 Tonight the three sentences matter more than usual: they are the first
 thing the mentee will say in the demo. Make them accurate.
 
-If Track phase in `CLAUDE.md` still lists Session 3 as Next, last week's
+If Track phase in `AGENTS.md` still lists Session 3 as Next, last week's
 close did not record it: move Session 3 to Done and set Next to
 Session 4 · Judgment and demo day · Thu 26 Nov 2026 now.
 
@@ -23,7 +23,7 @@ Session 4 · Judgment and demo day · Thu 26 Nov 2026 now.
 Read `exercises/BRW-104-critique.md` and `exercises/BRW-105-demo-day.md`.
 Then check, and report in one line each:
 
-- `CLAUDE.md` Current State reflects everything built since Session 1.
+- `AGENTS.md` Current State reflects everything built since Session 1.
   If not, propose the update now.
 - The BRW-104 critique was run: a verdict, a score table, one contested
   score with evidence, one proposed change to the rubric. If any is
@@ -33,7 +33,7 @@ Then check, and report in one line each:
 ## 3. Prepare the demo
 
 The demo is three minutes, live, no slides, three beats. Draft the three
-beats from `git log`, `CLAUDE.md` and the critique, then let the mentee
+beats from `git log`, `AGENTS.md` and the critique, then let the mentee
 rewrite them in their own words:
 
 1. **The thing.** What is on screen, in one sentence.
@@ -59,7 +59,7 @@ Then a dry run: ask the mentee to say it out loud once, and time it.
 On "Session done." run the session-protocol close for the last time in
 the track. Then say what the mentee keeps, from BRW-105:
 
-> This repo is yours. Rewrite `CLAUDE.md` for a real project, swap the
+> This repo is yours. Rewrite `AGENTS.md` for a real project, swap the
 > design system for your own, keep the hook, keep the protocol.
 
 Write the last Track phase: Done lists all four sessions, Next is "none,

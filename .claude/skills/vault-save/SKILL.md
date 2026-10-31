@@ -16,8 +16,8 @@ Go through what happened and sort each item:
 
 | What | Where it goes |
 |---|---|
-| A decision made (with its reason) | `CLAUDE.md` → Design Decisions, dated today, with a one-line **Why**. Decisions are always-read, so they never go in `memory/` |
-| What works now that did not before | `CLAUDE.md` → Current State, one line, dated |
+| A decision made (with its reason) | `AGENTS.md` → Design Decisions, dated today, with a one-line **Why**. Decisions are always-read, so they never go in `memory/` |
+| What works now that did not before | `AGENTS.md` → Current State, one line, dated |
 | A fact about the project a later session will need (how something is built, why a value is what it is, what was tried and dropped) | The matching on-demand file in `memory/`. No match? Propose a new file: name and one-line description, wait for a yes, then create it and add its line to `memory/MEMORY.md` |
 | What happened in the ticket in play | `memory/exercise-notes.md`, under that ticket: what was built, the moment the system pushed back, what you would do differently |
 | A question nobody answered | `memory/_continuity.md` → Open questions |
@@ -63,7 +63,7 @@ session protocol for Track phase and the commit.
   revision under the original, with its reason.
 - **One fact per file.** If a file starts covering two topics, split it
   and fix the index.
-- **Keep the always-read tier short.** If `CLAUDE.md` grows a section that
+- **Keep the always-read tier short.** If `AGENTS.md` grows a section that
   is only sometimes needed, propose moving it to `memory/`.
 - **Say what you did not save**, in one line, if something was borderline.
   The designer decides.

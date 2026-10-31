@@ -131,7 +131,7 @@
   --alert-danger-bg:    var(--color-danger-100);
   --alert-danger-text:  var(--color-danger-700);
 
-  /* ── Rating (dots — see CLAUDE.md decision) ────────────────────────────── */
+  /* ── Rating (dots — see AGENTS.md decision) ────────────────────────────── */
 
   --rating-dot-filled: var(--color-primary-600);
   --rating-dot-empty:  var(--color-neutral-300);

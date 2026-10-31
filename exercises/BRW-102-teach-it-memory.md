@@ -13,7 +13,7 @@ sessions — and to be defended when future-me forgets them.
 
 ## Part 1 — Teach
 
-- [ ] Add a new decision to `CLAUDE.md` → Design Decisions, dated today,
+- [ ] Add a new decision to `AGENTS.md` → Design Decisions, dated today,
       with a one-line rationale. Suggested: **"Coffee names display as
       '[Roaster] — [Origin]'. Entries missing a roaster show just the
       origin, never a placeholder."**
@@ -34,7 +34,7 @@ The difference between a chat and a colleague is that a colleague pushes
 back with a reason. The pushback came from a file **you** wrote — which
 means the quality of the memory is yours to own.
 
-The decision went into `CLAUDE.md`, not into `memory/`, on purpose: a
+The decision went into `AGENTS.md`, not into `memory/`, on purpose: a
 decision has to load every session, so it lives in the always-read tier.
 The `memory/` folder is for facts that load only when needed. The split
 is what keeps the always-read tier short enough to read in full.

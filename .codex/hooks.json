@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(git rev-parse --show-toplevel)/hooks/scan-hardcoded.sh\"",
+            "statusMessage": "Guardrail: scanning the edit for hard-coded style values",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

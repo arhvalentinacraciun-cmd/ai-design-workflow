@@ -1,0 +1,20 @@
+{
+  "context": {
+    "fileName": ["AGENTS.md"]
+  },
+  "hooks": {
+    "AfterTool": [
+      {
+        "matcher": "write_file|replace",
+        "hooks": [
+          {
+            "name": "guardrail-no-hardcoding",
+            "type": "command",
+            "command": "\"$GEMINI_PROJECT_DIR/hooks/scan-hardcoded.sh\"",
+            "timeout": 10000
+          }
+        ]
+      }
+    ]
+  }
+}

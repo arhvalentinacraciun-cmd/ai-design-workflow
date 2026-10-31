@@ -32,7 +32,7 @@
     <text x="76" y="245">What it wrote and did</text>
   </g>
   <g font-size="12.5" fill="#545D57">
-    <text x="76" y="95">CLAUDE.md and the memory index, every time</text>
+    <text x="76" y="95">AGENTS.md and the memory index, every time</text>
     <text x="76" y="151">the ones it opened for this task</text>
     <text x="76" y="207">your requests and your replies</text>
     <text x="76" y="263">its answers and what each tool sent back</text>

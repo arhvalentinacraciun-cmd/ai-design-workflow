@@ -13,7 +13,7 @@ also load `/vault-load design system` and say what its history file adds.
 
 If there is uncommitted work, say so and offer to commit it first.
 
-If Track phase in `CLAUDE.md` still lists Session 2 as Next, last week's
+If Track phase in `AGENTS.md` still lists Session 2 as Next, last week's
 close did not record it: move Session 2 to Done and set Next to
 Session 3 · Design system, spec-first · Thu 19 Nov 2026 now.
 
@@ -63,6 +63,6 @@ brief for the last week:
 > three-minute demo in three beats: the thing, the system moment, the
 > transplant.
 
-Write it into Track phase in `CLAUDE.md`: Done gains Session 3, Next
+Write it into Track phase in `AGENTS.md`: Done gains Session 3, Next
 becomes Session 4 · Judgment and demo day · Thu 26 Nov 2026, the twin is
 the brief above, Twin progress is "not started".

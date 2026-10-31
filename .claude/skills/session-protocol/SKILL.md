@@ -7,14 +7,14 @@ description: Use at the start and end of every working session in this repo. Def
 
 ## Open
 
-1. Run `/vault-load`: it reads `CLAUDE.md` completely, then
+1. Run `/vault-load`: it reads `AGENTS.md` completely, then
    `memory/MEMORY.md` and `memory/_continuity.md`. In Session 1 the
-   designer does this by hand ("Read CLAUDE.md, then give me the state of
-   the project in three sentences"); `CLAUDE.md` points at the two memory
+   designer does this by hand ("Read AGENTS.md, then give me the state of
+   the project in three sentences"); `AGENTS.md` points at the two memory
    files, so read them too.
 2. Run `git status` and note uncommitted work.
 3. Summarise the project state in three sentences.
-4. Read the Track phase section of `CLAUDE.md` and add one line: which
+4. Read the Track phase section of `AGENTS.md` and add one line: which
    session is done, which is next, and what this week's twin is. If the
    designer is here for the twin, offer to start it.
 5. Wait for the kick-off line: *"Today we're doing [ticket]. The goal is
@@ -35,7 +35,7 @@ description: Use at the start and end of every working session in this repo. Def
 ## Close — triggered by the phrase "Session done."
 
 1. Run `/vault-save`: new decisions (with date and rationale) and Current
-   State into `CLAUDE.md`; facts a later session needs into the matching
+   State into `AGENTS.md`; facts a later session needs into the matching
    file in `memory/`; the ticket's outcome into `memory/exercise-notes.md`;
    then `memory/_continuity.md` rewritten with open questions, work in
    flight and how to resume.

@@ -23,7 +23,7 @@ can empty my log and start fresh.
 ## Constraints
 
 - Use only components from the design-system skill inventory.
-- Do not add persistence — that's an open question in `CLAUDE.md`.
+- Do not add persistence — that's an open question in `AGENTS.md`.
 
 ## If you're new to this
 

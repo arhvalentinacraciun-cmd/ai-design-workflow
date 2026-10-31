@@ -11,7 +11,7 @@ An **entry** is one brew, held in memory in `product/app.js`:
 |---|---|---|
 | `name` | text | Free text. The seeds follow "Roaster — Origin", for example "Origo — Ethiopia Guji". This is a seed convention, **not a recorded decision**; nothing enforces it |
 | `roast` | one of three | `light`, `medium`, `dark`; rendered as a Badge with a capitalised label |
-| `rating` | 1 to 5 | Rendered as filled dots, never stars (decision in `CLAUDE.md`) |
+| `rating` | 1 to 5 | Rendered as filled dots, never stars (decision in `AGENTS.md`) |
 | `date` | short text | Day first, short month: "28 Aug". Set at save time from the browser's clock |
 
 Seed entries, in display order: Origo — Ethiopia Guji (light, 5), Boiler —

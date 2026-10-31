@@ -1,5 +1,5 @@
 // Brewlog — deliberately small. Entries live in memory; a refresh resets them.
-// (Persistence is an open question in CLAUDE.md — don't add it unprompted.)
+// (Persistence is an open question in AGENTS.md — don't add it unprompted.)
 
 const ROAST_BADGE = { light: 'badge-warning', medium: 'badge-primary', dark: 'badge-neutral' };
 const ROAST_LABEL = { light: 'Light', medium: 'Medium', dark: 'Dark' };
