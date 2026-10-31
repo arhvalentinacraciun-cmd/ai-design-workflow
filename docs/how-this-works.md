@@ -237,5 +237,5 @@ link; the other two are there when you want the longer story.
 Do the install check from your pre-work email, run the opening line once
 ("Read CLAUDE.md, then give me the state of the project in three
 sentences"), and send the three sentences back. If anything on this page did
-not land, bring the question; the first twenty minutes of Session 1 are these
-four pictures, live.
+not land, bring the question; the opening block of Session 1 is these four
+pictures, live.
