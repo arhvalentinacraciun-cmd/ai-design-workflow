@@ -9,7 +9,7 @@
 ## Story
 
 As a Brewlog user, I want a **"Clear all"** action next to "Add entry" so I
-can empty my log and start fresh.
+can empty my log and start fresh, without doing it by accident.
 
 ## Acceptance criteria
 
@@ -18,6 +18,10 @@ can empty my log and start fresh.
 - [ ] Clicking it empties the entry list and the brew count reads "0 brews".
 - [ ] When the list is empty, an **info alert** appears in place of the list:
       "No brews yet. Your next great coffee goes here."
+- [ ] "Clear all" asks before it acts: a **warning alert** with the text
+      "Are you sure you want to clear your list?" and two actions in it,
+      "Clear" (secondary) and "Cancel" (ghost). Cancel closes the alert and
+      changes nothing; Clear empties the list.
 - [ ] No new CSS contains a literal style value (the hook will tell you).
 
 ## Constraints
