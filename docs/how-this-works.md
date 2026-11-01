@@ -1,28 +1,27 @@
+**Build Your AI Design Workflow**
+
 # How this actually works
 
 This page takes ten minutes to read. It has four pictures and ends with a glossary. There is nothing to install on this page; the install check is in your
 pre-work email.
 
 Everyone in this cohort already uses AI, each in their own way and for their
-own tasks. So that we all speak the same language on Thursday, this page goes
-through a few basic AI concepts once, in plain words, and everyone starts
-level. If you use AI every day, the four pictures and the glossary are still
+own tasks. To make sure we all use the same terms on Thursday, this page explains a few basic AI ideas in plain language. If you use AI every day, the four pictures and the glossary are still
 worth ten minutes: they are the vocabulary the four sessions are built on.
 
-In Session 1 you will type an instruction to an AI, watch it edit files in a
-small project, and see a rule push back on it. All of that is easier to
+In Session 1 you will give an AI a task, watch it change files in a small project, and see one of the project's rules stop it. That small project is a mock product: in Session 1 you copy it from GitHub to your own computer (the step is called cloning) and you keep it for the whole track. All of that is easier to
 follow if you know four things about what is going on underneath. None of
 them need a technical background, and you will hear all four words again on
 the evening.
 
 ---
 
-## 1. How models think: tokens
+## 1. How models "think": tokens
 
-You have seen a small version of this on your phone: the keyboard suggests
+You have seen a small version of this concept on your phone: the keyboard suggests
 the next word while you type. The model behind Claude Code or Codex does the
 same thing, with far more text behind it. It reads everything written so far,
-picks the next small piece of text, adds it, and reads again. That small piece
+picks the next small piece of text, adds it, and reads the whole thing again. That small piece
 is called a **token**. Most tokens are a word or part of a word: "guardrail"
 is two tokens, a comma is one.
 
@@ -30,10 +29,9 @@ is two tokens, a comma is one.
 
 Three things follow from this:
 
-- **It writes rather than looks things up.** It is natural to picture a
+- **The agent does not perform a search action.** It is natural to picture a
   search engine behind the chat: a question goes in, a stored answer comes out. The model does something else: it writes a continuation that fits what came before. When the continuation is right it reads as knowledge, and when it is wrong it reads exactly the same, with the same confidence.
-  Fluent and wrong at the same time is normal for these tools, which is why
-  Session 4 is about checking.
+  Fluent and wrong at the same time is normal for these tools, which is why Session 4 is about checking agent output.
 - **The way you ask shapes the answer.** The model starts from your words,
   so a clear request and a vague one lead to different answers. Tell it what
   you want, what it is for and what a good result looks like, and the reply
@@ -49,7 +47,7 @@ Three things follow from this:
 
 ## 2. Everything it knows right now fits in one box
 
-There are two kinds of knowledge. **Training** is what the model learned
+Models have two kinds of knowledge. **Training** is what the model learned
 before you ever opened it. Companies such as Anthropic and OpenAI train a
 model on a very large amount of text, and when training ends the model is
 released to the public as it is. Nothing you do in a session changes it.
@@ -57,7 +55,7 @@ released to the public as it is. Nothing you do in a session changes it.
 The **context window** is everything the model has in front of it in this
 session: the files it was given at the start, the files it has read since,
 your messages, its own answers, and the results of what it did. That box has
-a fixed size, measured in the tokens from section 1. On the current top
+a fixed size, measured in the tokens mentioned in section 1. On the current top
 models one session holds up to about one million tokens, which is hundreds of pages, and it still fills.
 
 ![The context window as one box with a fixed size, filled from the top by start-up files, files read, your messages and its own answers, with a gauge showing how full it is; training sits outside the box](img/primer-2-context-window.svg)
@@ -137,9 +135,7 @@ rejection an hour later are different things that share a name. The two fields a
 
 ## Glossary
 
-Three short lists of the terms you will hear during the four evenings. Each
-list is written for the people who do not already use those words, so skip
-the one you live in.
+Three short lists of the terms you will hear during the four evenings. Each list is for people who do not work in that field; if you do, skip it.
 
 ### From the AI side
 
@@ -215,8 +211,7 @@ the one you live in.
 
 ## Three links to keep
 
-Every project in this track runs as a git repo, and so should every AI
-project you start afterwards. If git is new to you, start with the first
+The mock project we work on during the sessions runs as a git repo, and so should every AI project you start afterwards. If git is new to you, start with the first
 link; the other two are there when you want the longer story.
 
 | | | |
@@ -226,9 +221,9 @@ link; the other two are there when you want the longer story.
 
 ---
 
-## Before Thursday
+## Before Session 1 (Thursday 5 November)
 
-Do the install check from your pre-work email, run the opening line once
+You will receive an email before the first session with the install check and the link to the project. Do the install check, run the opening line once
 ("Read AGENTS.md, then give me the state of the project in three
 sentences"), and send the three sentences back. If anything on this page did
 not land, bring the question; the opening block of Session 1 walks through these four pictures live.
