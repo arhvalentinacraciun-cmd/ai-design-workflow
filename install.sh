@@ -3,7 +3,8 @@
 # Build Your AI Design Workflow — guided setup
 # Checks your environment and tells you exactly what's missing. Safe to run
 # as many times as you like; it changes nothing on your machine except
-# making the guardrail scripts executable.
+# making the guardrail scripts executable. It checks that the skills copy in
+# .agents/skills/ matches .claude/skills/, and tells you how to fix it if not.
 # =============================================================================
 
 set -u
@@ -58,7 +59,17 @@ else
   chmod +x hooks/scan-hardcoded.sh hooks/scan-hardcoded.py 2>/dev/null && pass "guardrail made executable" || note "could not chmod hooks/scan-hardcoded.* — run: chmod +x hooks/scan-hardcoded.sh hooks/scan-hardcoded.py"
 fi
 
-# 5. The product renders?
+# 5. Skills: .claude/skills/ is the source, .agents/skills/ the copy that
+#    Codex, Antigravity CLI and Gemini CLI read. Check only; nothing changes.
+if command -v python3 >/dev/null 2>&1 && [ -f "hooks/sync-skills.py" ]; then
+  if python3 hooks/sync-skills.py --check >/dev/null 2>&1; then
+    pass "skills copy is in step (.claude/skills/ -> .agents/skills/)"
+  else
+    note "skills copy is out of step. Run: python3 hooks/sync-skills.py   (it says what it changed)"
+  fi
+fi
+
+# 6. The product renders?
 if [ -f "product/index.html" ]; then
   pass "Brewlog is present (product/index.html)"
 else
@@ -75,11 +86,16 @@ say ""
 say "  1. Open this folder in your editor and start your coding agent here:"
 for a in $agents; do
   case "$a" in
-    claude) say "       claude    — accept the folder trust dialog; the guardrail is in .claude/settings.json" ;;
-    codex)  say "       codex     — trust the folder, then type /hooks and trust the guardrail (it is in .codex/hooks.json)" ;;
-    agy)    say "       agy       — trust the folder; the guardrail is in .agents/hooks.json" ;;
-    grok)   say "       grok      — type /hooks-trust once; Grok Build reads the guardrail from .claude/settings.json. Untested so far: report what the hook says" ;;
-    gemini) say "       gemini    — trust the folder and confirm the hook warning once; the guardrail is in .gemini/settings.json" ;;
+    claude) say "       claude    — accept the folder trust dialog; the guardrail is in .claude/settings.json"
+            say "                   skills: type /session-2 (they live in .claude/skills/)" ;;
+    codex)  say "       codex     — trust the folder, then type /hooks and trust the guardrail (it is in .codex/hooks.json)"
+            say "                   skills: type \$session-2, or /skills to pick one (read from .agents/skills/)" ;;
+    agy)    say "       agy       — trust the folder; the guardrail is in .agents/hooks.json"
+            say "                   skills: type /session-2 (read from .agents/skills/)" ;;
+    grok)   say "       grok      — type /hooks-trust once; Grok Build reads the guardrail from .claude/settings.json. Untested so far: report what the hook says"
+            say "                   skills: type /session-2 (read from .claude/skills/; untested)" ;;
+    gemini) say "       gemini    — trust the folder and confirm the hook warning once; the guardrail is in .gemini/settings.json"
+            say "                   skills: picked when your request matches, after you allow it (read from .agents/skills/; untested)" ;;
   esac
 done
 [ -z "$agents" ] && say "       (install one of the agents above first)"

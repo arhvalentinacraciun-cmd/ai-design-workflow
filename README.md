@@ -17,7 +17,7 @@ Build, untested so far. One memory file, one guardrail, one adapter per tool.
 | Piece | File(s) | What it teaches |
 |---|---|---|
 | Project memory | `AGENTS.md` + `memory/` | What the AI should never forget. Decisions and rules always load (`AGENTS.md`); facts load on demand (`memory/`); `/vault-load` and `/vault-save` read and write it at every open and close. `CLAUDE.md` is three lines that import it for Claude Code |
-| Skills | `.claude/skills/` | Encoding your standards so they load when relevant; `/session-2…4` open each session, `/new-ticket` writes one, `/critique` judges the result. Claude Code today; the other agents before Session 2 |
+| Skills | `.claude/skills/`, copied to `.agents/skills/` by `hooks/sync-skills.py` | Encoding your standards so they load when relevant; `/session-2…4` open each session, `/new-ticket` writes one, `/critique` judges the result. Edit them in `.claude/skills/`. Codex and Antigravity read the copy: type `$session-2` on Codex, `/session-2` on Antigravity |
 | Guardrail | `hooks/scan-hardcoded.py`, registered in `.claude/settings.json`, `.codex/hooks.json`, `.agents/hooks.json` | Rules that are *enforced*, not just written down |
 | Design system | `product/design-system/` | Three token layers an AI can safely build with; `stories/` hold the spec for a component before it exists; `viewer/` renders every component with its live tokens |
 | Practice product | `product/` | **Brewlog** — a small coffee-tasting journal to build on |
@@ -79,7 +79,8 @@ guideline and a guardrail.
 Everything here is a pattern, not a framework. To adapt it to your own
 project: copy `AGENTS.md` (and the three-line `CLAUDE.md`) and rewrite every
 section truthfully, copy `memory/` and empty its files (keep the shape), copy
-`.claude/` and edit the skills to match *your* design system and standards,
+`.claude/` and edit the skills to match *your* design system and standards
+(on Codex or Antigravity, copy `hooks/sync-skills.py` too and run it),
 and keep the hook with its config for your agent. If you'd like help
 adapting the workflow to your team, open an issue or reach out — that
 conversation is exactly what this repo exists to start.

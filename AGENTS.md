@@ -1,5 +1,5 @@
 # AGENTS.md — Brewlog
-**Last updated:** 2026-11-01 (rev 6)
+**Last updated:** 2026-11-01 (rev 7)
 **Maintained by:** whoever is in the session — that's the point
 
 > Read this entire file before doing anything, then `memory/MEMORY.md` and
@@ -83,6 +83,18 @@ Build UI only from the components documented in
 exist, say so and propose it — do not invent one-off styles inline.
 **Why:** an AI that invents components produces ten button variants by
 Friday. The inventory is the vocabulary.
+
+### Skills Have One Source
+**Decided:** 2026-11-01
+Skills are written and edited in `.claude/skills/<name>/SKILL.md`, on every
+agent. `.agents/skills/` holds copies for Codex, Antigravity CLI and Gemini
+CLI, made by `python3 hooks/sync-skills.py`: after adding or changing a
+skill, run it; never edit a file in `.agents/skills/` by hand.
+**Why:** Claude Code reads only `.claude/skills/`, and most of the room runs
+it, so making that folder the source means Claude Code users never see a
+change. Copies rather than a symlink, because Git on Windows checks a
+symlink out as a plain text file; the script's `--check` catches a copy
+that has fallen behind.
 
 ### Ratings Are Dots, Not Stars
 **Decided:** 2026-08-31
@@ -185,6 +197,13 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
 - Memory layer added 2026-10-13: `memory/` with an index, a continuity
   file and three on-demand facts (design system history, data model,
   exercise notes); `/vault-load` and `/vault-save` read and write it.
+- Skills on every agent, 2026-11-01: the nine skills in `.claude/skills/`
+  (critique, design-system, new-ticket, session-2, session-3, session-4,
+  session-protocol, vault-load, vault-save) are copied to `.agents/skills/`
+  by `hooks/sync-skills.py`; `install.sh` checks the copy. Tested that day:
+  `$session-2` on Codex and `/session-2` on Antigravity CLI both ran the
+  copy. Grok Build and Gemini CLI are wired from their documentation,
+  untested.
 - Exercises BRW-101 → BRW-105 are unstarted.
 
 ---
