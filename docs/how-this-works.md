@@ -1,7 +1,6 @@
 # How this actually works
 
-A ten-minute read before Session 1, with four pictures and a glossary at the
-end. There is nothing to install on this page; the install check is in your
+This page takes ten minutes to read. It has four pictures and ends with a glossary. There is nothing to install on this page; the install check is in your
 pre-work email.
 
 Everyone in this cohort already uses AI, each in their own way and for their
@@ -31,25 +30,20 @@ is two tokens, a comma is one.
 
 Three things follow from this:
 
-- **It writes; it does not look things up.** It is natural to picture a
-  search engine behind the chat: a question goes in, a stored answer comes
-  out. That is not what happens. The model writes a continuation that fits
-  what came before. When the continuation is right it reads as knowledge.
-  When it is wrong it reads exactly the same, with the same confidence.
+- **It writes rather than looks things up.** It is natural to picture a
+  search engine behind the chat: a question goes in, a stored answer comes out. The model does something else: it writes a continuation that fits what came before. When the continuation is right it reads as knowledge, and when it is wrong it reads exactly the same, with the same confidence.
   Fluent and wrong at the same time is normal for these tools, which is why
   Session 4 is about checking.
 - **The way you ask shapes the answer.** The model starts from your words,
   so a clear request and a vague one lead to different answers. Tell it what
   you want, what it is for and what a good result looks like, and the reply
-  lands closer to what you had in mind. There are no magic phrases to learn;
-  it simply works from what you gave it.
+  lands closer to what you had in mind. There are no special phrases to learn; it works from what you gave it.
 - **Ask the same thing twice and you can get two different answers.** Look
   at the bars in the picture: when the model works out the next piece, it does
   not find one right answer. It finds several pieces that could follow, each
   with a likelihood, and often more than one is likely. It usually takes the
   likeliest, but not always, and one different piece early on sends the rest
-  of the sentence a different way. For a quick chat this does not matter. For
-  a project it does, so in this track the instructions that must be the same
+  of the sentence a different way. This does not matter in a quick chat, but it does in a project, so in this track the instructions that must be the same
   every time are saved in files the AI reads at the start, instead of being
   typed again in every session.
 
@@ -64,8 +58,7 @@ The **context window** is everything the model has in front of it in this
 session: the files it was given at the start, the files it has read since,
 your messages, its own answers, and the results of what it did. That box has
 a fixed size, measured in the tokens from section 1. On the current top
-models one session holds up to about one million tokens, which is hundreds of
-pages. It still fills.
+models one session holds up to about one million tokens, which is hundreds of pages, and it still fills.
 
 ![The context window as one box with a fixed size, filled from the top by start-up files, files read, your messages and its own answers, with a gauge showing how full it is; training sits outside the box](img/primer-2-context-window.svg)
 
@@ -78,7 +71,7 @@ ago is forgotten. To avoid this, the project you clone in Session 1 has a
 memory folder. At the end of a session the AI writes down what the next
 session needs, and the next session reads it at the start.
 
-So:
+Three habits follow from this:
 
 - **A session has a start and an end.** Finish one task, close the session,
   and start a new one for the next task. The longer a session runs, the less
@@ -94,7 +87,7 @@ So:
 
 ## 3. An agent is the model in a loop with tools
 
-A chat answers. An **agent** acts: the model decides what to do next, uses a
+Unlike a chat, which only answers, an **agent** acts: the model decides what to do next, uses a
 **tool** (read this file, run this command, edit that file), the result comes
 back into the context window, and it decides again, until the job is done and
 it answers you. Claude Code and Codex are that loop, running in your project
@@ -108,7 +101,7 @@ folder. Everything you install in this track sits on this loop.
   in any text editor.
 - **Skill**: a saved instruction file with a name. Typing the name, for
   example `/new-ticket`, loads that file into the window and the agent follows
-  it. A process you repeat becomes a skill.
+  it. When you repeat a process often, save it as a skill.
 - **Hook**: a small program that runs by itself when something happens, for
   example after every file edit. It can reject the edit by rules you decide to
   enforce. This is the difference between a rule written down in a markdown
@@ -122,15 +115,13 @@ folder. Everything you install in this track sits on this loop.
 
 ## 4. "Token" means two things on Thursday
 
-If you are not a designer: there are two types of "tokens" we will talk about
-on Thursday. How to not confuse them:
+If you are not a designer: we will talk about two kinds of "tokens" on Thursday, and they are easy to confuse.
 
 An **AI token** is a piece of text, as in section 1. A **design token** is a
 named value in a design system, such as `--color-primary-600`, that
 components point at instead of writing the colour directly.
 
-The point of a design token is that a colour is decided in one place. If the
-brand green changes, you change the token's value once and every button, link
+The point of a design token is that a colour is decided in one place. If the brand colour changes, you change the token's value once and every button, link
 and badge that points at it follows. Write the colour directly into fifty
 components and you have fifty places to find and fix, and sooner or later one
 is missed and the product stops looking like one product. In the starter
@@ -140,8 +131,7 @@ checks every file the AI writes and rejects a raw value such as `#3B3FBF`.
 ![Left: an AI token is a piece of text, shown as the word literal split into pieces. Right: a design token is a named value, shown as a button token pointing to a colour token pointing to a hex value, with the hook rejecting the raw hex](img/primer-4-two-tokens.svg)
 
 So the word you hear at the start of the evening and the word in the hook's
-rejection an hour later are different things that share a name. Nobody chose
-this; both fields got there first.
+rejection an hour later are different things that share a name. The two fields arrived at the same word independently.
 
 ---
 
@@ -241,5 +231,4 @@ link; the other two are there when you want the longer story.
 Do the install check from your pre-work email, run the opening line once
 ("Read AGENTS.md, then give me the state of the project in three
 sentences"), and send the three sentences back. If anything on this page did
-not land, bring the question; the opening block of Session 1 is these four
-pictures, live.
+not land, bring the question; the opening block of Session 1 walks through these four pictures live.
