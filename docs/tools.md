@@ -1,10 +1,11 @@
 # Which coding agent
 
-The repo runs on any of four terminal agents. The track is driven on Claude
-Code, and every exercise is tested there first; on the other three the
-memory file and the guardrail are wired and were tested once each. If
-something behaves differently on your tool, bring it to the track channel:
-it is session material.
+The repo runs on four terminal agents. The track is driven on Claude Code,
+and every exercise is tested there first. Codex and Antigravity CLI were
+tested live on 1 November 2026: the memory file loads and the guardrail
+reports the violation back to the agent on both. Grok Build is wired from
+its documentation and untested. If something behaves differently on your
+tool, bring it to the track channel: it is session material.
 
 | | Claude Code | Codex | Antigravity CLI | Grok Build |
 |---|---|---|---|---|
@@ -15,12 +16,13 @@ it is session material.
 | Windows | native | native | native | native |
 | Reads the memory file | `CLAUDE.md`, which imports `AGENTS.md` | `AGENTS.md` | `AGENTS.md` | `AGENTS.md` and `CLAUDE.md` |
 | Guardrail config | `.claude/settings.json` | `.codex/hooks.json` | `.agents/hooks.json` | reads `.claude/settings.json` |
-| One-time trust step | accept the folder dialog | trust the folder, then `/hooks` to trust the guardrail | accept the folder dialog | `/hooks-trust` |
+| One-time trust step | accept the folder dialog | trust the folder; at first start a "Hooks need review" dialog lists the guardrail, choose "Trust all and continue" (later: `/hooks`) | accept the folder dialog | `/hooks-trust` |
 | Skills | `.claude/skills/`, typed `/name` | ported before Session 2 | ported before Session 2 | ported before Session 2 |
 
 "Gemini" the app is not a coding agent. Google's terminal agent for personal
 accounts is Antigravity CLI; the older Gemini CLI now needs a paid Code
-Assist licence, but the repo carries its config too (`.gemini/settings.json`).
+Assist licence, but the repo carries its config too (`.gemini/settings.json`,
+wired from the documentation, untested).
 
 ## One memory file for every tool
 
@@ -39,12 +41,16 @@ shape:
 |---|---|---|---|
 | Claude Code | `PostToolUse` on `Write\|Edit` | the file path | exit code 2, message on stderr |
 | Gemini CLI | `AfterTool` on `write_file\|replace` | the file path | same |
-| Codex | `PostToolUse` on `Edit\|Write` | the patch text; the script pulls the file paths out of it | same |
-| Grok Build | through the Claude Code config | the file path, camelCase fields | same; documented loosely, verified on a real install |
-| Antigravity | `PreToolUse` on the three write tools | the proposed content, before it is written | the hook answers `deny` with the reason; the write never happens |
+| Codex | `PostToolUse` on `Edit\|Write` | the patch text; the script pulls the file paths out of it | same; the file is written first, the violation comes back as the tool result (tested 1 Nov 2026) |
+| Grok Build | through the Claude Code config | the file path, camelCase fields | same, on paper: wired from the documentation, never run. If you use Grok Build, run the test below and report what came back |
+| Antigravity | `PreToolUse` on `write_file\|edit_file` (the CLI's tools) and the IDE's `write_to_file\|replace_file_content\|multi_replace_file_content` | the proposed content, before it is written (`toolCall.args`: `Path` + `Content` or `Replacement` in the CLI, `TargetFile` + `CodeContent` in the IDE) | the hook answers `deny` with the reason; the write never happens (tested 1 Nov 2026). The CLI runs the command from `.agents/`, so the config steps up one folder first |
 
 The test, on any tool: ask for a button with `color: #333` in a new CSS
 file under `product/` and watch the violation come back into the session.
+The agent will usually refuse on the memory rule alone before any write;
+say it is a deliberate test of the hook and that the exception is granted,
+and it writes. On Codex the file lands and the hook's message replaces the
+tool result; on Antigravity the write is denied and the file never exists.
 
 ## Skills, until Session 2
 

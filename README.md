@@ -9,8 +9,8 @@ AI-assisted design project should be wired: it has **memory**, **skills**,
 You clone it in Session 1, work in it every session, and keep it forever —
 then transplant the pattern into your own projects.
 
-It runs on any of four coding agents: Claude Code, Codex, Antigravity CLI or
-Grok Build. One memory file, one guardrail, wired for each.
+It runs on Claude Code, Codex and Antigravity CLI, and is wired for Grok
+Build, untested so far. One memory file, one guardrail, one adapter per tool.
 
 ## What's inside
 

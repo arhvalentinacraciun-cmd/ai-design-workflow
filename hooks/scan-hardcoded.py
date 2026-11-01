@@ -15,14 +15,14 @@ reads the tool's payload and answers in the tool's shape:
   Gemini CLI    AfterTool, write_file|replace same shape as Claude Code
   Codex         PostToolUse, Edit|Write     the patch text in tool_input.command
   Grok Build    reads .claude/settings.json camelCase: toolInput
-  Antigravity   PreToolUse, write/replace   camelCase toolCall.args, the
-                                            proposed content, not a file;
-                                            answers {"decision": "deny"}
+  Antigravity   PreToolUse, write_file|     camelCase toolCall.args, the
+                edit_file (CLI) and the     proposed content, not a file;
+                IDE's write/replace tools   answers {"decision": "deny"}
 
 Claude Code, Gemini CLI and Codex all take "exit 2 + the message on stderr"
 as feedback for the agent. Antigravity blocks the write before it happens
 and shows the reason to the agent. Grok Build is wired through the Claude
-Code settings file; its feedback path is documented loosely, test it.
+Code settings file; wired from the documentation, untested as of 1 Nov 2026.
 """
 import json
 import os
@@ -82,11 +82,15 @@ def read_payload(payload):
     cwd = payload.get("cwd") or os.getcwd()
 
     # Antigravity: PreToolUse, camelCase, the proposed content under PascalCase args.
+    # CLI tools: write_file {Path, Content}, edit_file {Path, Target, Replacement}.
+    # IDE tools: write_to_file {TargetFile, CodeContent}, replace_file_content
+    # {TargetFile, ReplacementContent}, multi_replace_file_content {ReplacementChunks}.
     call = payload.get("toolCall")
     if isinstance(call, dict):
         args = call.get("args") or {}
-        target = args.get("TargetFile", "")
-        chunks = [args.get("CodeContent", ""), args.get("ReplacementContent", "")]
+        target = args.get("Path") or args.get("TargetFile") or ""
+        chunks = [args.get("Content", ""), args.get("Replacement", ""),
+                  args.get("CodeContent", ""), args.get("ReplacementContent", "")]
         chunks += [c.get("ReplacementContent", "") for c in args.get("ReplacementChunks") or [] if isinstance(c, dict)]
         return [], (target, "\n".join(c for c in chunks if c)), "antigravity"
 

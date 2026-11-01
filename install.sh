@@ -78,7 +78,7 @@ for a in $agents; do
     claude) say "       claude    — accept the folder trust dialog; the guardrail is in .claude/settings.json" ;;
     codex)  say "       codex     — trust the folder, then type /hooks and trust the guardrail (it is in .codex/hooks.json)" ;;
     agy)    say "       agy       — trust the folder; the guardrail is in .agents/hooks.json" ;;
-    grok)   say "       grok      — type /hooks-trust once; Grok Build reads the guardrail from .claude/settings.json" ;;
+    grok)   say "       grok      — type /hooks-trust once; Grok Build reads the guardrail from .claude/settings.json. Untested so far: report what the hook says" ;;
     gemini) say "       gemini    — trust the folder and confirm the hook warning once; the guardrail is in .gemini/settings.json" ;;
   esac
 done
