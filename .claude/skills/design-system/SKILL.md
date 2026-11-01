@@ -44,11 +44,11 @@ Why each version is the way it is: `memory/design-system-history.md`
 | Field | `.field` wraps a label and a control | `.field-label` (+ `.field-label__required`), `.field__hint`, `.field__error` (wire with `aria-describedby`) |
 | Input | `.input` inside `.field` | states: hover, focus, `aria-invalid="true"`, `:disabled`; placeholder is a hint, never the label |
 | Select | `.select-wrap` > `.select` | same states as Input; the wrapper draws the chevron, so always use the wrapper |
-| Badge | `.badge` + variant | `neutral` `primary` `success` `warning` `danger` · `.badge--dot` for a leading dot |
-| Tag | `.tag` | `.tag__remove` button inside for a removable tag |
+| Badge | `.badge` + variant | `neutral` `primary` `accent` `success` `warning` `danger` · `.badge--dot` for a leading dot · `accent` is the lime highlighter, one per view (the brew count) |
+| Tag | `.tag` | `.tag--plain` (no pill, for a meta line in a card) · `.tag--dot` leading dot · `.tag-roast` + `.tag-roast--light/medium/dark` for the roast level, the only place the coffee brown appears · `.tag__remove` button inside for a removable tag |
 | Card | `.card` | `.card--muted` `.card--interactive` (focusable, needs `tabindex="0"` or to be a link) · sections `.card__header` `.card__body` `.card__footer` · `.card__title` `.card__meta` |
 | Alert | `.alert` + variant | `info` `success` `warning` `danger` · `.alert__content` > `.alert__title` + text · `.alert__actions` · `.alert__close` |
-| Rating | `.rating` > `.rating__dot(--filled)` | `.rating--lg` · `.rating__label` for the score in words · dots only, never stars (recorded design decision) |
+| Rating | `.rating` > `.rating__dot(--filled)` | `.rating--lg` · `.rating--top` for a 5 of 5 (the lime band; the page adds it) · `.rating__label` for the score in words · empty dots are outlined · dots only, never stars (recorded design decision) |
 
 ## Usage guidance
 
@@ -57,6 +57,10 @@ Why each version is the way it is: `memory/design-system-history.md`
 - Danger button: destructive and hard to undo only. Destructive-but-
   recoverable actions use secondary + confirmation.
 - Badges communicate status; tags communicate metadata. Don't swap them.
+  The roast level is metadata: a plain roast Tag, never a Badge.
+- Lime (`accent`) is a highlighter, never a text colour: it fills the brew
+  count, a top rating and the info alert, always with the ink on it. Brown
+  (`roast`) is the coffee: the roast Tag and nothing else.
 - Every interactive element keeps a visible `:focus-visible` state — the
   components ship with one; don't remove it.
 - Disabled is a last resort: a control that cannot be used yet should say

@@ -19,14 +19,14 @@ body {
   line-height: var(--line-height-base);
 }
 
-a { color: var(--color-accent-700); }
+a { color: var(--color-primary-600); }
 a:focus-visible, button:focus-visible {
-  outline: var(--focus-ring-width) solid var(--color-primary-500);
+  outline: var(--focus-ring-width) solid var(--color-primary-600);
   outline-offset: var(--space-1);
 }
 
 code, pre, .v-mono {
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
 }
 p code {
@@ -220,12 +220,12 @@ p code {
 }
 .v-tk__preview--chip { border-color: var(--color-neutral-200); }
 .v-tk__name {
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   color: var(--color-neutral-900);
   overflow-wrap: anywhere;
 }
 .v-tk__value {
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   color: var(--color-neutral-700);
   overflow-wrap: anywhere;
 }
@@ -244,7 +244,7 @@ p code {
   transition: transform var(--pv-duration, var(--duration-base)) ease;
 }
 .v-tk:hover .v-pv-dot { transform: translateX(var(--space-8)); }
-.v-pv-ring { width: var(--space-8); height: var(--space-8); border-radius: var(--radius-sm); background: var(--color-white); outline: var(--focus-ring-width) solid var(--color-primary-500); outline-offset: var(--space-1); }
+.v-pv-ring { width: var(--space-8); height: var(--space-8); border-radius: var(--radius-sm); background: var(--color-white); outline: var(--focus-ring-width) solid var(--color-primary-600); outline-offset: var(--space-1); }
 
 /* ── Component block: header, tabs, panels ───────────────────────────────── */
 
@@ -342,7 +342,7 @@ p code {
 .v-stage--column .v-item, .v-stage--grid .v-item { align-items: stretch; }
 .v-stage--column .v-item > :first-child { max-width: var(--size-content-max); }
 .v-label {
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   color: var(--color-neutral-600);
 }
@@ -384,7 +384,7 @@ p code {
   text-transform: uppercase;
 }
 .v-tokens td:first-child, .v-tokens .v-from, .v-tokens .v-value {
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
 }
 .v-tokens .v-arrow { color: var(--color-neutral-500); }
 .v-tokens .v-from { color: var(--color-neutral-700); }
@@ -490,7 +490,7 @@ p code {
 }
 .v-snippet__label + pre + .v-copy, .v-snippet .v-copy--lower { top: calc(var(--space-8) + var(--space-2)); }
 .v-copy:hover { background: var(--color-neutral-700); }
-.v-copy:focus-visible { outline-color: var(--color-primary-200); }
+.v-copy:focus-visible { outline-color: var(--color-accent-300); }
 
 /* ── Recipe ──────────────────────────────────────────────────────────────── */
 

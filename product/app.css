@@ -1,49 +1,78 @@
 /* =============================================================================
    BREWLOG — page layout
-   Layout may use spacing/typography primitives directly; anything that is a
-   COMPONENT style must come from components.css. No literal style values.
+   Layout may use spacing/typography primitives and the page tokens directly;
+   anything that is a COMPONENT style must come from components.css. No
+   literal style values.
    ============================================================================= */
 
 * { box-sizing: border-box; }
+img { display: block; max-width: 100%; }
 
 body {
   margin: 0;
-  background: var(--color-neutral-50);
-  color: var(--color-neutral-900);
+  background: var(--page-bg);
+  color: var(--page-text);
   font-family: var(--font-family-base);
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
 }
 
-.page {
+.wrap {
+  width: 100%;
   max-width: var(--size-content-max);
-  margin: 0 auto;
-  padding: var(--space-8) var(--space-4) var(--space-16);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
 }
 
+/* Header: a full-bleed band with a photo under an ink wash. The text sits at
+   the bottom, where the wash is densest; the form card lifts into it. */
 .page-header {
+  position: relative;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-4);
-  margin-bottom: var(--space-8);
+  align-items: flex-end;
+  min-height: var(--size-hero-min);
+  padding-top: var(--space-20);
+  padding-bottom: calc(var(--space-16) + var(--space-10));
+  overflow: hidden;
+  background: var(--page-hero-bg);
+  color: var(--page-hero-title);
 }
-.page-header h1 {
-  margin: 0;
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
+.page-header__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--page-hero-overlay-top), var(--page-hero-overlay-bottom));
+}
+.page-header .wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
 }
 .page-header h1 {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
+  margin: 0;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
 }
 .page-header .logo {
-  width: var(--space-8);
-  height: var(--space-8);
   flex: none;
-  color: var(--color-primary-600);
+  width: var(--size-logo);
+  height: var(--size-logo);
+  color: var(--page-hero-logo);
   fill: none;
   stroke: currentColor;
   stroke-width: var(--border-width-sm);
@@ -51,76 +80,130 @@ body {
   stroke-linejoin: round;
 }
 .page-header .subtitle {
-  margin: var(--space-1) 0 0;
-  color: var(--color-neutral-600);
-  font-size: var(--font-size-sm);
+  margin: var(--space-3) 0 0;
+  color: var(--page-hero-subtitle);
+  font-size: var(--font-size-lg);
+}
+.page-header .badge { margin-bottom: var(--space-1); }
+
+/* The main column starts inside the header band, so the form card overlaps it */
+.page-main {
+  position: relative;
+  margin-top: calc(var(--space-10) * -1);
+  padding-bottom: var(--space-12);
 }
 
-/* Add-entry form. Three rows, so a hint or an error under one field adds
-   height below the controls and never moves the others: labels on row 1,
-   controls on row 2, messages on row 3. The fields contribute their
-   children directly to the grid (display: contents). */
+/* Add-entry form: a Card with the page's grid inside. Coffee on its own row,
+   roast and rating side by side, actions last. A hint or an error under a
+   field adds height to its own row only. */
 .entry-form {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr auto;
-  column-gap: var(--space-3);
-  row-gap: var(--space-1);
-  align-items: start;
-  margin-bottom: var(--space-8);
+  gap: var(--space-5);
+  margin-bottom: var(--space-12);
+  padding: var(--space-8);
 }
-.entry-form .field { display: contents; }
-.entry-form .field-label { grid-row: 1; }
-.entry-form .input,
-.entry-form .select-wrap { grid-row: 2; }
-.entry-form .field__hint,
-.entry-form .field__error { grid-row: 3; }
-.entry-form .btn { grid-row: 2; grid-column: 4; }
-@media (max-width: 560px) {
-  .entry-form { grid-template-columns: 1fr; row-gap: var(--space-3); }
-  .entry-form .field { display: flex; flex-direction: column; gap: var(--space-1); }
-  .entry-form .field-label,
-  .entry-form .input,
-  .entry-form .select-wrap,
-  .entry-form .field__hint,
-  .entry-form .field__error,
-  .entry-form .btn { grid-row: auto; grid-column: auto; }
+.entry-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+.entry-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
 }
 
-/* Entry list */
+/* Entry list: one Card per brew, a photo on the left, the rating on the right */
 .entry-list {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-5);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .entry {
+  display: grid;
+  grid-template-columns: var(--size-photo) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-5);
+}
+.entry__photo {
+  width: var(--size-photo);
+  height: var(--size-photo);
+  object-fit: cover;
+  border-radius: var(--page-photo-radius);
+  background: var(--page-photo-bg);
+}
+/* An entry added by hand has no photo yet: the cup mark on the soft tile */
+.entry__photo--empty {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
+  justify-content: center;
+  color: var(--page-photo-mark);
+}
+.entry__photo--empty svg {
+  width: var(--size-logo);
+  height: var(--size-logo);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--border-width-sm);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .entry__main {
   display: flex;
-  flex: 1;
-  min-width: 0;
   flex-direction: column;
   gap: var(--space-1);
 }
 .entry__name {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
   overflow-wrap: anywhere;
 }
 .entry__meta {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  color: var(--color-neutral-600);
-  font-size: var(--font-size-xs);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+  color: var(--card-meta-text);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
 }
 .entry .rating { flex: none; }
-@media (max-width: 560px) {
-  .entry { flex-wrap: wrap; }
+
+/* Footer: photo credits */
+.page-footer {
+  padding-block: var(--space-6) var(--space-16);
+  color: var(--page-footer-text);
+  font-size: var(--font-size-xs);
+}
+.page-footer p { margin: 0; }
+.page-footer a { color: var(--page-link); text-underline-offset: var(--space-1); }
+
+/* Phone */
+@media (max-width: 600px) {
+  .wrap { padding-inline: var(--space-4); }
+  .page-header {
+    min-height: var(--size-hero-min-sm);
+    padding-top: var(--space-12);
+    padding-bottom: calc(var(--space-12) + var(--space-6));
+  }
+  .page-header .wrap { align-items: flex-start; }
+  .page-header h1 { font-size: var(--font-size-2xl); }
+  .page-header .subtitle { font-size: var(--font-size-md); }
+  .page-main { margin-top: calc(var(--space-6) * -1); }
+  .entry-form { padding: var(--space-5); }
+  .entry-form__row { grid-template-columns: 1fr; }
+  .entry-form__actions { flex-direction: column; }
+  .entry-form__actions .btn { width: 100%; }
+  .entry {
+    grid-template-columns: var(--size-photo-sm) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-4);
+  }
+  .entry__photo { width: var(--size-photo-sm); height: var(--size-photo-sm); grid-row: 1 / span 2; }
+  .entry .rating { grid-column: 2; justify-self: start; }
 }

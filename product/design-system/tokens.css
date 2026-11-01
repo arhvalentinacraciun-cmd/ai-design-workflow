@@ -4,120 +4,151 @@
    Components take every colour and radius through component-tokens.css
    (Layer 2). The shared scales (space, font, line, border-width, shadow,
    transition, focus-ring, opacity, size) may be referenced directly.
+   System 2.0 (1 Nov 2026): indigo primary, lime accent, coffee brown for the
+   roast, cool neutrals from paper to ink. Type one step larger than 1.x.
    ============================================================================= */
 
 :root {
 
-  /* COLOR — PRIMARY (espresso brown). Ten steps; 600 is the brand step. */
-  --color-primary-50:  #faf6f1;
-  --color-primary-100: #f3e9df;
-  --color-primary-200: #e6d2bf;
-  --color-primary-300: #d2b193;
-  --color-primary-400: #b98a62;
-  --color-primary-500: #a06e44;
-  --color-primary-600: #85573a;
-  --color-primary-700: #6b4530;
-  --color-primary-800: #553826;
-  --color-primary-900: #3d2a1e;
+  /* COLOR — PRIMARY (indigo). Ten steps; 600 is the brand step, 900 is the
+     ink, so headings and the primary action are one family. */
+  --color-primary-50:  #ECEDFB;
+  --color-primary-100: #DCDDF7;
+  --color-primary-200: #BFC1F0;
+  --color-primary-300: #9DA0E6;
+  --color-primary-400: #7377D6;
+  --color-primary-500: #5257C9;
+  --color-primary-600: #3B3FBF;
+  --color-primary-700: #2C3092;
+  --color-primary-800: #22256F;
+  --color-primary-900: #1B1F3B;
 
-  /* COLOR — ACCENT (steel teal, the complement of espresso). Information and
-     links, so "brand" and "info" never share a colour. */
-  --color-accent-50:  #eff6f7;
-  --color-accent-100: #d8e9ec;
-  --color-accent-200: #b5d4da;
-  --color-accent-300: #86b6c0;
-  --color-accent-400: #5a95a3;
-  --color-accent-500: #3e7786;
-  --color-accent-600: #33616e;
-  --color-accent-700: #2b4f5a;
-  --color-accent-800: #244049;
-  --color-accent-900: #1b3038;
+  /* COLOR — ACCENT (lime, the highlighter). Fills and bands only, for the one
+     thing on a page to notice: the brew count, a top score, an empty state.
+     Text on any lime step is always the ink, never white. */
+  --color-accent-50:  #F7FBE3;
+  --color-accent-100: #EEF6C8;
+  --color-accent-200: #E4F59A;
+  --color-accent-300: #D8F55A;
+  --color-accent-400: #C2E03F;
+  --color-accent-500: #A8C62A;
+  --color-accent-600: #8CA81C;
+  --color-accent-700: #6E8512;
+  --color-accent-800: #51620E;
+  --color-accent-900: #3F4D0E;
 
-  /* COLOR — NEUTRAL (warm stone). White plus nine greys: ten steps in all. */
-  --color-white:       #ffffff;
-  --color-neutral-50:  #fbf9f6;
-  --color-neutral-100: #f4f0ea;
-  --color-neutral-200: #e7e0d6;
-  --color-neutral-300: #d3c9bb;
-  --color-neutral-500: #7d7266;
-  --color-neutral-600: #6b6156;
-  --color-neutral-700: #524a41;
-  --color-neutral-800: #3a342e;
-  --color-neutral-900: #241f1b;
+  /* COLOR — ROAST (coffee brown). The coffee itself: roast level and nothing
+     structural. 400 light, 500 medium, 600 dark. */
+  --color-roast-50:  #F7F1EC;
+  --color-roast-100: #F3EAE0;
+  --color-roast-200: #E3D3C2;
+  --color-roast-300: #CDAE8E;
+  --color-roast-400: #B98A62;
+  --color-roast-500: #8A5A3C;
+  --color-roast-600: #6B3F23;
+  --color-roast-700: #55321C;
+  --color-roast-800: #402616;
+  --color-roast-900: #2B1A0F;
 
-  /* COLOR — SUCCESS (forest green) */
-  --color-success-50:  #f1f6f0;
-  --color-success-100: #dfeadb;
-  --color-success-200: #c2d8ba;
-  --color-success-300: #9bbd91;
-  --color-success-400: #6f9c66;
-  --color-success-500: #4f7f48;
-  --color-success-600: #3f6839;
-  --color-success-700: #34552f;
-  --color-success-800: #2a4327;
-  --color-success-900: #1f321e;
+  /* COLOR — NEUTRAL (cool grey). White plus nine steps from the paper (50) to
+     the ink (900, the same as primary-900). */
+  --color-white:       #FFFFFF;
+  --color-neutral-50:  #F7F7FB;
+  --color-neutral-100: #EEEFF6;
+  --color-neutral-200: #D9DAE6;
+  --color-neutral-300: #C4C6D9;
+  --color-neutral-500: #585D7A;
+  --color-neutral-600: #454A66;
+  --color-neutral-700: #353A57;
+  --color-neutral-800: #262A47;
+  --color-neutral-900: #1B1F3B;
 
-  /* COLOR — WARNING (caramel) */
-  --color-warning-50:  #fdf7ec;
-  --color-warning-100: #f9eacc;
-  --color-warning-200: #f1d596;
-  --color-warning-300: #e6b95c;
-  --color-warning-400: #d69c2f;
-  --color-warning-500: #bd7f16;
-  --color-warning-600: #9c6611;
-  --color-warning-700: #7d5010;
-  --color-warning-800: #633f10;
-  --color-warning-900: #4b300d;
+  /* COLOR — SUCCESS (green) */
+  --color-success-50:  #EEF7F1;
+  --color-success-100: #D6EDDE;
+  --color-success-200: #B3DCC2;
+  --color-success-300: #86C4A0;
+  --color-success-400: #58A97B;
+  --color-success-500: #35895C;
+  --color-success-600: #2A6F4B;
+  --color-success-700: #22593D;
+  --color-success-800: #1B4531;
+  --color-success-900: #143324;
 
-  /* COLOR — DANGER (red). Warm, but clearly red next to the espresso primary. */
-  --color-danger-50:  #fdf2f0;
-  --color-danger-100: #fadcd7;
-  --color-danger-200: #f5b8ae;
-  --color-danger-300: #ec8a7c;
-  --color-danger-400: #de5c4a;
-  --color-danger-500: #c9402e;
-  --color-danger-600: #ad3022;
-  --color-danger-700: #8c261b;
-  --color-danger-800: #6e1f17;
-  --color-danger-900: #521812;
+  /* COLOR — WARNING (burnt orange, the house warn colour at 600) */
+  --color-warning-50:  #FDF3EC;
+  --color-warning-100: #FBE3D3;
+  --color-warning-200: #F6C4A5;
+  --color-warning-300: #EF9D6E;
+  --color-warning-400: #E5743C;
+  --color-warning-500: #D4561A;
+  --color-warning-600: #C2410C;
+  --color-warning-700: #9C340A;
+  --color-warning-800: #782908;
+  --color-warning-900: #561E06;
+
+  /* COLOR — DANGER (crimson; clearly red next to the orange warning) */
+  --color-danger-50:  #FCEEF0;
+  --color-danger-100: #F8D7DB;
+  --color-danger-200: #F0AEB6;
+  --color-danger-300: #E47F8C;
+  --color-danger-400: #D45565;
+  --color-danger-500: #BE3448;
+  --color-danger-600: #A3263A;
+  --color-danger-700: #851F30;
+  --color-danger-800: #671826;
+  --color-danger-900: #4B121C;
+
+  /* COLOR — OVERLAY. The ink as a wash over a photo, so text stays readable. */
+  --color-overlay-light: rgba(27, 31, 59, .55);
+  --color-overlay-dense: rgba(27, 31, 59, .82);
 
   /* SPACING (4px base unit) */
   --space-1:  4px;
   --space-2:  8px;
   --space-3:  12px;
   --space-4:  16px;
+  --space-5:  20px;
   --space-6:  24px;
   --space-8:  32px;
+  --space-10: 40px;
   --space-12: 48px;
   --space-16: 64px;
+  --space-20: 80px;
 
-  /* TYPOGRAPHY */
-  --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  /* TYPOGRAPHY. Two families: the text face for reading, the mono face for
+     labels, counts, dates and codes. The scale starts at 14px: nothing on
+     the page is smaller. */
+  --font-family-base: 'Atkinson Hyperlegible Next', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-family-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
 
-  --font-size-xs:  12px;
-  --font-size-sm:  14px;
-  --font-size-md:  16px;
-  --font-size-lg:  18px;
-  --font-size-xl:  20px;
-  --font-size-2xl: 24px;
+  --font-size-xs:  14px;
+  --font-size-sm:  16px;
+  --font-size-md:  18px;
+  --font-size-lg:  21px;
+  --font-size-xl:  26px;
+  --font-size-2xl: 34px;
+  --font-size-3xl: 44px;
 
   --font-weight-normal:   400;
   --font-weight-medium:   500;
   --font-weight-semibold: 600;
   --font-weight-bold:     700;
 
-  --line-height-tight:   1.25;
+  --line-height-tight:   1.2;
   --line-height-base:    1.5;
 
   /* SHAPE */
-  --radius-sm:   4px;
-  --radius-md:   6px;
-  --radius-lg:   12px;
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
   --radius-full: 9999px;
 
-  /* DEPTH */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md: 0 4px 6px rgba(0,0,0,.07);
+  /* DEPTH. Ink-tinted, never black. */
+  --shadow-sm: 0 1px 2px rgba(27, 31, 59, .08);
+  --shadow-md: 0 6px 18px rgba(27, 31, 59, .10);
+  --shadow-lg: 0 2px 4px rgba(27, 31, 59, .06), 0 12px 32px rgba(27, 31, 59, .12);
 
   /* MOTION */
   --duration-fast: 100ms;
@@ -125,7 +156,8 @@
   --duration-slow: 900ms;   /* one turn of a spinner */
   --transition-base: all var(--duration-base) ease;
 
-  /* BORDERS */
+  /* BORDERS. Anything that carries meaning is 2px; the hairline is for
+     dividers and decorative edges only. */
   --border-width-hairline: 1px;
   --border-width-sm: 2px;
   --border-width-md: 3px;
@@ -133,9 +165,16 @@
   /* OPACITY */
   --opacity-disabled: 0.5;
 
-  /* LAYOUT */
-  --size-content-max: 720px;
-  --size-icon: 16px;
-  --focus-ring-width: 2px;   /* colour stays at 3:1 on the page; weight is the quiet lever */
+  /* LAYOUT AND SIZE */
+  --size-content-max: 860px;
+  --size-control: 48px;       /* inputs, selects, buttons: finger-sized */
+  --size-control-sm: 36px;    /* the small button */
+  --size-icon: 20px;
+  --size-logo: 40px;
+  --size-photo: 128px;        /* an entry's photo */
+  --size-photo-sm: 96px;      /* the same on a phone */
+  --size-hero-min: 360px;     /* the header band */
+  --size-hero-min-sm: 240px;
+  --focus-ring-width: 3px;
 
 }

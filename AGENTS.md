@@ -1,5 +1,5 @@
 # AGENTS.md — Brewlog
-**Last updated:** 2026-11-01 (rev 5)
+**Last updated:** 2026-11-01 (rev 6)
 **Maintained by:** whoever is in the session — that's the point
 
 > Read this entire file before doing anything, then `memory/MEMORY.md` and
@@ -169,11 +169,19 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
   close; Rating large and label. Viewer at `product/design-system/viewer/`.
 - Form validation uses the Field error, not the browser bubble: the form is
   `novalidate` and `app.js` shows the message (2026-10-08).
-- 2026-10-08, system 1.2: coffee palette (espresso primary, warm stone
-  neutrals, steel-teal accent for info and links, forest green, caramel,
-  warm red), fields share Button's focus
+- 2026-10-08, system 1.2: coffee palette, fields share Button's focus
   ring, entry rows keep the rating in place, dates day-first, roast labels
   capitalised, page greys one step darker, coffee mark in the header.
+- 2026-11-01, system 2.0: indigo primary with the ink at 900, lime accent
+  as a highlighter (brew count, top rating, info alert), a roast hue for
+  the coffee brown (the roast Tag only), cool neutrals. Atkinson
+  Hyperlegible Next for text, IBM Plex Mono for labels, counts and dates;
+  type one step up, 14px floor. Pill buttons, 48px controls, 2px borders
+  on anything that carries meaning. The page has a full-bleed header with
+  a photo under an ink wash, the form as a Card lifting into it, entries
+  as tickets with a photo tile (seeds ship photos in `product/img/`; a new
+  entry shows the cup mark). Badge `accent`, Tag `plain`/`dot`/`roast`,
+  Rating `top` added. Every contrast pair re-measured in the viewer.
 - Memory layer added 2026-10-13: `memory/` with an index, a continuity
   file and three on-demand facts (design system history, data model,
   exercise notes); `/vault-load` and `/vault-save` read and write it.

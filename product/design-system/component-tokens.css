@@ -9,17 +9,33 @@
 
 :root {
 
+  /* ── Page (the layout in app.css: header band, photo tiles, footer) ──── */
+
+  --page-bg:                  var(--color-neutral-50);
+  --page-text:                var(--color-neutral-900);
+  --page-hero-bg:             var(--color-neutral-900);   /* behind the photo while it loads */
+  --page-hero-overlay-top:    var(--color-overlay-light);
+  --page-hero-overlay-bottom: var(--color-overlay-dense);
+  --page-hero-title:          var(--color-primary-50);
+  --page-hero-subtitle:       var(--color-primary-200);
+  --page-hero-logo:           var(--color-accent-300);
+  --page-photo-bg:            var(--color-primary-50);    /* an entry without a photo */
+  --page-photo-mark:          var(--color-primary-600);
+  --page-photo-radius:        var(--radius-lg);
+  --page-footer-text:         var(--color-neutral-600);
+  --page-link:                var(--color-primary-600);
+
   /* ── Button ────────────────────────────────────────────────────────────── */
 
-  --button-radius:       var(--radius-md);
-  --button-font-weight:  var(--font-weight-medium);
-  --button-padding-x:    var(--space-4);
+  --button-radius:       var(--radius-full);
+  --button-font-weight:  var(--font-weight-bold);
+  --button-padding-x:    var(--space-6);
   --button-padding-y:    var(--space-2);
-  --button-focus-ring-color: var(--color-primary-500);
+  --button-focus-ring-color: var(--color-primary-600);
 
-  --button-sm-padding-x: var(--space-3);
+  --button-sm-padding-x: var(--space-4);
   --button-sm-padding-y: var(--space-1);
-  --button-lg-padding-x: var(--space-6);
+  --button-lg-padding-x: var(--space-8);
   --button-lg-padding-y: var(--space-3);
 
   --button-primary-bg:           var(--color-primary-600);
@@ -28,11 +44,12 @@
   --button-primary-text:         var(--color-white);
   --button-primary-border-color: var(--color-primary-600);
 
-  --button-secondary-bg:           var(--color-neutral-100);
-  --button-secondary-bg-hover:     var(--color-neutral-200);
-  --button-secondary-bg-active:    var(--color-neutral-300);
-  --button-secondary-text:         var(--color-neutral-800);
-  --button-secondary-border-color: var(--color-neutral-200);
+  /* Secondary is drawn, not filled: white with an ink outline. */
+  --button-secondary-bg:           var(--color-white);
+  --button-secondary-bg-hover:     var(--color-neutral-100);
+  --button-secondary-bg-active:    var(--color-neutral-200);
+  --button-secondary-text:         var(--color-neutral-900);
+  --button-secondary-border-color: var(--color-neutral-900);
 
   --button-ghost-bg:           transparent;
   --button-ghost-bg-hover:     var(--color-primary-50);
@@ -53,16 +70,16 @@
   --input-bg-disabled:         var(--color-neutral-100);
   --input-text:                var(--color-neutral-900);
   --input-text-disabled:       var(--color-neutral-500);
-  --input-placeholder:         var(--color-neutral-500);
-  --input-border-color:        var(--color-neutral-300);
-  --input-border-color-hover:  var(--color-neutral-500);
-  --input-border-color-focus:  var(--color-primary-500);
-  --input-border-color-error:  var(--color-danger-500);
-  --input-focus-ring-color:    var(--color-primary-500);
+  --input-placeholder:         var(--color-neutral-600);
+  --input-border-color:        var(--color-neutral-900);
+  --input-border-color-hover:  var(--color-primary-600);
+  --input-border-color-focus:  var(--color-primary-600);
+  --input-border-color-error:  var(--color-danger-600);
+  --input-focus-ring-color:    var(--color-primary-600);
   --input-radius:              var(--radius-md);
 
   /* Field: the label, hint and error text around an input or select */
-  --field-label-text:    var(--color-neutral-900);
+  --field-label-text:    var(--color-neutral-600);
   --field-hint-text:     var(--color-neutral-600);
   --field-error-text:    var(--color-danger-700);
   --field-required-text: var(--color-danger-600);
@@ -73,12 +90,12 @@
   --select-bg-disabled:        var(--color-neutral-100);
   --select-text:               var(--color-neutral-900);
   --select-text-disabled:      var(--color-neutral-500);
-  --select-border-color:       var(--color-neutral-300);
-  --select-border-color-hover: var(--color-neutral-500);
-  --select-border-color-focus: var(--color-primary-500);
-  --select-border-color-error: var(--color-danger-500);
-  --select-chevron-color:      var(--color-neutral-600);
-  --select-focus-ring-color:   var(--color-primary-500);
+  --select-border-color:       var(--color-neutral-900);
+  --select-border-color-hover: var(--color-primary-600);
+  --select-border-color-focus: var(--color-primary-600);
+  --select-border-color-error: var(--color-danger-600);
+  --select-chevron-color:      var(--color-neutral-900);
+  --select-focus-ring-color:   var(--color-primary-600);
   --select-radius:             var(--radius-md);
 
   /* ── Badge ─────────────────────────────────────────────────────────────── */
@@ -89,6 +106,10 @@
   --badge-neutral-text:    var(--color-neutral-700);
   --badge-primary-bg:      var(--color-primary-100);
   --badge-primary-text:    var(--color-primary-700);
+  /* Accent is the highlighter: a lime fill with the ink on it, for the one
+     number on the page. The only badge whose text is not a 700 step. */
+  --badge-accent-bg:       var(--color-accent-300);
+  --badge-accent-text:     var(--color-neutral-900);
   --badge-success-bg:      var(--color-success-100);
   --badge-success-text:    var(--color-success-700);
   --badge-warning-bg:      var(--color-warning-100);
@@ -106,36 +127,48 @@
   --tag-remove-text-hover: var(--color-neutral-900);
   --tag-remove-bg-hover:   var(--color-neutral-200);
 
+  /* Roast: the coffee brown, the only place it appears. The word takes the
+     dark roast colour; the dot takes the level. */
+  --tag-roast-text:        var(--color-roast-600);
+  --tag-roast-dot-border:  var(--color-roast-600);
+  --tag-roast-light-dot:   var(--color-roast-400);
+  --tag-roast-medium-dot:  var(--color-roast-500);
+  --tag-roast-dark-dot:    var(--color-roast-600);
+
   /* ── Card ──────────────────────────────────────────────────────────────── */
 
   --card-bg:                 var(--color-white);
   --card-bg-muted:           var(--color-neutral-50);
-  --card-border-color:       var(--color-neutral-200);
+  --card-border-color:       var(--color-white);        /* the shadow draws the edge */
   --card-border-color-hover: var(--color-neutral-300);
   --card-divider-color:      var(--color-neutral-200);
   --card-title-text:         var(--color-neutral-900);
   --card-meta-text:          var(--color-neutral-600);
-  --card-radius:             var(--radius-lg);
+  --card-radius:             var(--radius-xl);
 
   /* ── Alert ─────────────────────────────────────────────────────────────── */
 
   --alert-radius: var(--radius-md);
   --alert-close-bg-hover: var(--color-neutral-900);
 
-  --alert-info-bg:      var(--color-accent-50);
-  --alert-info-text:    var(--color-accent-800);
+  /* Info is the lime band: an empty state is the thing to notice. */
+  --alert-info-bg:      var(--color-accent-100);
+  --alert-info-text:    var(--color-neutral-900);
   --alert-success-bg:   var(--color-success-100);
-  --alert-success-text: var(--color-success-700);
+  --alert-success-text: var(--color-success-800);
   --alert-warning-bg:   var(--color-warning-100);
-  --alert-warning-text: var(--color-warning-700);
+  --alert-warning-text: var(--color-warning-800);
   --alert-danger-bg:    var(--color-danger-100);
   --alert-danger-text:  var(--color-danger-700);
 
   /* ── Rating (dots — see AGENTS.md decision) ────────────────────────────── */
 
-  --rating-dot-filled: var(--color-primary-600);
-  --rating-dot-empty:  var(--color-neutral-300);
-  --rating-dot-radius: var(--radius-full);
-  --rating-label-text: var(--color-neutral-600);
+  --rating-dot-filled:   var(--color-primary-600);
+  --rating-dot-empty:    var(--color-neutral-600);     /* the outline of an empty dot */
+  --rating-dot-empty-bg: var(--color-white);
+  --rating-dot-radius:   var(--radius-full);
+  --rating-radius:       var(--radius-full);
+  --rating-top-bg:       var(--color-accent-300);      /* the lime band behind a 5 of 5 */
+  --rating-label-text:   var(--color-neutral-600);
 
 }

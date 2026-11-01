@@ -7,7 +7,7 @@ designer types `/vault-load <topic>`. Do not read them all at open; the
 point of the split is that the always-read tier stays short.
 
 - [Design system history](design-system-history.md) — what each version of
-  the system changed and why, 1.0 to 1.2
+  the system changed and why, 1.0 to 2.0
 - [Brewlog data model](brewlog-data-model.md) — what an entry is made of,
   the seed entries, what survives a reload
 - [Exercise notes](exercise-notes.md) — what happened in each BRW ticket:

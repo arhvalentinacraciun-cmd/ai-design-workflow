@@ -5,54 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brewlog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
   <link rel="stylesheet" href="design-system/tokens.css">
   <link rel="stylesheet" href="design-system/component-tokens.css">
   <link rel="stylesheet" href="design-system/components.css">
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <main class="page">
-    <header class="page-header">
+  <header class="page-header">
+    <img class="page-header__photo" src="img/hero.jpg" alt="" width="1600" height="1067" fetchpriority="high">
+    <div class="wrap">
       <div>
         <h1><svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/><path d="M16 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/><path d="M3 21h16"/></svg>Brewlog</h1>
         <p class="subtitle">A small journal of every coffee worth remembering.</p>
       </div>
-      <span class="badge badge-primary" id="brew-count">3 brews</span>
-    </header>
+      <span class="badge badge-accent" id="brew-count">3 brews</span>
+    </div>
+  </header>
 
-    <form class="entry-form" id="entry-form" novalidate>
+  <main class="wrap page-main">
+    <form class="card entry-form" id="entry-form" novalidate>
       <div class="field">
         <label class="field-label" for="f-name">Coffee</label>
         <input class="input" id="f-name" type="text" placeholder="e.g. Origo — Ethiopia Guji" required>
       </div>
-      <div class="field">
-        <label class="field-label" for="f-roast">Roast</label>
-        <span class="select-wrap">
-          <select class="select" id="f-roast">
-            <option value="light">Light</option>
-            <option value="medium" selected>Medium</option>
-            <option value="dark">Dark</option>
-          </select>
-        </span>
+      <div class="entry-form__row">
+        <div class="field">
+          <label class="field-label" for="f-roast">Roast</label>
+          <span class="select-wrap">
+            <select class="select" id="f-roast">
+              <option value="light">Light</option>
+              <option value="medium" selected>Medium</option>
+              <option value="dark">Dark</option>
+            </select>
+          </span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="f-rating">Rating</label>
+          <span class="select-wrap">
+            <select class="select" id="f-rating">
+              <option value="5">5 / 5</option>
+              <option value="4" selected>4 / 5</option>
+              <option value="3">3 / 5</option>
+              <option value="2">2 / 5</option>
+              <option value="1">1 / 5</option>
+            </select>
+          </span>
+        </div>
       </div>
-      <div class="field">
-        <label class="field-label" for="f-rating">Rating</label>
-        <span class="select-wrap">
-          <select class="select" id="f-rating">
-            <option value="5">5 / 5</option>
-            <option value="4" selected>4 / 5</option>
-            <option value="3">3 / 5</option>
-            <option value="2">2 / 5</option>
-            <option value="1">1 / 5</option>
-          </select>
-        </span>
+      <div class="entry-form__actions">
+        <button class="btn btn-primary" type="submit">Add entry</button>
       </div>
-      <button class="btn btn-primary" type="submit">Add entry</button>
     </form>
 
     <ul class="entry-list" id="entry-list"></ul>
   </main>
+
+  <footer class="wrap page-footer">
+    <p>Photos: Unsplash — <a href="https://unsplash.com/@projetocafegatomourisco">Projeto Café Gato-Mourisco</a> (header), <a href="https://unsplash.com/@nate_dumlao">Nathan Dumlao</a>, <a href="https://unsplash.com/@jckbck">Jakub Dziubak</a>.</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>
