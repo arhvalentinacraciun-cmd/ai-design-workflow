@@ -135,7 +135,7 @@ and badge that points at it follows. Write the colour directly into fifty
 components and you have fifty places to find and fix, and sooner or later one
 is missed and the product stops looking like one product. In the starter
 project every colour, spacing and radius goes through a token, and a hook
-checks every file the AI writes and rejects a raw value such as `#85573a`.
+checks every file the AI writes and rejects a raw value such as `#3B3FBF`.
 
 ![Left: an AI token is a piece of text, shown as the word literal split into pieces. Right: a design token is a named value, shown as a button token pointing to a colour token pointing to a hex value, with the hook rejecting the raw hex](img/primer-4-two-tokens.svg)
 
