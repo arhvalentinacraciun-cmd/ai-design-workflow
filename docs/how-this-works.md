@@ -2,7 +2,7 @@
 
 # How this actually works
 
-This page takes ten minutes to read. It has four pictures and ends with a glossary. There is nothing to install on this page; the install check is in your
+This page takes about ten minutes to read: four short sections, each with a picture, and a glossary at the end. There is nothing to install on this page; the install check is in your
 pre-work email.
 
 Everyone in this cohort already uses AI, each in their own way and for their
