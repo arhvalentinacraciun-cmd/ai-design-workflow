@@ -2,7 +2,7 @@
    COMPONENTS
    Rule: colours and radii come ONLY from component tokens (Layer 2). Shared
    scales (space, font, line, border-width, shadow, duration and transition,
-   focus-ring-width, opacity, size) may be used from Layer 1 directly. No
+   focus-ring-width, opacity, size, letter-spacing) may be used from Layer 1 directly. No
    literals. Structural values are fine: display, flex, cursor, 0, 100%,
    50%, a plain number that multiplies a token inside calc(), an angle
    inside a transform, and opacity 1 (fully visible) are not style values.

@@ -2,7 +2,7 @@
 name: session-3
 description: The mentee types /session-3 at the start of Session 3 (Design system, spec-first). Opens the session, loads BRW-103 and sets tonight's order of spec, component, feature, so every laptop in the room starts in the same state. Only runs when typed; never invoke it on your own.
 ---
-<!-- Copy of .claude/skills/session-3/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:1487865b819e -->
+<!-- Copy of .claude/skills/session-3/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:06dca51085d2 -->
 
 # Session 3 · Design system, spec-first
 
@@ -33,8 +33,10 @@ Two go-ahead lines from the mentee open the two builds, in this order:
 
 - *"Build the component from its story."* opens the component files:
   `product/design-system/component-tokens.css`,
-  `product/design-system/components.css`, and the inventory row in the
-  design-system skill.
+  `product/design-system/components.css`, the component's block and
+  Changelog row in `product/design-system/viewer/index.html`, the
+  inventory row in the design-system skill, and a row in
+  `memory/design-system-history.md`.
 - *"Implement exactly this spec."* opens the feature files:
   `product/app.js`, `product/index.html` and `product/app.css`.
 
@@ -48,10 +50,10 @@ touch no feature file. Until the first line, the work is:
 2. **Inventory check.** The inventory has no filter or segmented control.
    Say so, then read `product/design-system/stories/segmented-control.md`:
    that is the component's story, already reviewed. Summarise it in four
-   lines (what it is, its tokens, its states, how it stays accessible) and
-   wait for *"Build the component from its story."*
+   lines (what it is, its tokens, its states, how it stays accessible).
 3. **Review.** Expect pushback on at least one line of the spec. When it
-   comes, change the spec.
+   comes, change the spec. Then wait for *"Build the component from its
+   story."*
 
 ## 4. Tonight's hands-on, in order
 
@@ -59,7 +61,7 @@ touch no feature file. Until the first line, the work is:
 |---|---|---|
 | Show and tell (last week's twin) | 10 min | The mentor runs it: a few mentees show the skill they built at home. Nothing to build; wait |
 | Spec | 10 min | Draft the feature spec, read the component story; the mentee reviews both |
-| The component | 15 min | "Build the component from its story." Tokens in `component-tokens.css`, styles in `components.css`, the inventory row in the design-system skill, then `python3 hooks/sync-skills.py`; the story's acceptance criteria checked |
+| The component | 15 min | "Build the component from its story." Tokens in `component-tokens.css`, styles in `components.css`, the viewer block and Changelog row, the inventory row in the design-system skill, a row in `design-system-history.md`, then `python3 hooks/sync-skills.py`; the story's acceptance criteria checked |
 | The feature | 20 min | "Implement exactly this spec." Changes in `app.js`, `index.html` and `app.css`, then every criterion checked by hand |
 | Critique round | 10 min | The mentor reviews one build with the room. Log the feedback, change nothing until asked |
 

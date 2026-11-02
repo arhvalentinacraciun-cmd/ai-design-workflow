@@ -148,9 +148,10 @@ apps this isn't.
 - **Open:** `/vault-load` reads this file, `memory/MEMORY.md` and
   `memory/_continuity.md`, checks `git status`, and reports once: the
   project state in three sentences, where in the track this session is
-  (from Track phase), and any uncommitted work. Then it asks how the
-  twin went, writes the answer to `memory/exercise-notes.md`, and waits
-  for the kick-off line. Done by hand in Session 1: read this file, then
+  (from Track phase), and any uncommitted work. Then the protocol asks
+  how the twin went (not before Session 1), writes the answer to
+  `memory/exercise-notes.md` and to Twin progress, and waits for the
+  kick-off line. Done by hand in Session 1: read this file, then
   the two memory files.
 - **Kick-off:** the designer opens the work with a single line, *"Today
   we're doing [ticket]. The goal is [goal]."* From then on, done means the
@@ -158,9 +159,9 @@ apps this isn't.
 - **Checkpoint:** on "Checkpoint." → `/vault-save` only, plus one line in
   continuity saying where the session stopped. Nothing else changes. Used
   when a session ends early on purpose (Session 2, part 1).
-- **Close:** on "Session done." → `/vault-save` (decisions and state into
-  this file, facts into `memory/`, continuity rewritten, a full scan of
-  `product/` for literals) → update Track phase → bump the Last updated
+- **Close:** on "Session done." → `/vault-save` (a full scan of
+  `product/` for literals, then decisions and state into this file, facts
+  into `memory/`, continuity rewritten) → update Track phase → bump the Last updated
   line at the top of this file → `git status` → remind the designer to
   commit → name the twin for the week in the chat.
 
@@ -205,8 +206,8 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
   anything that carries meaning. The page has a full-bleed header with a
   photo under an ink wash, the form as a Card lifting into it, entries as
   tickets with a photo tile (seeds ship photos in `product/img/`; a new
-  entry shows the cup mark). Components: Button, Field, Select, Badge, Tag,
-  Card, Alert, Rating, each with the variants and states listed in the
+  entry shows the cup mark). Components: Button, Input, Field, Select, Badge,
+  Tag, Card, Alert, Rating, each with the variants and states listed in the
   design-system skill. Every contrast pair measured in the viewer at
   `product/design-system/viewer/`. How it got here:
   `memory/design-system-history.md`.
@@ -216,9 +217,9 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
 - Skills on every agent, 2026-11-01: the nine skills in `.claude/skills/`
   (critique, design-system, new-ticket, session-2, session-3, session-4,
   session-protocol, vault-load, vault-save) are copied to `.agents/skills/`
-  by `hooks/sync-skills.py`; `install.sh` checks the copy. Tested that day:
-  `$session-2` on Codex and `/session-2` on Antigravity CLI both ran the
-  copy. Grok Build and Gemini CLI are wired from their documentation,
+  by `hooks/sync-skills.py`; `install.sh` checks the copy. Tested that day,
+  on the 1 Nov version of the skills: `$session-2` on Codex and
+  `/session-2` on Antigravity CLI both ran the copy. Grok Build and Gemini CLI are wired from their documentation,
   untested.
 - Exercises BRW-101 to BRW-105 are unstarted.
 

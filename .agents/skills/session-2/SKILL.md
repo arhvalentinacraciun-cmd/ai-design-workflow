@@ -2,7 +2,7 @@
 name: session-2
 description: The mentee types /session-2 at the start of Session 2 (Memory and skills), and again in the fresh session after the part 1 checkpoint. Opens the session, loads BRW-102 and sets tonight's hands-on agenda, so every laptop in the room starts in the same state. Only runs when typed; never invoke it on your own.
 ---
-<!-- Copy of .claude/skills/session-2/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:acfe255ef6bd -->
+<!-- Copy of .claude/skills/session-2/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:e87fed237444 -->
 
 # Session 2 · Memory and skills
 
@@ -53,6 +53,7 @@ a constraint the AI actually respects."*
 | BRW-102, part 1 | 15 min | Add a decision to `AGENTS.md`, say "Checkpoint.", start a fresh session, type `/session-2` again and ask "Which decisions are recorded?" |
 | BRW-102, part 2 | 10 min | In the fresh session, ask for the thing the decision forbids (numeric dates, with the suggested decision), then for star ratings as a second check. The refusal is the point |
 | Build a skill together: `/new-ticket` | 20 min | The mentor rebuilds `/new-ticket` live on their own screen from a blank file, and the room suggests the steps. Then run the shipped one once, and start a skill of your own: that is this week's twin |
+| Agent definitions, a demo | 7 min | The mentor shows one on their own screen: a file that gives the loop a role, constraints and material for one job. Nothing to build; wait |
 
 Show this table, then wait. Do not start part 1 until the mentee says so.
 

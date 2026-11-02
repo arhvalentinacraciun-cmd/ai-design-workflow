@@ -16,8 +16,8 @@ Have these on your computer before you install an agent:
   already has it. On Windows, tick "Add python.exe to PATH" on the first
   screen of the installer. Typing `python3` on Windows can open the
   Microsoft Store instead; that is not Python, and `install.sh` checks for
-  the real one. The guardrail on Codex and Antigravity, the skills check
-  and the preview server all need it.
+  the real one. The guardrail on Codex, Antigravity and Grok, the skills
+  check and the preview server all need it.
 
 Then install one agent from the table below and run it once to sign in.
 Claude Code needs a Claude Pro plan or above, Codex a ChatGPT account (the
@@ -29,7 +29,9 @@ in, clone the repo and run `install.sh`, as the README's Quickstart shows.
 Three agents are tested with the repo: Claude Code, Codex and Antigravity
 CLI. Two more, Grok Build and Gemini CLI, are wired from the documentation,
 untested. The track is driven on Claude Code, and every exercise is built
-there first. Codex and Antigravity CLI were tested live on 1 November 2026:
+there first. Codex and Antigravity CLI were tested live on 1 November 2026
+(the 1 November version of the skills and the guardrail; the Session 2
+checkpoint and the wider scan came later and are untested there):
 the memory file loads, the guardrail reports the violation back to the
 agent, and the Session 2 skill runs from the skills copy on both (typed
 `$session-2` on Codex, `/session-2` on Antigravity). If something behaves
@@ -111,7 +113,9 @@ because Git on Windows checks links out as small text files.
 Every tool also picks a skill on its own when your request matches the
 skill's description. The exception is the three session skills
 (`session-2` to `session-4`): they are marked to run only when you type
-them. Claude Code respects that mark; on the other tools it is untested.
+them. Claude Code respects that mark. The copy in `.agents/skills/` drops
+it (the other tools may not know the key); there the description's "only
+runs when typed" does the same job in words, untested.
 The skills' text writes other skills as `/vault-load`; on Codex, type
 `$vault-load`. The test on 1 November: `$session-2` on Codex and
 `/session-2` on Antigravity each loaded the copy in `.agents/skills/`, read

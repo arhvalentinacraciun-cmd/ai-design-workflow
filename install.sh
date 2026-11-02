@@ -139,7 +139,7 @@ say "  4. Start exercises/BRW-101-first-task.md"
 if [ -n "$py" ]; then
   say ""
   say "  Any time: $py hooks/scan-hardcoded.py --all"
-  say "  checks every file in product/ for hard-coded style values at once."
+  say "  checks every CSS and HTML file in product/ for hard-coded style values at once."
 fi
 say ""
 say "Stuck? Mentees: bring the exact error to the track's WhatsApp group (the link is"

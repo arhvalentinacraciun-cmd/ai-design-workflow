@@ -11,7 +11,7 @@ score. No evidence, no score.
 
 | # | Trait | What "2" looks like |
 |---|---|---|
-| 1 | Token compliance | Zero literal style values outside `tokens.css`; breakpoints in `@media` are the one exception |
+| 1 | Token compliance | Zero literal style values outside `tokens.css`, including style values set from `app.js`; breakpoints in `@media` are the one exception |
 | 2 | Component discipline | Only inventory components used; no one-off styles |
 | 3 | Hierarchy | One clear primary action; type sizes/weights encode importance |
 | 4 | Spacing rhythm | All gaps on the 4px scale; siblings spaced via layout, not ad-hoc margins |

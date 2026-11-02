@@ -14,7 +14,7 @@ the second in step with the first:
                            Antigravity CLI: type /session-2
                            Gemini CLI: picked when a request matches
 
-Tested 1 Nov 2026: $session-2 on Codex 0.166 and /session-2 on Antigravity
+Tested 1 Nov 2026, on that day's version of the skills: $session-2 on Codex 0.166 and /session-2 on Antigravity
 CLI 1.4.12 both ran the copy. Grok Build and Gemini CLI: from their
 documentation, untested. docs/tools.md has the full map.
 

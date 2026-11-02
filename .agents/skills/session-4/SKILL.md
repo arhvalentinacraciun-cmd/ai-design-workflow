@@ -2,7 +2,7 @@
 name: session-4
 description: The mentee types /session-4 at the start of Session 4 (Judgment and demo day). Opens the session, checks the critique homework is in hand and helps prepare the three-minute demo, so every laptop in the room starts in the same state. Only runs when typed; never invoke it on your own.
 ---
-<!-- Copy of .claude/skills/session-4/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:de6329d6f5ce -->
+<!-- Copy of .claude/skills/session-4/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:d5a22ba3d26f -->
 
 # Session 4 · Judgment and demo day
 
@@ -66,9 +66,8 @@ On "Session done." run the session-protocol close for the last time in
 the track. Two of its steps need this skill:
 
 - **Track phase (close step 2).** Write the last one: Done lists all four
-  sessions, Next is "none, the track is over", the twin is the line
-  below, and Twin progress is "not started" because the twin changed
-  tonight.
+  sessions, Next is "none, the track is over", the twin is "none: the
+  track ends here", and Twin progress is "not started".
 - **The twin in the chat (close step 6).** Say what the mentee keeps,
   from BRW-105:
 

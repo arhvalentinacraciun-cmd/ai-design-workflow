@@ -53,6 +53,7 @@ a constraint the AI actually respects."*
 | BRW-102, part 1 | 15 min | Add a decision to `AGENTS.md`, say "Checkpoint.", start a fresh session, type `/session-2` again and ask "Which decisions are recorded?" |
 | BRW-102, part 2 | 10 min | In the fresh session, ask for the thing the decision forbids (numeric dates, with the suggested decision), then for star ratings as a second check. The refusal is the point |
 | Build a skill together: `/new-ticket` | 20 min | The mentor rebuilds `/new-ticket` live on their own screen from a blank file, and the room suggests the steps. Then run the shipped one once, and start a skill of your own: that is this week's twin |
+| Agent definitions, a demo | 7 min | The mentor shows one on their own screen: a file that gives the loop a role, constraints and material for one job. Nothing to build; wait |
 
 Show this table, then wait. Do not start part 1 until the mentee says so.
 

@@ -9,7 +9,7 @@ the design system; exercises BRW-101 to BRW-105 are unstarted. Next is
 Session 1 · Setup day · Thu 5 Nov 2026, with BRW-101 (Clear all, with a
 confirm alert). `AGENTS.md` Current State says what works today; this file
 says what is next. How each week's twin is going is kept in the Twins
-block of `memory/exercise-notes.md`, empty until the first twin is set.
+block of `memory/exercise-notes.md`, one line per week, starting with the pre-Session 1 twin.
 
 # Open questions
 

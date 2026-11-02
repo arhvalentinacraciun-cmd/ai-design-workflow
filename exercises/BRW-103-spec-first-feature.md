@@ -40,7 +40,7 @@ level** so I can find the light roasts I keep coming back to.
 3. When you are happy with the story, say *"Build the component from its
    story."* The agent builds the segmented control in the design system
    and checks the story's own acceptance criteria. It does not touch
-   `app.js`, `index.html` or `app.css` yet.
+   `product/app.js`, `product/index.html` or `product/app.css` yet.
 4. Only after you approve the feature spec: *"Implement exactly this
    spec."*
 5. Check every criterion yourself before "Session done."

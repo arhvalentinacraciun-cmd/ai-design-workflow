@@ -66,9 +66,8 @@ On "Session done." run the session-protocol close for the last time in
 the track. Two of its steps need this skill:
 
 - **Track phase (close step 2).** Write the last one: Done lists all four
-  sessions, Next is "none, the track is over", the twin is the line
-  below, and Twin progress is "not started" because the twin changed
-  tonight.
+  sessions, Next is "none, the track is over", the twin is "none: the
+  track ends here", and Twin progress is "not started".
 - **The twin in the chat (close step 6).** Say what the mentee keeps,
   from BRW-105:
 

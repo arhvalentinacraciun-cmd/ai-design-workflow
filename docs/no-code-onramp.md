@@ -20,8 +20,9 @@ decisions and skills work the same. From Session 3 the install is required.
 2. Add these files to the project's knowledge:
    - `AGENTS.md`
    - `memory/MEMORY.md` and `memory/_continuity.md`
-   - five skills from `.claude/skills/`: `design-system`,
-     `session-protocol`, `new-ticket`, `vault-load` and `vault-save`. Each
+   - six skills from `.claude/skills/`: `design-system`,
+     `session-protocol`, `session-2`, `new-ticket`, `vault-load` and
+     `vault-save`. Each
      one is a file called `SKILL.md`, so rename it to its folder name when
      you upload it: `.claude/skills/design-system/SKILL.md` becomes
      `design-system.md`.
@@ -48,15 +49,16 @@ clumsier than a coding agent, but every concept transfers.
 
 In BRW-102 you teach the project a decision and then check it in a fresh
 conversation. A fresh conversation reads the project's files, not the
-earlier chat, so re-upload AGENTS.md before the fresh conversation in
-BRW-102.
+earlier chat, so re-upload AGENTS.md and `memory/_continuity.md` before
+the fresh conversation in BRW-102 (the continuity file is what tells
+`session-2` to pick up at part 2).
 
 ## What you can't practise here
 
 - The **hook**: nothing enforces the no-hardcoding rule, so you are the
   hook. Before you accept output, look through the CSS and HTML for hex
   colours (`#3B3FBF`), `px`, `rgb(` and `hsl(` values. Only `tokens.css`
-  may hold them.
+  may hold them, plus the condition of an `@media` line.
 - **Session close** can't run `git status`. At the end of each session, ask
   for the memory files the close changed (`AGENTS.md`, `memory/_continuity.md`
   and any other) in full, save them in your folder, and replace them in the

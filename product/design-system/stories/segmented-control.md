@@ -58,12 +58,12 @@ second use of the component asks for them.
 | Default | Group has a neutral background and a 2px neutral border, pill-shaped; options are text only |
 | Hover on an option | Option background darkens one step (neutral-100 to neutral-200). The selected option does not change on hover |
 | Selected | Option is filled with the primary colour, its text turns white and bold. No shadow |
-| Focus-visible | The focused option shows the shared focus ring in `--color-primary-600`, the same as Button |
+| Focus-visible | The focused option shows the shared focus ring, `--focus-ring-color`, the same as Button |
 | Disabled (optional) | Whole group at `--opacity-disabled`, no hover; not needed for BRW-103 |
 
 ## Tokens
 
-Layer 2 names, each pointing at a Layer 1 primitive. Add them to
+Layer 2 names, each pointing at a Layer 1 primitive or at the shared `--focus-ring-color`. Add them to
 `product/design-system/component-tokens.css` next to the Button tokens.
 Every colour and radius goes through these; shared scales (border width,
 font weight, size, focus ring, opacity) may be used directly in the CSS as
@@ -104,7 +104,7 @@ offset of `--space-1`, as on Button.
 - The selected state is not colour alone: the fill contrasts strongly
   with the group, the label turns bold, and the radio's checked state
   carries it for assistive technology.
-- Focus ring uses the shared `--focus-ring-*` scale, same as Button. The
+- Focus ring uses the shared `--focus-ring-color` and `--focus-ring-width`, same as Button. The
   offset keeps it visible on the filled option, which is the same colour.
 
 ## Acceptance criteria for building it

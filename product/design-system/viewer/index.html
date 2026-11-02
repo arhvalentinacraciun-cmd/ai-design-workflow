@@ -773,9 +773,9 @@
   <p class="v-lede">The same five steps every time, in this order. Each step is checkable. The hook checks one thing for you: no literal colour or pixel size in the CSS and HTML of steps 2, 3 and 5. The rest you check yourself.</p>
   <ol class="v-recipe">
     <li><b>Story first.</b> A Markdown file in <code>stories/</code>: what it is, when to use it and when not, anatomy, states, the tokens it needs, accessibility, acceptance criteria. The segmented control story is the template.</li>
-    <li><b>Tokens.</b> Add the component's Layer 2 tokens to <code>component-tokens.css</code>, each pointing at a primitive. Every colour and radius goes through them. A literal value anywhere comes straight back from the hook.</li>
+    <li><b>Tokens.</b> Add the component's Layer 2 tokens to <code>component-tokens.css</code>, each pointing at a primitive or at the shared <code>--focus-ring-color</code>. Every colour and radius goes through them. A literal value anywhere comes straight back from the hook.</li>
     <li><b>CSS.</b> Add the classes to <code>components.css</code>, using only the new tokens and the shared scales. Include hover, focus, disabled and any error state the story names.</li>
-    <li><b>Inventory.</b> Add a row to the design-system skill at <code>.claude/skills/design-system/SKILL.md</code>. Until the row exists, the agent treats the component as not existing, which is correct.</li>
+    <li><b>Inventory.</b> Add a row to the design-system skill at <code>.claude/skills/design-system/SKILL.md</code>. Until the row exists, the agent treats the component as not existing, which is correct. Then run <code>python3 hooks/sync-skills.py</code> so the other agents get the copy.</li>
     <li><b>This page.</b> Add a component block here with the five tabs: preview specimens (each one a template, which also becomes its code), the token table, usage, accessibility with its contrast pairs. Copy the Button block and replace its content. Move the component's link in the nav out of the planned style. Then add a row to the Changelog on this page and a row to <code>memory/design-system-history.md</code>.</li>
   </ol>
   <p>Then open Brewlog next to this page, change one primitive in <code>tokens.css</code>, and reload both. If the new component moved with everything else, it is part of the system.</p>
