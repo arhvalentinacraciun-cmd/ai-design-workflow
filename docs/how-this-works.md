@@ -219,11 +219,3 @@ link; the other two are there when you want the longer story.
 | ![QR code for the git guide](img/qr-git-guide.svg) | ![QR code for GitHub](img/qr-github.svg) | ![QR code for the Git article on Wikipedia](img/qr-wikipedia-git.svg) |
 | **Git for designers**, a seven-minute guide<br>[claudefordesigners.com/guide/git-basics](https://claudefordesigners.com/guide/git-basics) | **GitHub**, where the repos live<br>[github.com](https://github.com) | **Git**, the background<br>[en.wikipedia.org/wiki/Git](https://en.wikipedia.org/wiki/Git) |
 
----
-
-## Before Session 1 (Thursday 5 November)
-
-Before Session 1 you get the install check and the link to this project by email. Do the install check, clone the project and run the opening line once
-("Read AGENTS.md, then give me the state of the project in three
-sentences"). If something fails, say so in the track's WhatsApp group. If
-anything on this page did not land, bring the question; the opening block of Session 1 walks through these four pictures live.
