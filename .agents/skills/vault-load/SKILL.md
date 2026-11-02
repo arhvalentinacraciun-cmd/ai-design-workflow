@@ -2,7 +2,7 @@
 name: vault-load
 description: Rebuilds the project's working memory at session open. Reads AGENTS.md, memory/MEMORY.md and memory/_continuity.md, then only the on-demand memory files that match a topic the designer gives. Run by the session protocol's open; the designer can also type /vault-load <topic> to pull one topic into the session.
 ---
-<!-- Copy of .claude/skills/vault-load/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:e80bf8da91c9 -->
+<!-- Copy of .claude/skills/vault-load/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:85a07176676a -->
 
 # Vault load
 
@@ -31,9 +31,11 @@ Memory in this repo has two tiers, and this skill is the reader for both.
 
 ## Report
 
-Then brief, do not dump:
+Report once. This is the open's summary: the session protocol and the
+session skills point at it and do not repeat it. Brief, do not dump:
 
 - The project state in three sentences.
+- Uncommitted work from `git status`, or "nothing uncommitted".
 - Where in the track this session is and what this week's twin is, from
   Track phase in `AGENTS.md`.
 - Open questions and anything in flight, from `_continuity.md`.
@@ -41,7 +43,8 @@ Then brief, do not dump:
   designer can ask for one.
 - If a topic was given: what the matching files said, briefly.
 
-Then wait for the kick-off line. Do not start building.
+Then hand back to the session protocol: the twin question, then the
+kick-off line. Do not start building.
 
 ## Rules
 

@@ -2,7 +2,7 @@
 name: critique
 description: Use when asked to critique UI work — AI-generated or human — against the cohort rubric. Produces a structured, scored review with evidence, not vibes.
 ---
-<!-- Copy of .claude/skills/critique/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:c10ac0603dc3 -->
+<!-- Copy of .claude/skills/critique/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:3a75513a3c1c -->
 
 # Critique Rubric — v1
 
@@ -12,7 +12,7 @@ score. No evidence, no score.
 
 | # | Trait | What "2" looks like |
 |---|---|---|
-| 1 | Token compliance | Zero literal style values outside the token files |
+| 1 | Token compliance | Zero literal style values outside `tokens.css`; breakpoints in `@media` are the one exception |
 | 2 | Component discipline | Only inventory components used; no one-off styles |
 | 3 | Hierarchy | One clear primary action; type sizes/weights encode importance |
 | 4 | Spacing rhythm | All gaps on the 4px scale; siblings spaced via layout, not ad-hoc margins |

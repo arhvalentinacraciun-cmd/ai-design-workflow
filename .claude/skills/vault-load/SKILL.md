@@ -30,9 +30,11 @@ Memory in this repo has two tiers, and this skill is the reader for both.
 
 ## Report
 
-Then brief, do not dump:
+Report once. This is the open's summary: the session protocol and the
+session skills point at it and do not repeat it. Brief, do not dump:
 
 - The project state in three sentences.
+- Uncommitted work from `git status`, or "nothing uncommitted".
 - Where in the track this session is and what this week's twin is, from
   Track phase in `AGENTS.md`.
 - Open questions and anything in flight, from `_continuity.md`.
@@ -40,7 +42,8 @@ Then brief, do not dump:
   designer can ask for one.
 - If a topic was given: what the matching files said, briefly.
 
-Then wait for the kick-off line. Do not start building.
+Then hand back to the session protocol: the twin question, then the
+kick-off line. Do not start building.
 
 ## Rules
 

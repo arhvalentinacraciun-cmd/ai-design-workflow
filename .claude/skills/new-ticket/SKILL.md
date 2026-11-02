@@ -8,9 +8,10 @@ description: Turns one sentence into a ticket an agent can build from, in the sa
 One sentence in, a ticket out. The ticket is the handoff: a developer or
 an agent should be able to build from it without this conversation.
 
-This skill is built live in Session 2 as the worked example of "a process
-you repeat becomes a skill". If you are reading it before then, this is
-the finished version.
+This skill is rebuilt live in Session 2 on the mentor's screen, as the
+worked example of "a process you repeat becomes a skill". This file is
+the answer key. A version you write yourself can differ from it, and
+that is fine.
 
 ## Input
 
@@ -32,7 +33,7 @@ kick-off line ready to paste:
 
 ## Shape
 
-Mirror `exercises/BRW-103-spec-first-feature.md`:
+Use the shape below:
 
 ```
 # BRW-2NN · <Title in five words or fewer>

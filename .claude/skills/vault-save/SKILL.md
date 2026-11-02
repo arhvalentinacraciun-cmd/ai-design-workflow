@@ -1,6 +1,6 @@
 ---
 name: vault-save
-description: Writes what this session decided and learned into the project's memory, then overwrites memory/_continuity.md with where the work is. Run by the session protocol's close on "Session done."; the designer can also type /vault-save mid-session to checkpoint.
+description: Writes what this session decided and learned into the project's memory, runs a full scan of product/ for literal style values, then overwrites memory/_continuity.md with where the work is. Run by the session protocol's close on "Session done." and by its checkpoint on "Checkpoint."; the designer can also type /vault-save mid-session to checkpoint.
 ---
 
 # Vault save
@@ -25,7 +25,22 @@ Go through what happened and sort each item:
 Do **not** save: code and file contents (git has them), the conversation
 itself, anything that mattered only today.
 
-## 2. Overwrite `memory/_continuity.md`
+## 2. Run a full scan of `product/`
+
+The hook checks each file as the agent writes it. A file changed another
+way (a shell command, an editor, a merge) is never checked. So run a full
+scan of `product/`:
+
+```
+python3 hooks/scan-hardcoded.py --all
+```
+
+Clean: say so in one line. Hits: list each one (file, line, value) in the
+chat and put them under In flight in step 3. Do not fix them here unless
+the designer asks; a fix is work, and work needs a ticket. If the command
+fails, say what it printed and carry on with the save.
+
+## 3. Overwrite `memory/_continuity.md`
 
 Replace the whole file, every time, in this shape:
 
@@ -41,19 +56,32 @@ updated: <today, YYYY-MM-DD>
 - [ ] <each one as a checkbox>
 
 # In flight
-<uncommitted or half-done work, or "Nothing">
+<uncommitted or half-done work, scan hits, or "Nothing">
 
 # How to resume
 <numbered: what to read first, the immediate next step, any gotcha>
 ```
 
+At a checkpoint, the first line under Where the work is says where the
+session stopped and what is next (in Session 2: *"Session 2 part 1 done,
+part 2 next."*). The close overwrites it, so the line is gone once the
+session is really over.
+
 Continuity is overwritten, never appended. Its history is in git.
 
-## 3. Report
+## 4. Report
 
 List every file you changed and, for each, what went in. If you created a
-file, say so. If a decision was recorded, quote it. Then hand back to the
-session protocol for Track phase and the commit.
+file, say so. If a decision was recorded, quote it. Give the scan result.
+Then hand back to the session protocol for Track phase and the commit.
+
+## The Last updated line (close only)
+
+The **Last updated** line at the top of `AGENTS.md` goes stale unless
+every close updates it: today's date, rev one higher than it was. The
+session protocol does this at its close, right after Track phase, so one
+bump covers every change to the file that evening. A checkpoint leaves
+the line alone.
 
 ## Rules
 

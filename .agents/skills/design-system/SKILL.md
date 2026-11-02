@@ -2,16 +2,19 @@
 name: design-system
 description: Use when building or changing any UI in product/. Covers the component inventory, the token layers, and the rules that keep AI-built UI consistent. Invoke at the start of any UI task.
 ---
-<!-- Copy of .claude/skills/design-system/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:3e2ca40b4572 -->
+<!-- Copy of .claude/skills/design-system/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:5fd1fd950b87 -->
 
 # Brewlog Design System
 
 ## The two rules
 
-1. **No literal style values.** Every color, spacing, radius, shadow, font,
-   and motion value uses `var(--token-name)`. No suitable token → stop and
-   propose one; never improvise a literal. (Enforced by a hook — violations
-   come back to you automatically.)
+1. **No literal style values.** Every colour, spacing, radius, shadow,
+   font and motion value uses `var(--token-name)`. Literals live in two
+   places only: `product/design-system/tokens.css` (Layer 1), where every
+   value is defined, and `@media` conditions, where custom properties do
+   not work. Anywhere else a literal is never the answer: no suitable
+   token → stop and propose one. (Enforced by a hook: violations come
+   back to you automatically.)
 2. **Build only from this inventory.** A component that isn't listed here
    doesn't exist. Need one? Say so and propose it; don't invent one-off
    styles inline.
@@ -20,14 +23,21 @@ description: Use when building or changing any UI in product/. Covers the compon
 
 | Layer | File | May be referenced by |
 |---|---|---|
-| 1 — Primitives | `product/design-system/tokens.css` | Layer 2; `components.css` for shared scales only; page layout in `app.css` |
-| 2 — Component tokens | `product/design-system/component-tokens.css` | `components.css` ONLY |
-| 3 — Theme (future) | overrides Layer 2 at `:root` | nobody writes this yet |
+| 1 · Primitives | `product/design-system/tokens.css` | Layer 2; the shared scales in `components.css` and `app.css` (list below) |
+| 2 · Component tokens | `product/design-system/component-tokens.css` | `components.css`; `app.css` for the page namespace `--page-*` and for a component part the page styles (such as `--card-meta-text`) |
+| 3 · Theme (future) | overrides Layer 2 at `:root` | nobody writes this yet |
 
-In component CSS, every **colour** and every **radius** comes from a
-component token — never `--color-*` or `--radius-*` directly. The shared
-scales (`--space-*`, `--font-*`, `--line-*`, `--border-width-*`,
-`--shadow-*`, `--transition-*`, `--focus-ring-*`) may be used directly.
+Layer 2 has one namespace per component (`--button-*`, `--badge-*`,
+`--tag-*` and so on), plus `--page-*` for the page layout in `app.css` and
+one shared token, `--focus-ring-color`.
+
+In component CSS, every **colour** and every **radius** comes from Layer 2,
+never from `--color-*` or `--radius-*` directly. A component takes them
+from its own namespace or from `--focus-ring-color`, never from another
+component's namespace. The shared scales may be used directly from
+Layer 1: `--space-*`, `--font-*`, `--line-*`, `--border-width-*`,
+`--shadow-*`, `--transition-*`, `--duration-*`, `--focus-ring-width`,
+`--opacity-*`, `--size-*` and `--letter-spacing-*`.
 Component token naming:
 `--{component}-{variant}-{property}` (variant-specific) or
 `--{component}-{property}` (shared).
@@ -45,10 +55,10 @@ Why each version is the way it is: `memory/design-system-history.md`
 | Field | `.field` wraps a label and a control | `.field-label` (+ `.field-label__required`), `.field__hint`, `.field__error` (wire with `aria-describedby`) |
 | Input | `.input` inside `.field` | states: hover, focus, `aria-invalid="true"`, `:disabled`; placeholder is a hint, never the label |
 | Select | `.select-wrap` > `.select` | same states as Input; the wrapper draws the chevron, so always use the wrapper |
-| Badge | `.badge` + variant | `neutral` `primary` `accent` `success` `warning` `danger` · `.badge--dot` for a leading dot · `accent` is the lime highlighter, one per view (the brew count) |
+| Badge | `.badge` + variant | `.badge-neutral` `.badge-primary` `.badge-accent` `.badge-success` `.badge-warning` `.badge-danger` · `.badge--dot` for a leading dot · `.badge-accent` is the lime highlighter, one per view (the brew count) |
 | Tag | `.tag` | `.tag--plain` (no pill, for a meta line in a card) · `.tag--dot` leading dot · `.tag-roast` + `.tag-roast--light/medium/dark` for the roast level, the only place the coffee brown appears · `.tag__remove` button inside for a removable tag |
 | Card | `.card` | `.card--muted` `.card--interactive` (focusable, needs `tabindex="0"` or to be a link) · sections `.card__header` `.card__body` `.card__footer` · `.card__title` `.card__meta` |
-| Alert | `.alert` + variant | `info` `success` `warning` `danger` · `.alert__content` > `.alert__title` + text · `.alert__actions` · `.alert__close` |
+| Alert | `.alert` + variant | `.alert-info` `.alert-success` `.alert-warning` `.alert-danger` · `.alert__content` > `.alert__title` + text · `.alert__actions` · `.alert__close` |
 | Rating | `.rating` > `.rating__dot(--filled)` | `.rating--lg` · `.rating--top` for a 5 of 5 (the lime band; the page adds it) · `.rating__label` for the score in words · empty dots are outlined · dots only, never stars (recorded design decision) |
 
 ## Usage guidance

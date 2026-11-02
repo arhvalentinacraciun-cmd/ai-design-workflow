@@ -28,9 +28,9 @@ install.sh runs the check. Every copied SKILL.md gets one comment line
 under its frontmatter that names its source, so anyone who opens the copy
 knows where the real file is.
 
-Why .claude/skills/ is the source: most of the room runs Claude Code, and
+Why .claude/skills/ is the source: the track is driven on Claude Code, and
 every exercise, the design-system viewer and AGENTS.md already point at
-.claude/skills/. Those mentees never see a change. On the other agents
+.claude/skills/. Claude Code users never see a change. On the other agents
 AGENTS.md tells the agent to edit the source and run this script.
 
 Why copies and not a symlink: Git on Windows checks a symlink out as a
@@ -47,10 +47,21 @@ Three cases are handled so nobody loses work:
     from; that is how the script tells an edited copy from an old one.
   - A copy whose source was deleted is removed.
 
-The frontmatter is copied as it is: Claude Code, Codex and Antigravity all
-read `name` and `description`. Codex needs `name`, so a source without one
-gets `name: <folder name>` in the copy. A source without `description`
-is reported; no agent can decide when to use it.
+The frontmatter is copied almost as it is: Claude Code, Codex and
+Antigravity all read `name` and `description`. Two changes are made in
+the copy:
+
+  - Codex needs `name`, so a source without one gets `name: <folder name>`.
+  - `disable-model-invocation: true` is a Claude Code setting: the skill
+    runs only when typed, never on the agent's own initiative. The other
+    agents do not know the key and may reject a file that has it, so the
+    copy leaves that line out. On those agents the description's last
+    sentence ("Only runs when typed") does the same job in words.
+
+A source without `description` is reported; no agent can decide when to
+use it. The fingerprint in the comment line is taken from the copy as the
+other agents see it, so these two changes never make a copy look edited
+or out of step.
 
 Standard library only; Python 3.8 or newer.
 """
@@ -65,6 +76,9 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / ".claude" / "skills"
 COPY = ROOT / ".agents" / "skills"
 SKILL_FILE = "SKILL.md"
+
+# Frontmatter lines only Claude Code understands. The copy leaves them out.
+CLAUDE_ONLY_KEYS = [b"disable-model-invocation"]
 
 MARK = re.compile(rb"^<!-- Copy of \.claude/skills/.*sync:([0-9a-f]{12}) -->\r?\n", re.M)
 MARK_TEXT = (
@@ -115,9 +129,18 @@ def make_copy(name, files):
     if not re.search(rb"^description:", front, re.M):
         return f".claude/skills/{name}/SKILL.md has no description: every agent uses it to decide when the skill applies"
     nl = b"\r\n" if b"\r\n" in front else b"\n"
+    # Codex needs a name: use the folder name when the source has none.
     if not re.search(rb"^name:", front, re.M):
         front = b"---" + nl + b"name: " + name.encode() + nl + front.split(nl, 1)[1]
-    mark = MARK_TEXT.format(name=name, fp=fingerprint(files)).encode() + nl
+    # Leave out the lines only Claude Code understands.
+    for key in CLAUDE_ONLY_KEYS:
+        front = re.sub(rb"^" + re.escape(key) + rb":.*(?:\r?\n|$)", b"", front, flags=re.M)
+    # The copy without its comment line: what the other agents read. Its
+    # fingerprint goes in the comment line, so a later run can tell whether
+    # someone edited the copy by hand.
+    plain = dict(files)
+    plain[SKILL_FILE] = front + body
+    mark = MARK_TEXT.format(name=name, fp=fingerprint(plain)).encode() + nl
     out = dict(files)
     out[SKILL_FILE] = front + mark + body
     return out
@@ -195,8 +218,9 @@ def main():
             current = files_in(folder)
             if same(current, wanted):
                 continue
-            # An edited copy is kept, unless the source already holds the same text.
-            if edited_copy(folder) and not same(unmarked(current)[0], src_files):
+            # An edited copy is kept, unless the edit already matches what the
+            # copy should say (someone made the same change in both places).
+            if edited_copy(folder) and not same(unmarked(current)[0], unmarked(wanted)[0]):
                 problems.append(
                     f"{rel(folder)}/SKILL.md was edited by hand, so the script will not overwrite it. "
                     f"Move the change into .claude/skills/{name}/SKILL.md (the source), "

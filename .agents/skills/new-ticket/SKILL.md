@@ -2,16 +2,17 @@
 name: new-ticket
 description: Turns one sentence into a ticket an agent can build from, in the same shape as the BRW exercises. Use when the designer types /new-ticket followed by an idea, or asks for a ticket from a sentence. Writes the ticket; never implements it.
 ---
-<!-- Copy of .claude/skills/new-ticket/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:7585f284c561 -->
+<!-- Copy of .claude/skills/new-ticket/SKILL.md, made by hooks/sync-skills.py. Edit that file, then run: python3 hooks/sync-skills.py. On Codex a skill written /name below is typed $name. sync:85e97df0f089 -->
 
 # New ticket
 
 One sentence in, a ticket out. The ticket is the handoff: a developer or
 an agent should be able to build from it without this conversation.
 
-This skill is built live in Session 2 as the worked example of "a process
-you repeat becomes a skill". If you are reading it before then, this is
-the finished version.
+This skill is rebuilt live in Session 2 on the mentor's screen, as the
+worked example of "a process you repeat becomes a skill". This file is
+the answer key. A version you write yourself can differ from it, and
+that is fine.
 
 ## Input
 
@@ -33,7 +34,7 @@ kick-off line ready to paste:
 
 ## Shape
 
-Mirror `exercises/BRW-103-spec-first-feature.md`:
+Use the shape below:
 
 ```
 # BRW-2NN · <Title in five words or fewer>
