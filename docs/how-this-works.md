@@ -91,22 +91,23 @@ back into the context window, and it decides again, until the job is done and
 it answers you. Claude Code and Codex are that loop, running in your project
 folder. Everything you install in this track sits on this loop.
 
-![The agent loop: your request goes to the model, which decides, uses a tool, gets the result back into the window and decides again until it answers; memory files are read at the start and a skill is loaded when you type its name](img/primer-3-agent-loop.svg)
+![The agent loop: your request goes to the model, which decides, uses a tool, gets the result back into the window and decides again until it answers; memory files are read at the start and a skill is loaded when you type its name or when your request matches it](img/primer-3-agent-loop.svg)
 
 - **Markdown file**: a plain text file with light formatting (headings,
   lists, bold) and the extension `.md`. The instructions, the memory and the
   skills in this track are all markdown files, and you can read and edit them
   in any text editor.
-- **Skill**: a saved instruction file with a name. Typing the name, for
-  example `/new-ticket`, loads that file into the window and the agent follows
-  it. When you repeat a process often, save it as a skill.
+- **Skill**: a saved instruction file with a name. It loads into the window
+  when you type its name, for example `/new-ticket`, or when your request
+  matches what the skill is for, and the agent follows it. When you repeat a
+  process often, save it as a skill.
 - **Hook**: a small program that runs by itself when something happens, for
-  example after every file edit. It can reject the edit by rules you decide to
-  enforce. This is the difference between a rule written down in a markdown
-  file and a rule enforced via hooks; you will see this in action in the first
-  hour of Session 1.
+  example after every file edit. It checks the edit against rules you decide
+  to enforce and flags a broken rule straight back to the agent, which fixes
+  it. This is the difference between a rule written down in a markdown file
+  and a rule enforced via hooks; you will see this in action in Session 1.
 - **Memory files and `AGENTS.md`**: read at the start, as in section 2.
-- **Agent definition** (Session 2): a file that gives the loop a role,
+- **Agent definition** (shown in Session 2 as a short demo): a file that gives the loop a role,
   constraints and reference material for one specific job. A persona line on
   its own ("you are a senior designer") barely changes the output; the
   constraints and the material do.
@@ -123,13 +124,17 @@ The point of a design token is that a colour is decided in one place. If the bra
 and badge that points at it follows. Write the colour directly into fifty
 components and you have fifty places to find and fix, and sooner or later one
 is missed and the product stops looking like one product. In the starter
-project every colour, spacing and radius goes through a token, and a hook
-checks every file the AI writes and rejects a raw value such as `#3B3FBF`.
+project every colour, spacing and radius goes through a token. A hook checks
+the CSS and HTML files the AI writes for raw values such as `#3B3FBF` or
+`12px`, and flags each one straight back to the agent, which fixes it. The
+hook does not see JavaScript, or a file the agent changes by running a
+command, so the session close scans all the CSS and HTML once more, and what
+no scan can catch is left to the critique, which Session 4 is about.
 
-![Left: an AI token is a piece of text, shown as the word literal split into pieces. Right: a design token is a named value, shown as a button token pointing to a colour token pointing to a hex value, with the hook rejecting the raw hex](img/primer-4-two-tokens.svg)
+![Left: an AI token is a piece of text, shown as the word literal split into pieces. Right: a design token is a named value, shown as a button token pointing to a colour token pointing to a hex value, with the hook flagging the raw hex](img/primer-4-two-tokens.svg)
 
 So the word you hear at the start of the evening and the word in the hook's
-rejection an hour later are different things that share a name. The two fields arrived at the same word independently.
+message later that evening are different things that share a name. The two fields arrived at the same word independently.
 
 ---
 
@@ -157,10 +162,12 @@ Three short lists of the terms you will hear during the four evenings. Each list
   Codex are agents.
 - **Tool**: an action the agent can take on your behalf: read a file, edit a
   file, run a command, search the web.
-- **Skill**: a saved instruction file with a name, run by typing that name
-  (`/new-ticket`, `/critique`, `/session-2`).
+- **Skill**: a saved instruction file with a name. It runs when you type that
+  name (`/new-ticket`, `/critique`, `/session-2`) or when your request matches
+  what it is for.
 - **Hook**: a small program that runs by itself when something happens, for
-  example after every file edit, and can reject the result.
+  example after every file edit, and can flag a problem straight back to the
+  agent.
 - **Memory**: the files the agent reads at the start of a session and writes
   at the end (`AGENTS.md` and the `memory/` folder).
 - **`AGENTS.md`**: the one file the project always loads first. It holds the
@@ -193,7 +200,7 @@ Three short lists of the terms you will hear during the four evenings. Each list
   is built from, so that ten screens look like one product.
 - **Design token**: a named value (`--color-primary-600`, `--space-4`) that
   components point at instead of a raw value. The starter project has three
-  layers: primitives, component tokens, components.
+  layers: primitives, component tokens, and a future theme layer.
 - **Component**: a reusable piece of interface with its own rules: Button,
   Input, Badge, Card.
 - **Variant**: a deliberate version of a component: primary, secondary,

@@ -1,5 +1,5 @@
 # AGENTS.md — Brewlog
-**Last updated:** 2026-11-01 (rev 7)
+**Last updated:** 2026-11-02 (rev 8)
 **Maintained by:** whoever is in the session — that's the point
 
 > Start every session by reading all of this file, then `memory/MEMORY.md` and
@@ -13,10 +13,10 @@
   start, so what's written here is what it "knows" before you say a word.
   The file is only as good as its last update — closing a session without
   updating it is how projects lose their memory.
-  Why this file is called AGENTS.md: Codex, Antigravity, Grok Build (wired
-  from the documentation, untested), Cursor and Copilot all read a file of
-  that name. Claude Code reads CLAUDE.md, which here is three lines that
-  import this one. One memory, every tool.
+  Why this file is called AGENTS.md: Codex, Antigravity, Gemini CLI and
+  Grok Build (those two wired from the documentation, untested), Cursor and
+  Copilot all read a file of that name. Claude Code reads CLAUDE.md, which
+  here is a short file that imports this one. One memory, every tool.
 -->
 
 ---
@@ -39,34 +39,45 @@ in five minutes and real enough that sloppy work shows.
 
 <!--
   TEACHING NOTE: this is the most important section in the file. Decisions
-  recorded here are constraints, not suggestions. If you ask the AI to build
-  something that contradicts one, it must flag the conflict and ask before
-  proceeding — that behaviour is what turns a chat into a colleague.
+  recorded here are constraints, not suggestions. The flag-and-ask rule
+  just below is the behaviour that turns a chat into a colleague.
 -->
 
 Every significant decision, with rationale. They stay decided until the
-designer reopens one.
+designer reopens one. When a request contradicts a decision, flag the
+conflict and ask before going ahead.
 
 ### No-Hardcoding Rule
 **Decided:** 2026-08-31 · **Status:** absolute, enforced by hook
 In `product/`, colours, spacing, type, radii, shadows and motion all come
-from `var(--token-name)`. When the token you need is missing, stop, say so
-and propose a new one; a literal value is never the answer.
+from `var(--token-name)`. Two places hold literals on purpose:
+`product/design-system/tokens.css` (Layer 1), where every value is defined,
+and `@media` conditions, where custom properties do not work. When the
+token you need is missing, stop, say so and propose a new one; anywhere
+else, a literal value is never the answer.
 **Why:** the token system cannot see a literal, so that element drops out
-of every theme change. The hook in
-`hooks/scan-hardcoded.sh` scans every write; violations come back to the
-session automatically.
+of every theme change.
+**How it is enforced:** `hooks/scan-hardcoded.sh` runs after every file
+edit (on Antigravity, before it). It scans CSS and HTML files under
+`product/` for colour, size and spacing literals (hex, `px`, `rgb()`,
+`hsl()`), also on a line that holds a token, and flags each one straight
+back to the agent, which fixes it; Antigravity blocks the write instead.
+JavaScript and edits made through the shell are not scanned. The session
+close runs a full scan; what no scan can see is the critique rubric's job.
 
 ### Three-Layer Token Architecture
 **Decided:** 2026-08-31 · **Revised:** 2026-10-03 (rule brought in line with
-what `components.css` had done since day one)
+what `components.css` had done since day one); 2026-11-02 (page tokens and
+the opacity, size and duration scales written in)
 Layer 1 `tokens.css` — primitives (palette, spacing, type, radius, shadow,
 motion). Layer 2 `component-tokens.css` — per-component namespaces pointing
 at primitives. Components take every colour and every radius from Layer 2;
 the shared scales (spacing, type, line height, border width, shadow,
-motion, focus ring) they may reference from Layer 1 directly. Layer 3 — a
-future theme file overriding component tokens at `:root`, zero component
-changes.
+motion and duration, opacity, size, letter spacing, focus ring) they may reference from
+Layer 1 directly. `app.css` follows the same rule: it takes its page
+colours from Layer 2 too, from the `--page-*` namespace, and its layout
+from the shared scales. Layer 3 — a future theme file overriding component
+tokens at `:root`, zero component changes.
 **Why:** isolation (a button colour can't break a badge), theme safety
 where themes actually differ (colour and shape), and the AI always has a
 token to reach for instead of a literal. Spacing and type stay shared on
@@ -91,9 +102,9 @@ Skills are written and edited in `.claude/skills/<name>/SKILL.md`, on every
 agent. `.agents/skills/` holds copies for Codex, Antigravity CLI and Gemini
 CLI, made by `python3 hooks/sync-skills.py`: after adding or changing a
 skill, run it; never edit a file in `.agents/skills/` by hand.
-**Why:** Claude Code reads only `.claude/skills/`, and most of the room runs
-it, so making that folder the source means Claude Code users never see a
-change. Copies rather than a symlink, because Git on Windows checks a
+**Why:** Claude Code reads only `.claude/skills/`, and the track is driven
+on Claude Code, so making that folder the source means Claude Code users
+never see a change. Copies rather than a symlink, because Git on Windows checks a
 symlink out as a plain text file; the script's `--check` catches a copy
 that has fallen behind.
 
@@ -134,17 +145,24 @@ apps this isn't.
 
 ## Session Protocol
 
-- **Open:** `/vault-load` (reads this file, `memory/MEMORY.md`,
-  `memory/_continuity.md`) → check `git status` → summarise project state
-  in three sentences → say where in the track this session is, from Track
-  phase → wait for the kick-off line. Done by hand in Session 1: read this
-  file, then the two memory files.
+- **Open:** `/vault-load` reads this file, `memory/MEMORY.md` and
+  `memory/_continuity.md`, checks `git status`, and reports once: the
+  project state in three sentences, where in the track this session is
+  (from Track phase), and any uncommitted work. Then it asks how the
+  twin went, writes the answer to `memory/exercise-notes.md`, and waits
+  for the kick-off line. Done by hand in Session 1: read this file, then
+  the two memory files.
 - **Kick-off:** the designer opens the work with a single line, *"Today
   we're doing [ticket]. The goal is [goal]."* From then on, done means the
   ticket's acceptance criteria are met.
+- **Checkpoint:** on "Checkpoint." → `/vault-save` only, plus one line in
+  continuity saying where the session stopped. Nothing else changes. Used
+  when a session ends early on purpose (Session 2, part 1).
 - **Close:** on "Session done." → `/vault-save` (decisions and state into
-  this file, facts into `memory/`, continuity rewritten) → update Track
-  phase → `git status` → remind the designer to commit.
+  this file, facts into `memory/`, continuity rewritten, a full scan of
+  `product/` for literals) → update Track phase → bump the Last updated
+  line at the top of this file → `git status` → remind the designer to
+  commit → name the twin for the week in the chat.
 
 ---
 
@@ -162,8 +180,10 @@ apps this isn't.
 
 - **Done:** nothing yet. A fresh clone starts here.
 - **Next:** Session 1 · Setup day · Thu 5 Nov 2026
-- **This week's twin:** install your coding agent, run the opener once, and
-  say in the track's WhatsApp group if anything failed.
+- **This week's twin:** install your coding agent, type the opener once
+  (*"Read AGENTS.md, then give me the state of the project in three
+  sentences."*), and say in the track's WhatsApp group (for mentees of the
+  track) if anything failed.
 - **Twin progress:** not started
 
 Sessions: 1 Setup day (5 Nov) · 2 Memory and skills (12 Nov) · 3 Design
@@ -174,27 +194,22 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
 ## Current State
 
 - Brewlog renders with seeded entries; add-entry form works (in-memory only,
-  refreshes reset it — this is intentional for now).
-- Design system extended on 2026-10-08: full 50–900 colour scales; Button
-  sizes, hover/active/disabled/loading states, icon slot; Field with hint
-  and error; Select in a wrapper with its own chevron; Badge dot; Tag
-  remove; Card sections, muted and interactive; Alert title, actions and
-  close; Rating large and label. Viewer at `product/design-system/viewer/`.
-- Form validation uses the Field error, not the browser bubble: the form is
-  `novalidate` and `app.js` shows the message (2026-10-08).
-- 2026-10-08, system 1.2: coffee palette, fields share Button's focus
-  ring, entry rows keep the rating in place, dates day-first, roast labels
-  capitalised, page greys one step darker, coffee mark in the header.
-- 2026-11-01, system 2.0: indigo primary with the ink at 900, lime accent
-  as a highlighter (brew count, top rating, info alert), a roast hue for
-  the coffee brown (the roast Tag only), cool neutrals. Atkinson
+  refreshes reset it — this is intentional for now). Form validation uses
+  the Field error, not the browser bubble: the form is `novalidate` and
+  `app.js` shows the message.
+- Design system 2.0 (2026-11-01): indigo primary with the ink at 900, lime
+  accent as a highlighter (brew count, top rating, info alert), a roast hue
+  for the coffee brown (the roast Tag only), cool neutrals. Atkinson
   Hyperlegible Next for text, IBM Plex Mono for labels, counts and dates;
-  type one step up, 14px floor. Pill buttons, 48px controls, 2px borders
-  on anything that carries meaning. The page has a full-bleed header with
-  a photo under an ink wash, the form as a Card lifting into it, entries
-  as tickets with a photo tile (seeds ship photos in `product/img/`; a new
-  entry shows the cup mark). Badge `accent`, Tag `plain`/`dot`/`roast`,
-  Rating `top` added. Every contrast pair re-measured in the viewer.
+  type one step up, 14px floor. Pill buttons, 48px controls, 2px borders on
+  anything that carries meaning. The page has a full-bleed header with a
+  photo under an ink wash, the form as a Card lifting into it, entries as
+  tickets with a photo tile (seeds ship photos in `product/img/`; a new
+  entry shows the cup mark). Components: Button, Field, Select, Badge, Tag,
+  Card, Alert, Rating, each with the variants and states listed in the
+  design-system skill. Every contrast pair measured in the viewer at
+  `product/design-system/viewer/`. How it got here:
+  `memory/design-system-history.md`.
 - Memory layer added 2026-10-13: `memory/` with an index, a continuity
   file and three on-demand facts (design system history, data model,
   exercise notes); `/vault-load` and `/vault-save` read and write it.
@@ -205,7 +220,7 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
   `$session-2` on Codex and `/session-2` on Antigravity CLI both ran the
   copy. Grok Build and Gemini CLI are wired from their documentation,
   untested.
-- Exercises BRW-101 → BRW-105 are unstarted.
+- Exercises BRW-101 to BRW-105 are unstarted.
 
 ---
 
