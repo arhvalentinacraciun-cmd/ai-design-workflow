@@ -1,9 +1,11 @@
 /* =============================================================================
    COMPONENTS
    Rule: colours and radii come ONLY from component tokens (Layer 2). Shared
-   scales (space, font, line, border-width, shadow, transition, focus-ring,
-   opacity, size) may be used from Layer 1 directly. No literals.
-   Structural values (display, flex, cursor) are fine — style values are not.
+   scales (space, font, line, border-width, shadow, duration and transition,
+   focus-ring-width, opacity, size) may be used from Layer 1 directly. No
+   literals. Structural values are fine: display, flex, cursor, 0, 100%,
+   50%, a plain number that multiplies a token inside calc(), an angle
+   inside a transform, and opacity 1 (fully visible) are not style values.
    ============================================================================= */
 
 /* ── Button ──────────────────────────────────────────────────────────────── */
@@ -116,11 +118,11 @@
   border-style: solid;
   border-color: currentColor;
   border-right-color: transparent;
-  border-radius: var(--radius-full);
+  border-radius: var(--button-spinner-radius);
   animation: btn-spin var(--duration-slow) linear infinite;
 }
-.btn-primary.is-loading::after,
-.btn-danger.is-loading::after { border-color: var(--button-primary-text); border-right-color: transparent; }
+.btn-primary.is-loading::after { border-color: var(--button-primary-text); border-right-color: transparent; }
+.btn-danger.is-loading::after { border-color: var(--button-danger-text); border-right-color: transparent; }
 .btn-secondary.is-loading::after { border-color: var(--button-secondary-text); border-right-color: transparent; }
 .btn-ghost.is-loading::after { border-color: var(--button-ghost-text); border-right-color: transparent; }
 @keyframes btn-spin { to { transform: rotate(360deg); } }
@@ -259,7 +261,7 @@
   content: "";
   width: var(--space-2);
   height: var(--space-2);
-  border-radius: var(--radius-full);
+  border-radius: var(--badge-dot-radius);
   background: currentColor;
 }
 
@@ -293,7 +295,7 @@
   flex: none;
   width: var(--space-3);
   height: var(--space-3);
-  border-radius: var(--radius-full);
+  border-radius: var(--tag-dot-radius);
   background: currentColor;
 }
 
@@ -313,7 +315,7 @@
   margin-right: calc(var(--space-1) * -1);
   padding: 0;
   border: 0;
-  border-radius: var(--radius-full);
+  border-radius: var(--tag-remove-radius);
   background: transparent;
   color: var(--tag-remove-text);
   font-family: var(--font-family-base);
@@ -323,7 +325,7 @@
 }
 .tag__remove:hover { background: var(--tag-remove-bg-hover); color: var(--tag-remove-text-hover); }
 .tag__remove:focus-visible {
-  outline: var(--focus-ring-width) solid var(--button-focus-ring-color);
+  outline: var(--focus-ring-width) solid var(--tag-focus-ring-color);
   outline-offset: 0;
 }
 
@@ -344,7 +346,7 @@
   box-shadow: var(--shadow-lg);
 }
 .card--interactive:focus-visible {
-  outline: var(--focus-ring-width) solid var(--button-focus-ring-color);
+  outline: var(--focus-ring-width) solid var(--card-focus-ring-color);
   outline-offset: var(--space-1);
 }
 
@@ -417,7 +419,7 @@
   margin: calc(var(--space-1) * -1) calc(var(--space-2) * -1) 0 0;
   padding: 0;
   border: 0;
-  border-radius: var(--radius-sm);
+  border-radius: var(--alert-close-radius);
   background: transparent;
   color: inherit;
   font-family: var(--font-family-base);

@@ -14,22 +14,25 @@
   function liveValue(name) { return rootStyle.getPropertyValue(name).trim(); }
 
   /* ── Declared values (readable only when served) ─────────────────────── */
+  // Each stylesheet is read on its own. A sheet from another site (the
+  // Google Fonts one) refuses to be read; it is skipped and the rest still
+  // count. Opened as a file, every sheet refuses, and the drift check is off.
   var declared = {};
-  try {
-    Array.prototype.forEach.call(document.styleSheets, function (sheet) {
-      Array.prototype.forEach.call(sheet.cssRules, function (rule) {
-        if (!rule.style || rule.selectorText !== ':root') return;
-        Array.prototype.forEach.call(rule.style, function (prop) {
-          if (prop.indexOf('--') === 0 && !(prop in declared)) {
-            declared[prop] = rule.style.getPropertyValue(prop).trim();
-          }
-        });
+  Array.prototype.forEach.call(document.styleSheets, function (sheet) {
+    var rules;
+    try { rules = sheet.cssRules; } catch (e) { return; }
+    Array.prototype.forEach.call(rules, function (rule) {
+      if (!rule.style || rule.selectorText !== ':root') return;
+      Array.prototype.forEach.call(rule.style, function (prop) {
+        if (prop.indexOf('--') === 0 && !(prop in declared)) {
+          declared[prop] = rule.style.getPropertyValue(prop).trim();
+        }
       });
     });
-  } catch (e) { declared = null; }
+  });
 
   function pointsAt(token, documented) {
-    if (!declared || !(token in declared)) return { from: documented, drift: false };
+    if (!(token in declared)) return { from: documented, drift: false };
     var raw = declared[token];
     var m = raw.match(/^var\((--[a-z0-9-]+)\)$/i);
     var from = m ? m[1] : raw;
@@ -144,8 +147,9 @@
     var ta = document.createElement('textarea');
     ta.value = text;
     ta.setAttribute('readonly', '');
-    ta.style.position = 'absolute';
-    ta.style.left = '-9999px';
+    // Kept invisible while it is selected and copied.
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
     document.body.appendChild(ta);
     ta.select();
     try { document.execCommand('copy'); } catch (e) { /* nothing to do */ }

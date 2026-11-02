@@ -3,6 +3,8 @@
    Built from Brewlog's own tokens, nothing else, so the viewer obeys the rule
    it documents and moves with the product when a primitive changes. Widths
    are token arithmetic (calc) because the rule allows no literal values.
+   Layout values are not style values: 0, 100%, 100vh (the full window
+   height), fr, and a plain number that multiplies a token inside calc().
    ============================================================================= */
 
 * { box-sizing: border-box; }
@@ -86,7 +88,7 @@ p code {
   color: var(--color-neutral-600);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
 }
 .v-nav ul { margin: 0; padding: 0; list-style: none; }
@@ -122,7 +124,7 @@ p code {
   font-size: calc(var(--font-size-2xl) * 1.5);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
 }
 .v-head p {
   margin: 0;
@@ -250,6 +252,12 @@ p code {
   transition: transform var(--pv-duration, var(--duration-base)) ease;
 }
 .v-tk:hover .v-pv-dot { transform: translateX(var(--space-8)); }
+.v-pv-logo {
+  width: var(--size-logo); height: var(--size-logo);
+  color: var(--color-primary-600);
+  fill: none; stroke: currentColor; stroke-width: var(--border-width-sm);
+  stroke-linecap: round; stroke-linejoin: round;
+}
 .v-pv-ring { width: var(--space-8); height: var(--space-8); border-radius: var(--radius-sm); background: var(--color-white); outline: var(--focus-ring-width) solid var(--color-primary-600); outline-offset: var(--space-1); }
 
 /* ── Component block: header, tabs, panels ───────────────────────────────── */
@@ -364,7 +372,7 @@ p code {
   color: var(--color-neutral-600);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
 }
 
@@ -386,7 +394,7 @@ p code {
   color: var(--color-neutral-600);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.06em;
+  letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
 }
 .v-tokens td:first-child, .v-tokens .v-from, .v-tokens .v-value {
@@ -407,7 +415,7 @@ p code {
   font-family: var(--font-family-base);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.06em;
+  letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
   border-bottom: 0;
 }
@@ -458,7 +466,7 @@ p code {
   color: var(--color-neutral-600);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.06em;
+  letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
 }
 

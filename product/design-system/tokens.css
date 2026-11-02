@@ -2,8 +2,9 @@
    LAYER 1 — PRIMITIVE TOKENS
    Names follow --category-variant-property
    Components take every colour and radius through component-tokens.css
-   (Layer 2). The shared scales (space, font, line, border-width, shadow,
-   transition, focus-ring, opacity, size) may be referenced directly.
+   (Layer 2). The shared scales (space, font, line, letter-spacing,
+   border-width, shadow, duration and transition, focus-ring-width,
+   opacity, size) may be referenced directly.
    System 2.0 (1 Nov 2026): indigo primary, lime accent, coffee brown for the
    roast, cool neutrals from paper to ink. Type one step larger than 1.x.
    ============================================================================= */
@@ -137,6 +138,9 @@
 
   --line-height-tight:   1.2;
   --line-height-base:    1.5;
+
+  --letter-spacing-tight: -0.02em;   /* large display titles */
+  --letter-spacing-caps:  0.06em;    /* small uppercase labels */
 
   /* SHAPE */
   --radius-sm:   6px;

@@ -2,12 +2,20 @@
    LAYER 2 — COMPONENT TOKENS
    One namespace per component; every value is a reference to a primitive.
    Rule: components.css takes every colour and radius from these tokens,
-   never from primitives. Shared scales (space, font, line, border-width,
-   shadow, transition, focus-ring) it may use directly. A future theme
-   overrides THIS layer at :root, nothing else.
+   never from primitives. Shared scales (space, font, line, letter-spacing,
+   border-width, shadow, duration and transition, opacity, size,
+   focus-ring-width) it may use directly. The --page-* tokens are the same
+   layer for the page layout in app.css. A future theme overrides THIS
+   layer at :root, nothing else.
    ============================================================================= */
 
 :root {
+
+  /* ── Shared ──────────────────────────────────────────────────────────── */
+
+  /* One focus colour for every focusable component. Each component's own
+     focus token points here, so a theme changes focus everywhere at once. */
+  --focus-ring-color:         var(--color-primary-600);
 
   /* ── Page (the layout in app.css: header band, photo tiles, footer) ──── */
 
@@ -31,7 +39,8 @@
   --button-font-weight:  var(--font-weight-bold);
   --button-padding-x:    var(--space-6);
   --button-padding-y:    var(--space-2);
-  --button-focus-ring-color: var(--color-primary-600);
+  --button-focus-ring-color: var(--focus-ring-color);
+  --button-spinner-radius:   var(--radius-full);
 
   --button-sm-padding-x: var(--space-4);
   --button-sm-padding-y: var(--space-1);
@@ -75,7 +84,7 @@
   --input-border-color-hover:  var(--color-primary-600);
   --input-border-color-focus:  var(--color-primary-600);
   --input-border-color-error:  var(--color-danger-600);
-  --input-focus-ring-color:    var(--color-primary-600);
+  --input-focus-ring-color:    var(--focus-ring-color);
   --input-radius:              var(--radius-md);
 
   /* Field: the label, hint and error text around an input or select */
@@ -95,12 +104,13 @@
   --select-border-color-focus: var(--color-primary-600);
   --select-border-color-error: var(--color-danger-600);
   --select-chevron-color:      var(--color-neutral-900);
-  --select-focus-ring-color:   var(--color-primary-600);
+  --select-focus-ring-color:   var(--focus-ring-color);
   --select-radius:             var(--radius-md);
 
   /* ── Badge ─────────────────────────────────────────────────────────────── */
 
   --badge-radius:          var(--radius-full);
+  --badge-dot-radius:      var(--radius-full);
 
   --badge-neutral-bg:      var(--color-neutral-100);
   --badge-neutral-text:    var(--color-neutral-700);
@@ -123,9 +133,12 @@
   --tag-text:              var(--color-neutral-700);
   --tag-border-color:      var(--color-neutral-200);
   --tag-radius:            var(--radius-full);
+  --tag-dot-radius:        var(--radius-full);
+  --tag-focus-ring-color:  var(--focus-ring-color);
   --tag-remove-text:       var(--color-neutral-500);
   --tag-remove-text-hover: var(--color-neutral-900);
   --tag-remove-bg-hover:   var(--color-neutral-200);
+  --tag-remove-radius:     var(--radius-full);
 
   /* Roast: the coffee brown, the only place it appears. The word takes the
      dark roast colour; the dot takes the level. */
@@ -145,11 +158,12 @@
   --card-title-text:         var(--color-neutral-900);
   --card-meta-text:          var(--color-neutral-600);
   --card-radius:             var(--radius-xl);
+  --card-focus-ring-color:   var(--focus-ring-color);
 
   /* ── Alert ─────────────────────────────────────────────────────────────── */
 
-  --alert-radius: var(--radius-md);
-  --alert-close-bg-hover: var(--color-neutral-900);
+  --alert-radius:       var(--radius-md);
+  --alert-close-radius: var(--radius-sm);
 
   /* Info is the lime band: an empty state is the thing to notice. */
   --alert-info-bg:      var(--color-accent-100);
