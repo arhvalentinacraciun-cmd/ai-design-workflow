@@ -8,15 +8,15 @@
 
   <!-- loaded into the window -->
   <g filter="url(#sh3)">
-    <rect x="16" y="18" width="220" height="56" rx="10" fill="#DCEBE2" stroke="#1F6F4A"/>
-    <rect x="252" y="18" width="204" height="56" rx="10" fill="#DCEBE2" stroke="#1F6F4A"/>
+    <rect x="16" y="18" width="250" height="56" rx="10" fill="#DCEBE2" stroke="#1F6F4A"/>
+    <rect x="282" y="18" width="300" height="56" rx="10" fill="#DCEBE2" stroke="#1F6F4A"/>
   </g>
   <text x="30" y="41" font-size="14" fill="#14201A" font-weight="600">Memory and AGENTS.md</text>
   <text x="30" y="61" font-size="12.5" fill="#545D57">markdown files, read at the start</text>
-  <text x="266" y="41" font-size="14" fill="#14201A" font-weight="600">Skill: <tspan font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace">/new-ticket</tspan></text>
-  <text x="266" y="61" font-size="12.5" fill="#545D57">a markdown file, loaded when you type it</text>
+  <text x="296" y="41" font-size="14" fill="#14201A" font-weight="600">Skill: <tspan font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace">/new-ticket</tspan></text>
+  <text x="296" y="61" font-size="12.5" fill="#545D57">a markdown file, loaded when you type it</text>
   <line x1="150" y1="74" x2="284" y2="118" stroke="#1F6F4A" stroke-width="1.5" marker-end="url(#arr3g)"/>
-  <line x1="340" y1="74" x2="322" y2="118" stroke="#1F6F4A" stroke-width="1.5" marker-end="url(#arr3g)"/>
+  <line x1="400" y1="74" x2="350" y2="118" stroke="#1F6F4A" stroke-width="1.5" marker-end="url(#arr3g)"/>
 
   <!-- main row -->
   <g filter="url(#sh3)">
