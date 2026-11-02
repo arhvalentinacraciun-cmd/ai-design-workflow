@@ -2,7 +2,11 @@
    BREWLOG — page layout
    Layout may use spacing/typography primitives and the page tokens directly;
    anything that is a COMPONENT style must come from components.css. No
-   literal style values.
+   literal style values. 0, 100%, 1fr and a plain number that multiplies a
+   token inside calc() are layout, not style values.
+   The header text stays readable over the photo because of the overlay's
+   alpha (--color-overlay-* in tokens.css). The viewer cannot measure text
+   on a photo, so a brighter photo means measuring that contrast again.
    ============================================================================= */
 
 * { box-sizing: border-box; }
