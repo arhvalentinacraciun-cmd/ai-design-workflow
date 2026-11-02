@@ -1,0 +1,12 @@
+# Line endings.
+# Git for Windows turns line endings into CRLF on checkout by default. Bash
+# cannot run a script with CRLF endings, so install.sh and the guardrail
+# would fail on Windows. These rules keep the scripts and every agent's
+# config folder on LF, on every machine.
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+.claude/** text eol=lf
+.agents/** text eol=lf
+.codex/** text eol=lf
+.gemini/** text eol=lf

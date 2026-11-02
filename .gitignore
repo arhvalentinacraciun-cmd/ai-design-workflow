@@ -1,3 +1,8 @@
 .DS_Store
 *.log
 .claude/settings.local.json
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+CLAUDE.local.md
