@@ -223,7 +223,7 @@ link; the other two are there when you want the longer story.
 
 ## Before Session 1 (Thursday 5 November)
 
-Before Session 1 you get the install check and the link to this project by email. Do the install check, clone the project, run the opening line once
+Before Session 1 you get the install check and the link to this project by email. Do the install check, clone the project and run the opening line once
 ("Read AGENTS.md, then give me the state of the project in three
-sentences"), and send the three sentences back. If anything on this page did
-not land, bring the question; the opening block of Session 1 walks through these four pictures live.
+sentences"). If something fails, say so in the track's WhatsApp group. If
+anything on this page did not land, bring the question; the opening block of Session 1 walks through these four pictures live.

@@ -163,7 +163,7 @@ apps this isn't.
 - **Done:** nothing yet. A fresh clone starts here.
 - **Next:** Session 1 · Setup day · Thu 5 Nov 2026
 - **This week's twin:** install your coding agent, run the opener once, and
-  send the three sentences back in your pre-work reply.
+  say in the track's WhatsApp group if anything failed.
 - **Twin progress:** not started
 
 Sessions: 1 Setup day (5 Nov) · 2 Memory and skills (12 Nov) · 3 Design
