@@ -9,7 +9,7 @@
 ## Story
 
 As the owner of this project, I want to judge AI-built work the way a
-senior reviews a PR — against explicit criteria, with evidence — so my
+senior reviews a PR, against explicit criteria and with evidence, so my
 approval means something.
 
 ## Acceptance criteria
@@ -18,22 +18,32 @@ approval means something.
       roast filter against the rubric."* Read the verdict, the score table,
       and the top three fixes.
 - [ ] Disagree with at least one score, out loud, with your own evidence.
-      (If you can't find one to contest, look harder — rubber-stamping an
+      (If you can't find one to contest, look harder. Rubber-stamping an
       AI's self-review is the exact failure mode this session is about.)
 - [ ] Apply the top fix. Re-run the critique and confirm the score moved.
-- [ ] Propose **one change to the rubric itself** — a trait it's missing, or
+- [ ] Propose **one change to the rubric itself**: a trait it's missing, or
       a wording that let something slide. Bring it to S4; the cohort's
       rubric evolves from these.
+- [ ] Save the review to `exercises/BRW-104-notes.md`: the verdict, the
+      score table, the score you contested with your evidence, the score
+      after the fix, and your rubric change. Ask the agent to write it;
+      then say "Session done." and `/vault-save` records the rest.
+      Session 4 opens by reading this file.
 
 ## Constraints
 
-- Evidence means a file, a line, or an element — "feels cramped" doesn't
-  count until it becomes "gap between form and list is space-3; the page
-  rhythm elsewhere is space-8."
+- Evidence means a file, a line, or an element. "The list feels cramped"
+  doesn't count until it becomes "entries sit `--space-5` apart in
+  `app.css`, while the form has `--space-12` below it."
 
 ## Stretch (optional)
 
 Ask the agent to write a short release note for the filter feature, then
 provenance-check every factual claim in it against the code. Mark each
-claim verified / derived / invented. Count the inventions — that number is
+claim verified / derived / invented. Count the inventions: that number is
 why release notes get reviewed.
+
+## Twin (at home, optional)
+
+None. This ticket is itself the at-home work between Session 3 and
+Session 4.

@@ -38,8 +38,13 @@ roast: All / Light / Medium / Dark.
 
 Native radio inputs do the work: single selection, arrow-key movement
 between options, and a checked state that screen readers announce. The
-inputs are visually hidden; the `<span>` is the visible option. The
+inputs are visually hidden; the label is the visible option. The
 `aria-label` on the fieldset names the group.
+
+The group is a pill with a 2px border. The options share its width
+equally, so the bold label on the selected option never pushes its
+neighbours. Each option is at least `--size-control` tall, the same 48px
+as Button, Input and Select.
 
 ## Variants
 
@@ -50,62 +55,83 @@ second use of the component asks for them.
 
 | State | What changes |
 |---|---|
-| Default | Group has a neutral background and a border; options are text only |
-| Hover on an option | Option background lightens |
-| Selected | Option gets a raised background, stronger text colour, a small shadow |
-| Focus-visible | The focused option shows the shared focus ring, inside the group |
-| Disabled (optional) | Whole group at reduced opacity, no hover; not needed for BRW-103 |
+| Default | Group has a neutral background and a 2px neutral border, pill-shaped; options are text only |
+| Hover on an option | Option background darkens one step (neutral-100 to neutral-200). The selected option does not change on hover |
+| Selected | Option is filled with the primary colour, its text turns white and bold. No shadow |
+| Focus-visible | The focused option shows the shared focus ring in `--color-primary-600`, the same as Button |
+| Disabled (optional) | Whole group at `--opacity-disabled`, no hover; not needed for BRW-103 |
 
 ## Tokens
 
 Layer 2 names, each pointing at a Layer 1 primitive. Add them to
 `product/design-system/component-tokens.css` next to the Button tokens.
-Every colour and radius goes through these; shared scales may be used
-directly in the CSS as the design-system skill allows.
+Every colour and radius goes through these; shared scales (border width,
+font weight, size, focus ring, opacity) may be used directly in the CSS as
+the design-system skill allows.
 
 ```css
 /* Segmented control */
 --segmented-bg:                var(--color-neutral-100);
---segmented-border-color:      var(--color-neutral-200);
---segmented-radius:            var(--radius-md);
+--segmented-border-color:      var(--color-neutral-300);
+--segmented-radius:            var(--radius-full);
 --segmented-padding:           var(--space-1);
 --segmented-option-text:       var(--color-neutral-700);
---segmented-option-padding-x:  var(--space-3);
---segmented-option-padding-y:  var(--space-1);
---segmented-option-radius:     var(--radius-sm);
+--segmented-option-padding-x:  var(--space-4);
+--segmented-option-radius:     var(--radius-full);
 --segmented-option-hover-bg:   var(--color-neutral-200);
---segmented-selected-bg:       var(--color-white);
---segmented-selected-text:     var(--color-neutral-900);
---segmented-selected-shadow:   var(--shadow-sm);
---segmented-focus-ring-color:  var(--color-primary-500);
+--segmented-selected-bg:       var(--color-primary-600);
+--segmented-selected-text:     var(--color-white);
+--segmented-focus-ring-color:  var(--focus-ring-color);
 ```
+
+From the shared scales: the group border is `--border-width-sm` (2px),
+the selected label is `--font-weight-bold`, each option's `min-height` is
+`--size-control`, and the focus ring is `--focus-ring-width` with an
+offset of `--space-1`, as on Button.
 
 ## Accessibility
 
 - The group is a `fieldset` with an `aria-label`; the options are native
   radios, so the pattern needs no JavaScript for keyboard or announcements.
-- Hiding the input must keep it focusable: clip it, do not `display:none`.
-- The selected state is not colour alone: the raised background and
-  shadow carry it, and the radio's checked state carries it for assistive
-  technology.
-- Focus ring uses the shared `--focus-ring-*` scale, same as Button.
+- Hiding the input must keep it focusable and clickable. Give the label
+  `position: relative` and the input `position: absolute; inset: 0;
+  opacity: 0`, so it covers its option and stays in the tab order. Do not
+  use `display: none`, which removes it from the keyboard, or a clip
+  pattern built from pixel sizes, which the hook flags.
+- Style the states from the input with `:has()`, for example
+  `.segmented__option:has(input:checked)` and
+  `.segmented__option:has(input:focus-visible)`.
+- The selected state is not colour alone: the fill contrasts strongly
+  with the group, the label turns bold, and the radio's checked state
+  carries it for assistive technology.
+- Focus ring uses the shared `--focus-ring-*` scale, same as Button. The
+  offset keeps it visible on the filled option, which is the same colour.
 
 ## Acceptance criteria for building it
 
 - [ ] The tokens above exist in `component-tokens.css`, each pointing at a
-      primitive (the hook rejects a literal).
+      primitive (the hook flags a literal).
 - [ ] `.segmented` and `.segmented__option` exist in `components.css`,
       using only the tokens above and the shared scales.
 - [ ] Arrow keys move the selection; Tab enters and leaves the group.
-- [ ] The focus ring is visible on the focused option.
+- [ ] The focus ring is visible on the focused option, selected or not.
+- [ ] No literal style values anywhere.
+- [ ] The viewer's Segmented control block replaces its Planned
+      placeholder with the same five tabs as every other component
+      (preview with the four stories below, tokens, usage, accessibility
+      with its contrast pairs, code), and its nav link leaves the planned
+      style. The steps are on the viewer's "Adding a component" page.
+- [ ] The viewer's Changelog has a dated row for the component in place
+      of the Planned row, and `memory/design-system-history.md` has the
+      same row with the why.
 - [ ] The design-system skill's inventory lists the component with its
       classes and "single-select, 2–5 options".
-- [ ] No literal style values anywhere.
+- [ ] After the inventory row, run `python3 hooks/sync-skills.py` so the
+      copy in `.agents/skills/` matches.
 
 ## Stories
 
-Named states to check by hand now, and to render in the design-system
-viewer when it exists:
+Named states to check by hand, and to render in the viewer's preview:
 
 1. **Default**: four options, "All" selected.
 2. **Middle selected**: "Medium" selected.

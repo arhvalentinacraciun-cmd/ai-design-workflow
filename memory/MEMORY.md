@@ -10,8 +10,9 @@ point of the split is that the always-read tier stays short.
   the system changed and why, 1.0 to 2.0
 - [Brewlog data model](brewlog-data-model.md) — what an entry is made of,
   the seed entries, what survives a reload
-- [Exercise notes](exercise-notes.md) — what happened in each BRW ticket:
-  the material for show and tell and the demo
+- [Exercise notes](exercise-notes.md) — what happened in each BRW ticket,
+  and how each week's twin is going: the material for show and tell and
+  the demo
 
 `_continuity.md` — where the work is: open questions, work in flight, how
 to resume. Overwritten by `/vault-save` at every close.
