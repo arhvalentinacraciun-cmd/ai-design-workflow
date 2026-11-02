@@ -27,11 +27,11 @@ can empty my log and start fresh, without doing it by accident.
 ## Constraints
 
 - Use only components from the design-system skill inventory.
-- Do not add persistence — that's an open question in `AGENTS.md`.
+- Do not add persistence — that's an open question in `memory/_continuity.md`.
 
 ## If you're new to this
 
-Open the session exactly like the protocol says, then hand Claude this file:
+Open the session exactly like the protocol says, then hand the agent this file:
 *"Today we're doing BRW-101 — read exercises/BRW-101-first-task.md and
 implement it."* Watch what it reads before it writes. That order — memory,
 skills, then code — is the whole method.
@@ -40,4 +40,4 @@ skills, then code — is the whole method.
 
 Make "Clear all" recoverable: after clearing, the alert offers an "Undo"
 ghost button for the current page view. Notice which recorded decision this
-brushes against, and how Claude handles it.
+brushes against, and how the agent handles it.

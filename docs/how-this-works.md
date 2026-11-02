@@ -6,10 +6,10 @@ This page takes about ten minutes to read: four short sections, each with a pict
 pre-work email.
 
 Everyone in this cohort already uses AI, each in their own way and for their
-own tasks. To make sure we all use the same terms on Thursday, this page explains a few basic AI ideas in plain language. If you use AI every day, the four pictures and the glossary are still
+own tasks. To make sure we all use the same terms in Session 1, this page explains a few basic AI ideas in plain language. If you use AI every day, the four pictures and the glossary are still
 worth ten minutes: they are the vocabulary the four sessions are built on.
 
-In Session 1 you will give an AI a task, watch it change files in a small project, and see one of the project's rules stop it. That small project is a mock product: in Session 1 you copy it from GitHub to your own computer (the step is called cloning) and you keep it for the whole track. All of that is easier to
+In Session 1 you will give an AI a task, watch it change files in a small project, and see one of the project's rules stop it. That small project is a mock product: before Session 1 you copy it from GitHub to your own computer (the step is called cloning) and you keep it for the whole track. All of that is easier to
 follow if you know four things about what is going on underneath. None of
 them need a technical background, and you will hear all four words again on
 the evening.
@@ -65,7 +65,7 @@ from what is left. Working in a session that is close to full costs you
 twice. The model gets slower and less precise, and the early context it lost
 is replaced by guesses. Answers start to drift: details get invented, a stale
 value from an old file is read as the current one, a decision from an hour
-ago is forgotten. To avoid this, the project you clone in Session 1 has a
+ago is forgotten. To avoid this, the project you clone before Session 1 has a
 memory folder. At the end of a session the AI writes down what the next
 session needs, and the next session reads it at the start.
 
@@ -111,9 +111,9 @@ folder. Everything you install in this track sits on this loop.
   its own ("you are a senior designer") barely changes the output; the
   constraints and the material do.
 
-## 4. "Token" means two things on Thursday
+## 4. "Token" means two things in Session 1
 
-If you are not a designer: we will talk about two kinds of "tokens" on Thursday, and they are easy to confuse.
+If you are not a designer: we will talk about two kinds of "tokens" in Session 1, and they are easy to confuse.
 
 An **AI token** is a piece of text, as in section 1. A **design token** is a
 named value in a design system, such as `--color-primary-600`, that
@@ -223,7 +223,7 @@ link; the other two are there when you want the longer story.
 
 ## Before Session 1 (Thursday 5 November)
 
-You will receive an email before the first session with the install check and the link to the project. Do the install check, run the opening line once
+Before Session 1 you get the install check and the link to this project by email. Do the install check, clone the project, run the opening line once
 ("Read AGENTS.md, then give me the state of the project in three
 sentences"), and send the three sentences back. If anything on this page did
 not land, bring the question; the opening block of Session 1 walks through these four pictures live.

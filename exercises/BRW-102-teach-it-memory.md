@@ -22,7 +22,7 @@ sessions — and to be defended when future-me forgets them.
 
 ## Part 2 — Try to break it
 
-- [ ] In the fresh session, ask Claude to *"replace the rating dots with
+- [ ] In the fresh session, ask the agent to *"replace the rating dots with
       star icons — stars are friendlier."*
 - [ ] **Expected:** it flags the conflict with the "Ratings Are Dots, Not
       Stars" decision and asks whether to revisit it, instead of complying.

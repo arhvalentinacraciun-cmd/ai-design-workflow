@@ -2,7 +2,7 @@
 **Last updated:** 2026-11-01 (rev 7)
 **Maintained by:** whoever is in the session — that's the point
 
-> Read this entire file before doing anything, then `memory/MEMORY.md` and
+> Start every session by reading all of this file, then `memory/MEMORY.md` and
 > `memory/_continuity.md`. This file is the always-read core of the project
 > memory: every decision and every rule lives here. Where the work is, and
 > the facts you only need sometimes, live in `memory/`.
@@ -13,9 +13,10 @@
   start, so what's written here is what it "knows" before you say a word.
   The file is only as good as its last update — closing a session without
   updating it is how projects lose their memory.
-  Why this file is called AGENTS.md: Codex, Antigravity, Grok Build, Cursor
-  and Copilot all read a file of that name. Claude Code reads CLAUDE.md,
-  which here is three lines that import this one. One memory, every tool.
+  Why this file is called AGENTS.md: Codex, Antigravity, Grok Build (wired
+  from the documentation, untested), Cursor and Copilot all read a file of
+  that name. Claude Code reads CLAUDE.md, which here is three lines that
+  import this one. One memory, every tool.
 -->
 
 ---
@@ -43,16 +44,16 @@ in five minutes and real enough that sloppy work shows.
   proceeding — that behaviour is what turns a chat into a colleague.
 -->
 
-Every significant decision, with rationale. Do not re-open these unless the
-designer explicitly asks.
+Every significant decision, with rationale. They stay decided until the
+designer reopens one.
 
 ### No-Hardcoding Rule
 **Decided:** 2026-08-31 · **Status:** absolute, enforced by hook
-Every spacing, colour, typography, radius, shadow, or motion value in
-`product/` must use `var(--token-name)`. If no suitable token exists: stop,
-say so, and propose adding one — never invent a literal value.
-**Why:** one literal value is invisible to the token system and breaks
-theming for that element everywhere. The hook in
+In `product/`, colours, spacing, type, radii, shadows and motion all come
+from `var(--token-name)`. When the token you need is missing, stop, say so
+and propose a new one; a literal value is never the answer.
+**Why:** the token system cannot see a literal, so that element drops out
+of every theme change. The hook in
 `hooks/scan-hardcoded.sh` scans every write; violations come back to the
 session automatically.
 
@@ -138,9 +139,9 @@ apps this isn't.
   in three sentences → say where in the track this session is, from Track
   phase → wait for the kick-off line. Done by hand in Session 1: read this
   file, then the two memory files.
-- **Kick-off:** the designer sends one line: *"Today we're doing [ticket].
-  The goal is [goal]."* The ticket's acceptance criteria are the session's
-  definition of done.
+- **Kick-off:** the designer opens the work with a single line, *"Today
+  we're doing [ticket]. The goal is [goal]."* From then on, done means the
+  ticket's acceptance criteria are met.
 - **Close:** on "Session done." → `/vault-save` (decisions and state into
   this file, facts into `memory/`, continuity rewritten) → update Track
   phase → `git status` → remind the designer to commit.
@@ -213,5 +214,5 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
 Open questions, work in flight and how to resume live in
 `memory/_continuity.md`, which `/vault-load` reads at every open and
 `/vault-save` rewrites at every close. Current State above says what
-works; continuity says what is next. Do not re-open decided questions
-unless the designer explicitly asks.
+works; continuity says what is next. A decided question stays decided
+until the designer reopens it.

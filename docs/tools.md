@@ -1,12 +1,13 @@
 # Which coding agent
 
 The repo runs on four terminal agents. The track is driven on Claude Code,
-and every exercise is tested there first. Codex and Antigravity CLI were
+and every exercise is built there first. Codex and Antigravity CLI were
 tested live on 1 November 2026: the memory file loads, the guardrail
 reports the violation back to the agent, and `/session-2` runs from the
-skills copy on both. Grok Build is wired from its documentation and
-untested. If something behaves differently on your
-tool, bring it to the track channel: it is session material.
+skills copy on both. Grok Build is wired from the documentation, untested.
+If something behaves differently on your tool, bring it to the track's
+WhatsApp group (the link is in the pre-work email) or open a GitHub issue:
+it is session material.
 
 | | Claude Code | Codex | Antigravity CLI | Grok Build |
 |---|---|---|---|---|
@@ -14,7 +15,7 @@ tool, bring it to the track channel: it is session material.
 | Account | Claude Pro or above | ChatGPT (Free included) | Google account (free) | X Plus or above, or an API key |
 | Install | `npm install -g @anthropic-ai/claude-code` (needs Node.js) | `npm install -g @openai/codex` | `curl -fsSL https://antigravity.google/cli/install.sh \| bash` | `curl -fsSL https://x.ai/cli/install.sh \| bash` |
 | Start in the repo | `claude` | `codex` | `agy` | `grok` |
-| Windows | native | native | native | native |
+| Windows | native; run `install.sh` in Git Bash or WSL | native | native | native |
 | Reads the memory file | `CLAUDE.md`, which imports `AGENTS.md` | `AGENTS.md` | `AGENTS.md` | `AGENTS.md` and `CLAUDE.md` |
 | Guardrail config | `.claude/settings.json` | `.codex/hooks.json` | `.agents/hooks.json` | reads `.claude/settings.json` |
 | One-time trust step | accept the folder dialog | trust the folder; at first start a "Hooks need review" dialog lists the guardrail, choose "Trust all and continue" (later: `/hooks`) | accept the folder dialog | `/hooks-trust` |
@@ -42,7 +43,7 @@ shape:
 | Tool | Event | What the payload carries | How the violation reaches the agent |
 |---|---|---|---|
 | Claude Code | `PostToolUse` on `Write\|Edit` | the file path | exit code 2, message on stderr |
-| Gemini CLI | `AfterTool` on `write_file\|replace` | the file path | same |
+| Gemini CLI | `AfterTool` on `write_file\|replace` | the file path | same, on paper: wired from the documentation, untested |
 | Codex | `PostToolUse` on `Edit\|Write` | the patch text; the script pulls the file paths out of it | same; the file is written first, the violation comes back as the tool result (tested 1 Nov 2026) |
 | Grok Build | through the Claude Code config | the file path, camelCase fields | same, on paper: wired from the documentation, never run. If you use Grok Build, run the test below and report what came back |
 | Antigravity | `PreToolUse` on `write_file\|edit_file` (the CLI's tools) and the IDE's `write_to_file\|replace_file_content\|multi_replace_file_content` | the proposed content, before it is written (`toolCall.args`: `Path` + `Content` or `Replacement` in the CLI, `TargetFile` + `CodeContent` in the IDE) | the hook answers `deny` with the reason; the write never happens (tested 1 Nov 2026). The CLI runs the command from `.agents/`, so the config steps up one folder first |

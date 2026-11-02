@@ -30,18 +30,18 @@ else
 fi
 
 # 2. A coding agent. Any one of these runs the repo; the track is driven on
-#    Claude Code and every exercise is tested there first.
+#    Claude Code and every exercise is built there first.
 if command -v claude >/dev/null 2>&1; then pass "Claude Code is installed";    agents="$agents claude"; fi
 if command -v codex  >/dev/null 2>&1; then pass "Codex is installed";          agents="$agents codex";  fi
 if command -v agy    >/dev/null 2>&1; then pass "Antigravity CLI is installed"; agents="$agents agy";    fi
-if command -v grok   >/dev/null 2>&1; then pass "Grok Build is installed";     agents="$agents grok";   fi
-if command -v gemini >/dev/null 2>&1; then pass "Gemini CLI is installed";     agents="$agents gemini"; fi
+if command -v grok   >/dev/null 2>&1; then pass "Grok Build is installed (wired from the documentation, untested)";     agents="$agents grok";   fi
+if command -v gemini >/dev/null 2>&1; then pass "Gemini CLI is installed (wired from the documentation, untested)";     agents="$agents gemini"; fi
 if [ -z "$agents" ]; then
   note "No coding agent found. Install one (any of these works, see docs/tools.md):"
-  say "              Claude Code:      npm install -g @anthropic-ai/claude-code   (needs Node.js; Claude Pro plan)"
+  say "              Claude Code:      npm install -g @anthropic-ai/claude-code   (needs Node.js; Claude Pro or above)"
   say "              Codex:            npm install -g @openai/codex               (ChatGPT account, Free included)"
   say "              Antigravity CLI:  curl -fsSL https://antigravity.google/cli/install.sh | bash   (Google account, free)"
-  say "              Grok Build:       curl -fsSL https://x.ai/cli/install.sh | bash   (X Plus or above)"
+  say "              Grok Build:       curl -fsSL https://x.ai/cli/install.sh | bash   (X Plus or above, or an API key; wired from the documentation, untested)"
   say "              Then run it once in this folder to sign in. Until then, see docs/no-code-onramp.md."
 fi
 
@@ -88,13 +88,13 @@ for a in $agents; do
   case "$a" in
     claude) say "       claude    — accept the folder trust dialog; the guardrail is in .claude/settings.json"
             say "                   skills: type /session-2 (they live in .claude/skills/)" ;;
-    codex)  say "       codex     — trust the folder, then type /hooks and trust the guardrail (it is in .codex/hooks.json)"
+    codex)  say "       codex     — trust the folder, then in the 'Hooks need review' dialog choose 'Trust all and continue' (later: /hooks); the guardrail is in .codex/hooks.json"
             say "                   skills: type \$session-2, or /skills to pick one (read from .agents/skills/)" ;;
     agy)    say "       agy       — trust the folder; the guardrail is in .agents/hooks.json"
             say "                   skills: type /session-2 (read from .agents/skills/)" ;;
-    grok)   say "       grok      — type /hooks-trust once; Grok Build reads the guardrail from .claude/settings.json. Untested so far: report what the hook says"
+    grok)   say "       grok      — type /hooks-trust once; Grok Build reads the guardrail from .claude/settings.json. Wired from the documentation, untested: report what the hook says"
             say "                   skills: type /session-2 (read from .claude/skills/; untested)" ;;
-    gemini) say "       gemini    — trust the folder and confirm the hook warning once; the guardrail is in .gemini/settings.json"
+    gemini) say "       gemini    — trust the folder and confirm the hook warning once; the guardrail is in .gemini/settings.json. Wired from the documentation, untested: report what the hook says"
             say "                   skills: picked when your request matches, after you allow it (read from .agents/skills/; untested)" ;;
   esac
 done
@@ -105,6 +105,6 @@ say "  3. Preview Brewlog:  python3 -m http.server 4600 --directory product"
 say "     then open http://localhost:4600  (or just open product/index.html)"
 say "  4. Start exercises/BRW-101-first-task.md"
 say ""
-say "Stuck? Bring the exact error to the track channel — setup problems are"
-say "session material, not homework failures."
+say "Stuck? Mentees: bring the exact error to the track's WhatsApp group (the link is"
+say "in the pre-work email). Everyone else: open a GitHub issue. Setup problems are session material."
 say ""

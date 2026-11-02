@@ -25,7 +25,7 @@ level** so I can find the light roasts I keep coming back to.
 
 ## Process — this is the actual exercise
 
-1. **Do not let Claude write code first.** Ask it to write a short spec:
+1. **Do not let the agent write code first.** Ask it to write a short spec:
    chosen component for the filter (from the inventory — and if none fits,
    what it proposes), the filtered-count wording, and the answer to the
    active-filter-plus-new-entry question. The inventory has no filter

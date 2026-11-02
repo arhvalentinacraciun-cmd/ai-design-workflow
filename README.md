@@ -6,11 +6,13 @@ The take-home companion for the **Build Your AI Design Workflow** mentoring trac
 This is not a tutorial repo. It is a small, working project wired the way a real
 AI-assisted design project should be wired: it has **memory**, **skills**,
 **guardrails**, and a **design system the AI can use without inventing things**.
-You clone it in Session 1, work in it every session, and keep it forever —
+You clone it before Session 1, work in it every session, and keep it forever —
 then transplant the pattern into your own projects.
 
-It runs on Claude Code, Codex and Antigravity CLI, and is wired for Grok
-Build, untested so far. One memory file, one guardrail, one adapter per tool.
+It runs on Claude Code, Codex and Antigravity CLI. Grok Build and Gemini CLI
+are wired from the documentation, untested. One memory file, one guardrail, one adapter per tool.
+
+**Who it's for:** designers and product people who already use AI and want it to remember decisions, follow rules and build on a design system. No coding background needed. **Start:** [Quickstart](#quickstart). **Licence:** MIT, free to copy and adapt.
 
 ## What's inside
 
@@ -31,6 +33,8 @@ cd ai-design-workflow
 ./install.sh
 ```
 
+On Windows, run these lines in Git Bash (it comes with [Git for Windows](https://git-scm.com/download/win)) or in WSL: `install.sh` is a bash script.
+
 The installer checks your setup, finds which coding agent you have, and
 prints that agent's start command and its one-time trust step. Then:
 
@@ -43,7 +47,7 @@ prints that agent's start command and its one-time trust step. Then:
 4. Start `exercises/BRW-101-first-task.md`.
 
 Which agent, what it costs, and what differs per tool: `docs/tools.md`. The
-track is driven on Claude Code and every exercise is tested there first.
+track is driven on Claude Code and every exercise is built there first.
 
 New to how AI works underneath? Read `docs/how-this-works.md` first: ten
 minutes, four pictures, a glossary of the words the sessions use.
@@ -68,7 +72,7 @@ the acceptance criteria (not your memory) define "done."
 ## The one rule that is enforced
 
 **No hardcoded style values.** Every color, spacing, radius, shadow, and
-font value in `product/` must flow through `var(--token-name)`. A hook scans
+font value in `product/` must come from `var(--token-name)`. A hook scans
 every file the AI writes and pushes violations back to it automatically, on
 every agent the repo supports. Read `hooks/scan-hardcoded.py` — one scanner
 and one short adapter per agent, and it's the difference between a

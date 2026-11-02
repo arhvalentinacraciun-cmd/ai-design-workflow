@@ -33,7 +33,7 @@ approval means something.
 
 ## Stretch (optional)
 
-Ask Claude to write a short release note for the filter feature, then
+Ask the agent to write a short release note for the filter feature, then
 provenance-check every factual claim in it against the code. Mark each
 claim verified / derived / invented. Count the inventions — that number is
 why release notes get reviewed.

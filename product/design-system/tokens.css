@@ -1,6 +1,6 @@
 /* =============================================================================
    LAYER 1 — PRIMITIVE TOKENS
-   Naming: --category-variant-property
+   Names follow --category-variant-property
    Components take every colour and radius through component-tokens.css
    (Layer 2). The shared scales (space, font, line, border-width, shadow,
    transition, focus-ring, opacity, size) may be referenced directly.

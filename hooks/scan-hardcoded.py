@@ -22,7 +22,8 @@ reads the tool's payload and answers in the tool's shape:
 Claude Code, Gemini CLI and Codex all take "exit 2 + the message on stderr"
 as feedback for the agent. Antigravity blocks the write before it happens
 and shows the reason to the agent. Grok Build is wired through the Claude
-Code settings file; wired from the documentation, untested as of 1 Nov 2026.
+Code settings file. Grok Build and Gemini CLI: wired from the documentation,
+untested as of 1 Nov 2026.
 """
 import json
 import os
@@ -60,7 +61,7 @@ def message(path, hits):
         f"NO-HARDCODING RULE VIOLATION in {path}:",
         *hits,
         "",
-        "Every style value must flow through var(--token-name).",
+        "Style values in product/ come from var(--token-name) only.",
         "Use an existing token from product/design-system/, or propose a new",
         "one, never a literal. See AGENTS.md > Design Decisions.",
     ])

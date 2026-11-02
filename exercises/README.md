@@ -14,7 +14,7 @@ wanted.**
    From Session 2 on, typing `/session-2`, `/session-3` or `/session-4`
    in Claude Code does steps 1 and 2 for you and shows the evening's
    hands-on agenda, so the whole room starts in the same state.
-3. Work with Claude until every acceptance criterion is checked.
+3. Work with the agent until every acceptance criterion is checked.
 4. Say **"Session done."** and let the close protocol run: it writes the
    session's memory (`/vault-save`) and moves Track phase forward.
 5. Commit.

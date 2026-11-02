@@ -25,4 +25,4 @@ Nothing. No uncommitted work is expected in the tree.
    definition of done; the week's twin counts as a ticket.
 3. Before touching something an on-demand memory file covers, read that
    file first. `/vault-load <topic>` does it.
-4. Do not re-open decided questions unless the designer explicitly asks.
+4. A decided question stays decided until the designer reopens it.

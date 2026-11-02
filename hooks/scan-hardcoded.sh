@@ -9,7 +9,7 @@
 #
 # Without python3 there is a smaller fallback below: it understands only the
 # Claude Code / Gemini CLI payload (a file_path field) and prints violations
-# the way those two tools expect.
+# the way those two tools expect (Gemini CLI: wired from the documentation, untested).
 # =============================================================================
 
 set -u
@@ -36,7 +36,7 @@ if [ -n "${violations}" ]; then
     echo "NO-HARDCODING RULE VIOLATION in ${file_path}:"
     echo "${violations}"
     echo ""
-    echo "Every style value must flow through var(--token-name)."
+    echo "Style values in product/ come from var(--token-name) only."
     echo "Use an existing token from product/design-system/, or propose a new"
     echo "one, never a literal. See AGENTS.md > Design Decisions."
   } >&2

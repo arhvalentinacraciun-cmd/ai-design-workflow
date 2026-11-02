@@ -1,6 +1,6 @@
 /* =============================================================================
    LAYER 2 — COMPONENT TOKENS
-   Each component gets its own namespace. All values point to primitives.
+   One namespace per component; every value is a reference to a primitive.
    Rule: components.css takes every colour and radius from these tokens,
    never from primitives. Shared scales (space, font, line, border-width,
    shadow, transition, focus-ring) it may use directly. A future theme
