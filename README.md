@@ -37,7 +37,7 @@ cd ai-design-workflow
 ./install.sh
 ```
 
-On Windows, run these lines in Git Bash (it comes with [Git for Windows](https://git-scm.com/download/win)) or in WSL: `install.sh` is a bash script.
+On Windows, run these lines in Git Bash (it comes with [Git for Windows](https://git-scm.com/download/win)) or in WSL: `install.sh` is a bash script. If you use the Claude Code desktop app, on any system, you can ask it to run the three lines for you.
 
 The installer checks your setup, finds which coding agent you have, and
 prints that agent's start command and its one-time trust step. If it lists

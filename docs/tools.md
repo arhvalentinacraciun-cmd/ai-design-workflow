@@ -11,7 +11,8 @@ Have these on your computer before you install an agent:
 - **Git**, to clone the repo and save your work:
   [git-scm.com/downloads](https://git-scm.com/downloads).
 - **Node.js**, from [nodejs.org](https://nodejs.org). Claude Code and Codex
-  install through `npm`, which comes with Node.js.
+  install through `npm`, which comes with Node.js. Not needed if you use
+  the Claude Code desktop app.
 - **Python 3**, from [python.org](https://www.python.org/downloads/). macOS
   already has it. On Windows, tick "Add python.exe to PATH" on the first
   screen of the installer. Typing `python3` on Windows can open the
@@ -23,6 +24,9 @@ Then install one agent from the table below and run it once to sign in.
 Claude Code needs a Claude Pro plan or above, Codex a ChatGPT account (the
 free plan works), Antigravity CLI a Google account. Once it has signed you
 in, clone the repo and run `install.sh`, as the README's Quickstart shows.
+If you use the Claude Code desktop app, ask it to run those lines for you:
+the installer sees that Claude Code is running it and reports it as your
+agent, even when the `claude` command is not on your terminal's PATH.
 
 ## The agents
 
@@ -45,7 +49,7 @@ issue: it is session material.
 | Account | Claude Pro or above | ChatGPT (Free included) | Google account (free) | X Plus or above, or an API key |
 | Install | `npm install -g @anthropic-ai/claude-code` (needs Node.js) | `npm install -g @openai/codex` (needs Node.js) | `curl -fsSL https://antigravity.google/cli/install.sh \| bash` | `curl -fsSL https://x.ai/cli/install.sh \| bash` |
 | Start in the repo | `claude` | `codex` | `agy` | `grok` |
-| Windows | Git Bash or WSL; hooks untested on Windows | Git Bash or WSL; hooks untested on Windows | Git Bash or WSL; hooks untested on Windows | Git Bash or WSL; hooks untested on Windows |
+| Windows | Git Bash or WSL; tested 4 Nov 2026 from the Claude Code desktop app on Windows (Git Bash underneath): installer, guardrail, skills, preview | Git Bash or WSL; hooks untested on Windows | Git Bash or WSL; hooks untested on Windows | Git Bash or WSL; hooks untested on Windows |
 | Reads the memory file | `CLAUDE.md`, which imports `AGENTS.md` | `AGENTS.md` | `AGENTS.md` | `AGENTS.md` and `CLAUDE.md` |
 | Guardrail config | `.claude/settings.json` | `.codex/hooks.json` | `.agents/hooks.json` | reads `.claude/settings.json` |
 | One-time trust step | accept the folder dialog | trust the folder; at first start a "Hooks need review" dialog lists the guardrail, choose "Trust all and continue" (later: `/hooks`) | accept the folder dialog | `/hooks-trust` |

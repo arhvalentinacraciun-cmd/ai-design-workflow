@@ -34,7 +34,11 @@ fi
 
 # 2. A coding agent. Any one of these runs the repo; the track is driven on
 #    Claude Code and every exercise is built there first.
-if command -v claude >/dev/null 2>&1; then pass "Claude Code is installed";    agents="$agents claude"; fi
+#    Inside a Claude Code session (the desktop app included) the agent is
+#    right here even when the claude command is not on this shell's PATH;
+#    Claude Code sets CLAUDECODE=1 in every shell it runs.
+if [ "${CLAUDECODE:-}" = "1" ]; then pass "Claude Code is running this check"; agents="$agents claude";
+elif command -v claude >/dev/null 2>&1; then pass "Claude Code is installed";    agents="$agents claude"; fi
 if command -v codex  >/dev/null 2>&1; then pass "Codex is installed";          agents="$agents codex";  fi
 if command -v agy    >/dev/null 2>&1; then pass "Antigravity CLI is installed"; agents="$agents agy";    fi
 if command -v grok   >/dev/null 2>&1; then pass "Grok Build is installed (wired from the documentation, untested)";     agents="$agents grok";   fi

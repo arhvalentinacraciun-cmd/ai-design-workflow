@@ -140,7 +140,7 @@ def read_payload(payload):
 def shown(path):
     """A path as short as it can be, for the --all report."""
     try:
-        return os.path.relpath(path)
+        return os.path.relpath(path).replace(os.sep, "/")
     except ValueError:  # Windows: another drive
         return path
 
