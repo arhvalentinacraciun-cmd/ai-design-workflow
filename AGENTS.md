@@ -1,5 +1,5 @@
 # AGENTS.md — Brewlog
-**Last updated:** 2026-11-02 (rev 8)
+**Last updated:** 2026-11-08 (rev 9)
 **Maintained by:** whoever is in the session — that's the point
 
 > Start every session by reading all of this file, then `memory/MEMORY.md` and
@@ -179,13 +179,14 @@ apps this isn't.
   section when you adapt the file to your own project.
 -->
 
-- **Done:** nothing yet. A fresh clone starts here.
-- **Next:** Session 1 · Setup day · Thu 5 Nov 2026
-- **This week's twin:** install your coding agent, type the opener once
-  (*"Read AGENTS.md, then give me the state of the project in three
-  sentences."*), and say in the track's WhatsApp group (for mentees of the
-  track) if anything failed.
-- **Twin progress:** done (2026-11-08) — agent installed, opener run, no failures reported
+- **Done:** Session 1 · Setup day · Thu 5 Nov 2026 — BRW-101 (Clear all
+  with a confirm alert) built and the hook guardrail seen once.
+- **Next:** Session 2 · Memory and skills · Thu 12 Nov 2026
+- **This week's twin:** BRW-101's twin — the optional stretch (a
+  recoverable Clear all with an Undo ghost button for the current view),
+  or one small task of your own in the repo. Bring it to Session 2's show
+  and tell.
+- **Twin progress:** not started
 
 Sessions: 1 Setup day (5 Nov) · 2 Memory and skills (12 Nov) · 3 Design
 system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
@@ -198,6 +199,13 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
   refreshes reset it — this is intentional for now). Form validation uses
   the Field error, not the browser bubble: the form is `novalidate` and
   `app.js` shows the message.
+- Clear all (BRW-101, 2026-11-08): a secondary button beside Add entry
+  (`type="button"`) opens a warning Alert that confirms before emptying the
+  in-memory log; Cancel changes nothing, Clear sets the count to "0 brews"
+  and swaps an info Alert in for the list. Empty state and confirmation are
+  static Alerts toggled by `el.hidden`; for that to beat `.alert`/
+  `.entry-list` own `display`, `app.css` carries one base reset,
+  `[hidden] { display: none !important; }` (token- and literal-free).
 - Design system 2.0 (2026-11-01): indigo primary with the ink at 900, lime
   accent as a highlighter (brew count, top rating, info alert), a roast hue
   for the coffee brown (the roast Tag only), cool neutrals. Atkinson
@@ -221,7 +229,7 @@ system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.
   on the 1 Nov version of the skills: `$session-2` on Codex and
   `/session-2` on Antigravity CLI both ran the copy. Grok Build and Gemini CLI are wired from their documentation,
   untested.
-- Exercises BRW-101 to BRW-105 are unstarted.
+- BRW-101 is done (2026-11-08); BRW-102 to BRW-105 are unstarted.
 
 ---
 

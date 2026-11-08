@@ -12,7 +12,22 @@ first two beats: the thing, and the moment the system did its job.
 
 ## BRW-101 · First task
 
-Not started.
+Built a "Clear all" that empties the in-memory log behind a confirmation:
+a secondary button beside Add entry, a warning Alert with Clear/Cancel, an
+info Alert as the empty state, all from the component inventory — secondary
+not danger, because a reload brings the seeds back.
+
+The system pushed back twice. First the no-hardcoding rule, when asked for
+a literal `10px` gap: the agent refused on the rule and offered the nearest
+token before being told it was a deliberate test. Then the hook itself
+caught `gap: 10px` in `app.css:122`, reported file and line, and blocked
+the write; the fix was `var(--space-3)`. That is the two-beat demo: the
+feature, then the guardrail doing its job.
+
+What I'd do differently: check the `hidden`-attribute-vs-component-`display`
+clash up front. `.alert` and `.entry-list` set `display`, so `el.hidden`
+did nothing until a base `[hidden] { display: none !important; }` reset
+went into `app.css`. Caught it in the browser, not on paper.
 
 ## BRW-102 · Teach it, then try to break it
 

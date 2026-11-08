@@ -1,32 +1,35 @@
 ---
 name: _continuity
-updated: 2026-11-02
+updated: 2026-11-08
 ---
 # Where the work is
 
-Fresh clone. Nothing has been built on Brewlog beyond the seed product and
-the design system; exercises BRW-101 to BRW-105 are unstarted. Next is
-Session 1 · Setup day · Thu 5 Nov 2026, with BRW-101 (Clear all, with a
-confirm alert). `AGENTS.md` Current State says what works today; this file
-says what is next. How each week's twin is going is kept in the Twins
-block of `memory/exercise-notes.md`, one line per week, starting with the pre-Session 1 twin.
+Session 1 (Setup day) is done. BRW-101 — Clear all with a confirm alert —
+is built, verified in the browser, and committed locally (952ca4e, not
+pushed). The hook guardrail was seen once: it caught a deliberate `10px`
+literal and was fixed with a token. Next is Session 2 · Memory and skills ·
+Thu 12 Nov 2026, whose ticket is BRW-102 (teach it, then try to break it).
+`AGENTS.md` Current State says what works today; this file says what is next.
 
 # Open questions
 
-- [ ] Should entries persist (localStorage)? Not decided; do not build it
-      unprompted.
+- [ ] Should entries persist (localStorage)? Still undecided; do not build
+      it unprompted. BRW-101's stretch (an Undo that survives a reload)
+      would need it, so this will come up again.
 
 # In flight
 
-Nothing. No uncommitted work is expected in the tree.
+Nothing half-done. One local commit (952ca4e) is unpushed. A scratch HTTP
+server was run on :8731 for in-browser checks and is stopped at close.
 
 # How to resume
 
 1. The opener (`/vault-load`, or by hand) has read `AGENTS.md`,
    `memory/MEMORY.md` and this file. Nothing else is needed to start.
-2. Wait for the kick-off line, then work against that ticket's acceptance
-   criteria: when each one holds, the ticket is finished. A twin is
-   handled the same way as a ticket.
-3. Before touching something an on-demand memory file covers, read that
+2. Push 952ca4e if it has not gone up yet (`git log origin/main..main`).
+3. Wait for the kick-off line, then work against that ticket's acceptance
+   criteria. Session 2 is about memory and skills; its twin is BRW-101's
+   stretch or a small task of your own.
+4. Before touching something an on-demand memory file covers, read that
    file first. `/vault-load <topic>` does it.
-4. A decided question stays decided until the designer reopens it.
+5. A decided question stays decided until the designer reopens it.
