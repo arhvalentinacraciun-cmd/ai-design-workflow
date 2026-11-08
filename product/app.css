@@ -11,6 +11,10 @@
 
 * { box-sizing: border-box; }
 img { display: block; max-width: 100%; }
+/* The hidden attribute must win over a component's own display rule
+   (.alert and .entry-list both set display), so the empty-state alert and
+   the clear confirmation can be toggled with el.hidden. */
+[hidden] { display: none !important; }
 
 body {
   margin: 0;

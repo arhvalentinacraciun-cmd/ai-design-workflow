@@ -36,6 +36,9 @@ function today() {
 const list = document.getElementById('entry-list');
 const count = document.getElementById('brew-count');
 const form = document.getElementById('entry-form');
+const emptyState = document.getElementById('list-empty');
+const confirmClear = document.getElementById('confirm-clear');
+const clearAllBtn = document.getElementById('clear-all');
 
 function ratingDots(rating) {
   let dots = '';
@@ -72,6 +75,10 @@ function render() {
     )
     .join('');
   count.textContent = `${entries.length} brew${entries.length === 1 ? '' : 's'}`;
+  // When the log is empty, the info alert stands in for the list.
+  const empty = entries.length === 0;
+  list.hidden = empty;
+  emptyState.hidden = !empty;
 }
 
 // Validation uses the design system's Field error, not the browser's bubble:
@@ -116,6 +123,23 @@ form.addEventListener('submit', (ev) => {
   });
   form.reset();
   render();
+});
+
+// Clear all: a recoverable action (a reload brings the seeds back), so it is
+// secondary + a confirmation, not a danger button. The warning alert asks
+// first; Clear empties the log, Cancel changes nothing.
+clearAllBtn.addEventListener('click', () => {
+  confirmClear.hidden = false;
+  document.getElementById('confirm-clear-yes').focus();
+});
+document.getElementById('confirm-clear-yes').addEventListener('click', () => {
+  entries = [];
+  confirmClear.hidden = true;
+  render();
+});
+document.getElementById('confirm-clear-no').addEventListener('click', () => {
+  confirmClear.hidden = true;
+  clearAllBtn.focus();
 });
 
 render();

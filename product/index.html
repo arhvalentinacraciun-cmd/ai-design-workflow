@@ -55,10 +55,25 @@
       </div>
       <div class="entry-form__actions">
         <button class="btn btn-primary" type="submit">Add entry</button>
+        <button class="btn btn-secondary" type="button" id="clear-all">Clear all</button>
       </div>
     </form>
 
+    <div class="alert alert-warning" role="status" id="confirm-clear" hidden>
+      <div class="alert__content">
+        Are you sure you want to clear your list?
+        <div class="alert__actions">
+          <button class="btn btn-secondary btn-sm" type="button" id="confirm-clear-yes">Clear</button>
+          <button class="btn btn-ghost btn-sm" type="button" id="confirm-clear-no">Cancel</button>
+        </div>
+      </div>
+    </div>
+
     <ul class="entry-list" id="entry-list"></ul>
+
+    <div class="alert alert-info" role="status" id="list-empty" hidden>
+      <div class="alert__content">No brews yet. Your next great coffee goes here.</div>
+    </div>
   </main>
 
   <footer class="wrap page-footer">

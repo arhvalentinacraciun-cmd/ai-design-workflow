@@ -185,7 +185,7 @@ apps this isn't.
   (*"Read AGENTS.md, then give me the state of the project in three
   sentences."*), and say in the track's WhatsApp group (for mentees of the
   track) if anything failed.
-- **Twin progress:** not started
+- **Twin progress:** done (2026-11-08) — agent installed, opener run, no failures reported
 
 Sessions: 1 Setup day (5 Nov) · 2 Memory and skills (12 Nov) · 3 Design
 system, spec-first (19 Nov) · 4 Judgment and demo day (26 Nov), all 2026.

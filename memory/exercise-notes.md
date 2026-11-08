@@ -36,5 +36,8 @@ None yet. `/new-ticket` creates them.
 
 ## Twins
 
-None yet. The session open asks how this week's twin is going and writes
-the answer here, one line per week.
+The session open asks how this week's twin is going and writes the answer
+here, one line per week.
+
+- Pre-Session 1 (2026-11-08): done — agent installed on the laptop, opener
+  run; nothing reported as failed.
